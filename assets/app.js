@@ -34,6 +34,17 @@ const CATEGORY_DESC = {
   Multimodal: "Paired reports, captions and VQA",
   Repository: "Hubs hosting many collections",
 };
+const CATEGORY_ICON = {
+  Neuro: "🧠", Chest: "🫁", Cardiac: "🫀", Vascular: "🩸", Abdomen: "🩻",
+  Pelvis: "⬇️", MSK: "🦴", Breast: "🎀", HeadNeck: "👤", Dental: "🦷",
+  WholeBody: "🌐", Multimodal: "📝", Repository: "🗄️",
+};
+const CATEGORY_SHORT = {
+  Neuro: "Neuro", Chest: "Chest", Cardiac: "Cardiac", Vascular: "Vascular",
+  Abdomen: "Abdomen", Pelvis: "Pelvis", MSK: "MSK", Breast: "Breast",
+  HeadNeck: "Head & Neck", Dental: "Dental", WholeBody: "Whole-body/PET",
+  Multimodal: "Multimodal", Repository: "Repositories",
+};
 const MODALITIES = ["CT", "MRI", "PET", "X-ray"];
 
 const TOGGLES = [
@@ -100,18 +111,17 @@ function buildControls() {
     const b = chip(m, () => toggleSet(state.modalities, m, b));
     modWrap.appendChild(b);
   });
-  // category select
-  const catSel = $("#category-select");
+  // body-region filter chips (multi-select banners)
+  const regionWrap = $("#region-filters");
   CATEGORY_ORDER.forEach(c => {
     const n = DATA.filter(d => d.category === c).length;
     if (!n) return;
-    const o = document.createElement("option");
-    o.value = c; o.textContent = `${CATEGORY_LABEL[c] || c} (${n})`;
-    catSel.appendChild(o);
-  });
-  catSel.addEventListener("change", () => {
-    state.categories = new Set(catSel.value ? [catSel.value] : []);
-    render();
+    const b = document.createElement("button");
+    b.className = "chip region-chip"; b.setAttribute("aria-pressed", "false");
+    b.dataset.cat = c;
+    b.innerHTML = `<span class="chip-ico">${CATEGORY_ICON[c] || ""}</span> ${CATEGORY_SHORT[c] || c} <span class="chip-n">${n}</span>`;
+    b.addEventListener("click", () => toggleSet(state.categories, c, b));
+    regionWrap.appendChild(b);
   });
   // toggle chips
   const tWrap = $("#toggle-filters");
@@ -127,7 +137,7 @@ function buildControls() {
   // reset
   $("#reset").addEventListener("click", () => {
     state.q = ""; state.modalities.clear(); state.categories.clear(); state.toggles.clear();
-    $("#search").value = ""; catSel.value = "";
+    $("#search").value = "";
     document.querySelectorAll(".chip[aria-pressed='true']").forEach(c => c.setAttribute("aria-pressed", "false"));
     render();
   });
@@ -187,6 +197,7 @@ function render() {
     items.sort((a, b) => (b.year || 0) - (a.year || 0));
     html += `<section class="cat-section" id="cat-${cat}">
       <div class="cat-head">
+        <span class="cat-ico">${CATEGORY_ICON[cat] || ""}</span>
         <h2>${CATEGORY_LABEL[cat] || cat}</h2>
         <span class="cat-count">${items.length}</span>
         <span class="cat-desc">${CATEGORY_DESC[cat] || ""}</span>

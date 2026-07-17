@@ -27,14 +27,14 @@
     <div class="wrap">
       <div class="search-row">
         <input type="search" id="search" placeholder="Search datasets — name, organ, task, format…" autocomplete="off" />
-        <select class="ctrl" id="category-select" aria-label="Body region">
-          <option value="">All body regions</option>
-        </select>
         <select class="ctrl" id="sort-select" aria-label="Sort">
           <option value="category">Group by region</option>
           <option value="year">Sort by year</option>
           <option value="name">Sort by name</option>
         </select>
+      </div>
+      <div class="filters region-filters" id="region-filters">
+        <span class="filter-label">Body region</span>
       </div>
       <div class="filters">
         <span class="filter-label">Modality</span>

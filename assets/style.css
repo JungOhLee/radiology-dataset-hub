@@ -114,7 +114,12 @@ select.ctrl {
 }
 .chip .dot { font-weight: 700; }
 .filter-label { font-size: .74rem; text-transform: uppercase; letter-spacing: .06em;
-  color: var(--text-faint); margin-right: 2px; align-self: center; }
+  color: var(--text-faint); margin-right: 2px; align-self: center; min-width: 74px; }
+.region-filters { border-bottom: 1px dashed var(--border); padding-bottom: 12px; margin-bottom: 2px; }
+.region-chip { display: inline-flex; align-items: center; gap: 5px; }
+.region-chip .chip-ico { font-size: .95rem; line-height: 1; }
+.region-chip .chip-n { font-size: .72rem; opacity: .65; font-variant-numeric: tabular-nums; }
+.region-chip[aria-pressed="true"] .chip-n { opacity: .9; }
 .filter-sep { width: 1px; align-self: stretch; background: var(--border); margin: 0 4px; }
 .toolbar-actions { display: flex; align-items: center; gap: 14px; margin-top: 10px;
   font-size: .85rem; color: var(--text-soft); flex-wrap: wrap; }
@@ -127,8 +132,9 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; }
 .cat-section { margin-bottom: 36px; scroll-margin-top: 140px; }
 .cat-head {
   display: flex; align-items: baseline; gap: 10px; margin: 0 0 14px;
-  padding-bottom: 8px; border-bottom: 2px solid var(--border);
+  padding-bottom: 8px; border-bottom: 2px solid var(--accent);
 }
+.cat-head .cat-ico { font-size: 1.3rem; align-self: center; }
 .cat-head h2 { margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
 .cat-head .cat-count { color: var(--text-faint); font-size: .9rem; }
 .cat-head .cat-desc { color: var(--text-soft); font-size: .85rem; margin-left: auto; }

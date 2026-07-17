@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiology Dataset Hub — Find open-source CT · MRI · PET · X-ray datasets</title>
+  <meta name="description" content="A curated, filterable catalog of open-source radiology imaging datasets (DICOM/NIfTI). Filter CT, MRI, PET and X-ray datasets by body part, paired text, segmentation labels, multi-sequence and access." />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩻</text></svg>" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>🩻 Radiology Dataset Hub</h1>
+      <p>Find the right <b>open-source</b> radiology dataset for your research — filter CT, MRI, PET and X-ray
+         by body region, and by whether they include paired text, segmentation labels, or multi-sequence images.</p>
+      <div class="header-meta" id="stats"></div>
+      <div class="header-links">
+        <a href="https://github.com/JungOhLee/radiology-dataset-hub">★ GitHub repo</a>
+        <a href="https://github.com/JungOhLee/radiology-dataset-hub/blob/main/CONTRIBUTING.md">+ Contribute a dataset</a>
+        <a href="data/datasets.json">Raw JSON</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="wrap">
+      <div class="search-row">
+        <input type="search" id="search" placeholder="Search datasets — name, organ, task, format…" autocomplete="off" />
+        <select class="ctrl" id="category-select" aria-label="Body region">
+          <option value="">All body regions</option>
+        </select>
+        <select class="ctrl" id="sort-select" aria-label="Sort">
+          <option value="category">Group by region</option>
+          <option value="year">Sort by year</option>
+          <option value="name">Sort by name</option>
+        </select>
+      </div>
+      <div class="filters">
+        <span class="filter-label">Modality</span>
+        <span id="modality-filters"></span>
+        <span class="filter-sep"></span>
+        <span class="filter-label">Has</span>
+        <span id="toggle-filters"></span>
+      </div>
+      <div class="toolbar-actions">
+        <span id="count"></span>
+        <button id="reset">Reset filters</button>
+        <span class="legend">
+          <span class="badge raw">◆ Raw = native DICOM/NIfTI</span>
+          <span class="badge text">◨ Text = reports/captions</span>
+          <span class="badge seg">▧ Seg = segmentation masks</span>
+          <span class="badge seq">≋ Multi = multi-sequence/phase</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <main id="results"></main>
+
+  <div id="detail-overlay" class="overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p><b>Radiology Dataset Hub</b> — a community catalog of open-source radiology datasets.
+       Every dataset links to its official source; always review each dataset's own license and
+       data-use agreement before use. Catalog metadata is provided as-is and may contain errors —
+       <a href="https://github.com/JungOhLee/radiology-dataset-hub/issues">report corrections</a>.</p>
+    <p>Content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+       Individual datasets retain their own licenses.</p>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

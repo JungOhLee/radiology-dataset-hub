@@ -1,0 +1,5898 @@
+[
+  {
+    "id": "brats-2021",
+    "name": "BraTS 2021",
+    "full_name": "RSNA-ASNR-MICCAI Brain Tumor Segmentation Challenge 2021",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "~2,040 patients (1,251 public training)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T1Gd (T1c), T2, T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "enhancing tumor, tumor core, whole tumor",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification"
+    ],
+    "license": "CC BY 4.0",
+    "access": "registration",
+    "host": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn25829067",
+    "description": "Multi-parametric MRI of adult glioma with expert tumor sub-region segmentations and MGMT methylation status; also mirrored on TCIA and Kaggle.",
+    "details": {
+      "label_schema": [
+        "Label 1 — necrotic tumor core (NCR)",
+        "Label 2 — peritumoral edematous/invaded tissue (ED)",
+        "Label 4 — GD-enhancing tumor (ET)",
+        "Evaluated regions: Whole Tumor (1+2+4), Tumor Core (1+4), Enhancing Tumor (4)"
+      ],
+      "file_structure": "One folder per case: BraTS2021_XXXXX/ with _t1.nii.gz, _t1ce.nii.gz, _t2.nii.gz, _flair.nii.gz and _seg.nii.gz (all co-registered, skull-stripped, 1mm³).",
+      "splits": "1,251 training (public labels) / 219 validation / 570 hidden test",
+      "extra": "Classification track adds a per-subject binary MGMT promoter methylation label (CSV)."
+    }
+  },
+  {
+    "id": "brats-africa",
+    "name": "BraTS-Africa",
+    "full_name": "BraTS 2023: Glioma Segmentation in Sub-Saharan Africa",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "146 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T1c, T2, T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "enhancing tumor, necrotic core, peritumoral edema",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "registration",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/BraTS-Africa/",
+    "description": "Multi-parametric brain MRI of glioma and other CNS tumor patients from Sub-Saharan Africa with expert tumor annotations."
+  },
+  {
+    "id": "brats-mets",
+    "name": "BraTS-Mets",
+    "full_name": "Brain Tumor Segmentation — Metastases 2023",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "328 cases (238 public training)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T1c, T2, T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "enhancing tumor, non-enhancing core, FLAIR hyperintensity",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "registration",
+    "host": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn51156910/wiki/622553",
+    "description": "Pre-treatment multi-parametric MRI of brain metastasis patients with expert tumor sub-region segmentations."
+  },
+  {
+    "id": "brats-peds",
+    "name": "BraTS-PEDs",
+    "full_name": "Pediatric Brain Tumor Segmentation 2023",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "228 patients (99 public training)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T1c, T2, T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "enhancing tumor, tumor core, whole tumor",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "registration",
+    "host": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn51156910/wiki/622461",
+    "description": "Multi-parametric MRI of pediatric brain tumor patients with expert tumor sub-region segmentations."
+  },
+  {
+    "id": "brats-men",
+    "name": "BraTS-MEN",
+    "full_name": "BraTS 2023 Intracranial Meningioma Segmentation",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1,650 cases (1,000 public training)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T1c, T2, T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "enhancing tumor, non-enhancing core, FLAIR hyperintensity",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "registration",
+    "host": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn51514106",
+    "description": "Pre-operative multi-parametric MRI of intracranial meningioma patients with expert tumor segmentations."
+  },
+  {
+    "id": "upenn-gbm",
+    "name": "UPenn-GBM",
+    "full_name": "University of Pennsylvania Glioblastoma Cohort",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "630 glioblastoma patients",
+    "paired_text": false,
+    "paired_text_detail": "structured clinical, genomic and radiomic data (not reports)",
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T1Gd, T2, T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "tumor subregions and whole-brain masks",
+    "other_labels": [
+      "survival",
+      "classification"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/upenn-gbm/",
+    "description": "Multiparametric MRI from 630 glioblastoma patients with expert-corrected tumor and whole-brain segmentations plus clinical, genomic and survival data."
+  },
+  {
+    "id": "isles-2022",
+    "name": "ISLES 2022",
+    "full_name": "Ischemic Stroke Lesion Segmentation Challenge 2022",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "250 training cases",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "DWI (b=1000), ADC, FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "expert ischemic stroke lesion masks",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "Zenodo",
+    "url": "https://zenodo.org/records/7153326",
+    "description": "Multi-center MRI of 250 acute/sub-acute ischemic stroke cases with DWI, ADC and FLAIR and expert lesion segmentations (NIfTI/BIDS).",
+    "details": {
+      "label_schema": [
+        "Binary ischemic stroke lesion mask (DWI-defined)"
+      ],
+      "file_structure": "BIDS layout: sub-strokeXXXX/ses-*/ with dwi, adc, flair NIfTI + derivatives/ holding msk.nii.gz.",
+      "splits": "250 public (train) / 150 hidden test"
+    }
+  },
+  {
+    "id": "atlas-r2",
+    "name": "ATLAS R2.0",
+    "full_name": "Anatomical Tracings of Lesions After Stroke, Release 2.0",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "655 labeled T1w MRIs (+300 hidden test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "manual whole-brain stroke lesion masks",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Grand Challenge",
+    "url": "https://atlas.grand-challenge.org/",
+    "description": "Large open T1-weighted MRI stroke dataset with manually traced lesion masks, accessed after agreeing to terms of use."
+  },
+  {
+    "id": "wmh-2017",
+    "name": "WMH Segmentation Challenge",
+    "full_name": "MICCAI 2017 White Matter Hyperintensity Segmentation Challenge",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2017,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "60 training subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "FLAIR, T1",
+    "segmentation": true,
+    "segmentation_detail": "manual binary white matter hyperintensity masks",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "UMC Utrecht",
+    "url": "https://wmh.isi.uu.nl/",
+    "description": "Multi-scanner brain MRI of 60 subjects with co-registered FLAIR and T1 and manual white matter hyperintensity annotations."
+  },
+  {
+    "id": "msseg-2",
+    "name": "MSSEG-2",
+    "full_name": "MICCAI 2021 MS New Lesions Segmentation Challenge",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "100 patients, 2 time-points each",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "3D FLAIR at two longitudinal time-points",
+    "segmentation": true,
+    "segmentation_detail": "masks of new MS lesions at follow-up",
+    "other_labels": [],
+    "tasks": [
+      "segmentation",
+      "detection"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "FLI-IAM / Shanoir",
+    "url": "https://portal.fli-iam.irisa.fr/msseg-2/",
+    "description": "Longitudinal 3D FLAIR MRI of 100 MS patients for detecting and segmenting newly appearing lesions."
+  },
+  {
+    "id": "shifts-ms",
+    "name": "Shifts MS",
+    "full_name": "Shifts Multiple Sclerosis Lesion Segmentation (Shifts 2.0)",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": null,
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "FLAIR, T1",
+    "segmentation": true,
+    "segmentation_detail": "consensus white matter MS lesion masks",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "registration",
+    "host": "Zenodo",
+    "url": "https://zenodo.org/records/7051658",
+    "description": "Multi-center white matter MS lesion dataset with FLAIR and T1 and consensus masks aggregating several cohorts."
+  },
+  {
+    "id": "episurg",
+    "name": "EPISURG",
+    "full_name": "EPISURG: Postoperative MRI for Resection Neurosurgery in Epilepsy",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "430 postoperative T1w MRIs",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "resection cavity masks by 3 raters (~200 subjects)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "open",
+    "host": "UCL RDR",
+    "url": "https://rdr.ucl.ac.uk/articles/dataset/EPISURG/9996158",
+    "description": "Anonymized postoperative brain MRIs from 430 refractory epilepsy patients with resection-cavity segmentations."
+  },
+  {
+    "id": "adni",
+    "name": "ADNI",
+    "full_name": "Alzheimer's Disease Neuroimaging Initiative",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI",
+      "PET"
+    ],
+    "year": 2004,
+    "format": [
+      "DICOM",
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "2000+ participants (ADNI 1/GO/2/3/4)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1w, T2/FLAIR, plus FDG, amyloid (PiB/AV45) and tau PET",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "ADNI Data Use Agreement",
+    "access": "request",
+    "host": "LONI/IDA",
+    "url": "https://adni.loni.usc.edu/",
+    "description": "Longitudinal multimodal MRI and PET with genetics, cognition and biomarkers for Alzheimer's disease, shared after application review."
+  },
+  {
+    "id": "oasis-1",
+    "name": "OASIS-1",
+    "full_name": "Open Access Series of Imaging Studies, Cross-sectional",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2007,
+    "format": [
+      "NIfTI",
+      "Analyze"
+    ],
+    "raw_image": true,
+    "size": "416 subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "brain masks and tissue segmentations in processed subset",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": "OASIS Data Use Agreement",
+    "access": "dua",
+    "host": "NITRC-IR",
+    "url": "https://sites.wustl.edu/oasisbrains/",
+    "description": "Cross-sectional T1-weighted brain MRI from 416 subjects with clinical dementia ratings."
+  },
+  {
+    "id": "oasis-3",
+    "name": "OASIS-3",
+    "full_name": "Open Access Series of Imaging Studies, Longitudinal Multimodal",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI",
+      "PET"
+    ],
+    "year": 2019,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1378 participants",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1w, T2w, FLAIR, ASL, SWI, TOF, BOLD fMRI, DTI, plus PiB, AV45, FDG, tau PET",
+    "segmentation": true,
+    "segmentation_detail": "FreeSurfer segmentation and PUP-processed PET derivatives",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": "OASIS Data Use Agreement",
+    "access": "dua",
+    "host": "NITRC-IR",
+    "url": "https://sites.wustl.edu/oasisbrains/",
+    "description": "Longitudinal multimodal MRI (incl. fMRI, DTI) and amyloid/metabolic/tau PET for normal aging and Alzheimer disease."
+  },
+  {
+    "id": "ixi",
+    "name": "IXI",
+    "full_name": "Information eXtraction from Images",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": null,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "~600 healthy subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1, T2, PD-weighted, MRA, and DWI (15 directions)",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "reconstruction",
+      "registration"
+    ],
+    "license": "CC BY-SA 3.0",
+    "access": "open",
+    "host": "brain-development.org",
+    "url": "https://brain-development.org/ixi-dataset/",
+    "description": "Multi-sequence brain MRI (T1, T2, PD, MRA, DWI) from nearly 600 healthy subjects at three London hospitals."
+  },
+  {
+    "id": "abide",
+    "name": "ABIDE",
+    "full_name": "Autism Brain Imaging Data Exchange",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2012,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1112 subjects (ABIDE I)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "resting-state fMRI plus anatomical T1-weighted MRI",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "CC BY-NC-SA 3.0",
+    "access": "registration",
+    "host": "NITRC / INDI",
+    "url": "https://fcon_1000.projects.nitrc.org/indi/abide/",
+    "description": "Aggregated resting-state fMRI and structural MRI with phenotypic data from individuals with autism and typical controls."
+  },
+  {
+    "id": "hcp-ya",
+    "name": "HCP Young Adult",
+    "full_name": "Human Connectome Project — WU-Minn Young Adult (1200 Subjects)",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2017,
+    "format": [
+      "NIfTI",
+      "CIFTI"
+    ],
+    "raw_image": true,
+    "size": "1206 subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T T1w, T2w, resting-state and task fMRI, HARDI diffusion; 7T and MEG subsets",
+    "segmentation": true,
+    "segmentation_detail": "FreeSurfer cortical/subcortical segmentations and surface parcellations",
+    "other_labels": [],
+    "tasks": [
+      "segmentation",
+      "registration"
+    ],
+    "license": "HCP Open Access Data Use Terms",
+    "access": "registration",
+    "host": "ConnectomeDB",
+    "url": "https://www.humanconnectome.org/study/hcp-young-adult",
+    "description": "High-resolution multimodal 3T/7T MRI (structural, fMRI, diffusion) from ~1200 healthy young adults."
+  },
+  {
+    "id": "rsna-ich",
+    "name": "RSNA 2019 ICH Detection",
+    "full_name": "RSNA 2019 Intracranial Hemorrhage Detection Challenge",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "CT"
+    ],
+    "year": 2019,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "25,272 non-contrast head CT exams",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "RSNA non-commercial research",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/rsna-intracranial-hemorrhage-detection",
+    "description": "Over 25,000 non-contrast head CT exams labeled for presence and five subtypes of acute intracranial hemorrhage."
+  },
+  {
+    "id": "rsna-aneurysm",
+    "name": "RSNA 2025 Aneurysm Detection",
+    "full_name": "RSNA Intracranial Aneurysm Detection AI Challenge 2025",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2025,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "4,000+ studies (CTA/MRA/MRI); ~200 with segmentation",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "CT angiography, MR angiography, T1 post-contrast and T2-weighted MRI",
+    "segmentation": true,
+    "segmentation_detail": "~200 studies include aneurysm segmentations",
+    "other_labels": [
+      "classification",
+      "detection"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "RSNA non-commercial research",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/rsna-intracranial-aneurysm-detection",
+    "description": "Multi-modality brain studies from 18 sites annotated for aneurysm presence and location across 13 arterial territories."
+  },
+  {
+    "id": "cq500",
+    "name": "CQ500",
+    "full_name": "CQ500 Head CT Dataset (qure.ai)",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "491 head CT scans",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "open",
+    "host": "qure.ai",
+    "url": "http://headctstudy.qure.ai/dataset",
+    "description": "491 head CT scans with consensus reads by three radiologists for hemorrhage, fractures, midline shift and mass effect."
+  },
+  {
+    "id": "adam-aneurysm",
+    "name": "ADAM",
+    "full_name": "Aneurysm Detection And segMentation Challenge 2020",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "113 training TOF-MRA cases",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "TOF-MRA plus one structural MR image (T1, T2 or FLAIR)",
+    "segmentation": true,
+    "segmentation_detail": "binary masks of unruptured intracranial aneurysms",
+    "other_labels": [
+      "detection"
+    ],
+    "tasks": [
+      "detection",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://adam.isi.uu.nl/",
+    "description": "TOF-MRA challenge for detecting and segmenting unruptured intracranial aneurysms with a hidden test set."
+  },
+  {
+    "id": "cada",
+    "name": "CADA",
+    "full_name": "Cerebral Aneurysm Detection and Analysis Challenge 2020",
+    "category": "Neuro",
+    "anatomy": "cerebral vessels",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI",
+      "STL"
+    ],
+    "raw_image": true,
+    "size": "131 3DRA datasets (115 patients)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "aneurysm center positions and segmented masks; rupture state",
+    "other_labels": [
+      "detection",
+      "classification"
+    ],
+    "tasks": [
+      "detection",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://cada.grand-challenge.org/",
+    "description": "3D rotational X-ray angiography volumes from 115 patients with aneurysm locations, segmentations and rupture status."
+  },
+  {
+    "id": "instance-2022",
+    "name": "INSTANCE 2022",
+    "full_name": "2022 Intracranial Hemorrhage Segmentation on Non-Contrast head CT",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "200 NCCT scans (100 train)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "voxel-level intracranial hemorrhage masks",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-ND 4.0",
+    "access": "dua",
+    "host": "Grand Challenge",
+    "url": "https://instance.grand-challenge.org/",
+    "description": "MICCAI 2022 benchmark for 3D intracranial hemorrhage segmentation on non-contrast head CT with expert voxel labels."
+  },
+  {
+    "id": "verse",
+    "name": "VerSe",
+    "full_name": "Large Scale Vertebrae Segmentation Challenge (2019 & 2020)",
+    "category": "Neuro",
+    "anatomy": "spine",
+    "modality": [
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "374 CT scans / ~4,500 vertebrae",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "voxel masks of individual vertebrae (C1-L6 + sacrum)",
+    "other_labels": [
+      "keypoints"
+    ],
+    "tasks": [
+      "segmentation",
+      "detection"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "GitHub / Zenodo",
+    "url": "https://github.com/anjany/verse",
+    "description": "MICCAI 2019-2020 challenge with spine CT, per-vertebra segmentation masks and vertebral centroid keypoints.",
+    "details": {
+      "label_schema": [
+        "Per-vertebra integer masks: 1–7 cervical (C1–C7), 8–19 thoracic (T1–T12), 20–25 lumbar (L1–L6), 26 sacrum, 28 T13 variant",
+        "Vertebral centroid keypoints (JSON) per label"
+      ],
+      "file_structure": "Per scan: *_ct.nii.gz, *_seg.nii.gz and *_ctd.json (centroids).",
+      "splits": "VerSe'19 + '20 combined: 374 scans across train/val/test"
+    }
+  },
+  {
+    "id": "rsna-cspine",
+    "name": "RSNA 2022 Cervical Spine Fracture",
+    "full_name": "RSNA 2022 Cervical Spine Fracture Detection Challenge",
+    "category": "Neuro",
+    "anatomy": "spine",
+    "modality": [
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~3,000 CT studies",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "vertebral-level masks for a subset; fracture presence/level labels",
+    "other_labels": [
+      "classification",
+      "detection"
+    ],
+    "tasks": [
+      "classification",
+      "detection",
+      "segmentation"
+    ],
+    "license": "RSNA non-commercial research",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection",
+    "description": "Large public adult cervical-spine CT dataset with fracture presence/level annotations and vertebral segmentation for a subset."
+  },
+  {
+    "id": "calgary-campinas",
+    "name": "Calgary-Campinas CC-359",
+    "full_name": "Calgary-Campinas-359 Public Brain MR Dataset",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "359 T1w volumes (+ raw k-space subset)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "skull-stripping masks and hippocampus segmentations",
+    "other_labels": [],
+    "tasks": [
+      "segmentation",
+      "reconstruction"
+    ],
+    "license": "CC BY-NC-ND 4.0",
+    "access": "registration",
+    "host": "ccdataset.com",
+    "url": "https://www.ccdataset.com",
+    "description": "Multi-vendor, multi-field-strength T1w brain MRI of 359 adults with skull-stripping and hippocampus masks plus raw k-space."
+  },
+  {
+    "id": "mindboggle-101",
+    "name": "Mindboggle-101",
+    "full_name": "Mindboggle-101 Manually Labeled Individual Brains",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2012,
+    "format": [
+      "NIfTI",
+      "VTK"
+    ],
+    "raw_image": true,
+    "size": "101 subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "manually labeled cortical (DKT) and subcortical structures",
+    "other_labels": [],
+    "tasks": [
+      "segmentation",
+      "registration"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "mindboggle.info",
+    "url": "https://mindboggle.info/data.html",
+    "description": "Largest collection of free, manually labeled human brain MRI surfaces and volumes using the DKT cortical protocol."
+  },
+  {
+    "id": "fastmri-brain",
+    "name": "fastMRI Brain",
+    "full_name": "NYU Langone & FAIR fastMRI Brain Dataset",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "HDF5 (k-space)",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "6,970 brain MRI volumes",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "axial T1-weighted, T2-weighted and FLAIR",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "reconstruction"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "NYU fastMRI",
+    "url": "https://fastmri.med.nyu.edu",
+    "description": "Large collection of fully-sampled raw k-space and DICOM brain MRIs (T1/T2/FLAIR) for accelerated MRI reconstruction research."
+  },
+  {
+    "id": "mrbrains",
+    "name": "MRBrainS",
+    "full_name": "MRBrainS MICCAI Brain Tissue Segmentation (2013 & 2018)",
+    "category": "Neuro",
+    "anatomy": "brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "MRBrainS18: 30 subjects (7 fully annotated)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1-weighted, T1 inversion recovery, and T2-FLAIR",
+    "segmentation": true,
+    "segmentation_detail": "brain tissue (GM, WM, CSF) and up to ten structures",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://mrbrains18.isi.uu.nl",
+    "description": "MICCAI multi-sequence 3T brain MRI challenge for segmenting gray matter, white matter and CSF in elderly subjects."
+  },
+  {
+    "id": "iseg",
+    "name": "iSeg",
+    "full_name": "6-month Infant Brain MRI Segmentation Challenge (2017 & 2019)",
+    "category": "Neuro",
+    "anatomy": "fetal-brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2019,
+    "format": [
+      "Analyze"
+    ],
+    "raw_image": true,
+    "size": "iSeg-2019: 39 subjects (multi-site)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1-weighted and T2-weighted",
+    "segmentation": true,
+    "segmentation_detail": "infant brain tissue (WM, GM, CSF)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "UNC",
+    "url": "https://iseg2019.web.unc.edu",
+    "description": "MICCAI challenge with T1/T2 MRI of 6-month-old infants (isointense phase) and manual WM/GM/CSF tissue labels."
+  },
+  {
+    "id": "feta",
+    "name": "FeTA",
+    "full_name": "Fetal Tissue Annotation and Segmentation Dataset",
+    "category": "Neuro",
+    "anatomy": "fetal-brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "~80 subjects (FeTA 2021)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "seven fetal brain tissues",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn25649159",
+    "description": "First public dataset of super-resolution reconstructed fetal brain MRI with manual multi-tissue annotations."
+  },
+  {
+    "id": "nih-chestxray14",
+    "name": "NIH ChestX-ray14",
+    "full_name": "ChestX-ray14 (ChestX-ray8) — NIH Clinical Center",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2017,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "112,120 frontal images / 30,805 patients",
+    "paired_text": false,
+    "paired_text_detail": "14 disease labels text-mined from reports (reports not released)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification",
+      "detection"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "Free (citation requested)",
+    "access": "open",
+    "host": "NIH Box / Kaggle",
+    "url": "https://nihcc.app.box.com/v/ChestXray-NIHCC",
+    "description": "112,120 frontal chest X-rays from 30,805 patients labeled with 14 thoracic findings via NLP, plus 984 hand-drawn bounding boxes.",
+    "details": {
+      "label_schema": [
+        "14 binary disease labels (NLP-mined): Atelectasis, Cardiomegaly, Effusion, Infiltration, Mass, Nodule, Pneumonia, Pneumothorax, Consolidation, Edema, Emphysema, Fibrosis, Pleural_Thickening, Hernia",
+        "984 bounding boxes (8 pathologies) in BBox_List_2017.csv"
+      ],
+      "file_structure": "1024×1024 PNGs + Data_Entry_2017.csv (labels, patient age/sex/view) + train_val/test split lists.",
+      "splits": "~86k train-val / ~25k test (official patient-wise split)"
+    }
+  },
+  {
+    "id": "chexpert",
+    "name": "CheXpert",
+    "full_name": "CheXpert: Large Chest Radiograph Dataset with Uncertainty Labels",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2019,
+    "format": [
+      "JPEG"
+    ],
+    "raw_image": false,
+    "size": "224,316 radiographs / 65,240 patients",
+    "paired_text": false,
+    "paired_text_detail": "14 labels from a rule-based labeler; free-text reports in the separate CheXpert Plus release",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "Stanford Research Use Agreement (non-commercial)",
+    "access": "registration",
+    "host": "Stanford AIMI",
+    "url": "https://stanfordmlgroup.github.io/competitions/chexpert/",
+    "description": "224,316 chest radiographs from 65,240 Stanford patients labeled for 14 observations as positive, negative or uncertain.",
+    "details": {
+      "label_schema": [
+        "14 observations, each labeled 1 (positive) / 0 (negative) / -1 (uncertain) / blank:",
+        "No Finding, Enlarged Cardiomediastinum, Cardiomegaly, Lung Opacity, Lung Lesion, Edema, Consolidation, Pneumonia, Atelectasis, Pneumothorax, Pleural Effusion, Pleural Other, Fracture, Support Devices"
+      ],
+      "file_structure": "Patient/study/view JPEG hierarchy + train.csv / valid.csv with the 14 label columns and view metadata.",
+      "splits": "223,414 train / 234 val / 668 test (expert-labeled)"
+    }
+  },
+  {
+    "id": "mimic-cxr",
+    "name": "MIMIC-CXR",
+    "full_name": "MIMIC Chest X-ray Database",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2019,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "377,110 images / 227,835 studies / ~65,379 patients",
+    "paired_text": true,
+    "paired_text_detail": "free-text English radiology reports, one per study",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "report-generation"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/mimic-cxr/",
+    "description": "377,110 DICOM chest radiographs from Beth Israel Deaconess paired with de-identified free-text radiology reports.",
+    "details": {
+      "label_schema": [
+        "Free-text reports (per study .txt): sections incl. FINDINGS and IMPRESSION",
+        "Derived CheXpert & NegBio label CSVs (14 categories, in MIMIC-CXR-JPG)"
+      ],
+      "file_structure": "p1x/pXXXXXXXX/sYYYYYYYY/ folders with DICOMs + a matching sYYYYYYYY.txt report; metadata CSV links study→view→labels.",
+      "splits": "Official train/validate/test split provided"
+    }
+  },
+  {
+    "id": "mimic-cxr-jpg",
+    "name": "MIMIC-CXR-JPG",
+    "full_name": "MIMIC-CXR-JPG — chest radiographs with structured labels",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2019,
+    "format": [
+      "JPEG"
+    ],
+    "raw_image": false,
+    "size": "377,110 JPG images / 227,827 studies",
+    "paired_text": false,
+    "paired_text_detail": "structured CheXpert & NegBio labels (14 categories); reports live in companion MIMIC-CXR",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/mimic-cxr-jpg/",
+    "description": "JPG-converted derivative of MIMIC-CXR with structured CheXpert and NegBio labels across 14 categories."
+  },
+  {
+    "id": "padchest",
+    "name": "PadChest",
+    "full_name": "PadChest: chest X-ray dataset with multi-label annotated reports",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2020,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "160,868 images / 67,625 patients",
+    "paired_text": true,
+    "paired_text_detail": "Spanish free-text reports; ~27% labels manually annotated, rest by RNN; UMLS-mapped",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "report-generation"
+    ],
+    "license": "BIMCV research-use terms",
+    "access": "request",
+    "host": "BIMCV / Univ. Alicante",
+    "url": "https://bimcv.cipf.es/bimcv-projects/padchest/",
+    "description": "160,868 16-bit chest X-rays paired with Spanish reports and 174 findings, 19 diagnoses and 104 location labels mapped to UMLS."
+  },
+  {
+    "id": "vindr-cxr",
+    "name": "VinDr-CXR",
+    "full_name": "VinDr-CXR: chest X-rays with radiologist annotations",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2021,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "18,000 images (15,000 train / 3,000 test)",
+    "paired_text": false,
+    "paired_text_detail": "radiologist bounding boxes and image-level labels; no reports",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "detection",
+      "classification"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/vindr-cxr/",
+    "description": "18,000 DICOM chest radiographs with radiologist bounding boxes for 22 local findings and 6 global labels."
+  },
+  {
+    "id": "vindr-pcxr",
+    "name": "VinDr-PCXR",
+    "full_name": "VinDr-PCXR: pediatric chest X-ray dataset",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "9,125 studies (children under 10)",
+    "paired_text": false,
+    "paired_text_detail": "lesion-level bounding boxes and image-level labels; no reports",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "detection",
+      "classification"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "PhysioNet Restricted 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/vindr-pcxr/",
+    "description": "Pediatric chest X-ray dataset of 9,125 DICOM studies annotated with lesion-level boxes for 36 findings and 15 diseases."
+  },
+  {
+    "id": "rsna-pneumonia",
+    "name": "RSNA Pneumonia Detection",
+    "full_name": "RSNA Pneumonia Detection Challenge (2018)",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2018,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~26,684 training radiographs",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification",
+      "detection"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/rsna-pneumonia-detection-challenge",
+    "description": "Frontal chest radiographs in DICOM with radiologist bounding boxes localizing lung opacities indicative of pneumonia."
+  },
+  {
+    "id": "siim-acr-pneumothorax",
+    "name": "SIIM-ACR Pneumothorax",
+    "full_name": "SIIM-ACR Pneumothorax Segmentation (2019)",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2019,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~12,047 train + ~3,205 test",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "pixel-level pneumothorax masks (RLE)",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation",
+    "description": "Chest radiographs in DICOM with run-length-encoded segmentation masks marking pneumothorax regions."
+  },
+  {
+    "id": "openi-iu-cxr",
+    "name": "Open-i / Indiana University CXR",
+    "full_name": "Indiana University Chest X-ray Collection (NLM Open-i)",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2013,
+    "format": [
+      "DICOM",
+      "PNG"
+    ],
+    "raw_image": true,
+    "size": "7,470 images / 3,955 reports",
+    "paired_text": true,
+    "paired_text_detail": "de-identified free-text reports (indication, findings, impression) with MeSH/RadLex",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "report-generation",
+      "classification"
+    ],
+    "license": null,
+    "access": "open",
+    "host": "NLM (Open-i)",
+    "url": "https://openi.nlm.nih.gov/",
+    "description": "Open NLM collection of frontal/lateral chest radiographs paired with de-identified reports, widely used for report generation."
+  },
+  {
+    "id": "shenzhen-tb",
+    "name": "Shenzhen Hospital CXR Set",
+    "full_name": "Shenzhen No.3 People's Hospital Chest X-ray Set (NLM TB)",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2014,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "662 frontal X-rays (326 normal, 336 TB)",
+    "paired_text": true,
+    "paired_text_detail": "brief radiologist clinical readings as text files",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": null,
+    "access": "open",
+    "host": "NLM",
+    "url": "https://openi.nlm.nih.gov/",
+    "description": "662 frontal chest radiographs from Shenzhen labeled normal or tuberculosis for TB screening research."
+  },
+  {
+    "id": "montgomery-tb",
+    "name": "Montgomery County CXR Set",
+    "full_name": "Montgomery County Chest X-ray Set (NLM TB)",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2014,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "138 frontal X-rays (80 normal, 58 TB)",
+    "paired_text": true,
+    "paired_text_detail": "brief radiologist clinical readings as text files",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "left/right lung segmentation masks",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "open",
+    "host": "NLM",
+    "url": "https://openi.nlm.nih.gov/",
+    "description": "138 frontal chest radiographs from Montgomery County's TB program, labeled normal or TB with lung segmentation masks."
+  },
+  {
+    "id": "object-cxr",
+    "name": "Object-CXR",
+    "full_name": "object-CXR: Foreign Objects on Chest X-rays",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2020,
+    "format": [
+      "JPEG"
+    ],
+    "raw_image": false,
+    "size": "10,000 frontal X-rays (5,000 with foreign objects)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": "foreign objects annotated with boxes/ellipses/polygons",
+    "other_labels": [
+      "classification",
+      "detection"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "Free for research (non-commercial)",
+    "access": "open",
+    "host": "GitHub (JF Healthcare)",
+    "url": "https://github.com/hlk-1135/object-CXR",
+    "description": "10,000 chest X-rays from Chinese township hospitals annotated for foreign objects; now distributed via GitHub."
+  },
+  {
+    "id": "candid-ptx",
+    "name": "CANDID-PTX",
+    "full_name": "CANDID-PTX chest radiographs",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2021,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "19,237 adult chest X-rays",
+    "paired_text": true,
+    "paired_text_detail": "anonymized free-text radiology reports",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "RLE masks for pneumothorax, acute rib fracture, and intercostal chest tubes",
+    "other_labels": [
+      "classification",
+      "detection"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification",
+      "report-generation"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "figshare (Univ. Auckland)",
+    "url": "https://figshare.com/articles/dataset/CANDID-PTX/14173982",
+    "description": "New Zealand chest radiographs with segmentation for pneumothorax, rib fractures and chest tubes plus free-text reports."
+  },
+  {
+    "id": "brax",
+    "name": "BRAX",
+    "full_name": "BRAX, a Brazilian labeled chest X-ray dataset",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM",
+      "PNG"
+    ],
+    "raw_image": true,
+    "size": "40,967 images / 19,351 patients",
+    "paired_text": false,
+    "paired_text_detail": "14 CheXpert-style labels from NLP on Portuguese reports (reports not provided)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/brax/",
+    "description": "Brazilian chest X-ray dataset of 40,967 images (Hospital Albert Einstein) in DICOM and PNG with 14 automatically extracted labels."
+  },
+  {
+    "id": "bimcv-covid19",
+    "name": "BIMCV-COVID19",
+    "full_name": "BIMCV COVID-19 Dataset (Valencia Region)",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray",
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "PNG",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "21,342 CR + 34,829 DX studies + 7,918 CT (positive partition)",
+    "paired_text": true,
+    "paired_text_detail": "Spanish free-text radiographic reports, UMLS-mapped findings",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "semantic segmentation of findings for a small subset",
+    "other_labels": [
+      "classification",
+      "PCR/serology results"
+    ],
+    "tasks": [
+      "classification",
+      "report-generation"
+    ],
+    "license": "BIMCV research-use agreement",
+    "access": "registration",
+    "host": "BIMCV / IEEE DataPort",
+    "url": "https://bimcv.cipf.es/bimcv-projects/bimcv-covid19/",
+    "description": "Large Valencian COVID-19 dataset with chest X-rays and CT plus Spanish reports, UMLS-coded findings and PCR/serology results."
+  },
+  {
+    "id": "covid19-radiography",
+    "name": "COVID-19 Radiography Database",
+    "full_name": "COVID-19 Radiography Database (Chowdhury et al.)",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2020,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "21,165 images (4 classes)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "lung segmentation masks for all images",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database",
+    "description": "Kaggle chest X-ray database of 21,165 images across COVID-19, Normal, Lung Opacity and Viral Pneumonia classes with lung masks."
+  },
+  {
+    "id": "covidx-cxr",
+    "name": "COVIDx CXR",
+    "full_name": "COVIDx CXR (COVID-Net Open Source Initiative)",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2020,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "COVIDx CXR-3: ~29,986 images / 16,648 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Kaggle / GitHub",
+    "url": "https://github.com/lindawangg/COVID-Net",
+    "description": "Open benchmark chest X-ray dataset built by COVID-Net from multiple public sources, labeled COVID-19 / non-COVID pneumonia / normal."
+  },
+  {
+    "id": "lidc-idri",
+    "name": "LIDC-IDRI",
+    "full_name": "Lung Image Database Consortium and Image Database Resource Initiative",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT"
+    ],
+    "year": 2011,
+    "format": [
+      "DICOM",
+      "XML"
+    ],
+    "raw_image": true,
+    "size": "1,018 CT scans / 1,010 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "nodule contours from four thoracic radiologists (XML)",
+    "other_labels": [
+      "classification",
+      "nodule characteristics"
+    ],
+    "tasks": [
+      "detection",
+      "segmentation",
+      "classification"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+    "description": "1,018 thoracic CT scans with lesion markups and subjective nodule characteristic ratings from four radiologists.",
+    "details": {
+      "label_schema": [
+        "Per-nodule contours from up to 4 radiologists (no forced consensus)",
+        "Nodule categories: nodule ≥3mm, nodule <3mm, non-nodule ≥3mm",
+        "Subjective characteristics (1–5): subtlety, calcification, sphericity, margin, lobulation, spiculation, texture, malignancy"
+      ],
+      "file_structure": "DICOM image series per patient + one XML per scan holding each reader's nodule contours and characteristic ratings.",
+      "splits": "No official split (1,018 scans); LUNA16 defines a 10-fold subset."
+    }
+  },
+  {
+    "id": "luna16",
+    "name": "LUNA16",
+    "full_name": "LUng Nodule Analysis 2016 Challenge",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT"
+    ],
+    "year": 2016,
+    "format": [
+      "MetaImage (.mhd/.raw)"
+    ],
+    "raw_image": true,
+    "size": "888 CT scans / 1,186 nodule annotations",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "whole-lung masks plus nodule center coordinates and diameters",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "Grand Challenge",
+    "url": "https://luna16.grand-challenge.org/",
+    "description": "888 CT scans derived from LIDC-IDRI with 1,186 nodule annotations for detection and false-positive reduction.",
+    "details": {
+      "label_schema": [
+        "annotations.csv — nodule center (x,y,z world coords) + diameter_mm, for nodules accepted by ≥3/4 radiologists",
+        "candidates_V2.csv — candidate locations with class 0/1 for false-positive reduction",
+        "seg-lungs-LUNA16 — whole-lung binary masks"
+      ],
+      "file_structure": "888 CT volumes as .mhd/.raw (MetaImage), organized in 10 subsets for cross-validation.",
+      "splits": "10 predefined folds (subset0–subset9)"
+    }
+  },
+  {
+    "id": "nsclc-radiomics",
+    "name": "NSCLC-Radiomics",
+    "full_name": "NSCLC-Radiomics (Lung1; Aerts et al.)",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT"
+    ],
+    "year": 2014,
+    "format": [
+      "DICOM",
+      "CSV"
+    ],
+    "raw_image": true,
+    "size": "422 patients (tumor segmentations for 318)",
+    "paired_text": true,
+    "paired_text_detail": "clinical outcome data (survival, stage, histology) in CSV; not free-text reports",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "radiation-oncologist gross tumor volume (GTV-1) as DICOM RTSTRUCT/SEG",
+    "other_labels": [
+      "survival",
+      "TNM stage",
+      "histology"
+    ],
+    "tasks": [
+      "segmentation",
+      "survival-prediction"
+    ],
+    "license": "CC BY-NC 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/nsclc-radiomics/",
+    "description": "Pretreatment CT from 422 NSCLC patients with tumor delineations and outcome data, used to build a prognostic radiomic signature."
+  },
+  {
+    "id": "nsclc-radiogenomics",
+    "name": "NSCLC-Radiogenomics",
+    "full_name": "NSCLC Radiogenomics (Stanford/VA Palo Alto)",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT",
+      "PET"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM",
+      "CSV"
+    ],
+    "raw_image": true,
+    "size": "211 patients (CT and PET/CT; RNA-seq for 130)",
+    "paired_text": true,
+    "paired_text_detail": "clinical/demographic data, semantic tumor annotations, matched genomic data; not free-text reports",
+    "multi_sequence": true,
+    "multi_sequence_detail": "multi-modality CT and PET/CT with genomic profiling",
+    "segmentation": true,
+    "segmentation_detail": "tumor segmentation maps on CT",
+    "other_labels": [
+      "EGFR/KRAS mutation status",
+      "histology",
+      "gene expression"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification",
+      "survival-prediction"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/nsclc-radiogenomics/",
+    "description": "211 NSCLC patients with CT and PET/CT, tumor segmentations and matched genomic data (RNA-seq, mutation status)."
+  },
+  {
+    "id": "rsna-pe",
+    "name": "RSNA-STR Pulmonary Embolism CT",
+    "full_name": "RSNA-STR Pulmonary Embolism CT (RSPECT)",
+    "category": "Chest",
+    "anatomy": "thorax",
+    "modality": [
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "7,279 CTPA studies (public training set)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": "exam- and slice-level PE annotations only",
+    "other_labels": [
+      "PE present/absent",
+      "RV/LV ratio",
+      "PE location"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "RSNA-STR non-commercial research",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/c/rsna-str-pulmonary-embolism-detection",
+    "description": "Large chest CT pulmonary angiography (CTPA) dataset with expert PE annotations from the RSNA 2020 challenge."
+  },
+  {
+    "id": "lndb",
+    "name": "LNDb",
+    "full_name": "Lung Nodule Database (LNDb)",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT"
+    ],
+    "year": 2019,
+    "format": [
+      "MetaImage (.mhd/.raw)"
+    ],
+    "raw_image": true,
+    "size": "294 CT scans",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "nodule segmentation masks with multiple radiologist annotations",
+    "other_labels": [
+      "Fleischner score"
+    ],
+    "tasks": [
+      "detection",
+      "segmentation",
+      "classification"
+    ],
+    "license": "CC BY-NC-ND 4.0",
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://lndb.grand-challenge.org/",
+    "description": "CT lung nodule database of 294 scans from Porto with radiologist nodule annotations, segmentations and Fleischner scores."
+  },
+  {
+    "id": "mosmeddata",
+    "name": "MosMedData",
+    "full_name": "MosMedData: Chest CT with COVID-19 Related Findings",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1,110 CT studies (~50 with masks)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "binary masks of ground-glass opacities and consolidations (~50 studies)",
+    "other_labels": [
+      "COVID-19 severity CT-0 to CT-4"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": "CC BY-NC-ND 3.0",
+    "access": "open",
+    "host": "Kaggle / Academic Torrents",
+    "url": "https://academictorrents.com/details/f2175c4676e041ea65568bb70c2bcd15c7325fd2",
+    "description": "1,110 anonymized Moscow chest CT studies with COVID-19 severity grades and lesion masks for a small subset."
+  },
+  {
+    "id": "covid19-ct-seg",
+    "name": "COVID-19-CT-Seg",
+    "full_name": "COVID-19 CT Lung and Infection Segmentation Dataset",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "20 labeled CT scans",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "left lung, right lung and infection regions",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "Zenodo",
+    "url": "https://zenodo.org/records/3757476",
+    "description": "20 COVID-19 chest CT scans with radiologist-verified masks for left lung, right lung and infection."
+  },
+  {
+    "id": "nlst",
+    "name": "NLST",
+    "full_name": "National Lung Screening Trial",
+    "category": "Chest",
+    "anatomy": "chest",
+    "modality": [
+      "CT"
+    ],
+    "year": 2013,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "26,254 subjects / 73,116 CT studies",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": "core imaging has none; IDC offers some harmonized segmentations",
+    "other_labels": [
+      "screening results and outcomes via CDAS"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "CC BY 4.0 (TCIA imaging)",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/nlst/",
+    "description": "Low-dose chest CT screening exams from the National Lung Screening Trial, with full trial clinical data available via NCI CDAS."
+  },
+  {
+    "id": "lung-pet-ct-dx",
+    "name": "Lung-PET-CT-Dx",
+    "full_name": "Large-Scale CT and PET/CT Dataset for Lung Cancer Diagnosis",
+    "category": "Chest",
+    "anatomy": "lung",
+    "modality": [
+      "CT",
+      "PET"
+    ],
+    "year": 2020,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "355 patients / 251,135 DICOM images",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "CT and PET/CT (multi-modality)",
+    "segmentation": false,
+    "segmentation_detail": "tumor locations as bounding boxes (PASCAL VOC XML)",
+    "other_labels": [
+      "tumor bounding boxes by 5 radiologists",
+      "pathology subtype"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/lung-pet-ct-dx/",
+    "description": "CT and PET/CT DICOM from 355 lung cancer patients with radiologist bounding-box tumor annotations and biopsy-confirmed subtypes."
+  },
+  {
+    "id": "empire10",
+    "name": "EMPIRE10",
+    "full_name": "Evaluation of Methods for Pulmonary Image Registration 2010",
+    "category": "Chest",
+    "anatomy": "thorax",
+    "modality": [
+      "CT"
+    ],
+    "year": 2010,
+    "format": [
+      "MetaImage (.mhd/.raw)"
+    ],
+    "raw_image": true,
+    "size": "30 intra-subject chest CT scan pairs",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": "reference lung boundary, fissure and landmark annotations for evaluation",
+    "other_labels": [
+      "landmark point pairs"
+    ],
+    "tasks": [
+      "registration"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://empire10.grand-challenge.org/",
+    "description": "Thoracic CT registration challenge providing 30 intra-subject chest CT scan pairs with lung, fissure and landmark references."
+  },
+  {
+    "id": "acdc",
+    "name": "ACDC",
+    "full_name": "Automated Cardiac Diagnosis Challenge",
+    "category": "Cardiac",
+    "anatomy": "heart (LV, RV, myocardium)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2017,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "150 patients (100 train + 50 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "cine bSSFP short-axis",
+    "segmentation": true,
+    "segmentation_detail": "LV cavity, RV endocardium, LV myocardium at ED and ES",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "registration",
+    "host": "Creatis",
+    "url": "https://www.creatis.insa-lyon.fr/Challenge/acdc/",
+    "description": "Cine cardiac MRI from 150 patients across 5 diagnostic classes with LV/RV/myocardium segmentations and disease labels.",
+    "details": {
+      "label_schema": [
+        "Label 1 — RV cavity",
+        "Label 2 — LV myocardium",
+        "Label 3 — LV cavity",
+        "Per-patient diagnosis: normal, MINF, DCM, HCM, ARV (5 classes)"
+      ],
+      "file_structure": "patientXXX/ with 4D cine NIfTI + frames at ED and ES, each with a _gt.nii.gz label. Info.cfg holds ED/ES frame numbers and diagnosis.",
+      "splits": "100 training / 50 test"
+    }
+  },
+  {
+    "id": "mnms",
+    "name": "M&Ms",
+    "full_name": "Multi-Centre, Multi-Vendor & Multi-Disease Cardiac Image Segmentation Challenge",
+    "category": "Cardiac",
+    "anatomy": "heart (LV, RV, myocardium)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "375 patients (multi-vendor)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "cine bSSFP short-axis",
+    "segmentation": true,
+    "segmentation_detail": "LV/RV blood pool, LV myocardium at ED and ES",
+    "other_labels": [
+      "pathology labels"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "registration",
+    "host": "University of Barcelona",
+    "url": "https://www.ub.edu/mnms/",
+    "description": "Generalization challenge with cine CMR from 375 patients scanned on four vendors across Spain, Germany and Canada.",
+    "details": {
+      "label_schema": [
+        "Label 1 — LV blood pool",
+        "Label 2 — LV myocardium",
+        "Label 3 — RV blood pool (annotated at ED and ES)"
+      ],
+      "file_structure": "Per subject NIfTI cine + label; metadata CSV gives vendor (A–D), centre and pathology.",
+      "splits": "150 train (2 vendors) / 25 val / 200 test (4 vendors)"
+    }
+  },
+  {
+    "id": "mnms-2",
+    "name": "M&Ms-2",
+    "full_name": "Multi-Disease, Multi-View & Multi-Center Right Ventricular Segmentation Challenge",
+    "category": "Cardiac",
+    "anatomy": "right ventricle",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "360 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "cine bSSFP, short-axis and long-axis",
+    "segmentation": true,
+    "segmentation_detail": "LV/RV blood pool, LV myocardium at ED and ES",
+    "other_labels": [
+      "pathology labels"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "registration",
+    "host": "University of Barcelona",
+    "url": "https://www.ub.edu/mnms-2/",
+    "description": "Extension of M&Ms focused on right-ventricle segmentation from multi-view cine CMR of 360 subjects."
+  },
+  {
+    "id": "emidec",
+    "name": "EMIDEC",
+    "full_name": "Evaluation of Myocardial Infarction from Delayed-Enhancement Cardiac MRI",
+    "category": "Cardiac",
+    "anatomy": "myocardium (infarct)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "150 cases (50 normal, 100 pathological)",
+    "paired_text": true,
+    "paired_text_detail": "per-patient clinical metadata (age, sex, ECG, troponin)",
+    "multi_sequence": false,
+    "multi_sequence_detail": "delayed/late gadolinium enhancement (DE-MRI/LGE) short-axis",
+    "segmentation": true,
+    "segmentation_detail": "myocardium, infarct, no-reflow area",
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "segmentation",
+      "classification"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "emidec.com",
+    "url": "http://emidec.com/",
+    "description": "150 short-axis DE-MRI exams with myocardium and infarct contours plus clinical data, from University Hospital of Dijon."
+  },
+  {
+    "id": "myops-2020",
+    "name": "MyoPS 2020",
+    "full_name": "Myocardial Pathology Segmentation Combining Multi-Sequence CMR",
+    "category": "Cardiac",
+    "anatomy": "myocardium (scar, edema)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "45 patients (25 train + 20 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "aligned bSSFP cine + LGE + T2-weighted CMR",
+    "segmentation": true,
+    "segmentation_detail": "scar, edema, normal myocardium, LV/RV blood pool",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "zmiclab",
+    "url": "https://zmiclab.github.io/zxh/0/myops20/",
+    "description": "Aligned three-sequence (bSSFP/LGE/T2) CMR from 45 patients for myocardial scar and edema segmentation."
+  },
+  {
+    "id": "sunnybrook-cardiac",
+    "name": "Sunnybrook Cardiac Data",
+    "full_name": "Sunnybrook Cardiac Data (2009 LV Segmentation Challenge)",
+    "category": "Cardiac",
+    "anatomy": "left ventricle",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2009,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "45 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "cine short-axis MRI",
+    "segmentation": true,
+    "segmentation_detail": "LV endocardium, epicardium, papillary muscles at ED and ES",
+    "other_labels": [
+      "pathology group"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "Public Domain",
+    "access": "open",
+    "host": "Cardiac Atlas Project",
+    "url": "https://www.cardiacatlas.org/sunnybrook-cardiac-data/",
+    "description": "45 cine cardiac MRI cases (healthy and pathological) with expert LV contours, released public domain."
+  },
+  {
+    "id": "mmwhs",
+    "name": "MM-WHS",
+    "full_name": "Multi-Modality Whole Heart Segmentation",
+    "category": "Cardiac",
+    "anatomy": "whole heart",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2017,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "120 images (60 CT/CTA + 60 MRI)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "cardiac CT/CTA and 3D bSSFP MRI (unpaired)",
+    "segmentation": true,
+    "segmentation_detail": "LV/RV/LA/RA cavities, LV myocardium, aorta, pulmonary artery",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "zmiclab",
+    "url": "https://zmiclab.github.io/zxh/0/mmwhs/",
+    "description": "Whole-heart segmentation with 60 cardiac CT/CTA and 60 MRI volumes and labels for seven cardiac substructures."
+  },
+  {
+    "id": "lascarqs-2022",
+    "name": "LAScarQS 2022",
+    "full_name": "Left Atrial and Scar Quantification & Segmentation Challenge",
+    "category": "Cardiac",
+    "anatomy": "left atrium (and atrial scar)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "194 LGE-MRI",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "late gadolinium enhancement (LGE) MRI",
+    "segmentation": true,
+    "segmentation_detail": "left atrium cavity and atrial scar",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "zmiclab",
+    "url": "https://zmiclab.github.io/projects/lascarqs22/",
+    "description": "Multi-center LGE-MRI of atrial-fibrillation patients for left-atrium and atrial-scar segmentation."
+  },
+  {
+    "id": "atriaseg-2018",
+    "name": "Atria Seg 2018",
+    "full_name": "2018 Left Atrium Segmentation Challenge",
+    "category": "Cardiac",
+    "anatomy": "left atrium",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NRRD"
+    ],
+    "raw_image": true,
+    "size": "154 3D LGE-MRI (100 train + 54 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "3D late gadolinium enhancement (LGE) MRI",
+    "segmentation": true,
+    "segmentation_detail": "left atrium cavity",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Cardiac Atlas Project",
+    "url": "https://www.cardiacatlas.org/atriaseg2018-challenge/",
+    "description": "154 3D LGE-MRI scans of atrial-fibrillation patients with expert left-atrium segmentations."
+  },
+  {
+    "id": "msd-heart",
+    "name": "MSD Heart (Task02)",
+    "full_name": "Medical Segmentation Decathlon — Task02 Heart",
+    "category": "Cardiac",
+    "anatomy": "left atrium",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "30 cases (20 train + 10 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "mono-sequence MRI",
+    "segmentation": true,
+    "segmentation_detail": "left atrium",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "Medical Segmentation Decathlon",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Task02 of the Decathlon: 30 mono-modal cardiac MRI volumes with left-atrium labels."
+  },
+  {
+    "id": "rvsc",
+    "name": "RVSC",
+    "full_name": "Right Ventricle Segmentation Challenge",
+    "category": "Cardiac",
+    "anatomy": "right ventricle",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2012,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "48 patients (16 train + 32 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "cine short-axis MRI",
+    "segmentation": true,
+    "segmentation_detail": "RV endocardium and epicardium at ED and ES",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "LITIS Lab, Univ. Rouen",
+    "url": "https://rvsc.projets.litislab.fr/",
+    "description": "Right-ventricle endo/epicardium segmentation from short-axis cine MRI of 48 patients."
+  },
+  {
+    "id": "cmrxrecon",
+    "name": "CMRxRecon",
+    "full_name": "Cardiac MRI Reconstruction Challenge",
+    "category": "Cardiac",
+    "anatomy": "heart",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "MATLAB (.mat k-space)"
+    ],
+    "raw_image": true,
+    "size": "300 subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "multi-contrast: cine, T1 mapping, T2 mapping; SAX and 2/3/4-chamber",
+    "segmentation": true,
+    "segmentation_detail": "cardiac segmentation labels alongside k-space",
+    "other_labels": [
+      "raw multi-coil k-space"
+    ],
+    "tasks": [
+      "reconstruction",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Synapse",
+    "url": "https://cmrxrecon.github.io/",
+    "description": "Multi-contrast, multi-coil raw k-space cardiac MRI from 300 subjects with segmentation labels for accelerated reconstruction."
+  },
+  {
+    "id": "asoca",
+    "name": "ASOCA",
+    "full_name": "Automated Segmentation of Coronary Arteries",
+    "category": "Vascular",
+    "anatomy": "coronary artery",
+    "modality": [
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "NRRD"
+    ],
+    "raw_image": true,
+    "size": "60 cases (40 train + 20 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "coronary CT angiography (CTCA)",
+    "segmentation": true,
+    "segmentation_detail": "coronary lumen masks, centerlines and vessel radius",
+    "other_labels": [
+      "normal vs diseased"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Grand Challenge",
+    "url": "https://asoca.grand-challenge.org/",
+    "description": "Coronary CTA from 40 subjects (20 normal, 20 diseased) plus 20 test cases with expert coronary segmentation masks and centerlines."
+  },
+  {
+    "id": "imagecas",
+    "name": "ImageCAS",
+    "full_name": "ImageCAS: Large-Scale Coronary Artery Segmentation Dataset",
+    "category": "Vascular",
+    "anatomy": "coronary artery",
+    "modality": [
+      "CT"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1000 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "coronary CT angiography (CCTA)",
+    "segmentation": true,
+    "segmentation_detail": "left and right coronary artery lumen",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "GitHub",
+    "url": "https://github.com/XiaoweiXu/ImageCAS-A-Large-Scale-Dataset-and-Benchmark-for-Coronary-Artery-Segmentation-based-on-CT",
+    "description": "Large-scale coronary artery segmentation benchmark of 1,000 CCTA volumes with radiologist-annotated coronary masks."
+  },
+  {
+    "id": "orcascore",
+    "name": "orCaScore",
+    "full_name": "Coronary Calcium Scoring Challenge",
+    "category": "Vascular",
+    "anatomy": "coronary artery (calcium)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2014,
+    "format": [
+      "MHD"
+    ],
+    "raw_image": true,
+    "size": "72 patients (32 train + 40 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "paired non-contrast calcium-scoring CT and CTA per patient",
+    "segmentation": true,
+    "segmentation_detail": "coronary calcification lesion annotations with vessel assignment",
+    "other_labels": [
+      "Agatston calcium score"
+    ],
+    "tasks": [
+      "detection"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://orcascore.grand-challenge.org/",
+    "description": "Automatic coronary artery calcium scoring on cardiac CT from 72 patients across four scanners/vendors."
+  },
+  {
+    "id": "coca-stanford",
+    "name": "COCA (Stanford)",
+    "full_name": "COCA — Coronary Calcium and Chest CTs",
+    "category": "Vascular",
+    "anatomy": "coronary artery (calcium)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2021,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~1000 patients (789 gated + 214 non-gated)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "gated coronary CT and non-gated chest CT",
+    "segmentation": true,
+    "segmentation_detail": "coronary artery calcium masks on gated CT",
+    "other_labels": [
+      "calcium score"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "Stanford AIMI research use",
+    "access": "registration",
+    "host": "Stanford AIMI",
+    "url": "https://aimi.stanford.edu/datasets/coca-coronary-calcium-chest-ct",
+    "description": "789 gated coronary CT scans with calcium segmentations plus 214 non-gated chest CTs with calcium scores."
+  },
+  {
+    "id": "avt",
+    "name": "AVT",
+    "full_name": "Aortic Vessel Tree CTA Dataset Collection",
+    "category": "Vascular",
+    "anatomy": "aorta",
+    "modality": [
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "NRRD"
+    ],
+    "raw_image": true,
+    "size": "56 aortas (3 collections)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "CT angiography (CTA)",
+    "segmentation": true,
+    "segmentation_detail": "aortic vessel tree and branches",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "Figshare",
+    "url": "https://figshare.com/articles/dataset/Aortic_Vessel_Tree_AVT_CTA_Datasets_and_Segmentations/14806362",
+    "description": "Multicenter collection of 56 CTA scans covering the full aortic vessel tree with ground-truth segmentation masks."
+  },
+  {
+    "id": "msd-liver",
+    "name": "MSD Liver (Task03)",
+    "full_name": "Medical Segmentation Decathlon — Task03 Liver",
+    "category": "Abdomen",
+    "anatomy": "liver",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "201 CT (131 train / 70 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "liver + liver tumor",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "AWS Open Data / medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Portal-venous CT volumes with liver and tumor masks (shares imaging with the LiTS challenge).",
+    "details": {
+      "label_schema": [
+        "Label 1 — liver",
+        "Label 2 — tumor"
+      ],
+      "file_structure": "Decathlon layout: imagesTr/, labelsTr/, imagesTs/ + dataset.json describing modality and labels.",
+      "splits": "131 train / 70 test",
+      "extra": "All 10 MSD tasks share this folder convention and NIfTI format."
+    }
+  },
+  {
+    "id": "msd-pancreas",
+    "name": "MSD Pancreas (Task07)",
+    "full_name": "Medical Segmentation Decathlon — Task07 Pancreas",
+    "category": "Abdomen",
+    "anatomy": "pancreas",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "420 CT (282 train / 139 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "pancreas + pancreatic tumor",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "AWS Open Data / medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Abdominal CT with pancreatic parenchyma and tumor annotations."
+  },
+  {
+    "id": "msd-spleen",
+    "name": "MSD Spleen (Task09)",
+    "full_name": "Medical Segmentation Decathlon — Task09 Spleen",
+    "category": "Abdomen",
+    "anatomy": "spleen",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "61 CT (41 train / 20 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "spleen",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "AWS Open Data / medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Portal-venous CT volumes with spleen segmentation masks."
+  },
+  {
+    "id": "msd-colon",
+    "name": "MSD Colon (Task10)",
+    "full_name": "Medical Segmentation Decathlon — Task10 Colon",
+    "category": "Abdomen",
+    "anatomy": "colon",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "190 CT (126 train / 64 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "primary colon cancer",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "AWS Open Data / medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "CT volumes with primary colon cancer segmentation."
+  },
+  {
+    "id": "msd-hepatic-vessel",
+    "name": "MSD Hepatic Vessel (Task08)",
+    "full_name": "Medical Segmentation Decathlon — Task08 Hepatic Vessel",
+    "category": "Abdomen",
+    "anatomy": "liver (hepatic vessels)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "443 CT (303 train / 140 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "hepatic vessels + liver tumor",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "AWS Open Data / medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Liver CT with hepatic vasculature and tumor annotations."
+  },
+  {
+    "id": "msd-prostate",
+    "name": "MSD Prostate (Task05)",
+    "full_name": "Medical Segmentation Decathlon — Task05 Prostate",
+    "category": "Pelvis",
+    "anatomy": "prostate",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "48 mpMRI (32 train / 16 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T2-weighted + ADC (2 channels)",
+    "segmentation": true,
+    "segmentation_detail": "central gland + peripheral zone",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "AWS Open Data / medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Multiparametric prostate MRI (T2W + ADC) with central gland and peripheral zone masks."
+  },
+  {
+    "id": "btcv-synapse",
+    "name": "BTCV / Synapse Multi-organ",
+    "full_name": "Beyond the Cranial Vault Abdomen Multi-Organ Segmentation",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2015,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "30 train + 20 test contrast CT",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "13 organs (spleen, kidneys, gallbladder, esophagus, liver, stomach, aorta, IVC, veins, pancreas, adrenals)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Synapse",
+    "url": "https://www.synapse.org/Synapse:syn3193805",
+    "description": "Widely used benchmark of 30 abdominal CT scans annotated with 13 organs.",
+    "details": {
+      "label_schema": [
+        "13 organs: spleen, R/L kidney, gallbladder, esophagus, liver, stomach, aorta, IVC, portal & splenic vein, pancreas, R/L adrenal gland"
+      ],
+      "file_structure": "img/ and label/ folders of NIfTI volumes; labels are integer-coded organ maps.",
+      "splits": "30 labeled training / 20 unlabeled test"
+    }
+  },
+  {
+    "id": "amos22",
+    "name": "AMOS22",
+    "full_name": "AMOS 2022 Multi-Modality Abdominal Multi-Organ Segmentation",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "500 CT + 100 MRI scans",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "multi-center, multi-vendor, multi-phase CT and MRI",
+    "segmentation": true,
+    "segmentation_detail": "15 abdominal organs",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "Grand Challenge / Zenodo",
+    "url": "https://amos22.grand-challenge.org/",
+    "description": "Large multi-modality (CT + MRI) abdominal benchmark with voxel-level annotations of 15 organs.",
+    "details": {
+      "label_schema": [
+        "15 organs: spleen, R/L kidney, gallbladder, esophagus, liver, stomach, aorta, IVC, pancreas, R/L adrenal gland, duodenum, bladder, prostate/uterus"
+      ],
+      "file_structure": "imagesTr/labelsTr in NIfTI; filename prefix indicates CT vs MRI. dataset.json lists label indices.",
+      "splits": "200 CT + 40 MRI train (labels) / 100 CT val / 200 CT + 60 MRI test"
+    }
+  },
+  {
+    "id": "amos-mm",
+    "name": "AMOS-MM",
+    "full_name": "AMOS-MM Abdominal Multimodal Analysis Challenge",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "2088 CT with reports (1288 train / 400 val)",
+    "paired_text": true,
+    "paired_text_detail": "radiology reports (findings + impression) and 19,562 VQA pairs",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "radiology reports",
+      "vqa"
+    ],
+    "tasks": [
+      "report-generation",
+      "vqa"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://era-ai-biomed.github.io/amos/dataset.html",
+    "description": "Chest/abdomen/pelvis CT volumes paired with radiology reports and VQA pairs for vision-language tasks."
+  },
+  {
+    "id": "totalsegmentator",
+    "name": "TotalSegmentator",
+    "full_name": "TotalSegmentator CT Dataset (v2)",
+    "category": "Abdomen",
+    "anatomy": "multi-organ (whole body)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1228 CT (v2)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "real-world clinical CT, various phases/scanners",
+    "segmentation": true,
+    "segmentation_detail": "117 anatomical structures across the whole body",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "Zenodo",
+    "url": "https://zenodo.org/records/10047292",
+    "description": "Large real-world clinical CT dataset with segmentations of 117 anatomical structures.",
+    "details": {
+      "label_schema": [
+        "117 structures grouped as: 27 organs, 26 vertebrae, 24 ribs, 20+ muscles, cardiovascular (aorta, heart chambers, pulmonary artery), and more",
+        "Each structure is a separate binary NIfTI mask (multilabel also provided)"
+      ],
+      "file_structure": "Per subject: ct.nii.gz + segmentations/ folder with one <structure>.nii.gz per class.",
+      "splits": "1,228 CT (v2), predefined train/val/test in meta.csv"
+    }
+  },
+  {
+    "id": "kits19",
+    "name": "KiTS19",
+    "full_name": "2019 Kidney Tumor Segmentation Challenge",
+    "category": "Abdomen",
+    "anatomy": "kidney",
+    "modality": [
+      "CT"
+    ],
+    "year": 2019,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "300 CT (210 train / 90 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "late arterial phase contrast CT",
+    "segmentation": true,
+    "segmentation_detail": "kidney + kidney tumor",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "open",
+    "host": "Grand Challenge / GitHub",
+    "url": "https://kits19.grand-challenge.org/",
+    "description": "Arterial-phase abdominal CT of kidney cancer patients with kidney and tumor segmentations."
+  },
+  {
+    "id": "kits21",
+    "name": "KiTS21",
+    "full_name": "2021 Kidney and Kidney Tumor Segmentation Challenge",
+    "category": "Abdomen",
+    "anatomy": "kidney",
+    "modality": [
+      "CT"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "300 train + 100 test CT",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "corticomedullary/late arterial phase CT",
+    "segmentation": true,
+    "segmentation_detail": "kidney + tumor + cyst",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "open",
+    "host": "GitHub / official site",
+    "url": "https://kits-challenge.org/kits21/",
+    "description": "Kidney CT dataset adding cyst annotations, with an external-institution test set."
+  },
+  {
+    "id": "kits23",
+    "name": "KiTS23",
+    "full_name": "2023 Kidney and Kidney Tumor Segmentation Challenge",
+    "category": "Abdomen",
+    "anatomy": "kidney",
+    "modality": [
+      "CT"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "599 CT (489 train / 110 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "late arterial and nephrogenic contrast phases",
+    "segmentation": true,
+    "segmentation_detail": "kidney + tumor + cyst",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "open",
+    "host": "GitHub / official site",
+    "url": "https://kits-challenge.org/kits23/",
+    "description": "Largest KiTS cohort with kidney, tumor and cyst masks including nephrogenic-phase scans.",
+    "details": {
+      "label_schema": [
+        "Label 1 — kidney",
+        "Label 2 — tumor",
+        "Label 3 — cyst",
+        "Hierarchical eval regions: Kidney+Masses, Masses (tumor+cyst), Tumor"
+      ],
+      "file_structure": "One folder per case (case_00000/) with imaging.nii.gz and segmentation.nii.gz.",
+      "splits": "489 training (labels public) / 110 hidden test"
+    }
+  },
+  {
+    "id": "lits",
+    "name": "LiTS",
+    "full_name": "Liver Tumor Segmentation Benchmark (LiTS17)",
+    "category": "Abdomen",
+    "anatomy": "liver",
+    "modality": [
+      "CT"
+    ],
+    "year": 2017,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "131 train + 70 test CT",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "contrast-enhanced abdominal CT",
+    "segmentation": true,
+    "segmentation_detail": "liver + liver tumor lesions",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "CodaLab",
+    "url": "https://competitions.codalab.org/competitions/17094",
+    "description": "Contrast-enhanced liver CT with liver and tumor annotations from multiple institutions.",
+    "details": {
+      "label_schema": [
+        "Label 1 — liver",
+        "Label 2 — tumor/lesion"
+      ],
+      "file_structure": "volume-*.nii and segmentation-*.nii pairs (NIfTI).",
+      "splits": "131 training / 70 test"
+    }
+  },
+  {
+    "id": "chaos",
+    "name": "CHAOS",
+    "full_name": "Combined (CT-MR) Healthy Abdominal Organ Segmentation",
+    "category": "Abdomen",
+    "anatomy": "multi-organ (liver, kidneys, spleen)",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2019,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "40 CT + 120 MRI series (40 patients)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "MRI: T1-DUAL in/opposed-phase, T2-SPIR; plus abdominal CT",
+    "segmentation": true,
+    "segmentation_detail": "liver (CT); liver + spleen + kidneys (MRI)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge / Zenodo",
+    "url": "https://chaos.grand-challenge.org/",
+    "description": "Healthy-subject abdominal CT and multi-sequence MRI for single and multi-organ segmentation."
+  },
+  {
+    "id": "word",
+    "name": "WORD",
+    "full_name": "Whole abdominal ORgan Dataset",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "150 CT (100 train / 20 val / 30 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "16 organs incl. liver, spleen, kidneys, stomach, pancreas, duodenum, colon, bladder",
+    "other_labels": [
+      "scribble annotations"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "GPL-3.0",
+    "access": "request",
+    "host": "GitHub (HiLab-git)",
+    "url": "https://github.com/HiLab-git/WORD",
+    "description": "Whole-abdomen CT with dense pixel-level annotations of 16 organs, released for academic research by application."
+  },
+  {
+    "id": "flare21",
+    "name": "FLARE21",
+    "full_name": "MICCAI 2021 Fast and Low-resource Abdominal Organ Segmentation",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "511 CT (361 train / 50 val / 100 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "multi-center abdominal CT",
+    "segmentation": true,
+    "segmentation_detail": "liver, kidney, spleen, pancreas",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge / Zenodo",
+    "url": "https://flare.grand-challenge.org/",
+    "description": "Multi-center abdominal CT for efficient four-organ segmentation from 11 medical centers."
+  },
+  {
+    "id": "flare22",
+    "name": "FLARE22",
+    "full_name": "MICCAI FLARE 2022 Abdominal Organ Segmentation",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "2300 CT (50 labeled + 2000 unlabeled train)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "multi-center abdominal CT",
+    "segmentation": true,
+    "segmentation_detail": "13 abdominal organs",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://flare22.grand-challenge.org/",
+    "description": "Semi-supervised abdominal CT benchmark with a large unlabeled pool for 13-organ segmentation."
+  },
+  {
+    "id": "flare23",
+    "name": "FLARE23",
+    "full_name": "MICCAI FLARE 2023 Organ + Pan-cancer Segmentation",
+    "category": "Abdomen",
+    "anatomy": "multi-organ + tumor",
+    "modality": [
+      "CT"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "4000 train + 100 val + 400 test CT",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "multi-center abdominal CT",
+    "segmentation": true,
+    "segmentation_detail": "13 abdominal organs + pan-cancer (any lesion)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge / Codabench",
+    "url": "https://codalab.lisn.upsaclay.fr/competitions/12239",
+    "description": "Partially-labeled abdominal CT challenge for joint 13-organ and pan-cancer tumor segmentation."
+  },
+  {
+    "id": "pancreas-ct-nih",
+    "name": "Pancreas-CT (NIH)",
+    "full_name": "NIH Pancreas-CT",
+    "category": "Abdomen",
+    "anatomy": "pancreas",
+    "modality": [
+      "CT"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM",
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "82 contrast-enhanced abdominal CT",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "portal-venous phase CT",
+    "segmentation": true,
+    "segmentation_detail": "pancreas (manual slice-by-slice)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/pancreas-ct/",
+    "description": "82 portal-venous abdominal CT scans with manual pancreas segmentations, a classic pancreas benchmark."
+  },
+  {
+    "id": "ct-org",
+    "name": "CT-ORG",
+    "full_name": "CT volumes with multiple organ segmentations",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2020,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "140 CT (119 train / 21 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "mixed contrast/non-contrast; 9 from PET-CT",
+    "segmentation": true,
+    "segmentation_detail": "liver, lungs, bones, kidneys, bladder",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+    "description": "140 heterogeneous CT scans with 3D masks of five organs, sourced partly from PET-CT exams."
+  },
+  {
+    "id": "abdomenct-1k",
+    "name": "AbdomenCT-1K",
+    "full_name": "AbdomenCT-1K",
+    "category": "Abdomen",
+    "anatomy": "multi-organ",
+    "modality": [
+      "CT"
+    ],
+    "year": 2021,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1112 CT from 12 centers",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "multi-phase, multi-vendor, multi-disease CT",
+    "segmentation": true,
+    "segmentation_detail": "liver, kidney, spleen, pancreas",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "GitHub (JunMa11)",
+    "url": "https://github.com/JunMa11/AbdomenCT-1K",
+    "description": "Over 1000 multi-center CT scans annotated for liver, kidney, spleen and pancreas."
+  },
+  {
+    "id": "pi-cai",
+    "name": "PI-CAI",
+    "full_name": "PI-CAI: Prostate Imaging — Cancer AI",
+    "category": "Pelvis",
+    "anatomy": "prostate",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "MHA",
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1500 bpMRI (1476 patients, public set)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "bi-parametric MRI: T2W, DWI (high b-value), ADC",
+    "segmentation": true,
+    "segmentation_detail": "csPCa lesion delineations + whole-gland annotations",
+    "other_labels": [
+      "ISUP grade"
+    ],
+    "tasks": [
+      "detection",
+      "segmentation"
+    ],
+    "license": "CC0 1.0",
+    "access": "open",
+    "host": "Zenodo / Grand Challenge",
+    "url": "https://pi-cai.grand-challenge.org/",
+    "description": "Large public bi-parametric prostate MRI cohort with histopathology-linked labels for clinically significant cancer detection.",
+    "details": {
+      "label_schema": [
+        "csPCa lesion masks (ISUP ≥2)",
+        "Whole-gland masks (AI-derived + subset human)",
+        "Case-level label: clinically significant cancer yes/no with ISUP grade"
+      ],
+      "file_structure": "Per case: T2W, high-b DWI and ADC as .mha + annotations (human + AI) in separate folders; clinical CSV with PSA, ISUP, etc.",
+      "splits": "1,500 public training/validation / 1,000 hidden test"
+    }
+  },
+  {
+    "id": "prostate158",
+    "name": "Prostate158",
+    "full_name": "Prostate158: expert-annotated 3T bpMRI dataset",
+    "category": "Pelvis",
+    "anatomy": "prostate",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "158 studies (139 train / 19 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T2W, ADC, DWI",
+    "segmentation": true,
+    "segmentation_detail": "prostate zones + cancer lesions",
+    "other_labels": [
+      "PI-RADS"
+    ],
+    "tasks": [
+      "segmentation",
+      "detection"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "Zenodo",
+    "url": "https://github.com/kbressem/prostate158",
+    "description": "Expert-annotated 3T bi-parametric prostate MRI with zonal anatomy and cancer segmentations.",
+    "details": {
+      "label_schema": [
+        "Zonal masks: transition/central zone, peripheral zone",
+        "Cancer lesion masks (PI-RADS ≥4)"
+      ],
+      "file_structure": "Per case NIfTI: T2W, ADC, DWI + t2_anatomy_reader1.nii.gz and adc_tumor_reader1.nii.gz label files.",
+      "splits": "139 training / 19 test"
+    }
+  },
+  {
+    "id": "promise12",
+    "name": "PROMISE12",
+    "full_name": "MICCAI Prostate MR Image Segmentation 2012",
+    "category": "Pelvis",
+    "anatomy": "prostate",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2012,
+    "format": [
+      "MHD"
+    ],
+    "raw_image": true,
+    "size": "50 train + 30 test T2W MRI",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "transversal T2-weighted MRI",
+    "segmentation": true,
+    "segmentation_detail": "whole prostate (capsule)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Grand Challenge / Zenodo",
+    "url": "https://promise12.grand-challenge.org/",
+    "description": "Multi-vendor transversal T2-weighted prostate MRI with whole-gland masks, a classic benchmark."
+  },
+  {
+    "id": "prostatex",
+    "name": "ProstateX",
+    "full_name": "SPIE-AAPM-NCI PROSTATEx Challenges",
+    "category": "Pelvis",
+    "anatomy": "prostate",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2017,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "346 patients (330 lesions train)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "mpMRI: T2W, PD-W, DCE, DWI (b=50/400/800) + ADC",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "lesion clinical significance",
+      "lesion locations"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/prostatex/",
+    "description": "Multiparametric prostate MRI with marked lesions for predicting clinical significance of prostate cancer."
+  },
+  {
+    "id": "lld-mmri",
+    "name": "LLD-MMRI",
+    "full_name": "Liver Lesion Diagnosis on Multi-phase MRI",
+    "category": "Abdomen",
+    "anatomy": "liver",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "498 patients, 8 sequences each",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "non-contrast, arterial, venous, delayed, T2W, DWI, T1 in/out-of-phase",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "7-class lesion diagnosis",
+      "bounding boxes"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "GitHub (LMMMEng)",
+    "url": "https://github.com/LMMMEng/LLD-MMRI-Dataset",
+    "description": "Multi-phase liver MRI for focal liver lesion diagnosis with per-lesion class labels and bounding boxes."
+  },
+  {
+    "id": "ct-colonography",
+    "name": "CT Colonography",
+    "full_name": "CT COLONOGRAPHY (ACRIN 6664)",
+    "category": "Abdomen",
+    "anatomy": "colon",
+    "modality": [
+      "CT"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "825 patients (prone + supine)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": "paired prone and supine CT",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "polyp descriptions, locations and histology"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/ct-colonography/",
+    "description": "Large screening CT colonography collection (prone/supine) with polyp annotations from the ACRIN 6664 trial."
+  },
+  {
+    "id": "mrnet",
+    "name": "MRNet",
+    "full_name": "MRNet Knee MRI Dataset",
+    "category": "MSK",
+    "anatomy": "knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NPY"
+    ],
+    "raw_image": true,
+    "size": "1,370 knee MRI exams",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "sagittal, coronal and axial series per exam",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "abnormality",
+      "ACL tear",
+      "meniscal tear"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "Stanford research-use agreement (non-commercial)",
+    "access": "registration",
+    "host": "Stanford AIMI",
+    "url": "https://stanfordmlgroup.github.io/competitions/mrnet/",
+    "description": "1,370 knee MRI exams from Stanford with binary labels for abnormality, ACL tears and meniscal tears.",
+    "details": {
+      "label_schema": [
+        "3 binary study-level labels: abnormal, ACL tear, meniscal tear"
+      ],
+      "file_structure": "Per exam: sagittal.npy, coronal.npy, axial.npy (stack of slices, s×256×256) + train/valid label CSVs.",
+      "splits": "1,130 train / 120 validation (internal) / 120 hidden test"
+    }
+  },
+  {
+    "id": "fastmri-knee",
+    "name": "fastMRI knee",
+    "full_name": "fastMRI Knee Raw k-Space and DICOM Dataset",
+    "category": "MSK",
+    "anatomy": "knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "HDF5 (k-space)",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": ">1,500 fully-sampled knee k-space MRIs + 10,000 clinical DICOM knee MRIs (~1.35 TB)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "coronal proton-density with and without fat suppression",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "reconstruction"
+    ],
+    "license": "fastMRI data-sharing agreement (non-commercial)",
+    "access": "dua",
+    "host": "NYU Langone (fastMRI)",
+    "url": "https://fastmri.med.nyu.edu/",
+    "description": "Raw k-space and DICOM knee MRI data released by NYU and Meta AI for accelerated MRI reconstruction research.",
+    "details": {
+      "label_schema": [
+        "No pathology labels — raw fully-sampled multi-coil k-space + reconstructed images for MRI reconstruction"
+      ],
+      "file_structure": "HDF5 per volume (kspace, reconstruction_rss); singlecoil and multicoil tracks; DICOMs separately.",
+      "splits": "Official train / val / test / challenge splits"
+    }
+  },
+  {
+    "id": "oai",
+    "name": "OAI",
+    "full_name": "Osteoarthritis Initiative",
+    "category": "MSK",
+    "anatomy": "knee",
+    "modality": [
+      "MRI",
+      "X-ray"
+    ],
+    "year": null,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "4,796 participants, longitudinal bilateral knee MRI and X-ray",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "multiple knee MRI sequences (DESS, T2 mapping, TSE) plus radiographs",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "Kellgren-Lawrence grades",
+      "clinical variables"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "OAI / NDA data-use agreement",
+    "access": "dua",
+    "host": "NIMH Data Archive (NDA)",
+    "url": "https://nda.nih.gov/oai/",
+    "description": "Longitudinal osteoarthritis cohort of 4,796 participants with serial bilateral knee MRI, radiographs and clinical data."
+  },
+  {
+    "id": "mura",
+    "name": "MURA",
+    "full_name": "MURA: Musculoskeletal Radiographs",
+    "category": "MSK",
+    "anatomy": "musculoskeletal",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2018,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "40,561 images / 14,863 studies / 12,173 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "study-level normal/abnormal"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "Stanford research-use agreement (non-commercial)",
+    "access": "registration",
+    "host": "Stanford AIMI",
+    "url": "https://stanfordmlgroup.github.io/competitions/mura/",
+    "description": "Large upper-extremity radiograph dataset covering seven body parts with radiologist normal/abnormal study labels."
+  },
+  {
+    "id": "rsna-bone-age",
+    "name": "RSNA Bone Age",
+    "full_name": "RSNA Pediatric Bone Age Challenge (2017)",
+    "category": "MSK",
+    "anatomy": "hand",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2017,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "14,236 pediatric hand radiographs",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "skeletal bone age",
+      "sex"
+    ],
+    "tasks": [
+      "regression"
+    ],
+    "license": "RSNA terms of use (non-commercial)",
+    "access": "open",
+    "host": "RSNA / Kaggle",
+    "url": "https://www.rsna.org/rsnai/ai-image-challenge/rsna-pediatric-bone-age-challenge-2017",
+    "description": "Pediatric left-hand radiographs labeled with skeletal bone age and sex for bone-age estimation."
+  },
+  {
+    "id": "skm-tea",
+    "name": "SKM-TEA",
+    "full_name": "Stanford Knee MRI Multi-Task Evaluation (SKM-TEA)",
+    "category": "MSK",
+    "anatomy": "knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2021,
+    "format": [
+      "HDF5 (k-space)",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "155 qDESS knee scans (~1.6 TB)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "4 tissues (patellar, femoral, tibial cartilage, meniscus)",
+    "other_labels": [
+      "bounding boxes for 16 pathologies"
+    ],
+    "tasks": [
+      "reconstruction",
+      "segmentation",
+      "detection"
+    ],
+    "license": "Stanford research-use agreement (non-commercial)",
+    "access": "registration",
+    "host": "Stanford AIMI",
+    "url": "https://aimi.stanford.edu/datasets/skm-tea-knee-mri",
+    "description": "Quantitative double-echo steady-state knee MRI with raw k-space, DICOM, tissue segmentations and pathology bounding boxes."
+  },
+  {
+    "id": "kneemri-rijeka",
+    "name": "KneeMRI",
+    "full_name": "KneeMRI Dataset (Clinical Hospital Centre Rijeka)",
+    "category": "MSK",
+    "anatomy": "knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2017,
+    "format": [
+      "PCK"
+    ],
+    "raw_image": true,
+    "size": "917 sagittal PD-weighted knee MRI volumes",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "ACL condition",
+      "ROI annotations"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "CC BY-NC-ND 4.0",
+    "access": "open",
+    "host": "University of Rijeka",
+    "url": "http://www.riteh.uniri.hr/~istajduh/projects/kneeMRI/",
+    "description": "917 sagittal PD-weighted knee MRI volumes from Rijeka, Croatia, labeled for anterior cruciate ligament condition."
+  },
+  {
+    "id": "digital-hand-atlas",
+    "name": "Digital Hand Atlas",
+    "full_name": "Digital Hand Atlas for Skeletal Development",
+    "category": "MSK",
+    "anatomy": "hand",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2007,
+    "format": [
+      "JPEG"
+    ],
+    "raw_image": false,
+    "size": "~1,400 normal pediatric hand radiographs",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "bone age",
+      "sex",
+      "ethnicity"
+    ],
+    "tasks": [
+      "regression"
+    ],
+    "license": null,
+    "access": "open",
+    "host": "USC IPILab",
+    "url": "https://ipilab.usc.edu/research/baaweb/",
+    "description": "Reference collection of ~1,400 normal pediatric hand radiographs across ages, sexes and ethnic groups for bone-age assessment."
+  },
+  {
+    "id": "lera",
+    "name": "LERA",
+    "full_name": "LERA — Lower Extremity Radiographs",
+    "category": "MSK",
+    "anatomy": "lower extremity",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2019,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "182 patients (foot, knee, ankle, hip)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "normal/abnormal"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "Stanford research-use agreement (non-commercial)",
+    "access": "registration",
+    "host": "Stanford AIMI",
+    "url": "https://aimi.stanford.edu/datasets/lera-lower-extremity-radiographs",
+    "description": "Lower-extremity radiographs (foot, knee, ankle, hip) from 182 patients with radiologist normal/abnormal labels."
+  },
+  {
+    "id": "rsna-screening-mammography",
+    "name": "RSNA Screening Mammography",
+    "full_name": "RSNA Screening Mammography Breast Cancer Detection (2023)",
+    "category": "Breast",
+    "anatomy": "mammography",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2023,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~54,700 images / ~20,000 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "cancer",
+      "biopsy",
+      "BI-RADS",
+      "breast density"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "Competition data license (non-commercial)",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/rsna-breast-cancer-detection",
+    "description": "De-identified screening mammograms (~54,700 DICOM images) with a cancer label and BI-RADS/density metadata for breast-cancer detection."
+  },
+  {
+    "id": "cbis-ddsm",
+    "name": "CBIS-DDSM",
+    "full_name": "Curated Breast Imaging Subset of DDSM",
+    "category": "Breast",
+    "anatomy": "mammography",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2016,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "10,239 images / 1,566 subjects",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "ROI masks and bounding boxes for masses and calcifications",
+    "other_labels": [
+      "BI-RADS",
+      "pathology (benign/malignant)"
+    ],
+    "tasks": [
+      "classification",
+      "detection",
+      "segmentation"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/cbis-ddsm/",
+    "description": "Curated DICOM-converted subset of DDSM screening mammograms with pathology labels, BI-RADS and ROI segmentations.",
+    "details": {
+      "label_schema": [
+        "Lesion type: mass or calcification",
+        "Pathology: BENIGN / BENIGN_WITHOUT_CALLBACK / MALIGNANT; BI-RADS assessment 0–5; breast density 1–4",
+        "ROI segmentation mask + cropped patch per lesion"
+      ],
+      "file_structure": "DICOM full images + ROI mask + cropped images; CSV descriptors for mass/calc train and test separately.",
+      "splits": "~2,458 train / ~645 test lesions (predefined)"
+    }
+  },
+  {
+    "id": "vindr-mammo",
+    "name": "VinDr-Mammo",
+    "full_name": "VinDr-Mammo: full-field digital mammography benchmark",
+    "category": "Breast",
+    "anatomy": "mammography",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "5,000 exams / 20,000 images",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": "bounding-box annotations for findings (BI-RADS 3-5)",
+    "other_labels": [
+      "BI-RADS",
+      "breast density",
+      "finding boxes"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "PhysioNet Restricted 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/vindr-mammo/",
+    "description": "Full-field digital mammography benchmark of 5,000 four-view exams with breast-level BI-RADS/density and bounding-box finding annotations."
+  },
+  {
+    "id": "cmmd",
+    "name": "CMMD",
+    "full_name": "The Chinese Mammography Database",
+    "category": "Breast",
+    "anatomy": "mammography",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2021,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "5,202 images / 1,775 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "benign/malignant (biopsy)",
+      "molecular subtype"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/cmmd/",
+    "description": "Mammography database of 1,775 Chinese patients with biopsy-confirmed benign/malignant labels and molecular subtype for a subset."
+  },
+  {
+    "id": "inbreast",
+    "name": "INbreast",
+    "full_name": "INbreast: full-field digital mammographic database",
+    "category": "Breast",
+    "anatomy": "mammography",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2012,
+    "format": [
+      "DICOM",
+      "XML"
+    ],
+    "raw_image": true,
+    "size": "410 images / 115 cases",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "expert pixel-level lesion contours (XML)",
+    "other_labels": [
+      "BI-RADS",
+      "breast density",
+      "lesion type"
+    ],
+    "tasks": [
+      "classification",
+      "detection",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "INESC Porto",
+    "url": "http://medicalresearch.inescporto.pt/breastresearch/index.php/Get_INbreast_Database",
+    "description": "Full-field digital mammography database (410 images) from Porto with BI-RADS, density and expert XML lesion contours; access by request."
+  },
+  {
+    "id": "duke-breast-mri",
+    "name": "Duke Breast Cancer MRI",
+    "full_name": "Dynamic Contrast-Enhanced MRI of Breast Cancer Patients (Duke)",
+    "category": "Breast",
+    "anatomy": "breast",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "922 patients / ~773,000 images",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "DCE-MRI: non-fat-sat T1, fat-sat pre-contrast and 3-4 post-contrast sequences",
+    "segmentation": false,
+    "segmentation_detail": "radiologist 3D bounding boxes around lesions",
+    "other_labels": [
+      "ER/PR/HER2",
+      "molecular subtype",
+      "stage",
+      "outcomes"
+    ],
+    "tasks": [
+      "classification",
+      "detection",
+      "radiogenomics"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/duke-breast-cancer-mri/",
+    "description": "DCE-MRI of 922 invasive breast cancer patients with 3D tumor bounding boxes plus extensive clinical, genomic and radiomic data."
+  },
+  {
+    "id": "breast-diagnosis",
+    "name": "Breast-Diagnosis",
+    "full_name": "BREAST-DIAGNOSIS",
+    "category": "Breast",
+    "anatomy": "breast",
+    "modality": [
+      "MRI",
+      "PET",
+      "CT",
+      "X-ray"
+    ],
+    "year": 2011,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "88 subjects / ~105,050 images",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "3+ MR pulse sequences (T2, STIR, BLISS) with contrast; plus PET, CT, mammography",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "lesion type",
+      "ER/PR/HER2",
+      "Oncotype"
+    ],
+    "tasks": [
+      "classification"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/breast-diagnosis/",
+    "description": "Multi-modality breast imaging (multi-sequence MR, PET, CT, mammography) for 88 subjects with lesion-type and biomarker data."
+  },
+  {
+    "id": "bcs-dbt",
+    "name": "BCS-DBT",
+    "full_name": "Breast Cancer Screening — Digital Breast Tomosynthesis",
+    "category": "Breast",
+    "anatomy": "breast",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2021,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "5,060 patients / 22,032 scans (~1.63 TB)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": "bounding boxes for lesions",
+    "other_labels": [
+      "normal",
+      "actionable",
+      "biopsy-proven benign",
+      "cancer"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/",
+    "description": "Large digital breast tomosynthesis screening dataset of 5,060 patients with normal/actionable/benign/cancer labels and lesion bounding boxes."
+  },
+  {
+    "id": "ispy1",
+    "name": "ISPY1 (ACRIN 6657)",
+    "full_name": "Breast DCE-MRI from the I-SPY 1 / ACRIN 6657 trial",
+    "category": "Breast",
+    "anatomy": "breast",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2016,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "222 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "DCE-MRI across 4 neoadjuvant-chemo timepoints; T2 + pre/post-contrast T1",
+    "segmentation": true,
+    "segmentation_detail": "functional tumor volume segmentations",
+    "other_labels": [
+      "pathologic complete response",
+      "recurrence-free survival"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation",
+      "prognosis"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/ispy1/",
+    "description": "Multi-center serial DCE-MRI (222 patients, 4 timepoints) with functional tumor volume segmentations for predicting chemotherapy response."
+  },
+  {
+    "id": "ispy2",
+    "name": "ISPY2",
+    "full_name": "I-SPY 2 TRIAL Breast DCE-MRI",
+    "category": "Breast",
+    "anatomy": "breast",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "719 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "DCE-MRI + T2 across 4 treatment timepoints; derived parametric maps",
+    "segmentation": true,
+    "segmentation_detail": "functional tumor volume masks (DICOM SEG)",
+    "other_labels": [
+      "neoadjuvant treatment response"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation",
+      "prognosis"
+    ],
+    "license": "CC BY 4.0",
+    "access": "open",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/ispy2/",
+    "description": "I-SPY 2 trial serial breast DCE-MRI (719 patients, 4 timepoints) with parametric maps and DICOM-SEG functional tumor volume segmentations."
+  },
+  {
+    "id": "breastdm",
+    "name": "BreastDM",
+    "full_name": "BreastDM: DCE-MRI dataset for breast tumor segmentation and classification",
+    "category": "Breast",
+    "anatomy": "breast",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "232 cases (147 malignant, 85 benign)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "DCE-MRI with pre-contrast, post-contrast and subtraction sequences",
+    "segmentation": true,
+    "segmentation_detail": "tumor segmentation masks (PNG)",
+    "other_labels": [
+      "benign/malignant"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": null,
+    "access": "open",
+    "host": "GitHub",
+    "url": "https://github.com/smallboy-code/Breast-cancer-dataset",
+    "description": "Breast DCE-MRI dataset of 232 cases with tumor segmentation masks and benign/malignant labels, distributed via GitHub."
+  },
+  {
+    "id": "embed",
+    "name": "EMBED",
+    "full_name": "EMory BrEast imaging Dataset (EMBED)",
+    "category": "Breast",
+    "anatomy": "mammography",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2023,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "3.4M images from ~110,000 patients; 60,000 annotated lesions",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "BI-RADS",
+      "imaging descriptors",
+      "pathology outcome",
+      "demographics"
+    ],
+    "tasks": [
+      "classification",
+      "detection"
+    ],
+    "license": "Custom EMBED license (non-commercial)",
+    "access": "dua",
+    "host": "AWS Open Data",
+    "url": "https://registry.opendata.aws/emory-breast-imaging-dataset-embed/",
+    "description": "Large, racially diverse Emory mammography dataset (2D, C-view and DBT) with 60,000 lesions linked to BI-RADS descriptors and pathologic outcomes."
+  },
+  {
+    "id": "hecktor",
+    "name": "HECKTOR",
+    "full_name": "HEad and neCK TumOR segmentation and outcome prediction challenge",
+    "category": "HeadNeck",
+    "anatomy": "oropharynx",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "~882 cases (2022 edition)",
+    "paired_text": true,
+    "paired_text_detail": "clinical data (age, sex, HPV, treatment) and recurrence-free survival endpoints",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "primary tumor (GTVp) and lymph node (GTVn) contours",
+    "other_labels": [
+      "recurrence-free survival",
+      "HPV status"
+    ],
+    "tasks": [
+      "segmentation",
+      "outcome-prediction"
+    ],
+    "license": "Challenge data use agreement",
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://hecktor.grand-challenge.org/",
+    "description": "MICCAI challenge for automatic segmentation of head and neck tumors and lymph nodes and outcome prediction in FDG-PET/CT.",
+    "details": {
+      "label_schema": [
+        "Label 1 — primary tumor GTVp",
+        "Label 2 — metastatic lymph nodes GTVn",
+        "Endpoint: recurrence-free survival (time + event)"
+      ],
+      "file_structure": "Per patient: CT.nii.gz, PT.nii.gz (PET) and a GTV label NIfTI; clinical CSV with HPV, treatment and survival.",
+      "splits": "~524 train / ~359 test (2022, 9 centers)"
+    }
+  },
+  {
+    "id": "hnscc",
+    "name": "HNSCC",
+    "full_name": "Head and Neck Squamous Cell Carcinoma (MD Anderson)",
+    "category": "HeadNeck",
+    "anatomy": "head and neck",
+    "modality": [
+      "CT",
+      "PET",
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "DICOM",
+      "RTSTRUCT"
+    ],
+    "raw_image": true,
+    "size": "627 patients",
+    "paired_text": true,
+    "paired_text_detail": "demographics, risk factors, stage, recurrence, survival and treatment data",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "primary and nodal gross tumor volume contours (RTSTRUCT)",
+    "other_labels": [
+      "survival",
+      "recurrence",
+      "stage"
+    ],
+    "tasks": [
+      "segmentation",
+      "outcome-prediction",
+      "radiomics"
+    ],
+    "license": "CC BY 3.0 (clinical); imaging controlled access",
+    "access": "request",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/hnscc/",
+    "description": "TCIA collection of imaging, radiation therapy and clinical data from 627 head and neck squamous cell carcinoma patients at MD Anderson."
+  },
+  {
+    "id": "head-neck-radiomics-hn1",
+    "name": "HN1",
+    "full_name": "HEAD-NECK-RADIOMICS-HN1",
+    "category": "HeadNeck",
+    "anatomy": "head and neck",
+    "modality": [
+      "CT"
+    ],
+    "year": 2019,
+    "format": [
+      "DICOM",
+      "RTSTRUCT",
+      "SEG"
+    ],
+    "raw_image": true,
+    "size": "137 patients",
+    "paired_text": true,
+    "paired_text_detail": "demographic, follow-up, chemotherapy and survival data",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "pre-treatment gross tumor volume (DICOM SEG and RTSTRUCT)",
+    "other_labels": [
+      "survival"
+    ],
+    "tasks": [
+      "radiomics",
+      "outcome-prediction",
+      "segmentation"
+    ],
+    "license": "CC BY-NC 3.0 (clinical); imaging limited access",
+    "access": "dua",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/head-neck-radiomics-hn1/",
+    "description": "TCIA radiomics collection of pre-treatment CT and clinical/outcome data for 137 head and neck cancer patients from MAASTRO."
+  },
+  {
+    "id": "tcga-hnsc",
+    "name": "TCGA-HNSC",
+    "full_name": "TCGA Head-Neck Squamous Cell Carcinoma Collection",
+    "category": "HeadNeck",
+    "anatomy": "head and neck",
+    "modality": [
+      "CT",
+      "PET",
+      "MRI"
+    ],
+    "year": 2014,
+    "format": [
+      "DICOM",
+      "RTSTRUCT"
+    ],
+    "raw_image": true,
+    "size": "227 patients (479 studies)",
+    "paired_text": true,
+    "paired_text_detail": "matched clinical, pathological and genomic data via TCGA/GDC",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "radiation therapy structures (RTSTRUCT) for a subset",
+    "other_labels": [
+      "genomic",
+      "clinical",
+      "pathology"
+    ],
+    "tasks": [
+      "radiogenomics",
+      "segmentation"
+    ],
+    "license": "CC BY 3.0; some imaging controlled access",
+    "access": "request",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/tcga-hnsc/",
+    "description": "TCIA imaging collection for 227 head and neck cancer patients matched to genomic and clinical data in The Cancer Genome Atlas."
+  },
+  {
+    "id": "head-neck-pet-ct",
+    "name": "Head-Neck-PET-CT",
+    "full_name": "Head-Neck-PET-CT",
+    "category": "HeadNeck",
+    "anatomy": "head and neck",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2017,
+    "format": [
+      "DICOM",
+      "RTSTRUCT"
+    ],
+    "raw_image": true,
+    "size": "298 patients",
+    "paired_text": true,
+    "paired_text_detail": "histopathology, tumor grade and follow-up outcomes",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "radiotherapy GTV contours (RTSTRUCT)",
+    "other_labels": [
+      "survival",
+      "recurrence",
+      "metastasis"
+    ],
+    "tasks": [
+      "segmentation",
+      "outcome-prediction",
+      "radiomics"
+    ],
+    "license": "CC BY 3.0; imaging controlled access",
+    "access": "request",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/head-neck-pet-ct/",
+    "description": "TCIA collection of FDG-PET/CT and radiotherapy planning CT with GTV contours and outcome data for 298 head and neck cancer patients."
+  },
+  {
+    "id": "radcure",
+    "name": "RADCURE",
+    "full_name": "CT Images from a Large Head and Neck Cohort (RADCURE)",
+    "category": "HeadNeck",
+    "anatomy": "head and neck",
+    "modality": [
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "DICOM",
+      "RTSTRUCT"
+    ],
+    "raw_image": true,
+    "size": "3,346 patients",
+    "paired_text": true,
+    "paired_text_detail": "demographic, diagnosis, treatment and follow-up data with survival status",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "primary GTV, nodal GTV and 19 organs-at-risk contours",
+    "other_labels": [
+      "survival",
+      "organ-at-risk"
+    ],
+    "tasks": [
+      "segmentation",
+      "outcome-prediction",
+      "radiomics"
+    ],
+    "license": "CC BY 4.0 (clinical); imaging controlled access",
+    "access": "request",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/radcure/",
+    "description": "TCIA head and neck CT dataset of 3,346 patients treated with definitive radiotherapy, with tumor and organ-at-risk contours and outcomes."
+  },
+  {
+    "id": "qin-headneck",
+    "name": "QIN-HeadNeck",
+    "full_name": "QIN-HEADNECK",
+    "category": "HeadNeck",
+    "anatomy": "head and neck",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM",
+      "SEG",
+      "SR"
+    ],
+    "raw_image": true,
+    "size": "279 subjects",
+    "paired_text": true,
+    "paired_text_detail": "clinical data (demographics, treatment, follow-up) in XLSX",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "DICOM SEG segmentations plus DICOM SR quantitative PET/CT results",
+    "other_labels": [
+      "quantitative imaging biomarkers"
+    ],
+    "tasks": [
+      "segmentation",
+      "quantitative-imaging"
+    ],
+    "license": "CC BY 3.0; some imaging controlled access",
+    "access": "request",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/qin-headneck/",
+    "description": "TCIA collection of serial pre/post-therapy FDG-PET/CT with DICOM SEG/SR quantitative analysis objects for head and neck cancer."
+  },
+  {
+    "id": "dentex",
+    "name": "DENTEX",
+    "full_name": "Dental Enumeration and Diagnosis on Panoramic X-rays (MICCAI 2023)",
+    "category": "Dental",
+    "anatomy": "panoramic dental",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2023,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "1,005 fully-annotated panoramic X-rays (3,903 total)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "quadrant",
+      "tooth enumeration (FDI)",
+      "diagnosis"
+    ],
+    "tasks": [
+      "detection",
+      "classification"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "open",
+    "host": "Grand Challenge / HuggingFace",
+    "url": "https://dentex.grand-challenge.org/",
+    "description": "Panoramic dental X-rays hierarchically annotated (FDI) for abnormal-tooth detection with quadrant, enumeration and diagnosis."
+  },
+  {
+    "id": "tufts-dental",
+    "name": "Tufts Dental Database",
+    "full_name": "Tufts Dental Database (TDD): multimodal panoramic X-ray dataset",
+    "category": "Dental",
+    "anatomy": "panoramic dental",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2022,
+    "format": [
+      "JPG",
+      "TIFF"
+    ],
+    "raw_image": false,
+    "size": "1,000 panoramic X-rays",
+    "paired_text": true,
+    "paired_text_detail": "radiologist think-aloud text descriptions plus eye-tracking gaze maps",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "teeth masks, maxillomandibular masks and abnormality masks",
+    "other_labels": [
+      "abnormality classification",
+      "gaze maps"
+    ],
+    "tasks": [
+      "segmentation",
+      "detection",
+      "classification"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Tufts University",
+    "url": "https://tdd.ece.tufts.edu/",
+    "description": "1,000 expert-annotated panoramic dental radiographs with tooth/abnormality masks plus radiologist eye-tracking and text descriptions."
+  },
+  {
+    "id": "toothfairy2",
+    "name": "ToothFairy2",
+    "full_name": "ToothFairy2: Multi-Structure Segmentation in CBCT (MICCAI 2024)",
+    "category": "Dental",
+    "anatomy": "teeth and jaw (CBCT)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "MHA"
+    ],
+    "raw_image": true,
+    "size": "480 public training CBCT volumes",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "42-class 3D masks: teeth (FDI), mandible, maxilla, alveolar canals, sinuses, implants",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "registration",
+    "host": "Grand Challenge",
+    "url": "https://toothfairy2.grand-challenge.org/",
+    "description": "First fully-annotated public CBCT dataset with 42-class 3D expert segmentations of dental and maxillofacial structures at 0.3mm voxels."
+  },
+  {
+    "id": "ctooth",
+    "name": "CTooth",
+    "full_name": "CTooth: 3D Tooth Volume Segmentation on CBCT",
+    "category": "Dental",
+    "anatomy": "teeth (CBCT)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "22 annotated CBCT volumes (CTooth+ adds 146 unlabeled)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "3D tooth-volume voxel masks",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "GitHub",
+    "url": "https://github.com/liangjiubujiu/CTooth",
+    "description": "Fully annotated CBCT tooth-volume segmentation benchmark of 22 volumes, extended by CTooth+ with 146 additional unlabeled volumes."
+  },
+  {
+    "id": "autopet-i",
+    "name": "autoPET I",
+    "full_name": "Automated Lesion Segmentation in Whole-Body FDG-PET/CT (autoPET 2022)",
+    "category": "WholeBody",
+    "anatomy": "whole-body",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM",
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1,014 studies / 900 patients (FDG)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "manual whole-body FDG-avid tumor lesion masks",
+    "other_labels": [
+      "diagnosis"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "TCIA Restricted (DICOM); metadata CC BY 4.0",
+    "access": "dua",
+    "host": "Grand Challenge / TCIA",
+    "url": "https://autopet.grand-challenge.org/",
+    "description": "MICCAI 2022 challenge for automated tumor lesion segmentation on whole-body FDG-PET/CT (900 patients, melanoma/lymphoma/NSCLC and controls).",
+    "details": {
+      "label_schema": [
+        "Binary whole-body mask of FDG-avid malignant lesions (0 = background/physiologic uptake, 1 = tumor lesion)"
+      ],
+      "file_structure": "Per study: CT.nii.gz, SUV.nii.gz (PET SUV), CTres.nii.gz and SEG.nii.gz; also DICOM on TCIA (FDG-PET-CT-Lesions).",
+      "splits": "1,014 studies / 900 patients (501 positive, 513 negative controls)"
+    }
+  },
+  {
+    "id": "autopet-iii",
+    "name": "autoPET III",
+    "full_name": "Automated Lesion Segmentation in Multitracer PET/CT (autoPET III 2024)",
+    "category": "WholeBody",
+    "anatomy": "whole-body",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "DICOM",
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1,611 studies (1,014 FDG + 597 PSMA)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "multi-tracer: FDG and PSMA PET; PET + CT",
+    "segmentation": true,
+    "segmentation_detail": "manual whole-body tumor lesion masks for FDG- and PSMA-avid lesions",
+    "other_labels": [
+      "diagnosis"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "FDG: TCIA Restricted; PSMA: CC BY 4.0",
+    "access": "dua",
+    "host": "Grand Challenge / TCIA",
+    "url": "https://autopet-iii.grand-challenge.org/",
+    "description": "Third autoPET edition extending the task to multi-tracer whole-body PET/CT by combining FDG and PSMA collections (1,611 training studies)."
+  },
+  {
+    "id": "fdg-pet-ct-lesions",
+    "name": "FDG-PET-CT-Lesions",
+    "full_name": "Whole-body FDG-PET/CT dataset with manually annotated tumor lesions",
+    "category": "WholeBody",
+    "anatomy": "whole-body",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "1,014 studies / 900 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "manual 3D segmentation of FDG-avid malignant lesions (501 positive, 513 controls)",
+    "other_labels": [
+      "diagnosis"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "TCIA Restricted (DICOM); NIfTI mirror CC BY-NC 4.0",
+    "access": "dua",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+    "description": "TCIA collection of 1,014 whole-body FDG-PET/CT studies with manually annotated tumor lesions, the FDG training data behind autoPET."
+  },
+  {
+    "id": "psma-pet-ct-lesions",
+    "name": "PSMA-PET-CT-Lesions",
+    "full_name": "Whole-body PSMA-PET/CT dataset with manually annotated tumor lesions",
+    "category": "WholeBody",
+    "anatomy": "whole-body",
+    "modality": [
+      "PET",
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "597 studies / 378 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "manual 3D segmentation of PSMA-avid tumor lesions (DICOM SEG)",
+    "other_labels": [
+      "diagnosis"
+    ],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY 4.0",
+    "access": "registration",
+    "host": "TCIA",
+    "url": "https://www.cancerimagingarchive.net/collection/psma-pet-ct-lesions/",
+    "description": "TCIA collection of 597 whole-body PSMA-PET/CT studies from 378 prostate-cancer patients with manually annotated lesions."
+  },
+  {
+    "id": "roco",
+    "name": "ROCO",
+    "full_name": "Radiology Objects in COntext",
+    "category": "Multimodal",
+    "anatomy": "various",
+    "modality": [
+      "X-ray",
+      "CT",
+      "MRI",
+      "PET"
+    ],
+    "year": 2018,
+    "format": [
+      "JPG",
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "~81,000 radiology image-caption pairs",
+    "paired_text": true,
+    "paired_text_detail": "captions + UMLS concepts (CUIs), keywords",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "captioning",
+      "classification"
+    ],
+    "tasks": [
+      "captioning",
+      "concept-detection"
+    ],
+    "license": "PMC Open Access (per-article)",
+    "access": "open",
+    "host": "GitHub",
+    "url": "https://github.com/razorx89/roco-dataset",
+    "description": "Multimodal radiology image-caption dataset mined from PubMed Central Open Access articles, spanning multiple modalities and body regions."
+  },
+  {
+    "id": "rocov2",
+    "name": "ROCOv2",
+    "full_name": "Radiology Objects in COntext Version 2",
+    "category": "Multimodal",
+    "anatomy": "various",
+    "modality": [
+      "X-ray",
+      "CT",
+      "MRI",
+      "PET"
+    ],
+    "year": 2024,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "79,789 images with captions and UMLS concepts",
+    "paired_text": true,
+    "paired_text_detail": "captions + manually curated UMLS CUIs, keywords",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "captioning",
+      "classification"
+    ],
+    "tasks": [
+      "captioning",
+      "concept-detection",
+      "classification"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "open",
+    "host": "Zenodo",
+    "url": "https://doi.org/10.5281/zenodo.10821435",
+    "description": "Updated multimodal radiology image dataset from PMC Open Access with manually curated modality and anatomy concepts, used in ImageCLEFmedical Caption."
+  },
+  {
+    "id": "medicat",
+    "name": "MedICaT",
+    "full_name": "Medical Images, Captions, and Textual References",
+    "category": "Multimodal",
+    "anatomy": "various",
+    "modality": [
+      "X-ray",
+      "CT",
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "217,060 figures from 131,410 papers",
+    "paired_text": true,
+    "paired_text_detail": "captions, inline textual references and subfigure-subcaption annotations",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "captioning"
+    ],
+    "tasks": [
+      "captioning",
+      "image-text-retrieval"
+    ],
+    "license": "Per-article open-access licenses",
+    "access": "request",
+    "host": "GitHub (AllenAI)",
+    "url": "https://github.com/allenai/medicat",
+    "description": "Medical figures with captions, inline references and compound-figure/subcaption annotations extracted from PubMed Central and S2ORC."
+  },
+  {
+    "id": "pmc-oa",
+    "name": "PMC-OA",
+    "full_name": "PMC-OA (PMC-CLIP corpus)",
+    "category": "Multimodal",
+    "anatomy": "various",
+    "modality": [
+      "X-ray",
+      "CT",
+      "MRI",
+      "PET"
+    ],
+    "year": 2023,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "1.6 million image-caption pairs",
+    "paired_text": true,
+    "paired_text_detail": "captions aligned at subfigure/subcaption granularity",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "captioning",
+      "classification"
+    ],
+    "tasks": [
+      "image-text-retrieval",
+      "captioning"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "open",
+    "host": "Hugging Face",
+    "url": "https://huggingface.co/datasets/axiong/pmc_oa",
+    "description": "Large biomedical image-caption archive from PubMed Central Open Access used to pretrain the PMC-CLIP vision-language model."
+  },
+  {
+    "id": "vqa-rad",
+    "name": "VQA-RAD",
+    "full_name": "Visual Question Answering in Radiology",
+    "category": "Multimodal",
+    "anatomy": "multi",
+    "modality": [
+      "X-ray",
+      "CT",
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "315 images with 3,515 QA pairs",
+    "paired_text": true,
+    "paired_text_detail": "clinician-generated QA pairs (open- and closed-ended)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "vqa"
+    ],
+    "tasks": [
+      "vqa"
+    ],
+    "license": "CC0 1.0",
+    "access": "open",
+    "host": "Hugging Face",
+    "url": "https://huggingface.co/datasets/flaviagiammarino/vqa-rad",
+    "description": "Radiology VQA dataset of head CT/MRI, chest X-rays and abdominal CTs with clinician-authored question-answer pairs."
+  },
+  {
+    "id": "slake",
+    "name": "SLAKE",
+    "full_name": "Semantically-Labeled Knowledge-Enhanced Dataset",
+    "category": "Multimodal",
+    "anatomy": "multi",
+    "modality": [
+      "X-ray",
+      "CT",
+      "MRI"
+    ],
+    "year": 2021,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "642 images with 14,028 QA pairs",
+    "paired_text": true,
+    "paired_text_detail": "bilingual (English-Chinese) QA pairs, vision- and knowledge-based",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "semantic segmentation masks and object-detection boxes per image",
+    "other_labels": [
+      "vqa",
+      "grounding"
+    ],
+    "tasks": [
+      "vqa",
+      "segmentation",
+      "detection"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "med-vqa.com",
+    "url": "https://www.med-vqa.com/slake/",
+    "description": "Bilingual radiology VQA dataset covering 39 organs and 12 diseases, annotated with segmentation masks, bounding boxes and a medical knowledge graph."
+  },
+  {
+    "id": "ms-cxr",
+    "name": "MS-CXR",
+    "full_name": "MS-CXR: Making the Most of Text Semantics",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2022,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "1,162 image-sentence bounding-box pairs across 8 findings",
+    "paired_text": true,
+    "paired_text_detail": "radiologist-verified phrases describing findings, paired to bounding boxes",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "grounding"
+    ],
+    "tasks": [
+      "phrase-grounding"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/ms-cxr/",
+    "description": "Phrase-grounding benchmark over MIMIC-CXR images with radiologist-annotated bounding boxes paired to real report sentences across eight findings."
+  },
+  {
+    "id": "chest-imagenome",
+    "name": "Chest ImaGenome",
+    "full_name": "Chest ImaGenome",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2021,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "242,072 frontal CXRs with scene graphs",
+    "paired_text": true,
+    "paired_text_detail": "scene-graph relations linking anatomy boxes to report-derived attributes",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "grounding",
+      "classification"
+    ],
+    "tasks": [
+      "scene-graph-generation",
+      "localization"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/chest-imagenome/",
+    "description": "Scene-graph dataset auto-derived from MIMIC-CXR with 29 anatomy bounding boxes, attributes and longitudinal comparison relations per image."
+  },
+  {
+    "id": "reflacx",
+    "name": "REFLACX",
+    "full_name": "Reports and Eye-Tracking Data for Localization of Abnormalities in Chest X-rays",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2022,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "3,032 eye-tracking + report sessions for 2,616 chest X-rays",
+    "paired_text": true,
+    "paired_text_detail": "timestamped dictated report transcriptions synced with gaze data",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "grounding"
+    ],
+    "tasks": [
+      "abnormality-localization",
+      "report-generation"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/reflacx-xray-localization/",
+    "description": "Radiologist eye-tracking and timestamped report transcriptions over MIMIC-CXR images, with bounding boxes and abnormality localizations."
+  },
+  {
+    "id": "medical-diff-vqa",
+    "name": "Medical-Diff-VQA",
+    "full_name": "Medical-Diff-VQA",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2023,
+    "format": [
+      "JPG"
+    ],
+    "raw_image": false,
+    "size": "700,703 QA pairs over 164,324 image pairs",
+    "paired_text": true,
+    "paired_text_detail": "difference-oriented question-answer pairs comparing paired studies",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "vqa"
+    ],
+    "tasks": [
+      "vqa"
+    ],
+    "license": "PhysioNet Credentialed 1.5.0",
+    "access": "dua",
+    "host": "PhysioNet",
+    "url": "https://physionet.org/content/medical-diff-vqa/",
+    "description": "Large difference-VQA dataset derived from MIMIC-CXR for answering questions about changes between a patient's main and reference chest X-rays."
+  },
+  {
+    "id": "radgenome-chestct",
+    "name": "RadGenome-ChestCT",
+    "full_name": "RadGenome-Chest CT",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "25,692 CT volumes with 665K grounded report regions + 1.3M VQA",
+    "paired_text": true,
+    "paired_text_detail": "multi-granularity grounded reports and grounded QA pairs linked to regions",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "197 organ-level segmentation masks per volume linked to report sentences",
+    "other_labels": [
+      "grounding",
+      "vqa"
+    ],
+    "tasks": [
+      "report-generation",
+      "vqa",
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "registration",
+    "host": "Hugging Face",
+    "url": "https://huggingface.co/datasets/RadGenome/RadGenome-ChestCT",
+    "description": "Grounded vision-language extension of CT-RATE adding organ segmentation masks, region-linked reports and grounded VQA pairs for 3D chest CT."
+  },
+  {
+    "id": "inspect",
+    "name": "INSPECT",
+    "full_name": "Integrating Numerous Sources for Prognostic Evaluation of Clinical Timelines",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "CT"
+    ],
+    "year": 2023,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "23,248 CTPA studies / 19,402 patients with reports and EHR",
+    "paired_text": true,
+    "paired_text_detail": "radiology report impressions plus structured longitudinal EHR data",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "classification",
+      "prognosis"
+    ],
+    "license": "Non-commercial DUA (Stanford)",
+    "access": "dua",
+    "host": "Stanford",
+    "url": "https://inspect.stanford.edu/",
+    "description": "Multimodal dataset linking CTPA images, radiology reports and structured EHR at scale for pulmonary embolism diagnosis and prognosis."
+  },
+  {
+    "id": "maida",
+    "name": "MAIDA",
+    "full_name": "Medical AI Data for All",
+    "category": "Multimodal",
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2023,
+    "format": [
+      "DICOM",
+      "PNG"
+    ],
+    "raw_image": true,
+    "size": "multi-institution chest X-rays across 22+ hospitals in 12 countries",
+    "paired_text": true,
+    "paired_text_detail": "DICOM metadata and annotations (endotracheal tube placement, pneumonia)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification",
+      "grounding"
+    ],
+    "tasks": [
+      "classification",
+      "external-validation"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Stanford",
+    "url": "https://maida.stanford.edu/",
+    "description": "Global data-sharing initiative providing multi-institution chest X-rays for ICU/NICU/ED tasks such as endotracheal-tube and pneumonia assessment."
+  },
+  {
+    "id": "tcia",
+    "name": "TCIA",
+    "full_name": "The Cancer Imaging Archive",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2010,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "200+ collections",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "Varies (often CC BY 3.0/4.0)",
+    "access": "open",
+    "host": "cancerimagingarchive.net",
+    "url": "https://www.cancerimagingarchive.net/",
+    "description": "NCI-funded public archive of de-identified cancer medical images (mostly DICOM) organized into collections by disease, modality or research focus."
+  },
+  {
+    "id": "physionet",
+    "name": "PhysioNet",
+    "full_name": "PhysioNet",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 1999,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "200+ databases",
+    "paired_text": true,
+    "paired_text_detail": "many datasets pair images with reports/clinical data (e.g. MIMIC-CXR)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "Varies (open + credentialed DUAs)",
+    "access": "registration",
+    "host": "physionet.org",
+    "url": "https://physionet.org/",
+    "description": "MIT-hosted repository of physiological and clinical research data, including major credentialed radiology datasets such as MIMIC-CXR and its derivatives."
+  },
+  {
+    "id": "openneuro",
+    "name": "OpenNeuro",
+    "full_name": "OpenNeuro",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2017,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "1,000+ datasets",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "BIDS-organized MRI/fMRI/EEG/MEG/PET incl. multi-sequence MRI",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "CC0 / PDDL",
+    "access": "open",
+    "host": "openneuro.org",
+    "url": "https://openneuro.org/",
+    "description": "Free BIDS-compliant repository for openly sharing neuroimaging datasets (MRI, fMRI, EEG, MEG, PET), operated by the Stanford Center for Reproducible Neuroscience."
+  },
+  {
+    "id": "grand-challenge",
+    "name": "Grand Challenge",
+    "full_name": "Grand Challenge",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2011,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "390+ public and private challenges",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "many hosted challenges provide expert segmentation annotations",
+    "other_labels": [
+      "segmentation",
+      "classification"
+    ],
+    "tasks": [
+      "hosting",
+      "benchmarking"
+    ],
+    "license": "Varies by challenge",
+    "access": "registration",
+    "host": "grand-challenge.org",
+    "url": "https://grand-challenge.org/",
+    "description": "Open platform for hosting biomedical imaging challenges, expert annotation collection and deployment of deep-learning algorithms."
+  },
+  {
+    "id": "synapse",
+    "name": "Synapse",
+    "full_name": "Synapse (Sage Bionetworks)",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2011,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "thousands of projects and datasets",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "hosting",
+      "benchmarking"
+    ],
+    "license": "Varies by project",
+    "access": "registration",
+    "host": "synapse.org",
+    "url": "https://www.synapse.org/",
+    "description": "Sage Bionetworks collaborative research platform hosting biomedical datasets, challenges (incl. BraTS) and imaging benchmarks with governance controls."
+  },
+  {
+    "id": "zenodo",
+    "name": "Zenodo",
+    "full_name": "Zenodo",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2013,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "millions of records (general-purpose)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "Varies (uploader-chosen)",
+    "access": "open",
+    "host": "zenodo.org",
+    "url": "https://zenodo.org/",
+    "description": "CERN-operated general-purpose open research repository with DOI minting, widely used to publish radiology datasets such as ROCOv2 and TotalSegmentator."
+  },
+  {
+    "id": "kaggle-datasets",
+    "name": "Kaggle Datasets",
+    "full_name": "Kaggle Datasets",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2010,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "hundreds of thousands of public datasets",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "hosting",
+      "benchmarking"
+    ],
+    "license": "Varies by dataset",
+    "access": "registration",
+    "host": "kaggle.com",
+    "url": "https://www.kaggle.com/datasets",
+    "description": "Community data-science platform hosting many public medical-imaging datasets and competitions (e.g. RSNA, chest X-ray challenges)."
+  },
+  {
+    "id": "stanford-aimi",
+    "name": "Stanford AIMI",
+    "full_name": "Stanford AIMI Shared Datasets",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2021,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "30+ curated medical imaging datasets",
+    "paired_text": true,
+    "paired_text_detail": "several datasets include reports/annotations (e.g. CheXpert, INSPECT)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "some datasets include expert segmentation/annotation",
+    "other_labels": [
+      "classification",
+      "segmentation"
+    ],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "Varies (non-commercial research)",
+    "access": "registration",
+    "host": "aimi.stanford.edu",
+    "url": "https://aimi.stanford.edu/shared-datasets",
+    "description": "Stanford Center for AI in Medicine and Imaging portal of de-identified, annotated clinical imaging datasets across modalities for non-commercial research."
+  },
+  {
+    "id": "nci-idc",
+    "name": "IDC",
+    "full_name": "NCI Imaging Data Commons",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2020,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "85+ TB across many collections",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "includes image-derived annotations, segmentations and measurements",
+    "other_labels": [
+      "segmentation"
+    ],
+    "tasks": [
+      "hosting",
+      "cloud-analysis"
+    ],
+    "license": "Varies (mostly CC BY)",
+    "access": "open",
+    "host": "imaging.datacommons.cancer.gov",
+    "url": "https://portal.imaging.datacommons.cancer.gov/",
+    "description": "Cloud-based NCI node collocating public cancer imaging collections with Google Cloud analysis tools; no registration required to browse and download."
+  },
+  {
+    "id": "uk-biobank-imaging",
+    "name": "UK Biobank Imaging",
+    "full_name": "UK Biobank Imaging Study",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2014,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "100,000 participants; 1B+ images",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "brain multi-sequence MRI (T1, FLAIR, SWI, fMRI, dMRI), cardiac/abdominal MRI, DXA, carotid US",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "classification"
+    ],
+    "tasks": [
+      "hosting",
+      "population-imaging"
+    ],
+    "license": "Approved application (fee)",
+    "access": "request",
+    "host": "ukbiobank.ac.uk",
+    "url": "https://www.ukbiobank.ac.uk/",
+    "description": "World's largest multi-modal imaging study, scanning 100,000 volunteers with brain/cardiac/abdominal MRI, DXA and carotid ultrasound linked to genetic and phenotypic data."
+  },
+  {
+    "id": "msd-suite",
+    "name": "Medical Segmentation Decathlon",
+    "full_name": "Medical Segmentation Decathlon (MSD)",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "10 tasks / ~2,600 3D volumes",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "includes multi-parametric MRI tasks (brain, prostate) and CT tasks",
+    "segmentation": true,
+    "segmentation_detail": "expert voxel-level labels for all 10 tasks",
+    "other_labels": [
+      "segmentation"
+    ],
+    "tasks": [
+      "segmentation",
+      "benchmarking"
+    ],
+    "license": "CC BY-SA 4.0",
+    "access": "open",
+    "host": "medicaldecathlon.com",
+    "url": "http://medicaldecathlon.com/",
+    "description": "Benchmark suite of ten 3D CT/MRI segmentation tasks with expert labels spanning diverse organs and lesions (individual tasks also listed separately)."
+  },
+  {
+    "id": "aws-open-data",
+    "name": "AWS Open Data",
+    "full_name": "Registry of Open Data on AWS",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2018,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "hundreds of datasets (incl. medical imaging)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "Varies by dataset",
+    "access": "open",
+    "host": "registry.opendata.aws",
+    "url": "https://registry.opendata.aws/",
+    "description": "Registry of openly available datasets hosted on AWS S3, including medical imaging resources such as the Medical Segmentation Decathlon and EMBED."
+  },
+  {
+    "id": "huggingface-medical",
+    "name": "Hugging Face",
+    "full_name": "Hugging Face Datasets (medical)",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2016,
+    "format": [
+      "Various"
+    ],
+    "raw_image": true,
+    "size": "thousands of medical/imaging datasets",
+    "paired_text": true,
+    "paired_text_detail": "hosts many image-text/report/VQA datasets (CT-RATE, RadGenome, VQA-RAD, PMC-OA)",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "vqa",
+      "captioning"
+    ],
+    "tasks": [
+      "hosting"
+    ],
+    "license": "Varies (some gated)",
+    "access": "open",
+    "host": "huggingface.co",
+    "url": "https://huggingface.co/datasets",
+    "description": "Machine-learning dataset hub hosting a large and growing collection of medical imaging and multimodal radiology datasets, some gated behind usage agreements."
+  },
+  {
+    "id": "radiopaedia",
+    "name": "Radiopaedia",
+    "full_name": "Radiopaedia.org",
+    "category": "Repository",
+    "anatomy": "various",
+    "modality": [
+      "Multiple"
+    ],
+    "year": 2005,
+    "format": [
+      "Various"
+    ],
+    "raw_image": false,
+    "size": "50,000+ cases, 900,000+ images",
+    "paired_text": true,
+    "paired_text_detail": "case descriptions, findings and teaching text per case",
+    "multi_sequence": true,
+    "multi_sequence_detail": "cases include multi-sequence MRI and multi-modality studies",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "captioning"
+    ],
+    "tasks": [
+      "education",
+      "reference"
+    ],
+    "license": "CC BY-NC-SA (per-case, varies)",
+    "access": "open",
+    "host": "radiopaedia.org",
+    "url": "https://radiopaedia.org/",
+    "description": "Collaborative open-edit radiology reference and teaching archive with tens of thousands of annotated cases spanning all modalities and body regions."
+  }
+]

@@ -1,0 +1,36 @@
+name: Track new datasets
+
+# Monthly scan of dataset-source APIs for open radiology datasets not yet in the
+# catalog. Opens (or updates) a single GitHub issue with candidates for review.
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"   # 06:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  track:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find candidate datasets
+        run: python3 scripts/find_new_datasets.py --limit 100 > report.md || echo "_tracker run failed_" > report.md
+      - name: Open or update review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          TITLE="📡 New open radiology dataset candidates"
+          NUM=$(gh issue list --state open --search "$TITLE in:title" \
+                --json number,title --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1)
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --body-file report.md
+            echo "Updated issue #$NUM"
+          else
+            gh issue create --title "$TITLE" --body-file report.md --label dataset-candidates \
+              || gh issue create --title "$TITLE" --body-file report.md
+          fi

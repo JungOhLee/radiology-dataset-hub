@@ -3,7 +3,10 @@
     "id": "brats-2021",
     "name": "BraTS 2021",
     "full_name": "RSNA-ASNR-MICCAI Brain Tumor Segmentation Challenge 2021",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -48,7 +51,10 @@
     "id": "brats-africa",
     "name": "BraTS-Africa",
     "full_name": "BraTS 2023: Glioma Segmentation in Sub-Saharan Africa",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -92,7 +98,10 @@
     "id": "brats-mets",
     "name": "BraTS-Mets",
     "full_name": "Brain Tumor Segmentation — Metastases 2023",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -135,7 +144,10 @@
     "id": "brats-peds",
     "name": "BraTS-PEDs",
     "full_name": "Pediatric Brain Tumor Segmentation 2023",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -178,7 +190,10 @@
     "id": "brats-men",
     "name": "BraTS-MEN",
     "full_name": "BraTS 2023 Intracranial Meningioma Segmentation",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -220,7 +235,10 @@
     "id": "upenn-gbm",
     "name": "UPenn-GBM",
     "full_name": "University of Pennsylvania Glioblastoma Cohort",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -267,7 +285,10 @@
     "id": "isles-2022",
     "name": "ISLES 2022",
     "full_name": "Ischemic Stroke Lesion Segmentation Challenge 2022",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -305,7 +326,10 @@
     "id": "atlas-r2",
     "name": "ATLAS R2.0",
     "full_name": "Anatomical Tracings of Lesions After Stroke, Release 2.0",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -347,7 +371,10 @@
     "id": "wmh-2017",
     "name": "WMH Segmentation Challenge",
     "full_name": "MICCAI 2017 White Matter Hyperintensity Segmentation Challenge",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -389,7 +416,10 @@
     "id": "msseg-2",
     "name": "MSSEG-2",
     "full_name": "MICCAI 2021 MS New Lesions Segmentation Challenge",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -432,7 +462,10 @@
     "id": "shifts-ms",
     "name": "Shifts MS",
     "full_name": "Shifts Multiple Sclerosis Lesion Segmentation (Shifts 2.0)",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -475,7 +508,10 @@
     "id": "episurg",
     "name": "EPISURG",
     "full_name": "EPISURG: Postoperative MRI for Resection Neurosurgery in Epilepsy",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -516,7 +552,10 @@
     "id": "adni",
     "name": "ADNI",
     "full_name": "Alzheimer's Disease Neuroimaging Initiative",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI",
@@ -564,7 +603,10 @@
     "id": "oasis-1",
     "name": "OASIS-1",
     "full_name": "Open Access Series of Imaging Studies, Cross-sectional",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -610,7 +652,10 @@
     "id": "oasis-3",
     "name": "OASIS-3",
     "full_name": "Open Access Series of Imaging Studies, Longitudinal Multimodal",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI",
@@ -658,7 +703,10 @@
     "id": "ixi",
     "name": "IXI",
     "full_name": "Information eXtraction from Images",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -708,7 +756,10 @@
     "id": "abide",
     "name": "ABIDE",
     "full_name": "Autism Brain Imaging Data Exchange",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -754,7 +805,10 @@
     "id": "hcp-ya",
     "name": "HCP Young Adult",
     "full_name": "Human Connectome Project — WU-Minn Young Adult (1200 Subjects)",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -801,7 +855,10 @@
     "id": "rsna-ich",
     "name": "RSNA 2019 ICH Detection",
     "full_name": "RSNA 2019 Intracranial Hemorrhage Detection Challenge",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "CT"
@@ -847,7 +904,10 @@
     "id": "rsna-aneurysm",
     "name": "RSNA 2025 Aneurysm Detection",
     "full_name": "RSNA Intracranial Aneurysm Detection AI Challenge 2025",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "CT",
@@ -907,7 +967,10 @@
     "id": "cq500",
     "name": "CQ500",
     "full_name": "CQ500 Head CT Dataset (qure.ai)",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "CT"
@@ -955,7 +1018,10 @@
     "id": "adam-aneurysm",
     "name": "ADAM",
     "full_name": "Aneurysm Detection And segMentation Challenge 2020",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -1002,7 +1068,10 @@
     "id": "cada",
     "name": "CADA",
     "full_name": "Cerebral Aneurysm Detection and Analysis Challenge 2020",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "cerebral vessels",
     "modality": [
       "X-ray"
@@ -1049,7 +1118,10 @@
     "id": "instance-2022",
     "name": "INSTANCE 2022",
     "full_name": "2022 Intracranial Hemorrhage Segmentation on Non-Contrast head CT",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "CT"
@@ -1090,7 +1162,10 @@
     "id": "verse",
     "name": "VerSe",
     "full_name": "Large Scale Vertebrae Segmentation Challenge (2019 & 2020)",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "spine",
     "modality": [
       "CT"
@@ -1132,7 +1207,10 @@
     "id": "rsna-cspine",
     "name": "RSNA 2022 Cervical Spine Fracture",
     "full_name": "RSNA 2022 Cervical Spine Fracture Detection Challenge",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "spine",
     "modality": [
       "CT"
@@ -1180,7 +1258,10 @@
     "id": "calgary-campinas",
     "name": "Calgary-Campinas CC-359",
     "full_name": "Calgary-Campinas-359 Public Brain MR Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -1224,7 +1305,10 @@
     "id": "mindboggle-101",
     "name": "Mindboggle-101",
     "full_name": "Mindboggle-101 Manually Labeled Individual Brains",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -1268,7 +1352,10 @@
     "id": "fastmri-brain",
     "name": "fastMRI Brain",
     "full_name": "NYU Langone & FAIR fastMRI Brain Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -1312,7 +1399,10 @@
     "id": "mrbrains",
     "name": "MRBrainS",
     "full_name": "MRBrainS MICCAI Brain Tissue Segmentation (2013 & 2018)",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "brain",
     "modality": [
       "MRI"
@@ -1363,7 +1453,10 @@
     "id": "iseg",
     "name": "iSeg",
     "full_name": "6-month Infant Brain MRI Segmentation Challenge (2017 & 2019)",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "fetal-brain",
     "modality": [
       "MRI"
@@ -1406,7 +1499,10 @@
     "id": "feta",
     "name": "FeTA",
     "full_name": "Fetal Tissue Annotation and Segmentation Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "fetal-brain",
     "modality": [
       "MRI"
@@ -1452,7 +1548,10 @@
     "id": "nih-chestxray14",
     "name": "NIH ChestX-ray14",
     "full_name": "ChestX-ray14 (ChestX-ray8) — NIH Clinical Center",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1495,7 +1594,10 @@
     "id": "chexpert",
     "name": "CheXpert",
     "full_name": "CheXpert: Large Chest Radiograph Dataset with Uncertainty Labels",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1536,7 +1638,10 @@
     "id": "mimic-cxr",
     "name": "MIMIC-CXR",
     "full_name": "MIMIC Chest X-ray Database",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1578,7 +1683,10 @@
     "id": "mimic-cxr-jpg",
     "name": "MIMIC-CXR-JPG",
     "full_name": "MIMIC-CXR-JPG — chest radiographs with structured labels",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1622,7 +1730,10 @@
     "id": "padchest",
     "name": "PadChest",
     "full_name": "PadChest: chest X-ray dataset with multi-label annotated reports",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1669,7 +1780,10 @@
     "id": "vindr-cxr",
     "name": "VinDr-CXR",
     "full_name": "VinDr-CXR: chest X-rays with radiologist annotations",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1712,7 +1826,10 @@
     "id": "vindr-pcxr",
     "name": "VinDr-PCXR",
     "full_name": "VinDr-PCXR: pediatric chest X-ray dataset",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1759,7 +1876,10 @@
     "id": "rsna-pneumonia",
     "name": "RSNA Pneumonia Detection",
     "full_name": "RSNA Pneumonia Detection Challenge (2018)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1804,7 +1924,10 @@
     "id": "siim-acr-pneumothorax",
     "name": "SIIM-ACR Pneumothorax",
     "full_name": "SIIM-ACR Pneumothorax Segmentation (2019)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1849,7 +1972,10 @@
     "id": "openi-iu-cxr",
     "name": "Open-i / Indiana University CXR",
     "full_name": "Indiana University Chest X-ray Collection (NLM Open-i)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -1896,7 +2022,10 @@
     "id": "shenzhen-tb",
     "name": "Shenzhen Hospital CXR Set",
     "full_name": "Shenzhen No.3 People's Hospital Chest X-ray Set (NLM TB)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "X-ray"
@@ -1939,7 +2068,10 @@
     "id": "montgomery-tb",
     "name": "Montgomery County CXR Set",
     "full_name": "Montgomery County Chest X-ray Set (NLM TB)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "X-ray"
@@ -1984,7 +2116,10 @@
     "id": "object-cxr",
     "name": "Object-CXR",
     "full_name": "object-CXR: Foreign Objects on Chest X-rays",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -2031,7 +2166,10 @@
     "id": "candid-ptx",
     "name": "CANDID-PTX",
     "full_name": "CANDID-PTX chest radiographs",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -2077,7 +2215,10 @@
     "id": "brax",
     "name": "BRAX",
     "full_name": "BRAX, a Brazilian labeled chest X-ray dataset",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -2119,7 +2260,10 @@
     "id": "bimcv-covid19",
     "name": "BIMCV-COVID19",
     "full_name": "BIMCV COVID-19 Dataset (Valencia Region)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray",
@@ -2169,7 +2313,10 @@
     "id": "covid19-radiography",
     "name": "COVID-19 Radiography Database",
     "full_name": "COVID-19 Radiography Database (Chowdhury et al.)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -2215,7 +2362,10 @@
     "id": "covidx-cxr",
     "name": "COVIDx CXR",
     "full_name": "COVIDx CXR (COVID-Net Open Source Initiative)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -2258,7 +2408,10 @@
     "id": "lidc-idri",
     "name": "LIDC-IDRI",
     "full_name": "Lung Image Database Consortium and Image Database Resource Initiative",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT"
@@ -2304,7 +2457,10 @@
     "id": "luna16",
     "name": "LUNA16",
     "full_name": "LUng Nodule Analysis 2016 Challenge",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT"
@@ -2347,7 +2503,10 @@
     "id": "nsclc-radiomics",
     "name": "NSCLC-Radiomics",
     "full_name": "NSCLC-Radiomics (Lung1; Aerts et al.)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT"
@@ -2395,7 +2554,10 @@
     "id": "nsclc-radiogenomics",
     "name": "NSCLC-Radiogenomics",
     "full_name": "NSCLC Radiogenomics (Stanford/VA Palo Alto)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT",
@@ -2444,7 +2606,10 @@
     "id": "rsna-pe",
     "name": "RSNA-STR Pulmonary Embolism CT",
     "full_name": "RSNA-STR Pulmonary Embolism CT (RSPECT)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "thorax",
     "modality": [
       "CT"
@@ -2494,7 +2659,10 @@
     "id": "lndb",
     "name": "LNDb",
     "full_name": "Lung Nodule Database (LNDb)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT"
@@ -2542,7 +2710,10 @@
     "id": "mosmeddata",
     "name": "MosMedData",
     "full_name": "MosMedData: Chest CT with COVID-19 Related Findings",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT"
@@ -2589,7 +2760,10 @@
     "id": "covid19-ct-seg",
     "name": "COVID-19-CT-Seg",
     "full_name": "COVID-19 CT Lung and Infection Segmentation Dataset",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT"
@@ -2630,7 +2804,10 @@
     "id": "nlst",
     "name": "NLST",
     "full_name": "National Lung Screening Trial",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "CT"
@@ -2676,7 +2853,10 @@
     "id": "lung-pet-ct-dx",
     "name": "Lung-PET-CT-Dx",
     "full_name": "Large-Scale CT and PET/CT Dataset for Lung Cancer Diagnosis",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lung",
     "modality": [
       "CT",
@@ -2723,7 +2903,10 @@
     "id": "empire10",
     "name": "EMPIRE10",
     "full_name": "Evaluation of Methods for Pulmonary Image Registration 2010",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "thorax",
     "modality": [
       "CT"
@@ -2766,7 +2949,10 @@
     "id": "acdc",
     "name": "ACDC",
     "full_name": "Automated Cardiac Diagnosis Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "heart (LV, RV, myocardium)",
     "modality": [
       "MRI"
@@ -2810,7 +2996,10 @@
     "id": "mnms",
     "name": "M&Ms",
     "full_name": "Multi-Centre, Multi-Vendor & Multi-Disease Cardiac Image Segmentation Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "heart (LV, RV, myocardium)",
     "modality": [
       "MRI"
@@ -2852,7 +3041,10 @@
     "id": "mnms-2",
     "name": "M&Ms-2",
     "full_name": "Multi-Disease, Multi-View & Multi-Center Right Ventricular Segmentation Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "right ventricle",
     "modality": [
       "MRI"
@@ -2897,7 +3089,10 @@
     "id": "emidec",
     "name": "EMIDEC",
     "full_name": "Evaluation of Myocardial Infarction from Delayed-Enhancement Cardiac MRI",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "myocardium (infarct)",
     "modality": [
       "MRI"
@@ -2946,7 +3141,10 @@
     "id": "myops-2020",
     "name": "MyoPS 2020",
     "full_name": "Myocardial Pathology Segmentation Combining Multi-Sequence CMR",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "myocardium (scar, edema)",
     "modality": [
       "MRI"
@@ -2992,7 +3190,10 @@
     "id": "sunnybrook-cardiac",
     "name": "Sunnybrook Cardiac Data",
     "full_name": "Sunnybrook Cardiac Data (2009 LV Segmentation Challenge)",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "left ventricle",
     "modality": [
       "MRI"
@@ -3037,7 +3238,10 @@
     "id": "mmwhs",
     "name": "MM-WHS",
     "full_name": "Multi-Modality Whole Heart Segmentation",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "whole heart",
     "modality": [
       "CT",
@@ -3084,7 +3288,10 @@
     "id": "lascarqs-2022",
     "name": "LAScarQS 2022",
     "full_name": "Left Atrial and Scar Quantification & Segmentation Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "left atrium (and atrial scar)",
     "modality": [
       "MRI"
@@ -3125,7 +3332,10 @@
     "id": "atriaseg-2018",
     "name": "Atria Seg 2018",
     "full_name": "2018 Left Atrium Segmentation Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "left atrium",
     "modality": [
       "MRI"
@@ -3166,7 +3376,10 @@
     "id": "msd-heart",
     "name": "MSD Heart (Task02)",
     "full_name": "Medical Segmentation Decathlon — Task02 Heart",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "left atrium",
     "modality": [
       "MRI"
@@ -3207,7 +3420,10 @@
     "id": "rvsc",
     "name": "RVSC",
     "full_name": "Right Ventricle Segmentation Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "right ventricle",
     "modality": [
       "MRI"
@@ -3249,7 +3465,10 @@
     "id": "cmrxrecon",
     "name": "CMRxRecon",
     "full_name": "Cardiac MRI Reconstruction Challenge",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "heart",
     "modality": [
       "MRI"
@@ -3298,7 +3517,10 @@
     "id": "asoca",
     "name": "ASOCA",
     "full_name": "Automated Segmentation of Coronary Arteries",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "coronary artery",
     "modality": [
       "CT"
@@ -3342,7 +3564,10 @@
     "id": "imagecas",
     "name": "ImageCAS",
     "full_name": "ImageCAS: Large-Scale Coronary Artery Segmentation Dataset",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "coronary artery",
     "modality": [
       "CT"
@@ -3383,7 +3608,10 @@
     "id": "orcascore",
     "name": "orCaScore",
     "full_name": "Coronary Calcium Scoring Challenge",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "coronary artery (calcium)",
     "modality": [
       "CT"
@@ -3429,7 +3657,10 @@
     "id": "coca-stanford",
     "name": "COCA (Stanford)",
     "full_name": "COCA — Coronary Calcium and Chest CTs",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "coronary artery (calcium)",
     "modality": [
       "CT"
@@ -3475,7 +3706,10 @@
     "id": "avt",
     "name": "AVT",
     "full_name": "Aortic Vessel Tree CTA Dataset Collection",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "aorta",
     "modality": [
       "CT"
@@ -3517,7 +3751,10 @@
     "id": "msd-liver",
     "name": "MSD Liver (Task03)",
     "full_name": "Medical Segmentation Decathlon — Task03 Liver",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "liver",
     "modality": [
       "CT"
@@ -3557,7 +3794,10 @@
     "id": "msd-pancreas",
     "name": "MSD Pancreas (Task07)",
     "full_name": "Medical Segmentation Decathlon — Task07 Pancreas",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "pancreas",
     "modality": [
       "CT"
@@ -3599,7 +3839,10 @@
     "id": "msd-spleen",
     "name": "MSD Spleen (Task09)",
     "full_name": "Medical Segmentation Decathlon — Task09 Spleen",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "spleen",
     "modality": [
       "CT"
@@ -3641,7 +3884,10 @@
     "id": "msd-colon",
     "name": "MSD Colon (Task10)",
     "full_name": "Medical Segmentation Decathlon — Task10 Colon",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "colon",
     "modality": [
       "CT"
@@ -3682,7 +3928,10 @@
     "id": "msd-hepatic-vessel",
     "name": "MSD Hepatic Vessel (Task08)",
     "full_name": "Medical Segmentation Decathlon — Task08 Hepatic Vessel",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "liver (hepatic vessels)",
     "modality": [
       "CT"
@@ -3724,7 +3973,10 @@
     "id": "msd-prostate",
     "name": "MSD Prostate (Task05)",
     "full_name": "Medical Segmentation Decathlon — Task05 Prostate",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "prostate",
     "modality": [
       "MRI"
@@ -3767,7 +4019,10 @@
     "id": "btcv-synapse",
     "name": "BTCV / Synapse Multi-organ",
     "full_name": "Beyond the Cranial Vault Abdomen Multi-Organ Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -3805,7 +4060,11 @@
     "id": "amos22",
     "name": "AMOS22",
     "full_name": "AMOS 2022 Multi-Modality Abdominal Multi-Organ Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Pelvis"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT",
@@ -3844,7 +4103,12 @@
     "id": "amos-mm",
     "name": "AMOS-MM",
     "full_name": "AMOS-MM Abdominal Multimodal Analysis Challenge",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Chest",
+      "Abdomen",
+      "Pelvis"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -3892,7 +4156,14 @@
     "id": "totalsegmentator",
     "name": "TotalSegmentator",
     "full_name": "TotalSegmentator CT Dataset (v2)",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro",
+      "Chest",
+      "Abdomen",
+      "MSK"
+    ],
     "anatomy": "multi-organ (whole body)",
     "modality": [
       "CT"
@@ -3931,7 +4202,10 @@
     "id": "kits19",
     "name": "KiTS19",
     "full_name": "2019 Kidney Tumor Segmentation Challenge",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "kidney",
     "modality": [
       "CT"
@@ -3972,7 +4246,10 @@
     "id": "kits21",
     "name": "KiTS21",
     "full_name": "2021 Kidney and Kidney Tumor Segmentation Challenge",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "kidney",
     "modality": [
       "CT"
@@ -4015,7 +4292,10 @@
     "id": "kits23",
     "name": "KiTS23",
     "full_name": "2023 Kidney and Kidney Tumor Segmentation Challenge",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "kidney",
     "modality": [
       "CT"
@@ -4056,7 +4336,10 @@
     "id": "lits",
     "name": "LiTS",
     "full_name": "Liver Tumor Segmentation Benchmark (LiTS17)",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "liver",
     "modality": [
       "CT"
@@ -4095,7 +4378,10 @@
     "id": "chaos",
     "name": "CHAOS",
     "full_name": "Combined (CT-MR) Healthy Abdominal Organ Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ (liver, kidneys, spleen)",
     "modality": [
       "CT",
@@ -4142,7 +4428,10 @@
     "id": "word",
     "name": "WORD",
     "full_name": "Whole abdominal ORgan Dataset",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -4199,7 +4488,10 @@
     "id": "flare21",
     "name": "FLARE21",
     "full_name": "MICCAI 2021 Fast and Low-resource Abdominal Organ Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -4242,7 +4534,10 @@
     "id": "flare22",
     "name": "FLARE22",
     "full_name": "MICCAI FLARE 2022 Abdominal Organ Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -4294,7 +4589,10 @@
     "id": "flare23",
     "name": "FLARE23",
     "full_name": "MICCAI FLARE 2023 Organ + Pan-cancer Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ + tumor",
     "modality": [
       "CT"
@@ -4347,7 +4645,10 @@
     "id": "pancreas-ct-nih",
     "name": "Pancreas-CT (NIH)",
     "full_name": "NIH Pancreas-CT",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "pancreas",
     "modality": [
       "CT"
@@ -4389,7 +4690,12 @@
     "id": "ct-org",
     "name": "CT-ORG",
     "full_name": "CT volumes with multiple organ segmentations",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Chest",
+      "Abdomen"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -4435,7 +4741,10 @@
     "id": "abdomenct-1k",
     "name": "AbdomenCT-1K",
     "full_name": "AbdomenCT-1K",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "multi-organ",
     "modality": [
       "CT"
@@ -4479,7 +4788,10 @@
     "id": "pi-cai",
     "name": "PI-CAI",
     "full_name": "PI-CAI: Prostate Imaging — Cancer AI",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "prostate",
     "modality": [
       "MRI"
@@ -4523,7 +4835,10 @@
     "id": "prostate158",
     "name": "Prostate158",
     "full_name": "Prostate158: expert-annotated 3T bpMRI dataset",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "prostate",
     "modality": [
       "MRI"
@@ -4565,7 +4880,10 @@
     "id": "promise12",
     "name": "PROMISE12",
     "full_name": "MICCAI Prostate MR Image Segmentation 2012",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "prostate",
     "modality": [
       "MRI"
@@ -4606,7 +4924,10 @@
     "id": "prostatex",
     "name": "ProstateX",
     "full_name": "SPIE-AAPM-NCI PROSTATEx Challenges",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "prostate",
     "modality": [
       "MRI"
@@ -4652,7 +4973,10 @@
     "id": "lld-mmri",
     "name": "LLD-MMRI",
     "full_name": "Liver Lesion Diagnosis on Multi-phase MRI",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "liver",
     "modality": [
       "MRI"
@@ -4705,7 +5029,11 @@
     "id": "ct-colonography",
     "name": "CT Colonography",
     "full_name": "CT COLONOGRAPHY (ACRIN 6664)",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Pelvis"
+    ],
     "anatomy": "colon",
     "modality": [
       "CT"
@@ -4750,7 +5078,10 @@
     "id": "mrnet",
     "name": "MRNet",
     "full_name": "MRNet Knee MRI Dataset",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "knee",
     "modality": [
       "MRI"
@@ -4792,7 +5123,10 @@
     "id": "fastmri-knee",
     "name": "fastMRI knee",
     "full_name": "fastMRI Knee Raw k-Space and DICOM Dataset",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "knee",
     "modality": [
       "MRI"
@@ -4831,7 +5165,10 @@
     "id": "oai",
     "name": "OAI",
     "full_name": "Osteoarthritis Initiative",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "knee",
     "modality": [
       "MRI",
@@ -4877,7 +5214,10 @@
     "id": "mura",
     "name": "MURA",
     "full_name": "MURA: Musculoskeletal Radiographs",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "musculoskeletal",
     "modality": [
       "X-ray"
@@ -4921,7 +5261,10 @@
     "id": "rsna-bone-age",
     "name": "RSNA Bone Age",
     "full_name": "RSNA Pediatric Bone Age Challenge (2017)",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "hand",
     "modality": [
       "X-ray"
@@ -4965,7 +5308,10 @@
     "id": "skm-tea",
     "name": "SKM-TEA",
     "full_name": "Stanford Knee MRI Multi-Task Evaluation (SKM-TEA)",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "knee",
     "modality": [
       "MRI"
@@ -5011,7 +5357,10 @@
     "id": "kneemri-rijeka",
     "name": "KneeMRI",
     "full_name": "KneeMRI Dataset (Clinical Hospital Centre Rijeka)",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "knee",
     "modality": [
       "MRI"
@@ -5057,7 +5406,10 @@
     "id": "digital-hand-atlas",
     "name": "Digital Hand Atlas",
     "full_name": "Digital Hand Atlas for Skeletal Development",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "hand",
     "modality": [
       "X-ray"
@@ -5104,7 +5456,10 @@
     "id": "lera",
     "name": "LERA",
     "full_name": "LERA — Lower Extremity Radiographs",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "lower extremity",
     "modality": [
       "X-ray"
@@ -5148,7 +5503,10 @@
     "id": "rsna-screening-mammography",
     "name": "RSNA Screening Mammography",
     "full_name": "RSNA Screening Mammography Breast Cancer Detection (2023)",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "mammography",
     "modality": [
       "X-ray"
@@ -5204,7 +5562,10 @@
     "id": "cbis-ddsm",
     "name": "CBIS-DDSM",
     "full_name": "Curated Breast Imaging Subset of DDSM",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "mammography",
     "modality": [
       "X-ray"
@@ -5249,7 +5610,10 @@
     "id": "vindr-mammo",
     "name": "VinDr-Mammo",
     "full_name": "VinDr-Mammo: full-field digital mammography benchmark",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "mammography",
     "modality": [
       "X-ray"
@@ -5297,7 +5661,10 @@
     "id": "cmmd",
     "name": "CMMD",
     "full_name": "The Chinese Mammography Database",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "mammography",
     "modality": [
       "X-ray"
@@ -5342,7 +5709,10 @@
     "id": "inbreast",
     "name": "INbreast",
     "full_name": "INbreast: full-field digital mammographic database",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "mammography",
     "modality": [
       "X-ray"
@@ -5398,7 +5768,10 @@
     "id": "duke-breast-mri",
     "name": "Duke Breast Cancer MRI",
     "full_name": "Dynamic Contrast-Enhanced MRI of Breast Cancer Patients (Duke)",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "breast",
     "modality": [
       "MRI"
@@ -5445,7 +5818,10 @@
     "id": "breast-diagnosis",
     "name": "Breast-Diagnosis",
     "full_name": "BREAST-DIAGNOSIS",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "breast",
     "modality": [
       "MRI",
@@ -5494,7 +5870,10 @@
     "id": "bcs-dbt",
     "name": "BCS-DBT",
     "full_name": "Breast Cancer Screening — Digital Breast Tomosynthesis",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "breast",
     "modality": [
       "X-ray"
@@ -5542,7 +5921,10 @@
     "id": "ispy1",
     "name": "ISPY1 (ACRIN 6657)",
     "full_name": "Breast DCE-MRI from the I-SPY 1 / ACRIN 6657 trial",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "breast",
     "modality": [
       "MRI"
@@ -5588,7 +5970,10 @@
     "id": "ispy2",
     "name": "ISPY2",
     "full_name": "I-SPY 2 TRIAL Breast DCE-MRI",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "breast",
     "modality": [
       "MRI"
@@ -5633,7 +6018,10 @@
     "id": "breastdm",
     "name": "BreastDM",
     "full_name": "BreastDM: DCE-MRI dataset for breast tumor segmentation and classification",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "breast",
     "modality": [
       "MRI"
@@ -5677,7 +6065,10 @@
     "id": "embed",
     "name": "EMBED",
     "full_name": "EMory BrEast imaging Dataset (EMBED)",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "mammography",
     "modality": [
       "X-ray"
@@ -5727,7 +6118,10 @@
     "id": "hecktor",
     "name": "HECKTOR",
     "full_name": "HEad and neCK TumOR segmentation and outcome prediction challenge",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "oropharynx",
     "modality": [
       "PET",
@@ -5772,7 +6166,10 @@
     "id": "hnscc",
     "name": "HNSCC",
     "full_name": "Head and Neck Squamous Cell Carcinoma (MD Anderson)",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck",
     "modality": [
       "CT",
@@ -5821,7 +6218,10 @@
     "id": "head-neck-radiomics-hn1",
     "name": "HN1",
     "full_name": "HEAD-NECK-RADIOMICS-HN1",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck",
     "modality": [
       "CT"
@@ -5866,7 +6266,10 @@
     "id": "tcga-hnsc",
     "name": "TCGA-HNSC",
     "full_name": "TCGA Head-Neck Squamous Cell Carcinoma Collection",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck",
     "modality": [
       "CT",
@@ -5914,7 +6317,10 @@
     "id": "head-neck-pet-ct",
     "name": "Head-Neck-PET-CT",
     "full_name": "Head-Neck-PET-CT",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck",
     "modality": [
       "PET",
@@ -5964,7 +6370,10 @@
     "id": "radcure",
     "name": "RADCURE",
     "full_name": "CT Images from a Large Head and Neck Cohort (RADCURE)",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck",
     "modality": [
       "CT"
@@ -6011,7 +6420,10 @@
     "id": "qin-headneck",
     "name": "QIN-HeadNeck",
     "full_name": "QIN-HEADNECK",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck",
     "modality": [
       "PET",
@@ -6058,7 +6470,10 @@
     "id": "dentex",
     "name": "DENTEX",
     "full_name": "Dental Enumeration and Diagnosis on Panoramic X-rays (MICCAI 2023)",
-    "category": "Dental",
+    "type": "dataset",
+    "regions": [
+      "Dental"
+    ],
     "anatomy": "panoramic dental",
     "modality": [
       "X-ray"
@@ -6106,7 +6521,10 @@
     "id": "tufts-dental",
     "name": "Tufts Dental Database",
     "full_name": "Tufts Dental Database (TDD): multimodal panoramic X-ray dataset",
-    "category": "Dental",
+    "type": "dataset",
+    "regions": [
+      "Dental"
+    ],
     "anatomy": "panoramic dental",
     "modality": [
       "X-ray"
@@ -6155,7 +6573,10 @@
     "id": "toothfairy2",
     "name": "ToothFairy2",
     "full_name": "ToothFairy2: Multi-Structure Segmentation in CBCT (MICCAI 2024)",
-    "category": "Dental",
+    "type": "dataset",
+    "regions": [
+      "Dental"
+    ],
     "anatomy": "teeth and jaw (CBCT)",
     "modality": [
       "CT"
@@ -6210,7 +6631,10 @@
     "id": "ctooth",
     "name": "CTooth",
     "full_name": "CTooth: 3D Tooth Volume Segmentation on CBCT",
-    "category": "Dental",
+    "type": "dataset",
+    "regions": [
+      "Dental"
+    ],
     "anatomy": "teeth (CBCT)",
     "modality": [
       "CT"
@@ -6251,7 +6675,10 @@
     "id": "autopet-i",
     "name": "autoPET I",
     "full_name": "Automated Lesion Segmentation in Whole-Body FDG-PET/CT (autoPET 2022)",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody"
+    ],
     "anatomy": "whole-body",
     "modality": [
       "PET",
@@ -6293,7 +6720,10 @@
     "id": "autopet-iii",
     "name": "autoPET III",
     "full_name": "Automated Lesion Segmentation in Multitracer PET/CT (autoPET III 2024)",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody"
+    ],
     "anatomy": "whole-body",
     "modality": [
       "PET",
@@ -6339,7 +6769,10 @@
     "id": "fdg-pet-ct-lesions",
     "name": "FDG-PET-CT-Lesions",
     "full_name": "Whole-body FDG-PET/CT dataset with manually annotated tumor lesions",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody"
+    ],
     "anatomy": "whole-body",
     "modality": [
       "PET",
@@ -6384,7 +6817,10 @@
     "id": "psma-pet-ct-lesions",
     "name": "PSMA-PET-CT-Lesions",
     "full_name": "Whole-body PSMA-PET/CT dataset with manually annotated tumor lesions",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody"
+    ],
     "anatomy": "whole-body",
     "modality": [
       "PET",
@@ -6427,7 +6863,10 @@
     "id": "roco",
     "name": "ROCO",
     "full_name": "Radiology Objects in COntext",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "various",
     "modality": [
       "X-ray",
@@ -6479,7 +6918,10 @@
     "id": "rocov2",
     "name": "ROCOv2",
     "full_name": "Radiology Objects in COntext Version 2",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "various",
     "modality": [
       "X-ray",
@@ -6530,7 +6972,10 @@
     "id": "medicat",
     "name": "MedICaT",
     "full_name": "Medical Images, Captions, and Textual References",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "various",
     "modality": [
       "X-ray",
@@ -6578,7 +7023,10 @@
     "id": "pmc-oa",
     "name": "PMC-OA",
     "full_name": "PMC-OA (PMC-CLIP corpus)",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "various",
     "modality": [
       "X-ray",
@@ -6627,7 +7075,10 @@
     "id": "vqa-rad",
     "name": "VQA-RAD",
     "full_name": "Visual Question Answering in Radiology",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "multi",
     "modality": [
       "X-ray",
@@ -6674,7 +7125,10 @@
     "id": "slake",
     "name": "SLAKE",
     "full_name": "Semantically-Labeled Knowledge-Enhanced Dataset",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "multi",
     "modality": [
       "X-ray",
@@ -6727,7 +7181,10 @@
     "id": "ms-cxr",
     "name": "MS-CXR",
     "full_name": "MS-CXR: Making the Most of Text Semantics",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -6771,7 +7228,10 @@
     "id": "chest-imagenome",
     "name": "Chest ImaGenome",
     "full_name": "Chest ImaGenome",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -6819,7 +7279,10 @@
     "id": "reflacx",
     "name": "REFLACX",
     "full_name": "Reports and Eye-Tracking Data for Localization of Abnormalities in Chest X-rays",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -6865,7 +7328,10 @@
     "id": "medical-diff-vqa",
     "name": "Medical-Diff-VQA",
     "full_name": "Medical-Diff-VQA",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -6916,7 +7382,10 @@
     "id": "radgenome-chestct",
     "name": "RadGenome-ChestCT",
     "full_name": "RadGenome-Chest CT",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "CT"
@@ -6964,7 +7433,10 @@
     "id": "inspect",
     "name": "INSPECT",
     "full_name": "Integrating Numerous Sources for Prognostic Evaluation of Clinical Timelines",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "CT"
@@ -7010,7 +7482,10 @@
     "id": "maida",
     "name": "MAIDA",
     "full_name": "Medical AI Data for All",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest",
     "modality": [
       "X-ray"
@@ -7057,7 +7532,8 @@
     "id": "tcia",
     "name": "TCIA",
     "full_name": "The Cancer Imaging Archive",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7088,7 +7564,8 @@
     "id": "physionet",
     "name": "PhysioNet",
     "full_name": "PhysioNet",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7119,7 +7596,8 @@
     "id": "openneuro",
     "name": "OpenNeuro",
     "full_name": "OpenNeuro",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7150,7 +7628,8 @@
     "id": "grand-challenge",
     "name": "Grand Challenge",
     "full_name": "Grand Challenge",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7185,7 +7664,8 @@
     "id": "synapse",
     "name": "Synapse",
     "full_name": "Synapse (Sage Bionetworks)",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7217,7 +7697,8 @@
     "id": "zenodo",
     "name": "Zenodo",
     "full_name": "Zenodo",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7248,7 +7729,8 @@
     "id": "kaggle-datasets",
     "name": "Kaggle Datasets",
     "full_name": "Kaggle Datasets",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7282,7 +7764,8 @@
     "id": "stanford-aimi",
     "name": "Stanford AIMI",
     "full_name": "Stanford AIMI Shared Datasets",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7316,7 +7799,8 @@
     "id": "nci-idc",
     "name": "IDC",
     "full_name": "NCI Imaging Data Commons",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7350,7 +7834,8 @@
     "id": "uk-biobank-imaging",
     "name": "UK Biobank Imaging",
     "full_name": "UK Biobank Imaging Study",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7384,7 +7869,8 @@
     "id": "msd-suite",
     "name": "Medical Segmentation Decathlon",
     "full_name": "Medical Segmentation Decathlon (MSD)",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "CT",
@@ -7419,7 +7905,8 @@
     "id": "aws-open-data",
     "name": "AWS Open Data",
     "full_name": "Registry of Open Data on AWS",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7450,7 +7937,8 @@
     "id": "huggingface-medical",
     "name": "Hugging Face",
     "full_name": "Hugging Face Datasets (medical)",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7484,7 +7972,8 @@
     "id": "radiopaedia",
     "name": "Radiopaedia",
     "full_name": "Radiopaedia.org",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "various",
     "modality": [
       "Multiple"
@@ -7515,9 +8004,13 @@
     "description": "Collaborative open-edit radiology reference and teaching archive with tens of thousands of annotated cases spanning all modalities and body regions."
   },
   {
+    "id": "ct-rate",
     "name": "CT-RATE",
     "full_name": "Chest CT with Radiology Text and Extended labels",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Chest/Thorax",
     "modality": [
       "CT"
@@ -7549,7 +8042,6 @@
     "host": "Hugging Face (ibrahimhamamci/CT-RATE)",
     "url": "https://huggingface.co/datasets/ibrahimhamamci/CT-RATE",
     "description": "A large-scale 3D chest CT dataset of 25,692 non-contrast volumes from 21,304 patients paired with free-text radiology reports and 18-class multi-abnormality labels, used to train the CT-CLIP foundation model.",
-    "id": "ct-rate",
     "details": {
       "label_schema": [
         "Multi-label classification: 18 binary abnormality labels per CT volume, extracted from radiology reports",
@@ -7579,9 +8071,13 @@
     }
   },
   {
+    "id": "mr-rate",
     "name": "MR-RATE",
     "full_name": "MRI with Radiology Text and Extended labels",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain and spine",
     "modality": [
       "MRI"
@@ -7614,7 +8110,6 @@
     "host": "Hugging Face (Forithmus/MR-RATE)",
     "url": "https://huggingface.co/datasets/Forithmus/MR-RATE",
     "description": "A large-scale brain and spine MRI dataset of over 705,000 multi-sequence volumes from ~98,000 studies paired with structured radiology reports and segmentation masks.",
-    "id": "mr-rate",
     "details": {
       "label_schema": [
         "Structured radiology reports split into 4 sections: clinical_information, technique, findings, impression (plus full report text)",
@@ -7628,9 +8123,14 @@
     }
   },
   {
+    "id": "merlin",
     "name": "Merlin",
     "full_name": "Merlin: A Computed Tomography Vision-Language Foundation Model and Dataset",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Pelvis"
+    ],
     "anatomy": "Abdomen and pelvis",
     "modality": [
       "CT"
@@ -7662,7 +8162,6 @@
     "host": "Stanford AIMI Shared Datasets",
     "url": "https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40",
     "description": "A native-3D abdominal/pelvic CT dataset of 25,494 scans from 18,317 patients paired with radiology reports and ICD/EHR diagnosis codes, released to train the Merlin CT vision-language foundation model.",
-    "id": "merlin",
     "details": {
       "label_schema": [
         "Free-text radiology reports paired with each abdominal CT (findings + impression sections; ~10.05M tokens in the findings sections used for training)",
@@ -7677,9 +8176,13 @@
     }
   },
   {
+    "id": "rexgradient-160k",
     "name": "ReXGradient-160K",
     "full_name": "ReXGradient-160K: A Large-Scale Publicly Available Dataset of Chest Radiographs with Free-text Reports",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Chest/Thorax",
     "modality": [
       "X-ray"
@@ -7711,7 +8214,6 @@
     "host": "Hugging Face (rajpurkarlab/ReXGradient-160K)",
     "url": "https://huggingface.co/datasets/rajpurkarlab/ReXGradient-160K",
     "description": "A large multi-site chest X-ray dataset of 273,004 PNG images from 160,000 studies across 79 U.S. sites, each paired with structured free-text radiology reports.",
-    "id": "rexgradient-160k",
     "details": {
       "label_schema": [
         "Free-text radiology report per study, structured into 4 sections: Indication, Comparison, Findings, Impression",
@@ -7724,9 +8226,13 @@
     }
   },
   {
+    "id": "padchest-gr",
     "name": "PadChest-GR",
     "full_name": "PadChest-GR: A Bilingual Chest X-ray Dataset for Grounded Radiology Report Generation",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Chest/Thorax",
     "modality": [
       "X-ray"
@@ -7759,7 +8265,6 @@
     "host": "BIMCV (bimcv.cipf.es)",
     "url": "https://bimcv.cipf.es/bimcv-projects/padchest-gr/",
     "description": "A manually curated bilingual (English/Spanish) chest X-ray dataset of 4,555 studies with sentence-level grounded radiology reports and radiologist-annotated bounding boxes for grounded report generation.",
-    "id": "padchest-gr",
     "details": {
       "label_schema": [
         "Grounded radiology reports: each study's report is decomposed into individual sentences, each describing at most one finding, provided bilingually in English and Spanish (orig/translation)",
@@ -7776,9 +8281,13 @@
     }
   },
   {
+    "id": "medtrinity-25m",
     "name": "MedTrinity-25M",
     "full_name": "MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "Whole body (multiple regions, e.g. chest, brain, abdomen)",
     "modality": [
       "CT",
@@ -7816,7 +8325,6 @@
     "host": "Hugging Face (UCSC-VLAA/MedTrinity-25M)",
     "url": "https://huggingface.co/datasets/UCSC-VLAA/MedTrinity-25M",
     "description": "A large-scale multimodal medical dataset of ~25M images across 10 modalities (including CT, MRI, and X-ray) with automatically generated multigranular text annotations, bounding boxes, and segmentation masks.",
-    "id": "medtrinity-25m",
     "details": {
       "label_schema": [
         "Each sample is an image paired with a single multigranular free-text 'caption' (no separate class-index label columns)",
@@ -7831,9 +8339,13 @@
     }
   },
   {
+    "id": "chexpert-plus",
     "name": "CheXpert Plus",
     "full_name": "CheXpert Plus: Augmenting a Large Chest X-ray Dataset with Text Radiology Reports, Patient Demographics and Additional Image Formats",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Chest/Thorax",
     "modality": [
       "X-ray"
@@ -7866,7 +8378,6 @@
     "host": "Hugging Face (StanfordAIMI/CheXpert-Plus)",
     "url": "https://huggingface.co/datasets/StanfordAIMI/CheXpert-Plus",
     "description": "An augmentation of the CheXpert dataset pairing 223,228 chest radiographs (in DICOM and PNG) with 187,711 de-identified free-text radiology reports, patient demographics, and structured labels for 64,725 patients.",
-    "id": "chexpert-plus",
     "details": {
       "label_schema": [
         "14 CheXbert pathology labels per report/image (multi-label): No Finding, Enlarged Cardiomediastinum, Cardiomegaly, Lung Opacity, Lung Lesion, Edema, Consolidation, Pneumonia, Atelectasis, Pneumothorax, Pleural Effusion, Pleural Other, Fracture, Support Devices",
@@ -7880,9 +8391,13 @@
     }
   },
   {
+    "id": "drr-rate",
     "name": "DRR-RATE",
     "full_name": "DRR-RATE: Digitally Reconstructed Radiographs from CT-RATE",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Chest/Thorax",
     "modality": [
       "X-ray"
@@ -7912,7 +8427,6 @@
     "host": "Hugging Face (farrell236/DRR-RATE)",
     "url": "https://huggingface.co/datasets/farrell236/DRR-RATE",
     "description": "A dataset of 50,188 digitally reconstructed chest radiographs generated from CT-RATE CT volumes via Siddon-Jacobs ray tracing (frontal and lateral views), paired with inherited radiology reports and 18-class binary pathology labels.",
-    "id": "drr-rate",
     "details": {
       "label_schema": [
         "Multi-label classification: 18 binary abnormality labels per DRR image, inherited from CT-RATE",
@@ -7942,9 +8456,11 @@
     }
   },
   {
+    "id": "bimcv",
     "name": "BIMCV",
     "full_name": "Medical Imaging Databank of the Valencia Region (BIMCV: PadChest, BIMCV-COVID19+)",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "Chest/Thorax (and multi-region)",
     "modality": [
       "X-ray",
@@ -7979,13 +8495,16 @@
     "access": "registration",
     "host": "BIMCV (bimcv.cipf.es)",
     "url": "https://bimcv.cipf.es/bimcv-projects/",
-    "description": "A regional medical imaging repository hosting large open chest imaging datasets including PadChest (chest X-rays with Spanish reports/labels) and BIMCV-COVID19+ (chest X-ray and CT studies with reports and clinical results).",
-    "id": "bimcv"
+    "description": "A regional medical imaging repository hosting large open chest imaging datasets including PadChest (chest X-rays with Spanish reports/labels) and BIMCV-COVID19+ (chest X-ray and CT studies with reports and clinical results)."
   },
   {
+    "id": "abdomenatlas-1-1",
     "name": "AbdomenAtlas 1.1",
     "full_name": "AbdomenAtlas 1.1",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "abdominal organs, thorax organs, vasculature, skeletal structures",
     "modality": [
       "CT"
@@ -8015,7 +8534,6 @@
     "host": "GitHub / Hugging Face (MrGiovanni/AbdomenAtlas, AbdomenAtlas HF org)",
     "url": "https://github.com/MrGiovanni/AbdomenAtlas",
     "description": "An expanded release of AbdomenAtlas with 9,262 multi-phase CT volumes annotated per-voxel for 25 anatomical structures plus pseudo-labels for seven tumor types.",
-    "id": "abdomenatlas-1-1",
     "details": {
       "label_schema": [
         "Voxel-wise multi-organ segmentation with 25 classes (class map, integer index - structure):",
@@ -8051,9 +8569,13 @@
     }
   },
   {
+    "id": "abdomenatlas-3-0",
     "name": "AbdomenAtlas 3.0",
     "full_name": "AbdomenAtlas 3.0 (RadGPT)",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "abdominal organs, tumors (liver, kidney, pancreas), pancreas sub-segments, peripancreatic vessels",
     "modality": [
       "CT"
@@ -8085,7 +8607,6 @@
     "host": "GitHub / Hugging Face (MrGiovanni/RadGPT, AbdomenAtlas/AbdomenAtlas3.0Mini)",
     "url": "https://github.com/MrGiovanni/RadGPT",
     "description": "An ICCV 2025 abdominal CT dataset pairing over 9,000 CT volumes with radiology reports and per-voxel tumor, organ, pancreas sub-segment and vessel annotations in NIfTI format.",
-    "id": "abdomenatlas-3-0",
     "details": {
       "label_schema": [
         "Per-voxel segmentation masks (NIfTI) plus paired free-text radiology reports for each CT",
@@ -8102,9 +8623,17 @@
     }
   },
   {
+    "id": "totalsegmentator-mri",
     "name": "TotalSegmentator-MRI",
     "full_name": "TotalSegmentator MRI Dataset",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro",
+      "Chest",
+      "Abdomen",
+      "MSK"
+    ],
     "anatomy": "whole-body anatomy (organs, bones, muscles, vessels, tissues)",
     "modality": [
       "MRI"
@@ -8131,7 +8660,6 @@
     "host": "Zenodo",
     "url": "https://zenodo.org/records/14710732",
     "description": "An open real-world clinical MRI dataset of 616 scans annotated with voxel segmentations of 50 anatomical structures, released with the sequence-independent TotalSegmentator MRI model.",
-    "id": "totalsegmentator-mri",
     "details": {
       "label_schema": [
         "Voxel-level multi-class segmentation: 50 anatomical structures, one integer index per class (values 1-50; 0 = background)",
@@ -8191,9 +8719,13 @@
     }
   },
   {
+    "id": "uls23",
     "name": "ULS23",
     "full_name": "Universal Lesion Segmentation Challenge 2023",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "thorax-abdomen (universal lesions: bone, pancreas, lymph node, liver, kidney, lung, etc.)",
     "modality": [
       "CT"
@@ -8219,7 +8751,6 @@
     "host": "Zenodo / Grand Challenge",
     "url": "https://uls23.grand-challenge.org/",
     "description": "A CT benchmark for universal 3D lesion segmentation aggregating novel fully-annotated data and curated public annotated lesion datasets across the thorax and abdomen, released as NIfTI lesion VOIs with 3D segmentation masks.",
-    "id": "uls23",
     "details": {
       "label_schema": [
         "Binary voxel-level segmentation mask per VOI (single foreground class)",
@@ -8233,9 +8764,13 @@
     }
   },
   {
+    "id": "atlas",
     "name": "ATLAS",
     "full_name": "A Tumour and Liver Automatic Segmentation (ATLAS) MICCAI 2023 Challenge",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "liver and liver tumor (hepatocellular carcinoma)",
     "modality": [
       "MRI"
@@ -8262,7 +8797,6 @@
     "host": "Grand Challenge (Univ. Bourgogne, ICMUB Dijon)",
     "url": "https://atlas-challenge.u-bourgogne.fr/",
     "description": "A MICCAI 2023 challenge dataset of 90 T1 contrast-enhanced liver MRI scans from unresectable HCC patients with liver and tumor segmentation labels.",
-    "id": "atlas",
     "details": {
       "label_schema": [
         "Voxel-wise semantic segmentation mask, 3 classes",
@@ -8276,9 +8810,13 @@
     }
   },
   {
+    "id": "segrap2023",
     "name": "SegRap2023",
     "full_name": "Segmentation of Organs-at-Risk and Gross Tumor Volume of NPC (SegRap 2023)",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "head and neck organs-at-risk and nasopharyngeal carcinoma tumor volumes",
     "modality": [
       "CT"
@@ -8307,7 +8845,6 @@
     "host": "Grand Challenge (HiLab)",
     "url": "https://segrap2023.grand-challenge.org/",
     "description": "A MICCAI 2023 head-and-neck CT dataset of 200 nasopharyngeal carcinoma patients with paired contrast/non-contrast scans, annotated for 45 organs-at-risk and two gross tumor volumes.",
-    "id": "segrap2023",
     "details": {
       "label_schema": [
         "Task 1 (OAR segmentation): 45 head-and-neck organs-at-risk, voxel masks",
@@ -8322,9 +8859,13 @@
     }
   },
   {
+    "id": "panorama",
     "name": "PANORAMA",
     "full_name": "Pancreatic Cancer Diagnosis - Radiologists Meet AI (PANORAMA)",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "pancreas and pancreatic ductal adenocarcinoma (PDAC)",
     "modality": [
       "CT"
@@ -8353,7 +8894,6 @@
     "host": "Grand Challenge / Zenodo",
     "url": "https://panorama.grand-challenge.org/",
     "description": "A large multi-center contrast-enhanced abdominal CT dataset of ~2,200+ scans enriched for pancreatic ductal adenocarcinoma with pancreas and tumor segmentation annotations.",
-    "id": "panorama",
     "details": {
       "label_schema": [
         "Multi-class voxel segmentation, integer-valued masks",
@@ -8372,9 +8912,13 @@
     }
   },
   {
+    "id": "topcow-2024",
     "name": "TopCoW 2024",
     "full_name": "Topology-Aware Anatomical Segmentation of the Circle of Willis",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "Circle of Willis (intracranial arteries)",
     "modality": [
       "CT",
@@ -8406,7 +8950,6 @@
     "host": "Zenodo / Grand Challenge",
     "url": "https://topcow24.grand-challenge.org/",
     "description": "The first public dataset with paired CTA and MRA from the same patients and voxel-level multi-class annotations of the Circle of Willis vessels, released via the TopCoW 2024 MICCAI challenge.",
-    "id": "topcow-2024",
     "details": {
       "label_schema": [
         "Multi-class voxel segmentation of Circle of Willis vessels (Task 1)",
@@ -8434,9 +8977,13 @@
     }
   },
   {
+    "id": "curvas",
     "name": "CURVAS",
     "full_name": "Calibration and Uncertainty for multiRater Volume Assessment in multiorgan Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Pancreas, kidney, liver",
     "modality": [
       "CT"
@@ -8466,7 +9013,6 @@
     "host": "Zenodo / Grand Challenge",
     "url": "https://curvas.grand-challenge.org/",
     "description": "Ninety contrast-enhanced abdominal CT scans, each segmented independently by three experts for pancreas, kidney and liver, to study inter-rater variability, uncertainty and model calibration in multi-organ segmentation.",
-    "id": "curvas",
     "details": {
       "label_schema": [
         "Label 0 - background",
@@ -8481,9 +9027,13 @@
     }
   },
   {
+    "id": "mama-mia",
     "name": "MAMA-MIA",
     "full_name": "MAMA-MIA: A Large-Scale Multi-Center Breast Cancer DCE-MRI Benchmark Dataset",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "Breast (primary tumor)",
     "modality": [
       "MRI"
@@ -8515,7 +9065,6 @@
     "host": "Synapse",
     "url": "https://www.ub.edu/mama-mia/",
     "description": "A large multi-institutional homogenized breast dynamic contrast-enhanced MRI dataset with expert primary-tumor segmentations and clinical variables for tumor segmentation and treatment-response prediction.",
-    "id": "mama-mia",
     "details": {
       "label_schema": [
         "Primary-tumor segmentation mask (single foreground class): experts segmented the primary breast tumor including non-mass-enhancement (NME) areas; background elsewhere",
@@ -8528,9 +9077,13 @@
     }
   },
   {
+    "id": "hnts-mrg-2024",
     "name": "HNTS-MRG 2024",
     "full_name": "Head and Neck Tumor Segmentation for MR-Guided Radiotherapy 2024",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "Head and neck (primary tumor GTVp and nodal GTVn volumes)",
     "modality": [
       "MRI"
@@ -8560,7 +9113,6 @@
     "host": "Zenodo / Grand Challenge (later TCIA)",
     "url": "https://hntsmrg24.grand-challenge.org/",
     "description": "An MRI dataset of head-and-neck cancer patients imaged pre- and mid-radiotherapy with expert primary and nodal tumor segmentations for MR-guided adaptive radiotherapy.",
-    "id": "hnts-mrg-2024",
     "details": {
       "label_schema": [
         "Segmentation mask, single label volume with integer values",
@@ -8574,9 +9126,13 @@
     }
   },
   {
+    "id": "aortaseg24",
     "name": "AortaSeg24",
     "full_name": "Multi-Class Segmentation of Aortic Branches and Zones in CTA",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "Aorta and aortic branches/zones",
     "modality": [
       "CT"
@@ -8603,7 +9159,6 @@
     "host": "Grand Challenge",
     "url": "https://aortaseg24.grand-challenge.org/",
     "description": "A MICCAI 2024 challenge providing 100 annotated CT angiography volumes with multi-class labels of aortic branches and SVS/STS zones for automated aorta segmentation and surgical planning in type B aortic dissection.",
-    "id": "aortaseg24",
     "details": {
       "label_schema": [
         "Multi-class 3D segmentation: 23 foreground classes (integer labels 1-23) plus background=0, stored in a single mask volume per subject",
@@ -8616,9 +9171,13 @@
     }
   },
   {
+    "id": "lnq2023",
     "name": "LNQ2023",
     "full_name": "Mediastinal Lymph Node Quantification Challenge",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Mediastinal lymph nodes",
     "modality": [
       "CT"
@@ -8648,7 +9207,6 @@
     "host": "Grand Challenge / TCIA",
     "url": "https://lnq2023.grand-challenge.org/",
     "description": "A contrast-enhanced chest CT benchmark for weakly-supervised segmentation of enlarged mediastinal lymph nodes from oncology clinical-trial imaging, with data hosted on TCIA (MEDIASTINAL-LYMPH-NODE-SEG, 513 subjects).",
-    "id": "lnq2023",
     "details": {
       "label_schema": [
         "Binary segmentation mask: foreground = clinically relevant mediastinal lymph node(s) (short-axis > 1 cm), background = everything else",
@@ -8662,9 +9220,13 @@
     }
   },
   {
+    "id": "isles-2024",
     "name": "ISLES 2024",
     "full_name": "Ischemic Stroke Lesion Segmentation Challenge 2024",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (ischemic stroke infarct)",
     "modality": [
       "CT",
@@ -8693,7 +9255,6 @@
     "host": "Grand Challenge",
     "url": "https://isles-24.grand-challenge.org/",
     "description": "A stroke imaging challenge providing acute multimodal CT (NCCT, CTA, CT perfusion) with follow-up-MRI-derived infarct masks and tabular clinical data for final ischemic lesion segmentation.",
-    "id": "isles-2024",
     "details": {
       "label_schema": [
         "Binary segmentation mask of the final ischemic stroke infarct",
@@ -8707,9 +9268,13 @@
     }
   },
   {
+    "id": "pengwin",
     "name": "PENGWIN",
     "full_name": "Pelvic Bone Fragments with Injuries Segmentation Challenge",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "Pelvic bones (sacrum and hipbone fracture fragments)",
     "modality": [
       "CT",
@@ -8738,7 +9303,6 @@
     "host": "Grand Challenge",
     "url": "https://pengwin.grand-challenge.org/",
     "description": "A MICCAI 2024 challenge dataset of 150 pelvic fracture CT scans and synthetically generated 2D X-rays with expert-validated fragment-level segmentation annotations of the sacrum and hipbone.",
-    "id": "pengwin",
     "details": {
       "label_schema": [
         "Task 1 (CT), voxel-wise integer labels: 0 = background",
@@ -8754,9 +9318,13 @@
     }
   },
   {
+    "id": "cmrxrecon2024",
     "name": "CMRxRecon2024",
     "full_name": "Cardiac MRI Reconstruction Challenge 2024",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "Heart",
     "modality": [
       "MRI"
@@ -8785,7 +9353,6 @@
     "host": "CMRxRecon Challenge (via Synapse)",
     "url": "https://cmrxrecon.github.io/2024/",
     "description": "A multi-contrast, multi-view raw cardiac MRI k-space dataset from 330 volunteers on a Siemens 3T scanner for developing accelerated undersampled reconstruction methods.",
-    "id": "cmrxrecon2024",
     "details": {
       "label_schema": [
         "No segmentation/classification/detection annotations - this is an MRI reconstruction challenge",
@@ -8801,9 +9368,13 @@
     }
   },
   {
+    "id": "cmrxmotion",
     "name": "CMRxMotion",
     "full_name": "Extreme Cardiac MRI Analysis Challenge under Respiratory Motion",
-    "category": "Cardiac",
+    "type": "dataset",
+    "regions": [
+      "Cardiac"
+    ],
     "anatomy": "Heart (left ventricle, left ventricle myocardium, right ventricle)",
     "modality": [
       "MRI"
@@ -8832,7 +9403,6 @@
     "host": "Synapse",
     "url": "https://www.synapse.org/Synapse:syn28503327",
     "description": "Cine cardiac MRI from ~40 volunteers acquired under four respiratory-motion conditions with radiologist image-quality grades and LV/myocardium/RV segmentations for motion-robustness benchmarking (MICCAI 2022 STACOM).",
-    "id": "cmrxmotion",
     "details": {
       "label_schema": [
         "Task 2 segmentation masks (NIfTI, integer-valued): 0 - background",
@@ -8847,9 +9417,13 @@
     }
   },
   {
+    "id": "lumiere",
     "name": "LUMIERE",
     "full_name": "Longitudinal Glioblastoma MRI Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (glioblastoma)",
     "modality": [
       "MRI"
@@ -8881,7 +9455,6 @@
     "host": "figshare (Springer Nature)",
     "url": "https://springernature.figshare.com/articles/dataset/The_LUMIERE_Dataset/16944846",
     "description": "A longitudinal multiparametric MRI dataset of 91 glioblastoma patients across 638 study dates with automated tumor segmentations and expert RANO response ratings.",
-    "id": "lumiere",
     "details": {
       "label_schema": [
         "Two automated tumor segmentation label maps per timepoint (only for study dates with all four MR sequences), from two different tools",
@@ -8897,9 +9470,13 @@
     }
   },
   {
+    "id": "brats-2024-post-treatment-glioma-brats-gli",
     "name": "BraTS 2024 Post-Treatment Glioma (BraTS-GLI)",
     "full_name": "2024 Brain Tumor Segmentation Challenge: Adult Glioma Post-Treatment",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (adult glioma, post-treatment)",
     "modality": [
       "MRI"
@@ -8926,7 +9503,6 @@
     "host": "Synapse (Sage Bionetworks)",
     "url": "https://www.synapse.org/Synapse:syn53708249",
     "description": "The BraTS 2024 post-treatment adult glioma challenge provides multi-sequence brain MRI (T1, T1c, T2, T2-FLAIR) with expert segmentations of enhancing tissue, non-enhancing tumor core, FLAIR hyperintensity, and resection cavity for post-therapy glioma monitoring.",
-    "id": "brats-2024-post-treatment-glioma-brats-gli",
     "details": {
       "label_schema": [
         "Voxel-wise multi-class segmentation: single -seg NIfTI volume with 4 tumor sub-region classes over background",
@@ -8942,9 +9518,13 @@
     }
   },
   {
+    "id": "brats-men-rt-2024",
     "name": "BraTS-MEN-RT 2024",
     "full_name": "2024 Brain Tumor Segmentation Challenge: Meningioma Radiotherapy",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (meningioma, radiotherapy target/GTV delineation)",
     "modality": [
       "MRI"
@@ -8971,7 +9551,6 @@
     "host": "Synapse (Sage Bionetworks)",
     "url": "https://www.synapse.org/Synapse:syn53708249",
     "description": "BraTS-MEN-RT is the largest multi-institutional collection of 3D post-contrast T1-weighted radiotherapy-planning MRIs of intracranial meningiomas with expert gross tumor volume (GTV) annotations for automated radiotherapy target delineation.",
-    "id": "brats-men-rt-2024",
     "details": {
       "label_schema": [
         "Single foreground class - radiotherapy target volume (binary mask): foreground = the GTV plus any at-risk post-operative site; background = 0",
@@ -8984,9 +9563,13 @@
     }
   },
   {
+    "id": "brats-goat-2024",
     "name": "BraTS-GoAT 2024",
     "full_name": "2024 BraTS Generalizability Across Tumors (GoAT) Challenge",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (mixed/pooled tumor types)",
     "modality": [
       "MRI"
@@ -9013,7 +9596,6 @@
     "host": "Synapse (Sage Bionetworks)",
     "url": "https://www.synapse.org/Synapse:syn53708249",
     "description": "The BraTS-GoAT 2024 task benchmarks the generalizability of brain-tumor segmentation methods by pooling co-registered, skull-stripped multiparametric MRI across diverse tumor types with expert sub-region masks.",
-    "id": "brats-goat-2024",
     "details": {
       "label_schema": [
         "Voxel-wise multi-class tumor sub-region segmentation mask, values consistent across all tumor types",
@@ -9029,9 +9611,13 @@
     }
   },
   {
+    "id": "ucsf-pdgm",
     "name": "UCSF-PDGM",
     "full_name": "University of California San Francisco Preoperative Diffuse Glioma MRI",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (diffuse glioma)",
     "modality": [
       "MRI"
@@ -9066,7 +9652,6 @@
     "host": "The Cancer Imaging Archive (TCIA)",
     "url": "https://www.cancerimagingarchive.net/collection/ucsf-pdgm/",
     "description": "UCSF-PDGM contains standardized preoperative multi-sequence 3T brain MRI of 495 histopathologically proven diffuse gliomas with manual tumor segmentations and molecular/clinical labels, hosted on TCIA in NIfTI format.",
-    "id": "ucsf-pdgm",
     "details": {
       "label_schema": [
         "Multicompartment tumor segmentation mask, 3 tumor classes: enhancing tumor",
@@ -9082,9 +9667,13 @@
     }
   },
   {
+    "id": "ucsf-alptdg",
     "name": "UCSF-ALPTDG",
     "full_name": "University of California San Francisco Adult Longitudinal Post-Treatment Diffuse Glioma MRI",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (adult diffuse glioma, post-treatment longitudinal follow-up)",
     "modality": [
       "MRI"
@@ -9116,7 +9705,6 @@
     "host": "UCSF Center for Intelligent Imaging (imagingdatasets.ucsf.edu)",
     "url": "https://imagingdatasets.ucsf.edu/dataset/2",
     "description": "UCSF-ALPTDG is a longitudinal post-treatment adult diffuse glioma dataset of multimodal 3D brain MRI (T1 pre/post-contrast, T2, FLAIR) from 298 patients scanned at two consecutive posttreatment timepoints, with expert voxelwise tumor subregion and longitudinal-change segmentations, hosted by the UCSF Center for Intelligent Imaging under a data use agreement.",
-    "id": "ucsf-alptdg",
     "details": {
       "label_schema": [
         "Voxelwise tumor segmentation (4 foreground classes + background), from the official nnUNet dataset.json:",
@@ -9133,9 +9721,13 @@
     }
   },
   {
+    "id": "spider",
     "name": "SPIDER",
     "full_name": "Lumbar Spine Segmentation in MR Images: A Dataset and Public Benchmark",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "Lumbar spine",
     "modality": [
       "MRI"
@@ -9170,7 +9762,6 @@
     "host": "Zenodo / Grand Challenge",
     "url": "https://zenodo.org/records/10159290",
     "description": "SPIDER is a multi-vendor lumbar spine MRI dataset of 218 studies (447 sagittal T1/T2 series from four hospitals) with reference segmentations of vertebrae, discs, and spinal canal plus per-level degenerative radiological gradings.",
-    "id": "spider",
     "details": {
       "label_schema": [
         "Multi-class 3D segmentation mask, one per MRI series; three anatomical structures labeled: vertebrae, intervertebral discs (IVDs), and spinal canal",
@@ -9185,9 +9776,13 @@
     }
   },
   {
+    "id": "rsna-2024-lumbar-spine-degenerative-classificati",
     "name": "RSNA 2024 Lumbar Spine Degenerative Classification",
     "full_name": "RSNA 2024 Lumbar Spine Degenerative Classification",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "Lumbar spine",
     "modality": [
       "MRI"
@@ -9220,7 +9815,6 @@
     "host": "Kaggle (RSNA)",
     "url": "https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classification",
     "description": "The RSNA 2024 challenge provides multi-sequence lumbar spine MRI studies in DICOM with per-level severity labels for five degenerative conditions across five disc levels plus coordinate keypoint annotations.",
-    "id": "rsna-2024-lumbar-spine-degenerative-classificati",
     "details": {
       "label_schema": [
         "Task: per-study ordinal severity classification of 5 degenerative conditions at each of 5 disc levels = 25 targets per study",
@@ -9236,9 +9830,13 @@
     }
   },
   {
+    "id": "mrspineseg",
     "name": "MRSpineSeg",
     "full_name": "MRSpineSeg Challenge (MICCAI CSI 2019): Lumbar Spine MRI Vertebrae and Intervertebral Disc Segmentation",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "Lumbar spine",
     "modality": [
       "MRI"
@@ -9264,7 +9862,6 @@
     "host": "MICCAI CSI 2019 MRSpineSeg Challenge (authors' repo; public mirror on Baidu AI Studio / PaddleSeg MedicalSeg)",
     "url": "https://github.com/pangshumao/SpineParseNet",
     "description": "MRSpineSeg provides 172 sagittal T2-weighted lumbar spine MRI volumes in NIfTI with multi-class segmentation masks of individual vertebrae and intervertebral discs (up to ~20 classes).",
-    "id": "mrspineseg",
     "details": {
       "label_schema": [
         "Multi-class voxel segmentation with 20 classes total (label 0 = background) confirmed by out_channels=20 / n_classes=20 in the training code",
@@ -9294,9 +9891,13 @@
     }
   },
   {
+    "id": "gold-atlas",
     "name": "Gold Atlas",
     "full_name": "Gold Atlas Male Pelvis MR-CT Dataset",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "Male pelvis",
     "modality": [
       "MRI",
@@ -9327,7 +9928,6 @@
     "host": "Zenodo",
     "url": "https://zenodo.org/records/583096",
     "description": "The Gold Atlas dataset provides paired T1/T2-weighted MRI and registered CT DICOM data of 19 male pelvises with multi-observer organ delineations for MR-to-CT synthesis and segmentation research.",
-    "id": "gold-atlas",
     "details": {
       "label_schema": [
         "Radiotherapy organ-at-risk segmentation of the male pelvis: 5 expert observers independently delineated NINE organs per patient on the T2w MR images, plus an agreed consensus contour and a STAPLE estimate per structure",
@@ -9346,9 +9946,13 @@
     }
   },
   {
+    "id": "mslesseg-2024",
     "name": "MSLesSeg 2024",
     "full_name": "Multiple Sclerosis Lesion Segmentation Challenge 2024",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain (multiple sclerosis)",
     "modality": [
       "MRI"
@@ -9377,7 +9981,6 @@
     "host": "IPLab, University of Catania (Challenge)",
     "url": "https://iplab.dmi.unict.it/mfs/ms-les-seg/",
     "description": "MSLesSeg 2024 is a longitudinal multi-center MS brain MRI dataset (~90 patients, ~150 timepoints) with T1/T2/FLAIR sequences and expert-validated FLAIR lesion segmentations in NIfTI format.",
-    "id": "mslesseg-2024",
     "details": {
       "label_schema": [
         "Binary MS lesion segmentation mask (foreground = lesion, background = non-lesion)",
@@ -9391,9 +9994,13 @@
     }
   },
   {
+    "id": "lausanne-tof-mra-aneurysm-cohort",
     "name": "Lausanne TOF-MRA Aneurysm Cohort",
     "full_name": "Lausanne Brain Aneurysm TOF-MRA Cohort (OpenNeuro ds003949)",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "Brain (intracranial aneurysm)",
     "modality": [
       "MRI"
@@ -9423,7 +10030,6 @@
     "host": "OpenNeuro",
     "url": "https://openneuro.org/datasets/ds003949",
     "description": "OpenNeuro cohort of 284 TOF-MRA brain scans (157 aneurysm patients, 127 healthy controls) with voxel-wise manual aneurysm segmentation masks and T1w volumes in BIDS format for detection and segmentation research.",
-    "id": "lausanne-tof-mra-aneurysm-cohort",
     "details": {
       "label_schema": [
         "Binary voxel-wise aneurysm segmentation mask (foreground value 1 = intracranial aneurysm, 0 = background)",
@@ -9436,9 +10042,13 @@
     }
   },
   {
+    "id": "chestx-det",
     "name": "ChestX-Det",
     "full_name": "ChestX-Det instance-segmentation chest X-ray dataset",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest/thorax",
     "modality": [
       "X-ray"
@@ -9470,7 +10080,6 @@
     "host": "GitHub (Deepwise-AILab)",
     "url": "https://github.com/Deepwise-AILab/ChestX-Det-Dataset",
     "description": "Extension of ChestX-Det10 with 3,578 NIH chest X-rays annotated with polygon instance-segmentation masks and bounding boxes for 13 thoracic abnormalities by three radiologists.",
-    "id": "chestx-det",
     "details": {
       "label_schema": [
         "13 thoracic disease/abnormality categories, each an instance with a bounding box AND a polygon segmentation contour",
@@ -9484,9 +10093,13 @@
     }
   },
   {
+    "id": "tbx11k",
     "name": "TBX11K",
     "full_name": "Tuberculosis X-ray 11K dataset",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lungs",
     "modality": [
       "X-ray"
@@ -9518,7 +10131,6 @@
     "host": "mmcheng.net (Nankai University Media Computing Lab); train/val via Google Drive & Baidu, test on CodaLab",
     "url": "https://mmcheng.net/tb/",
     "description": "11,200 chest X-rays (512x512) with image-level TB categories and bounding-box annotations of tuberculosis lesions, with the test set held out for an online CodaLab challenge.",
-    "id": "tbx11k",
     "details": {
       "label_schema": [
         "Image-level classification into 4 categories: Healthy, Sick & non-TB, Active TB, Latent TB (a few images are both Active & Latent TB)",
@@ -9533,9 +10145,13 @@
     }
   },
   {
+    "id": "node21",
     "name": "NODE21",
     "full_name": "NODE21 Nodule Detection and Generation Challenge",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lungs",
     "modality": [
       "X-ray",
@@ -9566,7 +10182,6 @@
     "host": "Zenodo / grand-challenge.org",
     "url": "https://node21.grand-challenge.org/",
     "description": "Public NODE21 training set of 4,882 frontal chest radiographs (1024x1024 MHA) with lung-nodule bounding boxes plus LUNA16 CT nodule patches, for a chest-nodule detection-and-generation challenge.",
-    "id": "node21",
     "details": {
       "label_schema": [
         "Detection task: pulmonary nodule bounding boxes on frontal chest X-rays (nodule = single positive class)",
@@ -9581,9 +10196,13 @@
     }
   },
   {
+    "id": "jsrt",
     "name": "JSRT",
     "full_name": "Japanese Society of Radiological Technology Standard Digital Image Database (chest radiographs)",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "lungs (chest/thorax)",
     "modality": [
       "X-ray"
@@ -9617,7 +10236,6 @@
     "host": "Japanese Society of Radiological Technology",
     "url": "http://db.jsrt.or.jp/eng.php",
     "description": "Classic public reference database of 247 high-resolution 12-bit posterior-anterior chest radiographs (154 with lung nodules) widely used as a benchmark for nodule detection and, with the SCR add-on, lung/heart/clavicle segmentation.",
-    "id": "jsrt",
     "details": {
       "label_schema": [
         "Base JSRT is an image-level classification/detection dataset (no pixel masks in the base release)",
@@ -9634,9 +10252,13 @@
     }
   },
   {
+    "id": "siim-fisabio-rsna-covid-19",
     "name": "SIIM-FISABIO-RSNA COVID-19",
     "full_name": "SIIM-FISABIO-RSNA COVID-19 Detection Challenge dataset",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "chest/thorax",
     "modality": [
       "X-ray"
@@ -9667,7 +10289,6 @@
     "host": "Kaggle",
     "url": "https://www.kaggle.com/c/siim-covid19-detection",
     "description": "COVID-19 chest radiographs in DICOM format with four-class study-level appearance labels and image-level bounding boxes annotating pulmonary opacities.",
-    "id": "siim-fisabio-rsna-covid-19",
     "details": {
       "label_schema": [
         "Two prediction tasks: study-level 4-class classification + image-level opacity detection",
@@ -9682,9 +10303,11 @@
     }
   },
   {
+    "id": "midrc",
     "name": "MIDRC",
     "full_name": "Medical Imaging and Data Resource Center",
-    "category": "Repository",
+    "type": "repository",
+    "regions": [],
     "anatomy": "chest/thorax (COVID-19-focused), expanding to oncology and other organ systems",
     "modality": [
       "X-ray",
@@ -9720,13 +10343,16 @@
     "access": "dua",
     "host": "MIDRC (University of Chicago / Gen3 data commons)",
     "url": "https://www.midrc.org/",
-    "description": "MIDRC is an open federated data commons of DICOM chest radiograph and CT (and expanding MRI/oncology) imaging studies with clinical metadata, accessible to registered researchers via the Gen3 data portal under a data use agreement.",
-    "id": "midrc"
+    "description": "MIDRC is an open federated data commons of DICOM chest radiograph and CT (and expanding MRI/oncology) imaging studies with clinical metadata, accessible to registered researchers via the Gen3 data portal under a data use agreement."
   },
   {
+    "id": "parse2022",
     "name": "Parse2022",
     "full_name": "Pulmonary Artery Segmentation Challenge 2022",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "Pulmonary artery",
     "modality": [
       "CT"
@@ -9752,7 +10378,6 @@
     "host": "Grand Challenge",
     "url": "https://parse2022.grand-challenge.org/",
     "description": "A contrast-enhanced CT pulmonary angiography (CTPA) dataset of 200 volumes with refined multi-annotator pulmonary artery segmentation labels for the MICCAI 2022 PARSE challenge.",
-    "id": "parse2022",
     "details": {
       "label_schema": [
         "Binary voxel-level segmentation of pulmonary artery in 3D chest CT",
@@ -9765,9 +10390,13 @@
     }
   },
   {
+    "id": "vessel12",
     "name": "VESSEL12",
     "full_name": "VESsel SEgmentation in the Lung 2012",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "Lung vessels",
     "modality": [
       "CT"
@@ -9795,7 +10424,6 @@
     "host": "Grand Challenge",
     "url": "https://vessel12.grand-challenge.org/",
     "description": "A chest CT dataset of 20 scans with reference annotations for benchmarking automatic lung blood vessel segmentation methods.",
-    "id": "vessel12",
     "details": {
       "label_schema": [
         "Binary vessel annotation at sampled points: vessel (label 1) vs non-vessel (label 0)",
@@ -9809,9 +10437,13 @@
     }
   },
   {
+    "id": "cas2023",
     "name": "CAS2023",
     "full_name": "Cerebral Artery Segmentation Challenge 2023",
-    "category": "Vascular",
+    "type": "dataset",
+    "regions": [
+      "Vascular"
+    ],
     "anatomy": "Cerebral (intracranial) arteries, brain",
     "modality": [
       "MRI"
@@ -9837,7 +10469,6 @@
     "host": "CodaLab",
     "url": "https://codalab.lisn.upsaclay.fr/competitions/9804",
     "description": "CAS2023 is a time-of-flight MRA challenge dataset providing intracranial cerebral artery segmentation annotations for vessel segmentation.",
-    "id": "cas2023",
     "details": {
       "label_schema": [
         "Binary voxel-wise segmentation mask (single foreground class)",
@@ -9851,9 +10482,13 @@
     }
   },
   {
+    "id": "remind",
     "name": "ReMIND",
     "full_name": "The Brain Resection Multimodal Imaging Database",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain",
     "modality": [
       "MRI"
@@ -9887,7 +10522,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/remind/",
     "description": "Pre- and intra-operative multimodal imaging from 114 neurosurgical brain-tumor patients including preoperative multiparametric MRI, intraoperative MRI, and 3D intraoperative ultrasound with 356 tumor and anatomical segmentations.",
-    "id": "remind",
     "details": {
       "label_schema": [
         "Segmentation masks (binary label maps, one structure per file) covering 6 structure types across 114 patients, 356 total segmentations",
@@ -9903,9 +10537,13 @@
     }
   },
   {
+    "id": "burdenko-gbm-progression",
     "name": "Burdenko-GBM-Progression",
     "full_name": "Burdenko's Glioblastoma Progression Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain",
     "modality": [
       "CT",
@@ -9938,7 +10576,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/burdenko-gbm-progression/",
     "description": "Radiotherapy planning MRI and CT with RTSTRUCT tumor and organ-at-risk segmentations, RTPLAN/RTDOSE, and genetic/clinical response data from 180 glioblastoma patients treated 2014-2020, hosted on TCIA.",
-    "id": "burdenko-gbm-progression",
     "details": {
       "label_schema": [
         "RTSTRUCT radiotherapy target volumes: GTV (Gross Tumor Volume)",
@@ -9959,9 +10596,13 @@
     }
   },
   {
+    "id": "rhuh-gbm",
     "name": "RHUH-GBM",
     "full_name": "Rio Hortega University Hospital Glioblastoma Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain",
     "modality": [
       "MRI"
@@ -9992,7 +10633,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/rhuh-gbm/",
     "description": "Multiparametric brain MRI (T1w, T2w, FLAIR, T1ce, ADC) from 40 glioblastoma patients with >95% resection spanning preoperative, early postoperative, and recurrence scans, with expert-validated tumor subregion segmentations and clinical data.",
-    "id": "rhuh-gbm",
     "details": {
       "label_schema": [
         "Label 1 - Necrosis",
@@ -10004,9 +10644,13 @@
     }
   },
   {
+    "id": "colorectal-liver-metastases",
     "name": "Colorectal-Liver-Metastases",
     "full_name": "Preoperative CT and Survival Data for Patients Undergoing Resection of Colorectal Liver Metastases",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Liver",
     "modality": [
       "CT"
@@ -10035,7 +10679,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/colorectal-liver-metastases/",
     "description": "Preoperative portal-venous contrast-enhanced CT with liver, vessel, and tumor DICOM-SEG segmentations and survival data from 197 patients undergoing resection of colorectal liver metastases.",
-    "id": "colorectal-liver-metastases",
     "details": {
       "label_schema": [
         "Segment: Liver (whole liver)",
@@ -10049,9 +10692,13 @@
     }
   },
   {
+    "id": "hcc-tace-seg",
     "name": "HCC-TACE-Seg",
     "full_name": "Multimodality Annotated HCC Cases with and without Advanced Imaging Segmentation",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Liver",
     "modality": [
       "CT"
@@ -10082,7 +10729,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/hcc-tace-seg/",
     "description": "Pre- and post-procedure CT of 105 HCC patients who underwent TACE (2002-2012), with manual liver/tumor/vessel DICOM-SEG segmentations and treatment-outcome data.",
-    "id": "hcc-tace-seg",
     "details": {
       "label_schema": [
         "Segmentation of liver (whole organ)",
@@ -10094,9 +10740,13 @@
     }
   },
   {
+    "id": "adrenal-acc-ki67-seg",
     "name": "Adrenal-ACC-Ki67-Seg",
     "full_name": "Voxel-level Segmentation of Pathologically-proven Adrenocortical Carcinoma with Ki-67 Expression",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Adrenal gland",
     "modality": [
       "CT"
@@ -10127,7 +10777,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/adrenal-acc-ki67-seg/",
     "description": "Contrast-enhanced CT (2006-2018) of 53 pathologically-proven adrenocortical carcinoma patients in DICOM with voxel-level tumor segmentations and Ki-67 index labels for radiomics research.",
-    "id": "adrenal-acc-ki67-seg",
     "details": {
       "label_schema": [
         "Binary voxel-level segmentation of the adrenal tumor/lesion (single foreground class: tumor vs. background) from contrast-enhanced CT",
@@ -10141,9 +10790,13 @@
     }
   },
   {
+    "id": "pediatric-ct-seg",
     "name": "Pediatric-CT-SEG",
     "full_name": "Pediatric Chest/Abdomen/Pelvic CT Exams with Expert Organ Contours",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody"
+    ],
     "anatomy": "Chest/Abdomen/Pelvis",
     "modality": [
       "CT"
@@ -10173,7 +10826,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/pediatric-ct-seg/",
     "description": "Pediatric chest/abdomen/pelvis CT from 359 patients (ages 5 days to 16 years) with expert contours of up to 29 organs in RTSTRUCT format for autosegmentation and CT dosimetry research.",
-    "id": "pediatric-ct-seg",
     "details": {
       "label_schema": [
         "Expert manual contours of up to 29 anatomical structures per subject, stored as named ROIs in a DICOM RTSTRUCT file (not integer-indexed masks); some subjects are missing structures outside the scan range or not reliably identifiable in young children",
@@ -10188,9 +10840,13 @@
     }
   },
   {
+    "id": "meningioma-seg-class",
     "name": "Meningioma-SEG-CLASS",
     "full_name": "Segmentation and Classification of Grade I and II Meningiomas from MRI: An Open Annotated Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain/Meninges",
     "modality": [
       "MRI"
@@ -10221,7 +10877,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/meningioma-seg-class/",
     "description": "Multiparametric brain MRI (T1, T1-CE, T2-FLAIR) from 96 treatment-naive intracranial meningioma patients with expert manual tumor segmentations and pathologically confirmed WHO grade I/II classification, hosted on TCIA.",
-    "id": "meningioma-seg-class",
     "details": {
       "label_schema": [
         "Segmentation: manual tumor contour of the hyperintense T1-contrast-enhancing tumor on T1-CE MRI",
@@ -10234,9 +10889,13 @@
     }
   },
   {
+    "id": "pancreatic-ct-cbct-seg",
     "name": "Pancreatic-CT-CBCT-SEG",
     "full_name": "Pancreatic CT and Cone-Beam CT with Organ-at-Risk Segmentations",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Pancreas",
     "modality": [
       "CT"
@@ -10265,7 +10924,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/pancreatic-ct-cbct-seg/",
     "description": "Paired planning CT and cone-beam CT scans with expert organ-at-risk RTSTRUCT segmentations and RTDOSE from 40 locally advanced pancreatic cancer patients undergoing ablative radiotherapy, hosted openly on TCIA.",
-    "id": "pancreatic-ct-cbct-seg",
     "details": {
       "label_schema": [
         "Organ-at-risk (OAR) segmentations as named RTSTRUCT ROIs (no integer label indices; structures identified by ROI name)",
@@ -10280,9 +10938,13 @@
     }
   },
   {
+    "id": "glis-rt",
     "name": "GLIS-RT",
     "full_name": "Glioma Image Segmentation for Radiotherapy: RT Targets, Barriers to Cancer Spread, and Organs at Risk",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain",
     "modality": [
       "CT",
@@ -10313,7 +10975,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/glis-rt/",
     "description": "Glioblastoma and low-grade glioma cases from 230 patients with expert-delineated radiotherapy targets, organs at risk, and anatomical barriers on co-registered planning CT and MRI in DICOM, hosted on TCIA.",
-    "id": "glis-rt",
     "details": {
       "label_schema": [
         "Named ROI contours in RTSTRUCT (no integer indices); RT targets and normal structures",
@@ -10327,9 +10988,13 @@
     }
   },
   {
+    "id": "prostate-mri-us-biopsy",
     "name": "Prostate-MRI-US-Biopsy",
     "full_name": "Prostate MRI and Ultrasound With Pathology and Coordinates of Tracked Biopsy",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "Prostate",
     "modality": [
       "MRI"
@@ -10364,7 +11029,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/prostate-mri-us-biopsy/",
     "description": "TCIA collection of tracked MRI-ultrasound fusion biopsy data from 1,151 prostate cancer patients, including multiparametric MRI (DICOM), 3D ultrasound, Gleason pathology outcomes, tracked biopsy coordinates, and STL prostate/ROI segmentations (v2 updated 2023).",
-    "id": "prostate-mri-us-biopsy",
     "details": {
       "label_schema": [
         "ProstateSurface - semi-automatic segmentation of the prostate gland (MRI traced in Profuse, ultrasound traced in Artemis fusion system)",
@@ -10377,9 +11041,13 @@
     }
   },
   {
+    "id": "luna25",
     "name": "LUNA25",
     "full_name": "LUng Nodule Analysis 2025",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Lungs",
     "modality": [
       "CT"
@@ -10410,7 +11078,6 @@
     "host": "Grand Challenge",
     "url": "https://luna25.grand-challenge.org/",
     "description": "A low-dose chest CT benchmark of over 4,000 annotated exams for lung nodule malignancy risk estimation in lung cancer screening.",
-    "id": "luna25",
     "details": {
       "label_schema": [
         "Task: binary lung-nodule malignancy risk classification (per nodule) on low-dose chest CT",
@@ -10425,9 +11092,13 @@
     }
   },
   {
+    "id": "abdomenatlas-1-0",
     "name": "AbdomenAtlas 1.0",
     "full_name": "AbdomenAtlas 1.0 Mini",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Abdominal organs (spleen, liver, kidneys, stomach, gallbladder, pancreas, aorta, IVC)",
     "modality": [
       "CT"
@@ -10453,7 +11124,6 @@
     "host": "Hugging Face",
     "url": "https://huggingface.co/datasets/AbdomenAtlas/AbdomenAtlas1.0Mini",
     "description": "One of the largest fully annotated abdominal CT segmentation datasets, with 5,195 volumes labeled for eight organs.",
-    "id": "abdomenatlas-1-0",
     "details": {
       "label_schema": [
         "Voxel-level segmentation masks for 9 abdominal structures (8 organs, kidneys split into left/right)",
@@ -10473,9 +11143,13 @@
     }
   },
   {
+    "id": "flare-2024",
     "name": "FLARE 2024",
     "full_name": "MICCAI FLARE 2024 Abdominal CT Organ Segmentation (Task 2: Laptop)",
-    "category": "Abdomen",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
     "anatomy": "Abdominal organs",
     "modality": [
       "CT"
@@ -10503,7 +11177,6 @@
     "host": "Codabench",
     "url": "https://www.codabench.org/competitions/2320/",
     "description": "An abdominal CT organ segmentation benchmark emphasizing efficient, resource-constrained (laptop) inference and semi-supervised learning from large unlabeled data.",
-    "id": "flare-2024",
     "details": {
       "label_schema": [
         "Voxel-wise multi-organ segmentation mask, 13 abdominal organs (label 0 = background)",
@@ -10527,9 +11200,13 @@
     }
   },
   {
+    "id": "m3d-seg",
     "name": "M3D-Seg",
     "full_name": "M3D: Multi-Modal 3D Medical Data (Segmentation subset)",
-    "category": "Multimodal",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "Multi-organ (whole body)",
     "modality": [
       "CT"
@@ -10561,7 +11238,6 @@
     "host": "Hugging Face",
     "url": "https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg",
     "description": "A large aggregated 3D CT segmentation dataset from 25 public sources with ~149K 3D masks and text-linked semantic labels supporting semantic, referring, and reasoning segmentation.",
-    "id": "m3d-seg",
     "details": {
       "label_schema": [
         "Voxel-level 3D semantic segmentation masks; integer voxel value = category ID (0 = background), mapped to a class text via dataset_info.json/dataset_info.txt",
@@ -10583,9 +11259,13 @@
     }
   },
   {
+    "id": "openmind",
     "name": "OpenMind",
     "full_name": "OpenMind: Large-Scale Brain MRI Pretraining Dataset",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain / head",
     "modality": [
       "MRI"
@@ -10618,7 +11298,6 @@
     "host": "Hugging Face",
     "url": "https://huggingface.co/datasets/AnonRes/OpenMind",
     "description": "A large-scale brain MRI pretraining dataset of ~114K NIfTI images spanning 23 sequence types curated from 800 OpenNeuro datasets across 30+ scanners for self-supervised foundation models.",
-    "id": "openmind",
     "details": {
       "label_schema": [
         "Self-supervised pretraining corpus - NO expert segmentation/classification targets (no tumor/organ/lesion labels)",
@@ -10632,9 +11311,13 @@
     }
   },
   {
+    "id": "fastmri-prostate",
     "name": "fastMRI Prostate",
     "full_name": "fastMRI Prostate: A Public, Biparametric MRI Dataset",
-    "category": "Pelvis",
+    "type": "dataset",
+    "regions": [
+      "Pelvis"
+    ],
     "anatomy": "Prostate",
     "modality": [
       "MRI"
@@ -10661,7 +11344,6 @@
     "host": "NYU Langone (fastMRI)",
     "url": "https://fastmri.med.nyu.edu/",
     "description": "Raw multi-coil k-space data from 312 prostate MRI exams acquired on 3T scanners, comprising axial T2-weighted and diffusion-weighted acquisitions for accelerated reconstruction research.",
-    "id": "fastmri-prostate",
     "details": {
       "label_schema": [
         "Slice-level labels indicating the presence and grade of prostate cancer",
@@ -10673,9 +11355,13 @@
     }
   },
   {
+    "id": "fastmri-breast",
     "name": "fastMRI Breast",
     "full_name": "fastMRI Breast DCE-MRI k-space Dataset",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "Breast",
     "modality": [
       "MRI"
@@ -10702,7 +11388,6 @@
     "host": "NYU Langone (fastMRI)",
     "url": "https://fastmri.med.nyu.edu/",
     "description": "Raw k-space data from 300 clinical breast DCE-MRI exams acquired on 3T scanners with a 3D GRASP sequence for accelerated MRI reconstruction research.",
-    "id": "fastmri-breast",
     "details": {
       "label_schema": [
         "Case-level clinical/pathology labels (no pixel annotations)",
@@ -10717,9 +11402,13 @@
     }
   },
   {
+    "id": "k2s",
     "name": "K2S",
     "full_name": "K2S: From Undersampled K-space To Automatic Segmentation Challenge",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "Knee",
     "modality": [
       "MRI"
@@ -10746,7 +11435,6 @@
     "host": "Grand Challenge",
     "url": "https://k2s.grand-challenge.org/",
     "description": "Grand Challenge dataset of 300 training and 50 test 3D fat-suppressed FSE-Cube knee MRIs providing 8x undersampled multi-channel k-space, fully-sampled images, and bone/cartilage segmentation masks for joint MRI reconstruction and segmentation.",
-    "id": "k2s",
     "details": {
       "label_schema": [
         "6 tissue segmentation classes total, grouped for scoring into bone and cartilage",
@@ -10764,9 +11452,13 @@
     }
   },
   {
+    "id": "m4raw",
     "name": "M4Raw",
     "full_name": "M4Raw: A Multi-contrast, Multi-repetition, Multi-channel MRI k-space Dataset for Low-field MRI Research",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain",
     "modality": [
       "MRI"
@@ -10792,13 +11484,16 @@
     "access": "open",
     "host": "Zenodo",
     "url": "https://github.com/mylyu/M4Raw",
-    "description": "Multi-channel brain MRI k-space data from 183 healthy volunteers scanned on a 0.3T low-field whole-body scanner, with T1/T2/FLAIR/GRE contrasts and multiple repetitions to enable low-field MRI reconstruction and denoising research.",
-    "id": "m4raw"
+    "description": "Multi-channel brain MRI k-space data from 183 healthy volunteers scanned on a 0.3T low-field whole-body scanner, with T1/T2/FLAIR/GRE contrasts and multiple repetitions to enable low-field MRI reconstruction and denoising research."
   },
   {
+    "id": "acrin-nsclc-fdg-pet",
     "name": "ACRIN-NSCLC-FDG-PET",
     "full_name": "Data from the ACRIN 6668 Trial NSCLC-FDG-PET",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Thorax/lung",
     "modality": [
       "PET",
@@ -10829,7 +11524,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/acrin-nsclc-fdg-pet/",
     "description": "242 NSCLC patients from the ACRIN 6668/RTOG 0235 trial with serial pre- and post-chemoradiotherapy FDG PET/CT DICOM imaging plus clinical and outcome spreadsheets.",
-    "id": "acrin-nsclc-fdg-pet",
     "details": {
       "label_schema": [
         "Primary TCIA release provides no image segmentations; annotations are reader quantitative measurements and clinical forms, not pixel labels",
@@ -10844,9 +11538,13 @@
     }
   },
   {
+    "id": "acrin-hnscc-fdg-pet-ct",
     "name": "ACRIN-HNSCC-FDG-PET-CT",
     "full_name": "ACRIN 6685: A Multicenter Trial of FDG-PET/CT Staging of Head and Neck Cancer",
-    "category": "HeadNeck",
+    "type": "dataset",
+    "regions": [
+      "HeadNeck"
+    ],
     "anatomy": "Head and neck",
     "modality": [
       "PET",
@@ -10878,7 +11576,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/acrin-hnscc-fdg-pet-ct/",
     "description": "260 head-and-neck cancer patients from the ACRIN 6685 multicenter trial with FDG PET/CT staging imaging, tumor annotations, and pathology-correlated clinical data hosted on TCIA.",
-    "id": "acrin-hnscc-fdg-pet-ct",
     "details": {
       "label_schema": [
         "Lesion-level tumor annotations (head and neck squamous cell carcinoma) - no fixed integer class map; each annotated lesion is one structure",
@@ -10893,9 +11590,13 @@
     }
   },
   {
+    "id": "acrin-fmiso-brain",
     "name": "ACRIN-FMISO-Brain",
     "full_name": "ACRIN 6684: Assessment of Tumor Hypoxia in Newly Diagnosed Glioblastoma Using 18F-FMISO PET and MRI",
-    "category": "Neuro",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
     "anatomy": "Brain",
     "modality": [
       "PET",
@@ -10932,7 +11633,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/acrin-fmiso-brain/",
     "description": "TCIA collection of 45 newly diagnosed glioblastoma patients imaged with 18F-FMISO hypoxia PET plus MRI and low-dose CT, including binary DICOM hypoxia and enhancing-tumor VOI masks and detailed clinical forms.",
-    "id": "acrin-fmiso-brain",
     "details": {
       "label_schema": [
         "Binary VOI mask, value 1 = inside region of interest, value 0 = outside",
@@ -10944,9 +11644,13 @@
     }
   },
   {
+    "id": "acrin-flt-breast",
     "name": "ACRIN-FLT-Breast",
     "full_name": "ACRIN 6688: 18F-FLT PET/CT in Breast Cancer",
-    "category": "Breast",
+    "type": "dataset",
+    "regions": [
+      "Breast"
+    ],
     "anatomy": "Breast",
     "modality": [
       "PET",
@@ -10976,7 +11680,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/acrin-flt-breast/",
     "description": "83 locally advanced breast-cancer patients from the ACRIN 6688 Phase II trial with 18F-FLT and FDG PET/CT imaging for early neoadjuvant chemotherapy response assessment.",
-    "id": "acrin-flt-breast",
     "details": {
       "label_schema": [
         "No image-level segmentations or bounding boxes: no DICOM-SEG/RTSTRUCT provided",
@@ -10991,9 +11694,13 @@
     }
   },
   {
+    "id": "anti-pd-1-melanoma",
     "name": "Anti-PD-1_Melanoma",
     "full_name": "Anti-PD-1 Immunotherapy Melanoma",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "WholeBody"
+    ],
     "anatomy": "Whole body",
     "modality": [
       "PET",
@@ -11022,13 +11729,16 @@
     "access": "request",
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/anti-pd-1_melanoma/",
-    "description": "47 melanoma patients treated with anti-PD-1 immunotherapy with pre-treatment and follow-up PET, CT, and MR imaging, distributed as DICOM under NIH Controlled Data Access.",
-    "id": "anti-pd-1-melanoma"
+    "description": "47 melanoma patients treated with anti-PD-1 immunotherapy with pre-treatment and follow-up PET, CT, and MR imaging, distributed as DICOM under NIH Controlled Data Access."
   },
   {
+    "id": "anti-pd-1-lung",
     "name": "Anti-PD-1_Lung",
     "full_name": "Anti-PD-1 Immunotherapy Lung",
-    "category": "Chest",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
     "anatomy": "Thorax/lung",
     "modality": [
       "PET",
@@ -11058,7 +11768,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/anti-pd-1_lung/",
     "description": "FDG PET/CT imaging of 46 lung-cancer patients treated with anti-PD-1 immunotherapy, with pre-treatment baseline and follow-up scans.",
-    "id": "anti-pd-1-lung",
     "details": {
       "label_schema": [
         "Segmentation masks (not part of original collection; added via BAMF AIMI Annotations initiative)",
@@ -11071,9 +11780,13 @@
     }
   },
   {
+    "id": "soft-tissue-sarcoma",
     "name": "Soft-tissue-Sarcoma",
     "full_name": "Soft-tissue-Sarcoma",
-    "category": "MSK",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
     "anatomy": "Extremity soft tissue",
     "modality": [
       "PET",
@@ -11105,7 +11818,6 @@
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/soft-tissue-sarcoma/",
     "description": "51 soft-tissue sarcoma patients with FDG PET/CT and multi-sequence MRI (T1, T2FS, STIR) and expert manual tumor/edema RTSTRUCT segmentations plus clinical outcome data on TCIA.",
-    "id": "soft-tissue-sarcoma",
     "details": {
       "label_schema": [
         "GTV_Mass - gross tumor volume excluding visible peritumoral edema",
@@ -11117,9 +11829,13 @@
     }
   },
   {
+    "id": "deeplesion",
     "name": "DeepLesion",
     "full_name": "NIH DeepLesion",
-    "category": "WholeBody",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "Whole body (multi-organ CT lesions)",
     "modality": [
       "CT"
@@ -11152,7 +11868,6 @@
     "host": "NIH Clinical Center (Box)",
     "url": "https://nihcc.app.box.com/v/DeepLesion",
     "description": "A large-scale CT dataset of 32,735 clinically significant lesions across 4,427 patients, mined from radiologist bookmarks with bounding boxes and RECIST diameter measurements, stored as 16-bit PNG slices.",
-    "id": "deeplesion",
     "details": {
       "label_schema": [
         "Lesion detection/measurement dataset: each row = one lesion on one key axial CT slice (weak 2D annotation, not full segmentation)",
@@ -11177,9 +11892,13 @@
     }
   },
   {
+    "id": "radimagenet",
     "name": "RadImageNet",
     "full_name": "RadImageNet",
-    "category": "Repository",
+    "type": "dataset",
+    "regions": [
+      "Multi"
+    ],
     "anatomy": "Multiple (whole body; CT/MRI/US across many anatomical regions)",
     "modality": [
       "CT",
@@ -11212,7 +11931,6 @@
     "access": "request",
     "host": "RadImageNet",
     "url": "https://www.radimagenet.com/",
-    "description": "RadImageNet is a large open medical imaging database of ~1.35 million CT, MRI, and ultrasound images with anatomy and pathology labels, built as a domain-specific pretraining resource for transfer learning.",
-    "id": "radimagenet"
+    "description": "RadImageNet is a large open medical imaging database of ~1.35 million CT, MRI, and ultrasound images with anatomy and pathology labels, built as a domain-specific pretraining resource for transfer learning."
   }
 ]

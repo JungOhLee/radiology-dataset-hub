@@ -32,7 +32,8 @@ Each entry is a JSON object with these fields:
 | `id` | string | unique kebab-case id |
 | `name` | string | short display name |
 | `full_name` | string \| null | expanded name |
-| `category` | enum | `Neuro`, `Chest`, `Cardiac`, `Vascular`, `Abdomen`, `Pelvis`, `MSK`, `Breast`, `HeadNeck`, `Dental`, `WholeBody`, `Multimodal`, `Repository` |
+| `type` | enum | `dataset` or `repository` (hubs like TCIA/PhysioNet) |
+| `regions` | string[] | **one or more** body regions — a dataset spanning several lists them all: `Neuro`, `Chest`, `Cardiac`, `Vascular`, `Abdomen`, `Pelvis`, `MSK`, `Breast`, `HeadNeck`, `Dental`, `WholeBody`, `Multi` (various). Empty only for repositories. |
 | `anatomy` | string | organ/region, e.g. `"liver"` |
 | `modality` | string[] | any of `CT`, `MRI`, `PET`, `X-ray` (note others in `description`) |
 | `year` | int \| null | release year |
@@ -57,3 +58,9 @@ Each entry is a JSON object with these fields:
 
 Metadata should reflect the **official source**, not third-party mirrors. When unsure about a field,
 use `null` rather than guessing. Corrections are very welcome — open an issue with a source link.
+
+## Finding new datasets
+
+We monitor dataset sources automatically — see [SOURCES.md](SOURCES.md). Run
+`python3 scripts/find_new_datasets.py` to list open radiology datasets not yet in the catalog,
+or check the monthly **📡 New open radiology dataset candidates** issue.

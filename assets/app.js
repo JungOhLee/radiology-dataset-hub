@@ -1,10 +1,10 @@
 /* Radiology Dataset Hub — client logic (vanilla JS, no build step) */
 
-const CATEGORY_ORDER = [
+const REGION_ORDER = [
   "Neuro", "Chest", "Cardiac", "Vascular", "Abdomen", "Pelvis",
-  "MSK", "Breast", "HeadNeck", "Dental", "WholeBody", "Multimodal", "Repository",
+  "MSK", "Breast", "HeadNeck", "Dental", "WholeBody", "Multi",
 ];
-const CATEGORY_LABEL = {
+const REGION_LABEL = {
   Neuro: "Neuro (Brain & Spine)",
   Chest: "Chest & Thorax",
   Cardiac: "Cardiac",
@@ -16,10 +16,10 @@ const CATEGORY_LABEL = {
   HeadNeck: "Head & Neck",
   Dental: "Dental & Maxillofacial",
   WholeBody: "Whole-Body & PET",
-  Multimodal: "Multimodal / Image–Text",
+  Multi: "Multiple / Various body parts",
   Repository: "Data Repositories & Portals",
 };
-const CATEGORY_DESC = {
+const REGION_DESC = {
   Neuro: "MRI/CT/PET of brain, spine and head",
   Chest: "Chest X-ray and thoracic CT",
   Cardiac: "Cardiac MRI and coronary/cardiac CT",
@@ -30,37 +30,44 @@ const CATEGORY_DESC = {
   Breast: "Mammography, DBT and breast MRI",
   HeadNeck: "Oncology PET/CT and H&N imaging",
   Dental: "Panoramic X-ray and CBCT",
-  WholeBody: "Whole-body PET/CT lesion imaging",
-  Multimodal: "Paired reports, captions and VQA",
+  WholeBody: "Whole-body PET/CT and total-body segmentation",
+  Multi: "Datasets spanning many body regions",
   Repository: "Hubs hosting many collections",
 };
-const CATEGORY_ICON = {
-  Neuro: "🧠", Chest: "🫁", Cardiac: "🫀", Vascular: "🩸", Abdomen: "🩻",
+const REGION_ICON = {
+  Neuro: "🧠", Chest: "🫁", Cardiac: "🫀", Vascular: "🩸", Abdomen: "🫃",
   Pelvis: "⬇️", MSK: "🦴", Breast: "🎀", HeadNeck: "👤", Dental: "🦷",
-  WholeBody: "🌐", Multimodal: "📝", Repository: "🗄️",
+  WholeBody: "🌐", Multi: "🧩", Repository: "🗄️",
 };
-const CATEGORY_SHORT = {
+const REGION_SHORT = {
   Neuro: "Neuro", Chest: "Chest", Cardiac: "Cardiac", Vascular: "Vascular",
   Abdomen: "Abdomen", Pelvis: "Pelvis", MSK: "MSK", Breast: "Breast",
   HeadNeck: "Head & Neck", Dental: "Dental", WholeBody: "Whole-body/PET",
-  Multimodal: "Multimodal", Repository: "Repositories",
+  Multi: "Multi-region", Repository: "Repositories",
 };
 const MODALITIES = ["CT", "MRI", "PET", "X-ray"];
 
+// "Image–text (multimodal)" is a characteristic, not a section: paired reports/captions/QA.
+const VLM_TASKS = ["vqa", "captioning", "report-generation", "grounding",
+  "phrase-grounding", "scene-graph-generation", "image-text-retrieval", "concept-detection"];
+const isVLM = d => d.paired_text === true &&
+  (d.tasks || []).some(t => VLM_TASKS.includes(String(t).toLowerCase()));
+
 const TOGGLES = [
   { key: "raw_image", label: "Raw (DICOM/NIfTI)", test: d => d.raw_image === true },
-  { key: "paired_text", label: "Paired text", test: d => d.paired_text === true },
+  { key: "paired_text", label: "Paired text / VLM", test: d => d.paired_text === true },
   { key: "segmentation", label: "Segmentation", test: d => d.segmentation === true },
   { key: "multi_sequence", label: "Multi-seq/phase", test: d => d.multi_sequence === true },
+  { key: "multi_region", label: "Multi-region", test: d => (d.regions || []).length > 1 },
   { key: "open", label: "Open access", test: d => d.access === "open" },
 ];
 
 const state = {
   q: "",
   modalities: new Set(),
-  categories: new Set(),
+  regions: new Set(),   // region keys, plus the literal "Repository"
   toggles: new Set(),
-  sort: "category",
+  sort: "region",
 };
 
 let DATA = [];
@@ -104,6 +111,11 @@ function wireDetailModal() {
   });
 }
 
+function regionCount(r) {
+  if (r === "Repository") return DATA.filter(d => d.type === "repository").length;
+  return DATA.filter(d => d.type !== "repository" && (d.regions || []).includes(r)).length;
+}
+
 function buildControls() {
   // modality chips
   const modWrap = $("#modality-filters");
@@ -111,32 +123,29 @@ function buildControls() {
     const b = chip(m, () => toggleSet(state.modalities, m, b));
     modWrap.appendChild(b);
   });
-  // body-region filter chips (multi-select banners)
+  // body-region filter chips (multi-select banners) + Repositories
   const regionWrap = $("#region-filters");
-  CATEGORY_ORDER.forEach(c => {
-    const n = DATA.filter(d => d.category === c).length;
+  [...REGION_ORDER, "Repository"].forEach(r => {
+    const n = regionCount(r);
     if (!n) return;
     const b = document.createElement("button");
     b.className = "chip region-chip"; b.setAttribute("aria-pressed", "false");
-    b.dataset.cat = c;
-    b.innerHTML = `<span class="chip-ico">${CATEGORY_ICON[c] || ""}</span> ${CATEGORY_SHORT[c] || c} <span class="chip-n">${n}</span>`;
-    b.addEventListener("click", () => toggleSet(state.categories, c, b));
+    b.dataset.region = r;
+    b.innerHTML = `<span class="chip-ico">${REGION_ICON[r] || ""}</span> ${REGION_SHORT[r] || r} <span class="chip-n">${n}</span>`;
+    b.addEventListener("click", () => toggleSet(state.regions, r, b));
     regionWrap.appendChild(b);
   });
-  // toggle chips
+  // characteristic toggle chips
   const tWrap = $("#toggle-filters");
   TOGGLES.forEach(t => {
     const b = chip(t.label, () => toggleSet(state.toggles, t.key, b));
     b.classList.add("toggle-chip");
     tWrap.appendChild(b);
   });
-  // search
   $("#search").addEventListener("input", e => { state.q = e.target.value.toLowerCase().trim(); render(); });
-  // sort
   $("#sort-select").addEventListener("change", e => { state.sort = e.target.value; render(); });
-  // reset
   $("#reset").addEventListener("click", () => {
-    state.q = ""; state.modalities.clear(); state.categories.clear(); state.toggles.clear();
+    state.q = ""; state.modalities.clear(); state.regions.clear(); state.toggles.clear();
     $("#search").value = "";
     document.querySelectorAll(".chip[aria-pressed='true']").forEach(c => c.setAttribute("aria-pressed", "false"));
     render();
@@ -155,17 +164,23 @@ function toggleSet(set, key, el) {
   render();
 }
 
+function matchesRegion(d) {
+  if (!state.regions.size) return true;
+  if (d.type === "repository") return state.regions.has("Repository");
+  return (d.regions || []).some(r => state.regions.has(r));
+}
+
 function matches(d) {
   if (state.modalities.size && !(d.modality || []).some(m => state.modalities.has(m))) return false;
-  if (state.categories.size && !state.categories.has(d.category)) return false;
+  if (!matchesRegion(d)) return false;
   for (const key of state.toggles) {
     const t = TOGGLES.find(x => x.key === key);
     if (t && !t.test(d)) return false;
   }
   if (state.q) {
     const hay = [d.name, d.full_name, d.description, d.anatomy, (d.modality || []).join(" "),
-      (d.tasks || []).join(" "), d.host, (d.format || []).join(" "), d.segmentation_detail,
-      d.multi_sequence_detail, d.paired_text_detail].filter(Boolean).join(" ").toLowerCase();
+      (d.regions || []).join(" "), (d.tasks || []).join(" "), d.host, (d.format || []).join(" "),
+      d.segmentation_detail, d.multi_sequence_detail, d.paired_text_detail].filter(Boolean).join(" ").toLowerCase();
     if (!hay.includes(state.q)) return false;
   }
   return true;
@@ -173,10 +188,11 @@ function matches(d) {
 
 function render() {
   const list = DATA.filter(matches);
-  $("#count").innerHTML = `<b>${list.length}</b> of ${DATA.length} datasets`;
+  const uniq = list.length;
+  $("#count").innerHTML = `<b>${uniq}</b> of ${DATA.length} datasets`;
   const results = $("#results");
 
-  if (!list.length) {
+  if (!uniq) {
     results.innerHTML = `<div class="empty"><h2>No datasets match</h2>
       <p>Try removing a filter or broadening your search.</p></div>`;
     return;
@@ -189,23 +205,32 @@ function render() {
     return;
   }
 
-  // grouped by category
+  // grouped by region; a multi-region dataset appears under each of its regions
   let html = "";
-  for (const cat of CATEGORY_ORDER) {
-    const items = list.filter(d => d.category === cat);
+  for (const r of REGION_ORDER) {
+    const items = list.filter(d => d.type !== "repository" && (d.regions || []).includes(r));
     if (!items.length) continue;
     items.sort((a, b) => (b.year || 0) - (a.year || 0));
-    html += `<section class="cat-section" id="cat-${cat}">
-      <div class="cat-head">
-        <span class="cat-ico">${CATEGORY_ICON[cat] || ""}</span>
-        <h2>${CATEGORY_LABEL[cat] || cat}</h2>
-        <span class="cat-count">${items.length}</span>
-        <span class="cat-desc">${CATEGORY_DESC[cat] || ""}</span>
-      </div>
-      <div class="grid">${items.map(card).join("")}</div>
-    </section>`;
+    html += section(r, items);
+  }
+  const repos = list.filter(d => d.type === "repository");
+  if (repos.length) {
+    repos.sort((a, b) => (b.year || 0) - (a.year || 0));
+    html += section("Repository", repos);
   }
   results.innerHTML = html;
+}
+
+function section(r, items) {
+  return `<section class="cat-section" id="cat-${r}">
+    <div class="cat-head">
+      <span class="cat-ico">${REGION_ICON[r] || ""}</span>
+      <h2>${REGION_LABEL[r] || r}</h2>
+      <span class="cat-count">${items.length}</span>
+      <span class="cat-desc">${REGION_DESC[r] || ""}</span>
+    </div>
+    <div class="grid">${items.map(card).join("")}</div>
+  </section>`;
 }
 
 function esc(s) {
@@ -213,13 +238,22 @@ function esc(s) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 }
 
+function regionTags(d) {
+  if (d.type === "repository") {
+    return `<span class="rtag">${REGION_ICON.Repository} Repository</span>`;
+  }
+  const rs = d.regions || [];
+  const multi = rs.length > 1 ? ` <span class="rtag rtag-multi" title="Covers multiple body regions">multi-region</span>` : "";
+  return rs.map(r => `<span class="rtag">${REGION_ICON[r] || ""} ${esc(REGION_SHORT[r] || r)}</span>`).join("") + multi;
+}
+
 function card(d) {
   const mods = (d.modality || []).map(m => `<span class="mod">${esc(m)}</span>`).join("");
   const badges = [];
   if (d.raw_image) badges.push(`<span class="badge raw" title="Native DICOM/NIfTI raw images">◆ Raw</span>`);
-  if (d.paired_text) badges.push(`<span class="badge text" title="${esc(d.paired_text_detail || "Paired text")}">◨ Text</span>`);
+  if (d.paired_text) badges.push(`<span class="badge text" title="${esc(d.paired_text_detail || "Paired reports/captions/QA — image–text / multimodal")}">◨ ${isVLM(d) ? "Image–text" : "Text"}</span>`);
   if (d.segmentation) badges.push(`<span class="badge seg" title="${esc(d.segmentation_detail || "Segmentation masks")}">▧ Seg</span>`);
-  if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(d.multi_sequence_detail || "Multi-sequence / multi-phase")}">≋ Multi</span>`);
+  if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(d.multi_sequence_detail || "Multi-sequence / multi-phase")}">≋ Multi-seq</span>`);
   const fmt = (d.format || []).slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
 
   const access = (d.access || "").toLowerCase();
@@ -245,6 +279,7 @@ function card(d) {
     </div>
     ${d.full_name && d.full_name !== d.name ? `<div class="anatomy">${esc(d.full_name)}</div>` : ""}
     <div class="modality-row">${mods}${d.anatomy ? `<span class="anatomy">· ${esc(d.anatomy)}</span>` : ""}</div>
+    <div class="rtags">${regionTags(d)}</div>
     <p class="desc">${esc(d.description || "")}</p>
     <div class="badges">${badges.join("")}${fmt}</div>
     <div class="meta-line">
@@ -295,13 +330,16 @@ function openDetail(id) {
   } else {
     structure = `<section class="detail-structure detail-structure-empty">
       <h4>Data & label structure</h4>
-      <p>A detailed label schema hasn't been catalogued for this dataset yet. The fields above summarize
-      what's inside; see the <a href="${esc(d.url || "#")}" target="_blank" rel="noopener">official source</a>
+      <p>A detailed label schema hasn't been catalogued for this ${d.type === "repository" ? "repository" : "dataset"} yet.
+      The fields above summarize what's inside; see the
+      <a href="${esc(d.url || "#")}" target="_blank" rel="noopener">official source</a>
       for the exact folder layout and label definitions.
       <a href="https://github.com/JungOhLee/radiology-dataset-hub/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute it →</a></p>
     </section>`;
   }
 
+  const regionsTxt = d.type === "repository" ? "Data repository / portal"
+    : (d.regions || []).map(r => REGION_LABEL[r] || r).join(", ");
   const modsBig = (d.modality || []).map(m => `<span class="mod">${esc(m)}</span>`).join("");
   document.getElementById("modal-body").innerHTML = `
     <div class="modal-head">
@@ -313,14 +351,14 @@ function openDetail(id) {
     </div>
     <div class="detail-cols">
       <table class="detail-table">
-        ${row("Body region", CATEGORY_LABEL[d.category] || d.category)}
+        ${row("Body region(s)", regionsTxt)}
         ${row("Anatomy", d.anatomy)}
         ${row("Modality", d.modality)}
         ${row("Year", d.year)}
         ${row("Format", d.format)}
         ${boolRow("Raw image (DICOM/NIfTI)", d.raw_image)}
         ${row("Size", d.size)}
-        ${boolRow("Paired text", d.paired_text, d.paired_text_detail)}
+        ${boolRow("Paired text / image–text", d.paired_text, d.paired_text_detail)}
         ${boolRow("Multi-sequence / phase", d.multi_sequence, d.multi_sequence_detail)}
         ${boolRow("Segmentation labels", d.segmentation, d.segmentation_detail)}
         ${row("Other labels", d.other_labels)}

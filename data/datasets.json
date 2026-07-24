@@ -19390,5 +19390,2714 @@
       "file_structure": "Per-subject/per-session folders named OAS2_XXXX_MRn (e.g., OAS2_0001_MR1), each containing 3-4 raw T1-weighted MRI scans plus FSL-processed derivatives (motion-corrected/averaged, atlas-registered, brain-masked, and FSL tissue-segmented GM/WM/CSF), distributed as Analyze 7.5 format (.img/.hdr) inside tar.gz archives (~18 GB total); labels are supplied in a separate demographic/clinical spreadsheet (commonly distributed as oasis_longitudinal.csv) keyed by Subject ID and MRI ID.",
       "extra": "150 subjects aged 60-96 with 373 total imaging sessions (>=2 visits >=1 year apart); groups: 72 nondemented throughout, 64 demented at baseline (51 with mild-to-moderate Alzheimer's), 14 converted from nondemented to demented. This is a longitudinal cohort intended for dementia classification/progression rather than organ segmentation."
     }
+  },
+  {
+    "id": "nako",
+    "name": "NAKO",
+    "full_name": "NAKO Gesundheitsstudie (German National Cohort)",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro",
+      "Cardiac",
+      "Abdomen",
+      "MSK",
+      "Vascular"
+    ],
+    "anatomy": "Whole-body coverage including brain, heart, abdominal organs (liver, pancreas), spine, knee joints and vasculature",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~30,000 imaging participants (of 205,000 total cohort)",
+    "paired_text": false,
+    "paired_text_detail": "No routine free-text radiology reports; standardized incidental-findings assessments and derived quantitative image parameters are provided instead.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Standardized 3T whole-body protocol (Siemens Skyra): brain T1 MPRAGE, FLAIR, T2*, TOF-MRA, DTI, resting-state fMRI; cardiac cine; whole-body T1 Dixon (VIBE); abdominal/liver PDFF; spine and knee sequences.",
+    "segmentation": false,
+    "segmentation_detail": "No public voxel-wise labels released; central image-analysis working groups generate derived quantitative measures (organ volumes, fat fractions) for approved projects.",
+    "other_labels": [
+      "incidental findings",
+      "derived body-composition metrics",
+      "organ fat fractions"
+    ],
+    "tasks": [
+      "body composition quantification",
+      "organ segmentation",
+      "cardiac function analysis",
+      "brain morphometry",
+      "population imaging biomarker discovery"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "NAKO e.V. / German National Cohort (TransferHub)",
+    "url": "https://transfer.nako.de/transfer/",
+    "description": "Germany's largest population cohort with a standardized 3T whole-body MRI sub-study in ~30,000 participants linkable to deep phenotyping, labs, genetics and outcomes.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Extensive linkable data including anthropometry, blood pressure, ECG, spirometry, laboratory biomarkers, cognitive testing, questionnaires on lifestyle/diet/medication, genome-wide genotyping and omics from biosamples, plus follow-up of incident cardiometabolic disease, cancer, and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "ship",
+    "name": "SHIP",
+    "full_name": "Study of Health in Pomerania",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro",
+      "Cardiac",
+      "Abdomen",
+      "Vascular",
+      "Breast"
+    ],
+    "anatomy": "Whole-body coverage including brain, heart, liver, kidney, spleen and abdominal organs, major vessels, and optional breast (mammography) imaging",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2012,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants",
+    "paired_text": false,
+    "paired_text_detail": "Standardized incidental-findings documentation and derived quantitative parameters rather than clinical free-text radiology reports.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Standardized 1.5T whole-body MRI protocol (Siemens Magnetom Avanto): brain structural imaging and MR angiography, cardiac cine (optional), abdominal Dixon/liver-fat and organ sequences, and whole-body sequences; optional mammography for women.",
+    "segmentation": false,
+    "segmentation_detail": "Derived organ and body-fat measures produced for approved projects; no public voxel-level segmentation labels released.",
+    "other_labels": [
+      "liver fat fraction",
+      "visceral/subcutaneous adipose tissue",
+      "organ volumetry",
+      "incidental findings"
+    ],
+    "tasks": [
+      "liver fat quantification",
+      "body composition analysis",
+      "organ segmentation",
+      "cardiovascular imaging phenotyping",
+      "brain MRI phenotyping"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "University Medicine Greifswald - SHIP Transfer Office (Forschungsverbund Community Medicine)",
+    "url": "https://www.fvcm.med.uni-greifswald.de/",
+    "description": "Longstanding population-based cohort from Northeast Germany (West Pomerania) offering standardized whole-body 1.5T MRI linkable to deep phenotyping, biobank samples and long-term outcome follow-up, accessible by research application to the SHIP Transfer Office.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable anthropometry, blood pressure, laboratory panels, oral/dental health, thyroid ultrasound, medications, lifestyle and dietary questionnaires, genome-wide genotyping, metabolomics and other omics, and follow-up of cardiometabolic disease, cancer and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "rhineland-study",
+    "name": "Rhineland Study",
+    "full_name": "Rhineland Study (DZNE Bonn)",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "Abdomen"
+    ],
+    "anatomy": "Brain (structural, microstructural, functional, perfusion) and abdomen for body-composition (visceral and subcutaneous adipose tissue)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2016,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~20,000-participant target (>10,000 enrolled)",
+    "paired_text": false,
+    "paired_text_detail": "Standardized incidental-findings review and derived imaging measures; no free-text radiology reports for research use.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T protocol: T1 MPRAGE, FLAIR, multi-shell DTI, resting-state fMRI, ASL perfusion, and QSM/susceptibility for the brain, plus abdominal Dixon imaging for adipose-tissue and body-composition quantification (visceral vs subcutaneous fat).",
+    "segmentation": false,
+    "segmentation_detail": "Derived brain morphometry and body-composition metrics generated for approved analyses; no released voxel-level masks.",
+    "other_labels": [
+      "brain volumetrics",
+      "abdominal fat quantification",
+      "retinal OCT phenotypes"
+    ],
+    "tasks": [
+      "brain morphometry",
+      "body composition quantification",
+      "healthy-aging biomarker discovery"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "German Center for Neurodegenerative Diseases (DZNE), Bonn",
+    "url": "https://www.rheinland-studie.de/en/",
+    "description": "Prospective Bonn population cohort combining deep multimodal brain MRI with abdominal body-composition MRI and repeated follow-up for healthy-aging research.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Linkable cognitive and physical-performance testing, cardiometabolic measures (ECG, blood pressure, metabolic-syndrome risk), retinal/OCT imaging, blood labs, medications, extensive lifestyle/environmental questionnaires, and genome-wide genotyping/omics with repeated follow-up visits.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "hamburg-city-health-study",
+    "name": "Hamburg City Health Study",
+    "full_name": "Hamburg City Health Study (HCHS)",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Neuro",
+      "Vascular"
+    ],
+    "anatomy": "Heart, brain, and carotid vasculature",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2020,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~45,000-participant target (>17,000 enrolled)",
+    "paired_text": false,
+    "paired_text_detail": "Standardized incidental-findings assessment and centrally derived cardiac/brain metrics rather than free-text clinical radiology reports.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T cardiac cine and mapping in imaged participants plus a multimodal brain MRI sub-study (structural T1, FLAIR, DTI) and carotid MR imaging.",
+    "segmentation": false,
+    "segmentation_detail": "Cardiac function parameters and white-matter/brain volumetric metrics derived centrally for approved projects; voxel-level segmentation masks not routinely distributed.",
+    "other_labels": [
+      "cardiac function parameters",
+      "white matter hyperintensities",
+      "brain volumetrics"
+    ],
+    "tasks": [
+      "cardiac function analysis",
+      "brain small-vessel disease assessment",
+      "cardiovascular risk phenotyping"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "University Medical Center Hamburg-Eppendorf (UKE)",
+    "url": "https://hchs.hamburg/",
+    "description": "Large Hamburg population cohort with cardiac MRI in imaged participants and a multimodal brain and carotid MRI sub-study linkable to deep cardiovascular and neurological phenotyping.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable deep phenotyping including ECG, echocardiography and vascular function, blood/urine labs, lung function, cognitive testing, medications, lifestyle and medical-history questionnaires, genotyping/omics, and follow-up of incident cardiovascular events and mortality.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "rotterdam-study",
+    "name": "Rotterdam Study",
+    "full_name": "Rotterdam Study (Erasmus Rotterdam Gezondheid Onderzoek, ERGO)",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "MSK",
+      "WholeBody"
+    ],
+    "anatomy": "Brain (repeated 1.5T MRI) plus whole-body/regional DXA for bone mineral density and fat/lean body composition",
+    "modality": [
+      "MRI",
+      "DXA"
+    ],
+    "year": 2005,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~20,000 participants aged 40+ enrolled overall; ~5,000+ with repeated brain MRI",
+    "paired_text": false,
+    "paired_text_detail": "Research imaging with centrally derived phenotypes and incidental-findings documentation; no clinical radiology report distribution.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "1.5T brain MRI protocol (T1, proton density, FLAIR, plus diffusion and gradient-echo sequences in extended waves) repeated across visits; DXA for bone density and fat/lean mass.",
+    "segmentation": true,
+    "segmentation_detail": "Brain tissue, white-matter lesion and microbleed volumes derived centrally; DXA provides quantitative fat/lean body-composition output.",
+    "other_labels": [
+      "brain volumetrics",
+      "white matter lesions",
+      "cerebral microbleeds",
+      "bone mineral density",
+      "fat mass",
+      "lean mass"
+    ],
+    "tasks": [
+      "brain aging analysis",
+      "dementia and stroke prediction",
+      "body composition analysis",
+      "bone health analysis"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Erasmus MC, Rotterdam, Netherlands",
+    "url": "https://www.ergo-onderzoek.nl",
+    "description": "Classic Dutch aging population cohort with repeated 1.5T brain MRI and DXA body composition linkable to decades of clinical, genetic and mortality follow-up.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable cardiometabolic measures, blood/urine laboratory markers, cognitive and physical testing, medication and pharmacy records, genome-wide genotyping and omics, and long-term follow-up of dementia, stroke, cardiovascular disease, cancer and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "generation-r",
+    "name": "Generation R",
+    "full_name": "Generation R Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "WholeBody",
+      "Cardiac",
+      "Chest",
+      "MSK"
+    ],
+    "anatomy": "Developing brain plus cardiac, lung and hip MRI, and whole-body DXA for pediatric body composition",
+    "modality": [
+      "MRI",
+      "DXA"
+    ],
+    "year": 2018,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~several thousand children with repeated brain MRI and DXA (birth cohort of ~9,700 mothers/children)",
+    "paired_text": false,
+    "paired_text_detail": "Research pediatric imaging with centrally derived phenotypes; incidental findings reviewed clinically but radiology reports are not distributed as part of the dataset.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T pediatric brain MRI (T1, DTI, resting-state fMRI) repeated at Focus visits (ages ~9, 13, 17); additional cardiac, lung and hip MRI; whole-body DXA for fat and lean mass.",
+    "segmentation": false,
+    "segmentation_detail": "Brain morphometry and DXA body-composition measures derived centrally; voxel-level segmentation masks not routinely distributed.",
+    "other_labels": [
+      "brain development metrics",
+      "fat mass index",
+      "lean mass",
+      "cardiac and lung imaging measures"
+    ],
+    "tasks": [
+      "neurodevelopmental imaging analysis",
+      "pediatric body composition analysis",
+      "life-course modeling"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Erasmus MC, Rotterdam",
+    "url": "https://generationr.nl/researchers/",
+    "description": "Population-based birth cohort with repeated pediatric brain MRI and whole-body DXA body composition from childhood through adolescence, accessible via collaborative application.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Linkable prenatal/perinatal records, anthropometry and growth trajectories, cardiometabolic measures, cognition/behavior assessments, laboratory/blood and urine biomarkers, genome-wide genotyping and omics, and extensive parental and lifestyle questionnaires across repeated visits.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "the-maastricht-study",
+    "name": "The Maastricht Study",
+    "full_name": "The Maastricht Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (3T MRI: structural/T1, FLAIR, diffusion); the cohort also includes extensive non-imaging cardiometabolic, vascular (ultrasound), and retinal phenotyping",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2014,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~10,000 participants (deep-phenotyping cohort target)",
+    "paired_text": false,
+    "paired_text_detail": "No free-text radiology reports; standardized incidental-findings assessment and derived imaging parameters only.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T brain MRI protocol including structural (T1), FLAIR, and diffusion-weighted sequences.",
+    "segmentation": false,
+    "segmentation_detail": "Derived brain volumetric and cerebral small-vessel-disease measures generated for approved projects; no distributed voxel segmentation masks confirmed.",
+    "other_labels": [
+      "brain small-vessel disease markers",
+      "white matter hyperintensities",
+      "brain atrophy/volumes"
+    ],
+    "tasks": [
+      "cerebral small vessel disease imaging analysis",
+      "diabetes complication neuroimaging analysis",
+      "brain phenotyping"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Maastricht University / Maastricht UMC+",
+    "url": "https://www.demaastrichtstudie.nl/research/data-guidelines",
+    "description": "Deeply phenotyped Dutch population cohort enriched for type 2 diabetes with 3T brain MRI linkable to extensive cardiometabolic, vascular, and biobank data.",
+    "tags": [
+      "population-cohort",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Linkable oral glucose tolerance test/glycemic status, extensive cardiometabolic and vascular function measures, blood/urine labs, retinal imaging, carotid ultrasound, medications, lifestyle and accelerometry data, biobank genotyping/omics, and outcome follow-up.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "alspac",
+    "name": "ALSPAC",
+    "full_name": "Avon Longitudinal Study of Parents and Children (Children of the 90s)",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "MSK",
+      "Neuro"
+    ],
+    "anatomy": "Whole-body and regional DXA for body composition and bone, plus brain MRI (structural/functional/DTI/MT) in ~900-participant sub-studies",
+    "modality": [
+      "DXA",
+      "MRI"
+    ],
+    "year": 2015,
+    "format": [
+      "derived",
+      "DICOM",
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "~14,000 index children (thousands with repeated DXA; ~900 with brain MRI at 18-24y)",
+    "paired_text": false,
+    "paired_text_detail": "Derived DXA body-composition variables and MRI-derived phenotypes documented in variable catalogues; no clinical radiology reports distributed.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Repeated whole-body DXA across childhood and adulthood; brain MRI sub-studies include structural MRI, functional MRI, diffusion tensor imaging and magnetization transfer MRI (plus MEG).",
+    "segmentation": false,
+    "segmentation_detail": "DXA yields quantitative fat/lean/bone output; MRI-derived measures produced per sub-study; no distributed voxel segmentations.",
+    "other_labels": [
+      "fat mass",
+      "lean mass",
+      "bone mineral density"
+    ],
+    "tasks": [
+      "life-course body composition modeling",
+      "developmental neuroimaging analysis"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "University of Bristol",
+    "url": "http://www.bristol.ac.uk/alspac/researchers/access/",
+    "description": "Landmark British birth cohort with repeated whole-body DXA body-composition scans across the life course and targeted brain MRI sub-studies, richly linkable to phenotype, health outcomes and genetics.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable anthropometry and growth, cardiometabolic and pubertal measures, blood/biochemistry labs, cognition, extensive questionnaires, genome-wide genotyping and omics, and record linkage to health, hospitalization and mortality outcomes.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "troms-study",
+    "name": "Tromsø Study",
+    "full_name": "The Tromsø Study",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "MSK",
+      "Neuro"
+    ],
+    "anatomy": "Whole-body/regional DXA for body composition and bone density, plus brain in an MRI sub-study",
+    "modality": [
+      "DXA",
+      "MRI"
+    ],
+    "year": 2016,
+    "format": [
+      "derived",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "Tens of thousands of participants across seven survey waves (DXA and brain MRI collected in sub-samples)",
+    "paired_text": false,
+    "paired_text_detail": "Derived DXA body-composition/bone measures and MRI-derived phenotypes; no clinical report distribution.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Whole-body and regional DXA for fat, lean and bone mineral across waves (hip DEXA and forearm SXA in Tromsø 4-6, whole-body DXA body composition in Tromsø 7) plus a brain MRI sub-study.",
+    "segmentation": false,
+    "segmentation_detail": "DXA quantitative body-composition output; brain metrics derived in the MRI sub-study; no distributed voxel segmentations.",
+    "other_labels": [
+      "appendicular lean mass",
+      "fat mass",
+      "lean mass",
+      "bone mineral density"
+    ],
+    "tasks": [
+      "sarcopenia/body composition analysis",
+      "bone density/osteoporosis analysis",
+      "brain aging analysis",
+      "cardiovascular epidemiology"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "UiT The Arctic University of Norway",
+    "url": "https://uit.no/research/tromsostudy",
+    "description": "Repeated Norwegian population survey with DXA body composition and bone density and a brain MRI sub-study, linkable to national health, cancer and mortality registries.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable cardiometabolic and anthropometric measures, blood and biochemical labs, medications, lifestyle and dietary questionnaires, genotyping/omics, and linkage to Norwegian health, cancer and cause-of-death registries.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "kora-mri",
+    "name": "KORA-MRI",
+    "full_name": "Cooperative Health Research in the Region of Augsburg – Whole-Body MRI sub-study (KORA-FF4)",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Cardiac",
+      "Abdomen",
+      "Neuro",
+      "MSK",
+      "Vascular"
+    ],
+    "anatomy": "Whole-body coverage including heart, liver/pancreas, visceral and subcutaneous adipose depots, brain, spine, vasculature and knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2016,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~400 participants (whole-body MRI sub-study of KORA-FF4)",
+    "paired_text": false,
+    "paired_text_detail": "No radiology reports; standardized incidental-findings review and centrally derived quantitative measures only.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T whole-body protocol (Siemens Magnetom Skyra) including cardiac cine/mapping, T1 Dixon for adipose tissue, liver and pancreas PDFF/proton-density fat fraction, brain, spine, MR angiography and knee sequences.",
+    "segmentation": false,
+    "segmentation_detail": "Central derivation of visceral/subcutaneous adipose depots, hepatic and pancreatic fat, and cardiac function measures for approved projects; per-voxel segmentation masks not distributed by default.",
+    "other_labels": [
+      "visceral adipose tissue",
+      "subcutaneous adipose tissue",
+      "hepatic fat",
+      "pancreatic fat",
+      "cardiac function"
+    ],
+    "tasks": [
+      "body composition quantification",
+      "organ fat analysis",
+      "cardiometabolic imaging phenotyping"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Helmholtz Munich (KORA), via KORA.PASST project agreement",
+    "url": "https://www.helmholtz-munich.de/en/epi/cohort/kora",
+    "description": "Deeply phenotyped Augsburg population sub-cohort with whole-body 3T MRI enabling opportunistic body-composition and organ-fat quantification.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "clinical-linkage",
+      "genetics",
+      "opportunistic"
+    ],
+    "clinical_variables": "Linkable oral glucose tolerance test / glycemic status, cardiometabolic and anthropometric measures, laboratory panels, medications, lifestyle questionnaires, genome-wide genotyping, metabolomics and other omics, and prospective disease/outcome follow-up.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "scapis",
+    "name": "SCAPIS",
+    "full_name": "Swedish CArdioPulmonary bioImage Study",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Chest",
+      "Vascular",
+      "Abdomen"
+    ],
+    "anatomy": "Coronary arteries and heart, lungs, carotid arteries, and abdominal body-composition (visceral/subcutaneous fat and muscle)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2018,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~30,000 participants",
+    "paired_text": false,
+    "paired_text_detail": "Standardized central image reading and derived quantitative scores (e.g., coronary calcium, plaque, lung and body-composition measures); no free-text radiology report distribution.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Coronary CT angiography, coronary artery calcium CT, and low-dose chest/lung CT, plus abdominal body-composition CT; complemented by carotid ultrasound.",
+    "segmentation": false,
+    "segmentation_detail": "No public voxel segmentation masks; coronary calcium scores, plaque, lung metrics and body-composition variables (VAT, subcutaneous fat, muscle) derived centrally for approved projects.",
+    "other_labels": [
+      "coronary artery calcium score",
+      "coronary plaque",
+      "emphysema/lung metrics",
+      "visceral adipose tissue",
+      "subcutaneous fat",
+      "muscle volume"
+    ],
+    "tasks": [
+      "coronary calcium scoring",
+      "plaque quantification",
+      "lung disease phenotyping",
+      "body-composition analysis",
+      "cardiovascular risk prediction"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "SCAPIS (Swedish national consortium); imaging distributed via AIDA, Linkoping University",
+    "url": "https://www.scapis.org/data-access/",
+    "description": "Large Swedish population imaging cohort (~30,000) with coronary CT angiography, calcium scoring, lung CT and abdominal body-composition CT, linkable to deep phenotyping and national health registries.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome",
+      "opportunistic"
+    ],
+    "clinical_variables": "Linkable cardiometabolic and pulmonary function measures, laboratory tests, ECG, medications, anthropometry, lifestyle and diet questionnaires, genotyping/omics, and linkage to Swedish national health, cancer and cause-of-death registries.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "ages-reykjavik",
+    "name": "AGES-Reykjavik",
+    "full_name": "Age, Gene/Environment Susceptibility – Reykjavik Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "Cardiac",
+      "Vascular",
+      "Abdomen",
+      "MSK"
+    ],
+    "anatomy": "Brain (structural MRI) and quantitative CT of the thigh and abdomen for skeletal muscle and adipose tissue, plus coronary/aortic calcium CT",
+    "modality": [
+      "MRI",
+      "CT"
+    ],
+    "year": 2011,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~5,764 participants (baseline); brain MRI in most, thigh/abdomen QCT in sub-samples",
+    "paired_text": false,
+    "paired_text_detail": "Research imaging with centrally derived quantitative phenotypes; no clinical radiology report distribution.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "1.5T brain MRI (T1/PD/T2 structural, FLAIR, gradient-echo/SWI for microbleeds); quantitative CT of the mid-thigh and abdomen for muscle area, muscle attenuation/fat infiltration and visceral/subcutaneous fat; coronary and aortic calcium CT.",
+    "segmentation": false,
+    "segmentation_detail": "Brain tissue and white-matter lesion volumes and CT-based muscle and fat areas were derived centrally; per-image segmentation masks not the primary distributed product.",
+    "other_labels": [
+      "thigh muscle area",
+      "thigh/intermuscular and subcutaneous fat",
+      "visceral fat area",
+      "muscle attenuation (fat infiltration)",
+      "brain volumetrics",
+      "white matter lesions",
+      "cerebral microbleeds",
+      "coronary/aortic calcium score"
+    ],
+    "tasks": [
+      "sarcopenia / muscle quantification",
+      "body composition analysis",
+      "brain aging and dementia analysis",
+      "cardiovascular risk / calcium scoring"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Icelandic Heart Association (in collaboration with US National Institute on Aging)",
+    "url": "https://hjarta.is/en/research/ages/",
+    "description": "Icelandic population aging cohort combining brain MRI with quantitative thigh/abdominal CT for muscle and fat, linkable to genetics and long-term health outcomes.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "opportunistic",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable cardiometabolic measures (blood pressure, lipids, glucose/diabetes), cognitive and dementia assessments, bone density and body composition, extensive labs, medications, lifestyle and diet questionnaires, genome-wide genotyping and other omics, and long-term follow-up of cardiovascular disease, fractures, dementia and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "life-adult",
+    "name": "LIFE-Adult",
+    "full_name": "Leipzig Research Centre for Civilization Diseases – LIFE-Adult Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "Vascular"
+    ],
+    "anatomy": "Brain and carotid/intracranial vasculature",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~2,600 participants with 3T brain MRI (of ~10,000-participant cohort)",
+    "paired_text": false,
+    "paired_text_detail": "No radiology reports; standardized incidental-findings review and centrally derived imaging phenotypes only.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T brain MRI protocol including T1 MPRAGE, FLAIR, DTI, resting-state fMRI and time-of-flight angiography.",
+    "segmentation": false,
+    "segmentation_detail": "No public voxel masks; brain volumetrics and white-matter hyperintensity measures derived centrally for approved projects.",
+    "other_labels": [
+      "brain volumetrics",
+      "white matter hyperintensities"
+    ],
+    "tasks": [
+      "brain aging analysis",
+      "neuroimaging phenotype–genotype association",
+      "white matter hyperintensity quantification"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Leipzig University – LIFE Research Centre for Civilization Diseases",
+    "url": "https://www.uniklinikum-leipzig.de/einrichtungen/life",
+    "description": "Leipzig urban population cohort of ~10,000 deeply phenotyped adults with a large 3T brain MRI sub-study linkable to metabolic, cognitive, cardiovascular and genetic phenotyping, accessible to researchers by application via the LIFE Data Portal.",
+    "tags": [
+      "population-cohort",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Linkable cardiometabolic and anthropometric measures (incl. 3D laser body scanning), laboratory biomarkers (lipoproteins, steroid hormones, leukocyte subsets), carotid ultrasound, cognitive and psychological assessments, ophthalmologic and sleep phenotypes, medications, lifestyle questionnaires, and genome-wide genotyping.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "fenland-study",
+    "name": "Fenland Study",
+    "full_name": "Fenland Study (MRC Epidemiology Unit, University of Cambridge)",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Abdomen"
+    ],
+    "anatomy": "Whole-body and regional adiposity, hepatic fat, and bone/body composition assessed by DXA (with liver ultrasound)",
+    "modality": [
+      "DXA"
+    ],
+    "year": null,
+    "format": [
+      "derived"
+    ],
+    "raw_image": false,
+    "size": "~12,435 participants",
+    "paired_text": false,
+    "paired_text_detail": "No clinical radiology reports distributed; derived body-composition, DEXA and biochemistry metrics only.",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "total/regional body fat",
+      "lean mass",
+      "bone density",
+      "hepatic steatosis (ultrasound)"
+    ],
+    "tasks": [
+      "body composition quantification",
+      "obesity/type 2 diabetes phenotyping",
+      "metabolic and adiposity risk analysis"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "MRC Epidemiology Unit, University of Cambridge",
+    "url": "https://studies.epi.ims.cam.ac.uk/fenland/data-sharing",
+    "description": "Cambridgeshire population cohort (n=12,435) with DEXA body-composition and liver ultrasound linkable to detailed metabolic, physical-activity and genetic phenotyping, available to researchers by application.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Linkable oral glucose tolerance test (glucose, insulin, C-peptide, leptin, adiponectin), HbA1c, lipids, liver function and vitamin C biochemistry, objectively measured physical activity and cardiorespiratory fitness, anthropometry, grip strength, Intake24 nutrition, genome-wide genotyping/GWAS and metabolomics, and health/lifestyle questionnaires.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "whitehall-ii-imaging-sub-study",
+    "name": "Whitehall II Imaging Sub-study",
+    "full_name": "Whitehall II Imaging Sub-study (Oxford / UCL)",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2014,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~800 participants (brain MRI sub-study of the Whitehall II cohort)",
+    "paired_text": false,
+    "paired_text_detail": "Research multimodal brain MRI with centrally derived imaging phenotypes; no clinical radiology reports distributed.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T multimodal brain MRI including T1-weighted, T2/FLAIR, T2*/susceptibility-weighted, diffusion MRI, resting-state fMRI and task fMRI.",
+    "segmentation": false,
+    "segmentation_detail": "No public voxel segmentation masks; brain morphometric, white-matter-hyperintensity, diffusion and functional-connectivity measures derived centrally.",
+    "other_labels": [
+      "brain volumetrics",
+      "white matter microstructure",
+      "white matter hyperintensities",
+      "functional connectivity"
+    ],
+    "tasks": [
+      "brain aging analysis",
+      "cognitive decline / dementia risk prediction",
+      "life-course cardiovascular-risk to brain-health modeling"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Dementias Platform UK (DPUK) Data Portal / University of Oxford (WIN-FMRIB) / UCL",
+    "url": "https://www.dementiasplatform.uk/",
+    "description": "Multimodal 3T brain MRI sub-study of roughly 800 participants from the British Whitehall II civil-servant cohort, linkable to decades of life-course cardiometabolic, cognitive and lifestyle data, with access via the DPUK Data Portal.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable repeated Whitehall II phase measures: cardiometabolic risk factors (blood pressure, lipids, glucose/diabetes, adiposity), cognitive testing, blood biomarkers, socioeconomic and lifestyle factors, medications, and long-term follow-up of morbidity and mortality via record linkage.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "heinz-nixdorf-recall-1000brains",
+    "name": "Heinz Nixdorf Recall / 1000BRAINS",
+    "full_name": "Heinz Nixdorf Recall Study and 1000BRAINS MRI cohort",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Vascular",
+      "Neuro"
+    ],
+    "anatomy": "Coronary arteries/heart and brain",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~4,800 base cohort (Recall); ~1,300 in 1000BRAINS MRI sub-study",
+    "paired_text": false,
+    "paired_text_detail": "Centrally standardized image reading and derived scores; no free-text clinical report distribution.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Cardiac/coronary CT for calcium scoring plus multimodal 3T brain MRI (T1, FLAIR, DTI, resting-state fMRI) in the 1000BRAINS sub-study.",
+    "segmentation": false,
+    "segmentation_detail": "Coronary calcium scores and brain volumetric/connectivity measures derived centrally; no distributed voxel segmentation masks.",
+    "other_labels": [
+      "coronary artery calcium score",
+      "brain volumetrics",
+      "white matter microstructure"
+    ],
+    "tasks": [
+      "coronary calcium scoring",
+      "brain aging analysis",
+      "cardiovascular risk prediction"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "University Hospital Essen (IMIBE) / Forschungszentrum Jülich",
+    "url": "https://imibe.uk-essen.de/recall/",
+    "description": "German Ruhr-area population cohort pairing coronary artery calcium CT with the 1000BRAINS multimodal brain MRI sub-study, linkable to deep cardiometabolic and cognitive phenotyping.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable cardiometabolic and vascular measures, blood/urine labs, ECG, blood pressure, anthropometry, cognition (1000BRAINS), medications, lifestyle and environmental exposure questionnaires, genotyping, and prospective follow-up of cardiovascular events and mortality.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "mesa",
+    "name": "MESA",
+    "full_name": "Multi-Ethnic Study of Atherosclerosis",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Vascular",
+      "Chest",
+      "Abdomen"
+    ],
+    "anatomy": "Heart, coronary arteries, thoracic aorta, carotid arteries, abdominal fat depots",
+    "modality": [
+      "MRI",
+      "CT"
+    ],
+    "year": 2000,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "6,814 participants",
+    "paired_text": false,
+    "paired_text_detail": "No radiology narrative reports; imaging is paired with quantitative reading-center measurements and extensive clinical/exam datasets rather than free-text reports.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Cardiac MRI protocol includes cine SSFP for ventricular mass/function plus tagged MRI for strain; separate cardiac/chest CT (EBCT and multidetector CT) for coronary calcium; carotid MRI and ultrasound in ancillary studies.",
+    "segmentation": false,
+    "segmentation_detail": "No public voxel-level masks distributed; reading centers produced quantitative measures (LV mass/volumes, Agatston calcium scores, VAT/SAT areas) rather than shareable segmentation masks.",
+    "other_labels": [
+      "Coronary artery calcium Agatston scores",
+      "LV/RV mass and ejection fraction",
+      "carotid IMT",
+      "adjudicated incident cardiovascular events"
+    ],
+    "tasks": [
+      "cardiac function quantification",
+      "coronary calcium scoring",
+      "cardiovascular risk prediction",
+      "body composition analysis"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "NHLBI BioLINCC / MESA Coordinating Center (dbGaP phs000209 for genetics)",
+    "url": "https://biolincc.nhlbi.nih.gov/studies/mesa/",
+    "description": "A six-center prospective multi-ethnic cohort of ~6,814 adults aged 45-84 with serial cardiac MRI, coronary/chest CT and vascular imaging linked to deep cardiovascular phenotyping and event follow-up.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome",
+      "body-composition",
+      "opportunistic"
+    ],
+    "clinical_variables": "Standard CVD risk factors (blood pressure, lipids, glucose/diabetes, smoking), ECG, inflammatory/metabolic biomarkers and stored blood, sociodemographics, medications, genome-wide genotyping and other omics, and adjudicated incident CVD events, hospitalization and mortality through 2020.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "copdgene",
+    "name": "COPDGene",
+    "full_name": "Genetic Epidemiology of COPD Study",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
+    "anatomy": "Lungs, airways, and thoracic musculature/adipose tissue (pectoralis muscle, subcutaneous and intrathoracic fat) captured on chest CT",
+    "modality": [
+      "CT"
+    ],
+    "year": 2007,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "10,719 participants (over 40,000 inspiratory/expiratory chest CT scans through Phase 3)",
+    "paired_text": false,
+    "paired_text_detail": "No narrative radiology reports are distributed; CT scans are paired with quantitative densitometric/airway measures plus extensive clinical, spirometric and genetic data.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Volumetric inspiratory and expiratory chest CT acquired across multiple study phases enabling emphysema, air-trapping and airway-wall quantification.",
+    "segmentation": false,
+    "segmentation_detail": "Airway, lobe and emphysema quantifications were produced by the imaging cores; voxel-level segmentation masks are not part of the standard controlled-access release.",
+    "other_labels": [
+      "Emphysema percent (%LAA-950)",
+      "air trapping (%LAA-856 expiratory)",
+      "airway wall thickness (Pi10)",
+      "pectoralis muscle area",
+      "COPD GOLD stage",
+      "exacerbations",
+      "mortality"
+    ],
+    "tasks": [
+      "emphysema quantification",
+      "airway segmentation",
+      "COPD phenotyping",
+      "opportunistic body composition"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "NCBI dbGaP (phs000179) / COPDGene",
+    "url": "https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000179",
+    "description": "A longitudinal genetic-epidemiology COPD cohort of over 10,000 current and former smokers with more than 40,000 paired inspiratory/expiratory chest CT scans linked to genetics, spirometry and long-term outcomes.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "genetics",
+      "clinical-linkage",
+      "opportunistic",
+      "body-composition",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Spirometry and lung function, smoking history, respiratory symptoms and exacerbations, comorbidities, blood biomarkers, genome-wide genotyping/GWAS data, medications, and longitudinal COPD progression and mortality outcomes.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "spiromics",
+    "name": "SPIROMICS",
+    "full_name": "SubPopulations and InteRmediate Outcome Measures In COPD Study",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
+    "anatomy": "Lungs, airways, thoracic skeletal muscle (pectoralis) and fat",
+    "modality": [
+      "CT"
+    ],
+    "year": 2010,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "2,982 participants",
+    "paired_text": false,
+    "paired_text_detail": "No free-text radiology reports; CT is paired with quantitative imaging measures and deep respiratory phenotyping.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Standardized paired inspiratory and expiratory volumetric chest CT enabling emphysema densitometry, functional small-airways disease via parametric response mapping (PRM), and airway metrics; repeat imaging at follow-up.",
+    "segmentation": false,
+    "segmentation_detail": "Imaging core distributes derived densitometric, PRM and airway measures rather than publicly released voxel segmentation masks.",
+    "other_labels": [
+      "Emphysema",
+      "functional small-airways disease (PRM)",
+      "airway wall thickness",
+      "COPD subtypes",
+      "exacerbations",
+      "pectoralis muscle area"
+    ],
+    "tasks": [
+      "emphysema quantification",
+      "small-airways disease mapping",
+      "COPD subtyping",
+      "exacerbation prediction",
+      "opportunistic body composition"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "SPIROMICS Data Coordinating Center (UNC) / NCBI dbGaP (phs001119)",
+    "url": "https://www.spiromics.org/spiromics/",
+    "description": "An NHLBI/COPD Foundation COPD cohort of 2,982 participants with standardized paired inspiratory/expiratory chest CT and deep phenotyping designed to define intermediate imaging outcomes and disease subpopulations.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "genetics",
+      "clinical-linkage",
+      "opportunistic",
+      "body-composition"
+    ],
+    "clinical_variables": "Spirometry and lung function, respiratory symptoms and exacerbation/hospitalization history, smoking exposure, blood and airway biomarkers, genetics/omics, medications, and longitudinal respiratory and mortality outcomes.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "qatar-biobank",
+    "name": "Qatar Biobank",
+    "full_name": "Qatar Biobank (Qatar Precision Health Institute)",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Vascular",
+      "Abdomen"
+    ],
+    "anatomy": "Whole-body composition (DXA), carotid arteries (ultrasound IMT), and liver (FibroScan)",
+    "modality": [
+      "DXA",
+      "Ultrasound"
+    ],
+    "year": 2012,
+    "format": [
+      "derived"
+    ],
+    "raw_image": false,
+    "size": "~60,000 participants target (DXA and carotid ultrasound on examination subsets)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "DXA fat and lean mass",
+      "DXA bone mineral density",
+      "carotid intima-media thickness",
+      "liver stiffness (FibroScan)"
+    ],
+    "tasks": [
+      "body-composition quantification",
+      "cardiometabolic risk association",
+      "bone density assessment"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Qatar Precision Health Institute (Qatar Foundation)",
+    "url": "https://www.qphi.org.qa/research/how-to-apply",
+    "description": "Qatari population cohort with whole-body DXA body composition, carotid ultrasound and FibroScan measures linked to extensive labs, whole-genome sequencing/omics and lifestyle data, accessed by application through the QPHI research portal.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Cardiometabolic disease outcomes, comprehensive clinical labs, anthropometry, whole-genome sequencing and multi-omics (Qatar Genome Program), medications, and lifestyle/dietary questionnaires with follow-up recall.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "neo-study",
+    "name": "NEO Study",
+    "full_name": "Netherlands Epidemiology of Obesity Study",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Cardiac",
+      "Neuro",
+      "Vascular"
+    ],
+    "anatomy": "Abdominal visceral/subcutaneous fat and liver, heart, brain, and aorta imaged by MRI in random subsamples",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2008,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "6,671 participants",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Abdominal MRI for visceral/subcutaneous fat, hepatic MR spectroscopy for liver fat, cardiac MRI, brain MRI, and aortic MRI/pulse-wave velocity performed in random subsamples",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "visceral fat area",
+      "subcutaneous fat area",
+      "hepatic triglyceride content",
+      "cardiac function",
+      "aortic pulse wave velocity"
+    ],
+    "tasks": [
+      "body-composition quantification",
+      "cardiometabolic risk association",
+      "liver fat quantification"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Leiden University Medical Center (LUMC), Dept. of Clinical Epidemiology",
+    "url": "https://www.lumc.nl/en/afdelingen/Clinical-Epidemiology/obesity--related-diseases/",
+    "description": "Dutch obesity-oversampled population cohort of 6,671 adults with abdominal fat MRI, hepatic MR spectroscopy, cardiac and brain MRI in subsamples linked to detailed cardiometabolic phenotyping.",
+    "tags": [
+      "population-cohort",
+      "clinical-linkage",
+      "body-composition",
+      "genetics"
+    ],
+    "clinical_variables": "Anthropometry and body composition, glucose/lipid metabolism and other labs, cardiometabolic and metabolic disease outcomes, medications, lifestyle and diet questionnaires, genetics/omics, and follow-up morbidity/mortality linkage.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "lifelines-imalife",
+    "name": "Lifelines (ImaLife)",
+    "full_name": "Lifelines Cohort Study (including ImaLife low-dose chest CT sub-study)",
+    "type": "dataset",
+    "regions": [
+      "Chest",
+      "Cardiac",
+      "MSK"
+    ],
+    "anatomy": "Lungs/chest, heart/coronary arteries, thoracic vertebrae and thoracic soft tissue",
+    "modality": [
+      "CT"
+    ],
+    "year": 2017,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~167,000 total cohort; 12,055 low-dose chest CT (ImaLife)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "coronary calcium score",
+      "emphysema quantification",
+      "lung nodules",
+      "vertebral bone density",
+      "thoracic body composition"
+    ],
+    "tasks": [
+      "lung disease/nodule screening",
+      "coronary calcium scoring",
+      "bone density/body-composition quantification"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Lifelines / University Medical Center Groningen",
+    "url": "https://www.lifelines-biobank.com/",
+    "description": "Large multigenerational Dutch population cohort whose ImaLife sub-study adds 12,055 low-dose chest CT scans (lung, coronary calcium, vertebral/body-composition measures) linked to broad health and genetic data.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "body-composition",
+      "opportunistic"
+    ],
+    "clinical_variables": "Respiratory, cardiovascular and metabolic disease outcomes, blood and biochemical labs, medications, lifestyle/anthropometry, questionnaires, and genome-wide genotyping, with longitudinal multi-year follow-up and healthcare/mortality linkage.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "blsa",
+    "name": "BLSA",
+    "full_name": "Baltimore Longitudinal Study of Aging",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro",
+      "MSK"
+    ],
+    "anatomy": "Brain (structural/diffusion/perfusion MRI, amyloid PET) and whole-body/bone via DXA",
+    "modality": [
+      "MRI",
+      "PET",
+      "DXA"
+    ],
+    "year": 1994,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~3,000+ active participants with serial imaging (study cohort >3,200 enrolled since 1958)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Serial brain MRI (structural T1, diffusion/DTI, ASL perfusion) plus amyloid PET (PiB) in the neuroimaging sub-study",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "brain volumetrics",
+      "amyloid burden",
+      "DXA fat/lean mass",
+      "bone mineral density"
+    ],
+    "tasks": [
+      "brain aging analysis",
+      "dementia/Alzheimer's risk prediction",
+      "body-composition quantification"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "National Institute on Aging (NIA), NIH",
+    "url": "https://www.blsa.nih.gov/how-apply",
+    "description": "Long-running NIA/NIH aging cohort providing serial brain MRI, amyloid PET and DXA body composition linked to deep longitudinal clinical phenotyping, accessible to researchers via application (with an open-data subset via the ADDI AD Workbench).",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "body-composition",
+      "mortality-outcome",
+      "genetics"
+    ],
+    "clinical_variables": "Cognitive and functional aging outcomes, incident dementia/Alzheimer's, cardiometabolic labs, medications, lifestyle, genetics/omics, and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "framingham-heart-study-mdct",
+    "name": "Framingham Heart Study MDCT",
+    "full_name": "Framingham Heart Study Multidetector CT Body Composition Substudy (Offspring and Third Generation cohorts)",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Chest",
+      "Cardiac"
+    ],
+    "anatomy": "Abdomen (L2-L5 level for visceral/subcutaneous adipose tissue, liver, muscle) and thorax/heart (pericardial and periaortic fat)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2002,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~3,500 participants in the MDCT substudy (of >15,000 total FHS cohort)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "Reading-center measured visceral (VAT) and subcutaneous (SAT) adipose tissue volumes, liver attenuation (fatty liver / Hounsfield units), pericardial and periaortic fat volumes from abdominal and thoracic MDCT",
+    "other_labels": [
+      "VAT/SAT volume",
+      "liver fat (CT attenuation)",
+      "pericardial/periaortic fat",
+      "coronary and aortic calcium score"
+    ],
+    "tasks": [
+      "opportunistic body-composition analysis",
+      "ectopic fat quantification",
+      "cardiometabolic risk association",
+      "fatty liver detection",
+      "coronary/aortic calcium scoring"
+    ],
+    "license": "Data Use Agreement / research proposal (BioLINCC and dbGaP for phenotype/genetics; imaging via FHS Research Application)",
+    "access": "request",
+    "host": "NHLBI BioLINCC / Framingham Heart Study / dbGaP",
+    "url": "https://www.framinghamheartstudy.org/fhs-for-researchers/data-available-overview/",
+    "description": "Long-running family-based cardiovascular cohort whose abdominal and thoracic multidetector-CT substudy provides VAT/SAT, liver and ectopic-fat body-composition imaging accessible to researchers by application.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "opportunistic",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Decades of serial cardiovascular phenotyping including blood pressure, lipids, glucose/diabetes status, biomarkers, medications, adjudicated CVD and cancer events, and mortality follow-up, plus SHARe genome-wide genotyping (100K/550K/Omni5 SNPs) and omics data linkable via dbGaP/BioLINCC.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "health-abc",
+    "name": "Health ABC",
+    "full_name": "Health, Aging and Body Composition Study",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Abdomen",
+      "MSK"
+    ],
+    "anatomy": "Whole-body DXA plus quantitative CT at the abdomen (L4-L5 for visceral/subcutaneous fat) and mid-thigh (quadriceps/hamstring muscle cross-sectional area, attenuation, and intermuscular fat)",
+    "modality": [
+      "CT",
+      "DXA"
+    ],
+    "year": 1997,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "3,075 older adults (aged 70-79 at baseline)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "Quantitative CT-derived muscle cross-sectional area and attenuation (intramuscular fat) at mid-thigh and abdomen, visceral and subcutaneous adipose tissue at L4-L5, plus whole-body DXA fat/lean/bone mass and appendicular lean mass",
+    "other_labels": [
+      "mid-thigh muscle area and density",
+      "intermuscular/visceral/subcutaneous fat",
+      "DXA appendicular lean mass and bone density",
+      "muscle strength (grip, knee extensor)"
+    ],
+    "tasks": [
+      "sarcopenia and muscle-fat infiltration analysis",
+      "body-composition and mobility/frailty outcome modeling",
+      "mortality and disability prediction"
+    ],
+    "license": "Data Use Agreement (NIA)",
+    "access": "dua",
+    "host": "NIA Aging Research Biobank (Health ABC collection)",
+    "url": "https://agingresearchbiobank.nia.nih.gov/studies/healthabc/",
+    "description": "Landmark NIA aging cohort built for body composition, with mid-thigh and abdominal quantitative CT for muscle/fat plus whole-body DXA and long-term functional and mortality outcomes, shared via controlled access.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Aging phenotypes including physical function/gait speed, muscle strength, laboratory biomarkers and inflammatory markers, medications, chronic disease incidence, disability, cognitive measures, genetic/GWAS data, and long-term mortality follow-up.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "mros",
+    "name": "MrOS",
+    "full_name": "Osteoporotic Fractures in Men Study",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "MSK",
+      "Abdomen",
+      "Pelvis"
+    ],
+    "anatomy": "Hip and lumbar spine (DXA and quantitative CT), whole-body DXA, lateral thoracic and lumbar spine radiographs",
+    "modality": [
+      "CT",
+      "DXA",
+      "X-ray"
+    ],
+    "year": 2000,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "5,994 men (aged 65+)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "Quantitative CT of hip/spine yielding volumetric BMD and bone geometry; whole-body and regional DXA-derived lean and fat mass; lateral spine radiographs assessed for vertebral fractures",
+    "other_labels": [
+      "areal and volumetric BMD",
+      "vertebral fractures",
+      "DXA lean/fat mass",
+      "hip geometry",
+      "incident fractures",
+      "falls"
+    ],
+    "tasks": [
+      "opportunistic bone/muscle body-composition analysis",
+      "fracture and sarcopenia outcome prediction",
+      "BMD quantification",
+      "vertebral fracture assessment"
+    ],
+    "license": "Data Use Agreement",
+    "access": "dua",
+    "host": "MrOS Online / University of California San Francisco",
+    "url": "https://mrosonline.ucsf.edu/",
+    "description": "Large longitudinal cohort of older men with archived whole-body and regional DXA, quantitative CT of the hip and spine, and lateral spine radiographs, linked to long-term fracture and mortality outcomes and accessible under a data-use agreement.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "opportunistic",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Bone and aging phenotypes including incident fractures, falls, physical function and performance measures, anthropometrics, laboratory/biomarker measures, medications, prostate and cardiovascular disease outcomes, cognition, and long-term mortality follow-up.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "sof",
+    "name": "SOF",
+    "full_name": "Study of Osteoporotic Fractures",
+    "type": "dataset",
+    "regions": [
+      "MSK",
+      "Pelvis",
+      "WholeBody"
+    ],
+    "anatomy": "Hip and lumbar/thoracic spine (DXA BMD and subset hip quantitative CT), lateral spine radiographs for vertebral fracture assessment, and whole-body DXA for body composition",
+    "modality": [
+      "DXA",
+      "CT",
+      "X-ray"
+    ],
+    "year": 1986,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "9,704 older women (plus ~662 Black women in a later supplement)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "DXA total/regional lean and fat mass",
+      "hip and spine BMD",
+      "vertebral fracture grades",
+      "hip geometry/structural analysis"
+    ],
+    "tasks": [
+      "opportunistic bone and body-composition analysis",
+      "sarcopenia and fracture/mortality outcome prediction",
+      "vertebral fracture assessment"
+    ],
+    "license": "Data Use Agreement (UCSF SOF Online)",
+    "access": "dua",
+    "host": "UCSF San Francisco Coordinating Center (SOF Online)",
+    "url": "https://sofonline.ucsf.edu/",
+    "description": "Large longitudinal cohort of older women with archived DXA body-composition and BMD scans, subset hip quantitative CT, and lateral spine radiographs linked to long-term fracture, falls, and mortality outcomes, available to researchers under a data-use agreement.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "mortality-outcome",
+      "opportunistic"
+    ],
+    "clinical_variables": "Aging and osteoporosis phenotypes: incident fractures, falls, physical function and performance, cognition, bone and hormonal biomarkers, medications, cardiovascular and cancer outcomes, hospitalizations, and long-term mortality follow-up.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "nhanes-dxa",
+    "name": "NHANES DXA",
+    "full_name": "National Health and Nutrition Examination Survey - Dual-Energy X-ray Absorptiometry",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "MSK",
+      "Abdomen"
+    ],
+    "anatomy": "Whole-body composition (fat mass, lean mass, bone mineral) plus femur and lumbar spine bone density and android/gynoid/visceral fat regions",
+    "modality": [
+      "DXA"
+    ],
+    "year": 1999,
+    "format": [
+      "derived"
+    ],
+    "raw_image": false,
+    "size": "~30,000+ participants with whole-body DXA (1999-2006 cycles); additional femur/spine bone-density and visceral-fat DXA in later cycles",
+    "paired_text": true,
+    "paired_text_detail": "Linked NHANES demographic, dietary, examination, laboratory, and questionnaire files mergeable by participant sequence number",
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "total and regional fat mass",
+      "lean/soft-tissue mass",
+      "bone mineral content and density",
+      "android/gynoid fat",
+      "percent body fat",
+      "visceral adipose tissue (2011-2018)"
+    ],
+    "tasks": [
+      "body composition estimation",
+      "obesity and sarcopenia research",
+      "osteoporosis/bone-density studies",
+      "cardiometabolic risk modeling"
+    ],
+    "license": "US public-domain (NCHS public-use data; multiply-imputed DXA release)",
+    "access": "open",
+    "host": "CDC / National Center for Health Statistics (NCHS)",
+    "url": "https://wwwn.cdc.gov/nchs/nhanes/dxa/dxa.aspx",
+    "description": "NHANES released whole-body DXA-derived body-composition and bone-density measures for tens of thousands of nationally representative US participants, linkable to the survey's rich exam, lab, and mortality data.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "clinical-linkage",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Laboratory panels (glucose, HbA1c, lipids, CBC, biochemistry), blood pressure and anthropometry, dietary intake, physical activity, medications, smoking/alcohol, self-reported and examined disease conditions (diabetes, cardiovascular disease), and linked National Death Index mortality follow-up.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "cardia",
+    "name": "CARDIA",
+    "full_name": "Coronary Artery Risk Development in Young Adults Study",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Neuro",
+      "Abdomen",
+      "WholeBody"
+    ],
+    "anatomy": "Coronary arteries (calcium CT), abdominal adipose tissue (CT), brain (structural MRI), and whole-body composition (DXA)",
+    "modality": [
+      "CT",
+      "MRI",
+      "DXA"
+    ],
+    "year": 2000,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "5,115 participants enrolled (1985-86); imaging performed in subsets or the full cohort across follow-up exams",
+    "paired_text": true,
+    "paired_text_detail": "35+ years of longitudinal exam, laboratory, questionnaire, and adjudicated outcome data linked to each imaging exam",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Brain MRI protocol includes T1, T2/FLAIR and diffusion sequences; cardiac assessment via echocardiography",
+    "segmentation": true,
+    "segmentation_detail": "Coronary artery calcium (Agatston) scoring, abdominal visceral/subcutaneous fat quantification from CT, and brain volumetric/white-matter-hyperintensity measures",
+    "other_labels": [
+      "coronary artery calcium Agatston scores",
+      "visceral and subcutaneous fat areas",
+      "DXA fat/lean/bone mass",
+      "echocardiographic LV mass and function",
+      "brain volumes and WMH",
+      "incident cardiovascular events"
+    ],
+    "tasks": [
+      "cardiovascular risk prediction",
+      "coronary calcium quantification",
+      "body composition analysis",
+      "brain aging and cognition research"
+    ],
+    "license": "NHLBI restricted, non-commercial use via BioLINCC data use agreement",
+    "access": "dua",
+    "host": "CARDIA Coordinating Center (Univ. of Alabama at Birmingham) / NHLBI BioLINCC",
+    "url": "https://biolincc.nhlbi.nih.gov/studies/cardia/",
+    "description": "CARDIA is a 35+ year prospective cohort of young adults with repeated coronary-calcium CT, abdominal-fat CT, brain MRI and whole-body DXA, accessible to researchers through BioLINCC and ancillary-study application.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "body-composition",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Repeated labs (lipids, glucose, insulin, inflammatory markers), blood pressure, anthropometry, lifestyle (diet, smoking, physical activity), medications, incident cardiovascular/diabetes/hypertension outcomes, cognitive testing, GWAS/genetic data, and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "aric",
+    "name": "ARIC",
+    "full_name": "Atherosclerosis Risk in Communities Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "Vascular"
+    ],
+    "anatomy": "Brain (structural MRI and amyloid PET); carotid arteries (ultrasound intima-media thickness)",
+    "modality": [
+      "MRI",
+      "PET"
+    ],
+    "year": 1993,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "15,792 participants enrolled (1987-89); brain MRI in subsets (~1,900 at visit 3 and ~1,900 in ARIC-NCS) and amyloid PET in a smaller subset (ARIC-PET)",
+    "paired_text": true,
+    "paired_text_detail": "Decades of exam, laboratory, cognitive, and adjudicated cardiovascular/dementia/mortality outcome data linked to imaging",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Brain MRI includes T1, T2, FLAIR and diffusion sequences; florbetapir amyloid PET in ARIC-PET",
+    "segmentation": true,
+    "segmentation_detail": "Brain volumetrics, white-matter-hyperintensity volumes and infarct measures; amyloid SUVR quantification",
+    "other_labels": [
+      "white matter hyperintensity volume",
+      "brain infarcts",
+      "brain/hippocampal volumes",
+      "amyloid PET SUVR",
+      "carotid intima-media thickness",
+      "adjudicated dementia/MCI status"
+    ],
+    "tasks": [
+      "brain aging and dementia research",
+      "cerebral small vessel disease",
+      "Alzheimer's amyloid imaging",
+      "cardiovascular epidemiology"
+    ],
+    "license": "NHLBI restricted, non-commercial use via BioLINCC / ARIC Coordinating Center agreements",
+    "access": "dua",
+    "host": "ARIC Coordinating Center (UNC Chapel Hill) / NHLBI BioLINCC",
+    "url": "https://sites.cscc.unc.edu/aric/",
+    "description": "ARIC is a large biracial prospective cohort with repeated brain MRI and amyloid PET substudies plus carotid ultrasound, available to researchers via BioLINCC and ancillary-study application to the coordinating center.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Labs (lipids, glucose, HbA1c, cardiac/kidney biomarkers), blood pressure, carotid IMT, cognitive testing and adjudicated dementia, incident stroke/coronary heart disease/heart failure, medications, GWAS and multi-omics, and hospitalization/mortality follow-up.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "chs",
+    "name": "CHS",
+    "full_name": "Cardiovascular Health Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (cranial MRI); carotid arteries (ultrasound) and heart (echocardiography) also assessed",
+    "modality": [
+      "MRI"
+    ],
+    "year": 1991,
+    "format": [
+      "derived"
+    ],
+    "raw_image": false,
+    "size": "5,888 older-adult participants enrolled (1989-90, 1992-93); cranial MRI in ~3,600 (1991-94) with a repeat scan in ~2,900 (1997-99)",
+    "paired_text": true,
+    "paired_text_detail": "Extensive annual exam, laboratory, and adjudicated cardiovascular/dementia/mortality outcome data linked to MRI readings",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Cranial MRI protocol includes T1, T2 and proton-density weighted sequences",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "white matter hyperintensity grade",
+      "brain infarcts",
+      "ventricular/sulcal atrophy grade",
+      "carotid intima-media thickness",
+      "echocardiographic LV measures",
+      "incident dementia"
+    ],
+    "tasks": [
+      "brain aging research",
+      "stroke and dementia epidemiology",
+      "cardiovascular risk in older adults"
+    ],
+    "license": "NHLBI restricted, non-commercial use via BioLINCC data use agreement",
+    "access": "dua",
+    "host": "CHS Coordinating Center (University of Washington) / NHLBI BioLINCC",
+    "url": "https://chs-nhlbi.org/",
+    "description": "The Cardiovascular Health Study collected cranial MRI (with a repeat timepoint), carotid ultrasound and echocardiography in older adults, with derived imaging measures and outcomes available to researchers through BioLINCC.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Labs (lipids, glucose, inflammatory and cardiac biomarkers), blood pressure, carotid IMT, echocardiographic and ECG measures, cognitive testing and adjudicated dementia, incident myocardial infarction/stroke/heart failure, medications, GWAS/genetic data, and hospitalization/mortality follow-up.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "jackson-heart-study-jhs",
+    "name": "Jackson Heart Study (JHS)",
+    "full_name": "Jackson Heart Study",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Vascular",
+      "Abdomen"
+    ],
+    "anatomy": "Heart (left ventricle, coronary arteries), carotid arteries, abdominal aorta and abdominal fat depots",
+    "modality": [
+      "MRI",
+      "CT"
+    ],
+    "year": 2004,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "5,306 participants",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Cardiac MRI ancillary substudy acquired cine/structure-function sequences (LV mass, volumes, ejection fraction).",
+    "segmentation": true,
+    "segmentation_detail": "Derived quantitative reads from a core reading center: coronary artery calcium and abdominal aortic calcium scores, abdominal visceral and subcutaneous adipose tissue areas from CT, LV measures from cardiac MRI, carotid IMT.",
+    "other_labels": [
+      "Coronary artery calcium score",
+      "Abdominal aortic calcium",
+      "Visceral/subcutaneous fat area",
+      "Carotid intima-media thickness",
+      "LV mass and function"
+    ],
+    "tasks": [
+      "Cardiovascular risk stratification",
+      "Body-composition quantification",
+      "Coronary calcium scoring",
+      "Population epidemiology"
+    ],
+    "license": "NHLBI data use agreement (BioLINCC/dbGaP)",
+    "access": "dua",
+    "host": "NHLBI BioLINCC / dbGaP (data coordinating center at Wake Forest / University of Mississippi Medical Center)",
+    "url": "https://biolincc.nhlbi.nih.gov/studies/jhs/",
+    "description": "Community-based cohort of 5,306 African American adults in Jackson, Mississippi with cardiac MRI, cardiac/abdominal CT (coronary and aortic calcium plus abdominal fat), carotid ultrasound and echocardiography, accessible to researchers through NHLBI data use agreement.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Extensive cardiometabolic phenotyping (blood pressure, lipids, fasting glucose/HbA1c, kidney function, anthropometry, echocardiography), medications, lifestyle/socioeconomic questionnaires, biospecimens with GWAS/whole-genome sequencing and metabolomics, and adjudicated cardiovascular events, hospitalization and mortality follow-up.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "masala",
+    "name": "MASALA",
+    "full_name": "Mediators of Atherosclerosis in South Asians Living in America",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Vascular",
+      "Abdomen"
+    ],
+    "anatomy": "Coronary arteries, heart, carotid arteries, abdominal fat depots (visceral, subcutaneous, intermuscular), liver, pericardial fat",
+    "modality": [
+      "CT"
+    ],
+    "year": 2010,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~1,164 participants at baseline (expanded in later exams)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "Reading-center quantification of visceral, subcutaneous and intermuscular adipose tissue areas, hepatic and pericardial fat, and coronary artery calcium from CT.",
+    "other_labels": [
+      "Coronary artery calcium score",
+      "Visceral adipose tissue (VAT)",
+      "Subcutaneous adipose tissue (SAT)",
+      "Intermuscular fat",
+      "Hepatic fat (liver attenuation)",
+      "Pericardial fat",
+      "Carotid IMT"
+    ],
+    "tasks": [
+      "Coronary calcium scoring",
+      "Ectopic/visceral fat quantification",
+      "Cardiometabolic risk modeling",
+      "Body-composition analysis"
+    ],
+    "license": "UCSF Data Use Agreement",
+    "access": "dua",
+    "host": "UCSF MASALA Coordinating Center (UCSF and Northwestern field centers)",
+    "url": "https://www.masalastudy.org/for-researchers",
+    "description": "Longitudinal cohort of South Asian adults in the US with repeated cardiac and abdominal CT quantifying coronary calcium and visceral/ectopic fat, released to collaborators under a UCSF data use agreement.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Cardiometabolic labs (glucose/insulin/HbA1c, lipids, adipokines, inflammatory markers), blood pressure, anthropometry, diet and physical-activity/lifestyle questionnaires, medications, genetics/omics, and incident diabetes and cardiovascular outcomes across exams.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "hchs-sol",
+    "name": "HCHS/SOL",
+    "full_name": "Hispanic Community Health Study / Study of Latinos",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "Cardiac"
+    ],
+    "anatomy": "Brain (SOL-INCA-MRI) and heart (ECHO-SOL echocardiography)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2008,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "16,415 participants",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "SOL-INCA-MRI brain protocol includes structural T1, FLAIR and related sequences with repeated scans for aging/brain-health tracking.",
+    "segmentation": true,
+    "segmentation_detail": "Brain MRI biomarkers (total/regional brain and hippocampal volumes, white-matter hyperintensity burden, infarcts) from the SOL-INCA-MRI reading center.",
+    "other_labels": [
+      "Brain volumes",
+      "White-matter hyperintensities",
+      "Hippocampal volume",
+      "Echocardiographic structure/function"
+    ],
+    "tasks": [
+      "Brain aging/dementia biomarker analysis",
+      "Cerebrovascular disease detection",
+      "Cardiac structure-function assessment",
+      "Population epidemiology"
+    ],
+    "license": "NHLBI/coordinating-center data use agreement (dbGaP, BioLINCC, ancillary-study application)",
+    "access": "dua",
+    "host": "HCHS/SOL Coordinating Center, UNC Chapel Hill / dbGaP / NHLBI BioLINCC",
+    "url": "https://sites9.cscc.unc.edu/hchs/",
+    "description": "Large US Hispanic/Latino population cohort whose imaging ancillary studies (SOL-INCA-MRI repeated brain MRI and ECHO-SOL echocardiography) are available to investigators through data use agreements and dbGaP.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Cardiometabolic and pulmonary phenotypes (labs, blood pressure, glucose/diabetes, spirometry), cognitive testing, diet/lifestyle and sociocultural questionnaires, medications, genome-wide genotyping, and incident cardiovascular, diabetes, cognitive and mortality outcomes.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "elsa-brasil",
+    "name": "ELSA-Brasil",
+    "full_name": "Brazilian Longitudinal Study of Adult Health (Estudo Longitudinal de Saude do Adulto)",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Vascular"
+    ],
+    "anatomy": "Coronary arteries, heart, carotid arteries, aorta and retina",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2008,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "15,105 participants",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Cardiac MRI substudy with cine and structure/function sequences; primary cardiovascular imaging is CT and ultrasound.",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "Coronary artery calcium score",
+      "Carotid intima-media thickness",
+      "Echocardiographic measures",
+      "Retinal vascular caliber",
+      "Aortic pulse-wave velocity"
+    ],
+    "tasks": [
+      "Coronary calcium scoring",
+      "Subclinical atherosclerosis assessment",
+      "Cardiovascular risk modeling",
+      "Population epidemiology"
+    ],
+    "license": "ELSA-Brasil publication/collaboration committee agreement",
+    "access": "request",
+    "host": "ELSA-Brasil consortium (six Brazilian public universities/research institutes; Fiocruz and coordinating centers)",
+    "url": "https://estudoelsa.fiocruz.br/",
+    "description": "Longitudinal cohort of 15,105 Brazilian civil servants across six centers with coronary calcium CT, carotid ultrasound, echocardiography, retinal photography and a cardiac MRI substudy, available to researchers by proposal to the study committee.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Cardiometabolic labs (glucose/HbA1c, lipids, inflammatory markers), blood pressure, anthropometry and hepatic ultrasound, mental-health and lifestyle questionnaires, medications, biobank with GWAS/EPIGEN genetics, and adjudicated cardiovascular, diabetes and mortality outcomes across multiple waves.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "hunt-study",
+    "name": "HUNT Study",
+    "full_name": "Trondelag Health Study (Helseundersokelsen i Nord-Trondelag)",
+    "type": "dataset",
+    "regions": [
+      "MSK",
+      "Neuro"
+    ],
+    "anatomy": "Bone (forearm/hip/spine densitometry) and brain (HUNT-MRI substudy)",
+    "modality": [
+      "DXA",
+      "MRI"
+    ],
+    "year": 1995,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~250,000 participants across HUNT1-4 since 1984",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "HUNT-MRI brain substudy acquired structural and vascular sequences; population body-composition relies on DXA and bioimpedance.",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "Bone mineral density",
+      "Brain incidental findings/volumes",
+      "Bioimpedance body composition"
+    ],
+    "tasks": [
+      "Osteoporosis/fracture risk assessment",
+      "Brain imaging epidemiology",
+      "Body-composition analysis",
+      "Genetic epidemiology"
+    ],
+    "license": "HUNT Research Centre data access agreement",
+    "access": "request",
+    "host": "HUNT Databank / HUNT Research Centre, NTNU, Norway",
+    "url": "https://www.ntnu.edu/hunt/data",
+    "description": "One of the largest population health studies, with DXA bone densitometry, bioimpedance body composition and a brain MRI substudy alongside deep phenotyping and registry linkage, available by application to the HUNT Databank.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Questionnaire and clinical measurements (blood pressure, anthropometry, lung function, labs), lifestyle data, biospecimens with GWAS/SNP genotyping and proteomics, and family and total-population linkage to national health, cancer, cause-of-death and other registries for longitudinal outcomes and mortality.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "constances",
+    "name": "CONSTANCES",
+    "full_name": "Cohorte des consultants des Centres d'examens de sante (French population-based cohort)",
+    "type": "dataset",
+    "regions": [
+      "Cardiac",
+      "Abdomen"
+    ],
+    "anatomy": "Heart and liver (ICONIC cardiac and hepatic imaging database)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2012,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~220,000 participants",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "ICONIC national cardiac-and-hepatic imaging reference database in the general population (ages 20-80) with multiparametric MRI.",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "Cardiac structure/function",
+      "Hepatic fat/liver imaging measures"
+    ],
+    "tasks": [
+      "Cardiac imaging phenotyping",
+      "Hepatic fat/steatosis quantification",
+      "Population imaging reference-range building",
+      "Epidemiology"
+    ],
+    "license": "CONSTANCES scientific committee data access agreement",
+    "access": "request",
+    "host": "CONSTANCES (Inserm / Universite de Versailles-Saint-Quentin), France",
+    "url": "https://www.constances.fr/espace-scientifique/",
+    "description": "Large French general-population cohort of ~220,000 volunteers whose ICONIC substudy builds a national cardiac and hepatic MRI imaging reference database, accessible to researchers by application to the scientific committee.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "clinical-linkage",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Standardized health-examination data (blood pressure, ECG, spirometry, labs), extensive questionnaires and occupational/environmental exposures, biobank, and linkage to the French national health data system (SNDS) for hospitalizations, disease outcomes and mortality.",
+    "body_composition": true,
+    "longitudinal": false
+  },
+  {
+    "id": "three-city-study-3c",
+    "name": "Three-City Study (3C)",
+    "full_name": "Three-City Study (Etude des Trois Cités)",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (with carotid ultrasound and cardiovascular assessment)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2003,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~9,294 participants (~3,442 with baseline brain MRI in the 3C-Dijon substudy)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "1.5T brain MRI including T1, T2 and PD/proton-density sequences used to derive gray/white matter volumes and white-matter hyperintensity load",
+    "segmentation": true,
+    "segmentation_detail": "Derived brain tissue volumes and white-matter hyperintensity (WMH) segmentations available as imaging-derived phenotypes",
+    "other_labels": [
+      "Incident dementia/Alzheimer diagnosis",
+      "Cerebral small vessel disease",
+      "APOE genotype",
+      "Cardiovascular events",
+      "Mortality"
+    ],
+    "tasks": [
+      "dementia/Alzheimer prediction",
+      "brain aging",
+      "vascular-cognitive association",
+      "WMH quantification"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Inserm / Three-City Study Scientific Committee (Bordeaux, Dijon, Montpellier)",
+    "url": "http://three-city-study.com/",
+    "description": "French population-based cohort of adults aged 65+ across three cities with a brain-MRI substudy (3C-Dijon) built to study the relationship between vascular disease and dementia.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Extensive linkable phenotypes including blood pressure and cardiovascular risk factors, lipids/glucose and other labs, medications, repeated neuropsychological testing and adjudicated incident dementia, stroke and cardiovascular events, APOE and genome-wide genotyping, and vital status/mortality.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "raine-study",
+    "name": "Raine Study",
+    "full_name": "The Raine Study (Western Australian Pregnancy Cohort Study)",
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro"
+    ],
+    "anatomy": "Whole-body (DXA body composition), brain, plus organ/vascular imaging (liver, heart, bone)",
+    "modality": [
+      "MRI",
+      "DXA"
+    ],
+    "year": 1989,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~2,900 Gen2 offspring (born 1989-1991) plus Gen1 parents and Gen3 grandchildren",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Brain MRI (structural/functional) at adult follow-ups plus whole-body DXA for fat mass, lean mass and bone density collected across multiple waves",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "DXA fat/lean mass",
+      "Bone mineral density",
+      "Metabolic syndrome",
+      "Asthma/allergy phenotypes",
+      "Mental health outcomes"
+    ],
+    "tasks": [
+      "body-composition estimation",
+      "developmental/brain imaging",
+      "cardiometabolic risk modeling",
+      "bone health"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "The Raine Study, University of Western Australia (ROSS application system)",
+    "url": "https://rainestudy.org.au/",
+    "description": "Multi-generational Australian pregnancy-birth cohort with repeated whole-body DXA body composition and adult brain MRI collected from before birth across the life course.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Rich linkable data across the life course including cardiometabolic labs and blood pressure, DXA fat/lean/bone measures, asthma/respiratory and allergy phenotypes, mental health and behavioral assessments, lifestyle and diet, GWAS/epigenetic omics, and linkage to health and hospital records.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "dunedin-study",
+    "name": "Dunedin Study",
+    "full_name": "Dunedin Multidisciplinary Health and Development Study",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (with facial and retinal imaging)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 1972,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "1,037 birth cohort (born 1972-73); ~875 completed brain MRI at age 45",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Multimodal 3T MRI at the age-45 assessment: structural T1, diffusion MRI, resting-state and task fMRI, and arterial spin labeling",
+    "segmentation": true,
+    "segmentation_detail": "FreeSurfer-derived cortical/subcortical parcellations and morphometry provided as imaging-derived measures",
+    "other_labels": [
+      "Pace of aging / BrainAGE",
+      "Psychiatric diagnoses",
+      "Cardiometabolic health",
+      "Polygenic scores"
+    ],
+    "tasks": [
+      "brain-age prediction",
+      "aging biomarker modeling",
+      "psychiatric outcome prediction"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "University of Otago, Dunedin Study (concept-paper/collaboration application)",
+    "url": "https://dunedinstudy.otago.ac.nz/",
+    "description": "New Zealand 1972-73 birth cohort with a single multimodal brain-MRI wave at age 45 embedded in life-long health, psychiatric and social phenotyping.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Deep life-course phenotyping including cardiometabolic and inflammatory labs, blood pressure and physical function, repeated psychiatric diagnoses and cognitive/IQ measures, aging biomarkers (Pace of Aging), lifestyle and social variables, genome-wide genotyping and polygenic scores.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "imagen",
+    "name": "IMAGEN",
+    "full_name": "IMAGEN: Reinforcement-related behaviour in normal brain function and psychopathology",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (adolescent)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2010,
+    "format": [
+      "NIfTI",
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "~2,000 adolescents recruited at age 14 across 8 sites in 4 European countries",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "3T MRI including structural T1, diffusion tensor imaging, resting-state fMRI and task fMRI (monetary incentive delay, stop-signal, faces tasks)",
+    "segmentation": true,
+    "segmentation_detail": "Derived FreeSurfer/VBM structural measures and processed imaging-derived phenotypes distributed alongside raw data",
+    "other_labels": [
+      "Substance use / addiction phenotypes",
+      "Psychiatric and behavioral measures",
+      "Personality",
+      "GWAS genotypes"
+    ],
+    "tasks": [
+      "adolescent brain development modeling",
+      "psychopathology/addiction prediction",
+      "reward-processing analysis"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "IMAGEN Consortium (data access application via imagen-project.org)",
+    "url": "https://imagen-project.org/the-imagen-dataset/",
+    "description": "Largest longitudinal adolescent brain-imaging and genetics cohort, imaging youth from age 14 with repeated follow-ups to study reward behavior and mental health.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "genetics"
+    ],
+    "clinical_variables": "Linkable psychosocial and clinical phenotypes including substance-use and addiction measures, psychiatric symptom and behavioral assessments, personality and cognitive testing, environmental/life-events data, and genome-wide genotyping.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "hcp-lifespan-hcp-aging-hcp-development",
+    "name": "HCP Lifespan (HCP-Aging & HCP-Development)",
+    "full_name": "Human Connectome Project Lifespan: HCP-Aging (Aging Human Connectome) and HCP-Development",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (lifespan: development and aging)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2018,
+    "format": [
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~1,500 aging adults (ages 36-100+) plus ~1,300-1,400 youth (ages 5-21)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "High-resolution 3T multimodal MRI: structural T1/T2, diffusion MRI, resting-state and task fMRI, arterial spin labeling, and high-resolution hippocampal T2",
+    "segmentation": true,
+    "segmentation_detail": "HCP minimal preprocessing pipeline outputs: FreeSurfer parcellations and MSMAll-aligned cortical surfaces distributed as CIFTI/NIfTI",
+    "other_labels": [
+      "NIH Toolbox cognition",
+      "Behavioral/biomeasures",
+      "Physical and mental health measures"
+    ],
+    "tasks": [
+      "brain-age / lifespan modeling",
+      "connectome analysis",
+      "cognition prediction"
+    ],
+    "license": null,
+    "access": "registration",
+    "host": "Human Connectome Project / NIMH Data Archive (NDA) and ConnectomeDB/BALSA",
+    "url": "https://www.humanconnectome.org/study/hcp-lifespan-aging",
+    "description": "Multimodal 3T lifespan connectome datasets imaging typically-developing youth and healthy aging adults with cross-sectional and longitudinal visits.",
+    "tags": [
+      "population-cohort",
+      "longitudinal"
+    ],
+    "clinical_variables": "Linkable NIH Toolbox cognitive and emotion measures, behavioral and biospecimen biomeasures, physical and mental health assessments, and demographic/lifestyle variables (restricted-tier access for sensitive data).",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "lothian-birth-cohorts-1936-1921",
+    "name": "Lothian Birth Cohorts (1936/1921)",
+    "full_name": "Lothian Birth Cohorts 1936 and 1921",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (aging)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2007,
+    "format": [
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "LBC1936 ~1,091 (born 1936); LBC1921 ~550 (born 1921), with brain MRI from age ~73/78",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Structural MRI (T1/T2/T2*/FLAIR), diffusion tensor imaging and susceptibility/iron imaging acquired across repeated waves for brain volumes, white-matter integrity and lesions",
+    "segmentation": true,
+    "segmentation_detail": "Imaging dictionary provides derived brain tissue volumes, white-matter hyperintensity segmentations and DTI white-matter tract measures",
+    "other_labels": [
+      "Repeated cognitive/IQ (from age 11)",
+      "Brain age",
+      "Frailty",
+      "DNA methylation / epigenetic clocks",
+      "Mortality"
+    ],
+    "tasks": [
+      "brain-age prediction",
+      "cognitive aging modeling",
+      "white-matter integrity analysis",
+      "WMH quantification"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "University of Edinburgh, Lothian Birth Cohorts (data request form to Dr Simon Cox)",
+    "url": "https://lothian-birth-cohorts.ed.ac.uk/data-access-collaboration",
+    "description": "Scottish birth cohorts (1936 and 1921) with repeated longitudinal brain MRI from the eighth decade linked to childhood-to-late-life cognitive and health data.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Linkable phenotypes including lifelong cognitive/IQ trajectories (from age 11), cardiometabolic and inflammatory labs, blood pressure and physical function/frailty, lifestyle, GWAS and DNA-methylation/epigenetic-clock omics, and record-linked morbidity and mortality.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "insight-46-mrc-nshd-1946-birth-cohort",
+    "name": "Insight 46 (MRC NSHD 1946 birth cohort)",
+    "full_name": "Insight 46 neuroimaging sub-study of the MRC National Survey of Health and Development (1946 British Birth Cohort)",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "WholeBody",
+      "MSK"
+    ],
+    "anatomy": "Brain (simultaneous amyloid PET-MRI); whole-body DXA in the wider NSHD cohort",
+    "modality": [
+      "MRI",
+      "PET",
+      "DXA"
+    ],
+    "year": 2015,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~500 imaged participants (Insight 46); ~5,300 in the NSHD birth cohort",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Multi-modal PET-MRI: volumetric T1, FLAIR/T2 for white-matter hyperintensities, plus 18F-florbetapir amyloid PET (SUVR)",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "derived brain and hippocampal volumes",
+      "white-matter hyperintensity volumes",
+      "amyloid PET SUVR/positivity",
+      "cognitive test scores",
+      "whole-body DXA fat/lean/bone measures"
+    ],
+    "tasks": [
+      "dementia and Alzheimer's biomarker research",
+      "brain aging and life-course determinants of neurodegeneration",
+      "body composition and bone health analysis"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "MRC Unit for Lifelong Health and Ageing at UCL / NSHD Data Sharing Committee",
+    "url": "https://www.nshd.mrc.ac.uk/data/",
+    "description": "Neuroimaging sub-study of the 1946 British birth cohort providing simultaneous amyloid PET-MRI at two timepoints, linkable to uniquely rich life-course clinical, cognitive and DXA data via managed application.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "body-composition",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Life-course phenotypes collected from birth to age 70+ including blood pressure, cardiometabolic and anthropometric measures, cognition, lifestyle, socioeconomic factors, DXA body composition, blood biomarkers, genome-wide genotyping and linked morbidity/mortality outcomes.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "dian-dominantly-inherited-alzheimer-network",
+    "name": "DIAN (Dominantly Inherited Alzheimer Network)",
+    "full_name": "Dominantly Inherited Alzheimer Network Observational Study (DIAN-OBS)",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain",
+    "modality": [
+      "MRI",
+      "PET"
+    ],
+    "year": 2008,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~500+ participants from autosomal-dominant Alzheimer's disease families",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Structural T1/T2/FLAIR, DTI and resting-state fMRI plus multi-tracer PET: 11C-PiB amyloid PET, 18F-flortaucipir tau PET and FDG PET",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "regional brain volumes",
+      "amyloid and tau PET SUVR",
+      "cognitive/CDR scores",
+      "mutation status (PSEN1/PSEN2/APP)",
+      "estimated years to symptom onset"
+    ],
+    "tasks": [
+      "preclinical Alzheimer's disease progression modeling",
+      "amyloid/tau biomarker trajectory analysis",
+      "brain atrophy and connectivity research"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Washington University in St. Louis / Knight ADRC (DIAN)",
+    "url": "https://dian.wustl.edu/",
+    "description": "Longitudinal multi-site observational study of autosomal-dominant Alzheimer's disease mutation carriers and non-carriers with serial multimodal MRI and amyloid/tau/FDG PET, available to researchers by data request.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "genetics",
+      "clinical-linkage"
+    ],
+    "clinical_variables": "Standardized clinical and cognitive testing (CDR, neuropsychology), CSF and blood biomarkers (Abeta42/40, total tau, phospho-tau), causal AD mutation genetics (PSEN1, PSEN2, APP), and estimated age at symptom onset.",
+    "body_composition": false,
+    "longitudinal": true
+  },
+  {
+    "id": "rosmap",
+    "name": "ROSMAP",
+    "full_name": "Religious Orders Study and Rush Memory and Aging Project",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain (postmortem/ex vivo MRI of cerebral hemispheres on a subset)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 1994,
+    "format": [
+      "NIfTI",
+      "DICOM",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~3,600+ enrolled participants; ex vivo MRI on a subset of donated brains",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Ex vivo/postmortem structural and diffusion MRI of fixed brain hemispheres registered to detailed neuropathology",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "annual cognitive and motor scores",
+      "neuropathology (amyloid, tau tangles, TDP-43, Lewy bodies, infarcts)",
+      "genetics (GWAS/WGS)",
+      "transcriptomic/proteomic/epigenomic omics"
+    ],
+    "tasks": [
+      "radiology-pathology correlation of neurodegeneration",
+      "imaging biomarker discovery for Alzheimer's and related dementias",
+      "multi-omic integration with brain structure"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Rush Alzheimer's Disease Center / RADC Research Resource Sharing Hub",
+    "url": "https://www.radc.rush.edu/",
+    "description": "Longitudinal clinical-pathologic cohorts of aging and dementia providing ex vivo brain MRI on a subset linked to deep annual clinical, neuropathologic and multi-omic data, released to researchers under a data use agreement.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "genetics",
+      "clinical-linkage",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Annual cognitive and motor assessments, dementia/MCI clinical diagnoses, detailed postmortem neuropathology, cause-of-death and mortality, plus genome-wide genotyping/WGS, transcriptomics, proteomics and DNA methylation.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "tohoku-medical-megabank-tmm",
+    "name": "Tohoku Medical Megabank (TMM)",
+    "full_name": "Tohoku Medical Megabank Organization Cohort Studies (TMM CommCohort and TMM BirThree Cohort)",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "Brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2013,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~150,000 total cohort participants (CommCohort ~80,000; BirThree ~70,000); brain-MRI sub-study on a subset",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Brain-MRI study protocol including structural T1/T2/FLAIR and angiographic sequences",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "derived brain volumetrics",
+      "clinical and biochemical measures",
+      "whole-genome and omics data",
+      "oral/dental and perinatal health variables"
+    ],
+    "tasks": [
+      "population brain MRI phenotyping",
+      "genotype-brain imaging association studies",
+      "cerebrovascular and aging biomarker research"
+    ],
+    "license": null,
+    "access": "dua",
+    "host": "Tohoku University / ToMMo Sample and Data Access Committee (dbTMM)",
+    "url": "https://www.megabank.tohoku.ac.jp/english/",
+    "description": "Large Japanese community-based and birth/three-generation cohorts with a dedicated brain-MRI study, distributed to approved researchers through the dbTMM sample-and-data access system.",
+    "tags": [
+      "population-cohort",
+      "genetics",
+      "clinical-linkage",
+      "longitudinal"
+    ],
+    "clinical_variables": "Physiological and lifestyle measures, blood/urine biochemistry, clinical questionnaires, whole-genome sequencing/genotyping and multi-omics, with perinatal and dental health variables in the birth cohort.",
+    "body_composition": false,
+    "longitudinal": false
+  },
+  {
+    "id": "colaus-psycolaus",
+    "name": "CoLaus | PsyCoLaus",
+    "full_name": "CoLaus | PsyCoLaus Study (Cohorte Lausannoise), including BrainLaus and OsteoLaus sub-studies",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "WholeBody",
+      "MSK"
+    ],
+    "anatomy": "Brain (BrainLaus MRI); whole-body/spine/hip DXA (OsteoLaus)",
+    "modality": [
+      "MRI",
+      "DXA"
+    ],
+    "year": 2003,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~6,700 baseline participants; imaging sub-studies (BrainLaus, OsteoLaus) on subsets",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "BrainLaus multimodal brain MRI (structural, diffusion, functional) with repeated follow-up waves; OsteoLaus DXA including vertebral fracture assessment and body composition",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "derived brain volumes",
+      "DXA bone mineral density and fat/lean mass",
+      "cardiometabolic phenotypes",
+      "psychiatric diagnoses",
+      "genome-wide genotyping"
+    ],
+    "tasks": [
+      "brain aging and psychiatric neuroimaging research",
+      "osteoporosis and body composition analysis",
+      "cardiometabolic and genetic epidemiology"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "Lausanne University Hospital (CHUV) / CoLaus-PsyCoLaus research team",
+    "url": "https://www.colaus-psycolaus.ch/professionals/",
+    "description": "Population-based Lausanne cohort with deep cardiometabolic, psychiatric and genetic phenotyping plus repeated brain MRI (BrainLaus) and DXA body-composition imaging (OsteoLaus), available to researchers via proposal/application.",
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "body-composition"
+    ],
+    "clinical_variables": "Cardiovascular and metabolic risk factors, blood biochemistry, medications, lifestyle, semi-structured psychiatric interviews (PsyCoLaus), DXA bone/body composition, and genome-wide genetic and omics data.",
+    "body_composition": true,
+    "longitudinal": true
+  },
+  {
+    "id": "gusto",
+    "name": "GUSTO",
+    "full_name": "Growing Up in Singapore Towards healthy Outcomes",
+    "type": "dataset",
+    "regions": [
+      "Neuro",
+      "Abdomen",
+      "WholeBody",
+      "MSK"
+    ],
+    "anatomy": "Child and infant brain; abdominal adipose tissue; whole-body composition; peripheral bone",
+    "modality": [
+      "MRI",
+      "DXA",
+      "CT"
+    ],
+    "year": 2009,
+    "format": [
+      "DICOM",
+      "NIfTI",
+      "derived"
+    ],
+    "raw_image": true,
+    "size": "~1,200 mother-offspring pairs",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Neonatal and childhood brain MRI (structural T1/T2, diffusion, resting-state) and abdominal MRI quantifying visceral and subcutaneous adipose tissue; DXA whole-body composition and pQCT bone imaging",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "derived brain volumetric and connectivity measures",
+      "abdominal VAT/SAT fat volumes",
+      "DXA fat/lean/bone measures",
+      "growth and metabolic phenotypes"
+    ],
+    "tasks": [
+      "early-life brain development research",
+      "childhood adiposity and metabolic programming analysis",
+      "developmental origins of health and disease studies"
+    ],
+    "license": null,
+    "access": "request",
+    "host": "A*STAR / National University of Singapore (KK Women's and Children's Hospital) - GUSTO Data Vault",
+    "url": "https://www.gusto.sg/",
+    "description": "Singapore mother-offspring birth cohort with longitudinal pediatric brain MRI, abdominal adiposity MRI and DXA/pQCT body-composition imaging, accessible to researchers through the GUSTO Data Vault collaboration request.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Repeated maternal and child anthropometry and growth, metabolic and cardiovascular measures, blood biomarkers, neurodevelopmental and cognitive assessments, DXA/MRI body composition, lifestyle/diet, and genetic and epigenetic data.",
+    "body_composition": true,
+    "longitudinal": true
   }
 ]

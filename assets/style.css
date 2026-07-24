@@ -179,6 +179,8 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; }
 .badge.text { background: var(--info-soft); color: var(--info); }
 .badge.seg { background: var(--violet-soft); color: var(--violet); }
 .badge.seq { background: var(--warn-soft); color: var(--warn); }
+.badge.cohort { background: var(--info-soft); color: var(--info); }
+.badge.bodycomp { background: var(--violet-soft); color: var(--violet); }
 .badge.fmt { background: var(--surface-2); color: var(--text-soft); border-color: var(--border); }
 
 .meta-line { display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: .78rem;

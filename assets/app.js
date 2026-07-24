@@ -45,7 +45,7 @@ const REGION_SHORT = {
   HeadNeck: "Head & Neck", Dental: "Dental", WholeBody: "Whole-body/PET",
   Multi: "Multi-region", Repository: "Repositories",
 };
-const MODALITIES = ["CT", "MRI", "PET", "X-ray"];
+const MODALITIES = ["CT", "MRI", "PET", "X-ray", "DXA"];
 
 // "Image–text (multimodal)" is a characteristic, not a section: paired reports/captions/QA.
 const VLM_TASKS = ["vqa", "captioning", "report-generation", "grounding",
@@ -53,12 +53,17 @@ const VLM_TASKS = ["vqa", "captioning", "report-generation", "grounding",
 const isVLM = d => d.paired_text === true &&
   (d.tasks || []).some(t => VLM_TASKS.includes(String(t).toLowerCase()));
 
+const hasTag = (d, t) => (d.tags || []).includes(t);
 const TOGGLES = [
   { key: "raw_image", label: "Raw (DICOM/NIfTI)", test: d => d.raw_image === true },
   { key: "paired_text", label: "Paired text / VLM", test: d => d.paired_text === true },
   { key: "segmentation", label: "Segmentation", test: d => d.segmentation === true },
   { key: "multi_sequence", label: "Multi-seq/phase", test: d => d.multi_sequence === true },
   { key: "multi_region", label: "Multi-region", test: d => (d.regions || []).length > 1 },
+  { key: "cohort", label: "Population cohort", test: d => hasTag(d, "population-cohort") },
+  { key: "body_comp", label: "Body composition", test: d => d.body_composition === true },
+  { key: "clinical", label: "Linkable clinical data", test: d => !!d.clinical_variables || hasTag(d, "clinical-linkage") },
+  { key: "longitudinal", label: "Longitudinal", test: d => d.longitudinal === true },
   { key: "open", label: "Open access", test: d => d.access === "open" },
 ];
 
@@ -179,8 +184,9 @@ function matches(d) {
   }
   if (state.q) {
     const hay = [d.name, d.full_name, d.description, d.anatomy, (d.modality || []).join(" "),
-      (d.regions || []).join(" "), (d.tasks || []).join(" "), d.host, (d.format || []).join(" "),
-      d.segmentation_detail, d.multi_sequence_detail, d.paired_text_detail].filter(Boolean).join(" ").toLowerCase();
+      (d.regions || []).join(" "), (d.tags || []).join(" "), (d.tasks || []).join(" "), d.host,
+      (d.format || []).join(" "), d.clinical_variables, d.segmentation_detail,
+      d.multi_sequence_detail, d.paired_text_detail].filter(Boolean).join(" ").toLowerCase();
     if (!hay.includes(state.q)) return false;
   }
   return true;
@@ -254,6 +260,8 @@ function card(d) {
   if (d.paired_text) badges.push(`<span class="badge text" title="${esc(d.paired_text_detail || "Paired reports/captions/QA — image–text / multimodal")}">◨ ${isVLM(d) ? "Image–text" : "Text"}</span>`);
   if (d.segmentation) badges.push(`<span class="badge seg" title="${esc(d.segmentation_detail || "Segmentation masks")}">▧ Seg</span>`);
   if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(d.multi_sequence_detail || "Multi-sequence / multi-phase")}">≋ Multi-seq</span>`);
+  if (hasTag(d, "population-cohort")) badges.push(`<span class="badge cohort" title="Population / epidemiological cohort${d.clinical_variables ? " — " + esc(d.clinical_variables) : ""}">◉ Cohort</span>`);
+  if (d.body_composition) badges.push(`<span class="badge bodycomp" title="Body-composition phenotypes available (VAT/ASAT/muscle/DXA)">⚖ Body comp</span>`);
   const fmt = (d.format || []).slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
 
   const access = (d.access || "").toLowerCase();
@@ -361,7 +369,11 @@ function openDetail(id) {
         ${boolRow("Paired text / image–text", d.paired_text, d.paired_text_detail)}
         ${boolRow("Multi-sequence / phase", d.multi_sequence, d.multi_sequence_detail)}
         ${boolRow("Segmentation labels", d.segmentation, d.segmentation_detail)}
+        ${d.clinical_variables ? row("Linkable clinical data", d.clinical_variables) : ""}
+        ${d.body_composition ? boolRow("Body composition", d.body_composition) : ""}
+        ${d.longitudinal ? boolRow("Longitudinal (repeat imaging)", d.longitudinal) : ""}
         ${row("Other labels", d.other_labels)}
+        ${(d.tags && d.tags.length) ? row("Tags", d.tags) : ""}
         ${row("Tasks", d.tasks)}
         ${row("Access", accessMap[d.access] || d.access)}
         ${row("License", d.license)}

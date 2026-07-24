@@ -16,12 +16,33 @@ layers**: a broad one-time discovery sweep, and an ongoing automated tracker.
 | [NCI Imaging Data Commons](https://portal.imaging.datacommons.cancer.gov/) | Cloud-hosted public collections | manual |
 | Stanford AIMI, arXiv, Papers With Code | New dataset papers & institutional releases | manual / literature |
 
+## Population / epidemiological imaging cohorts
+
+A whole class of datasets is **not** surfaced by the dataset-repository APIs above:
+large population cohorts whose value is *linkable clinical variables* (labs, disease
+outcomes, genetics, mortality) and *body-composition phenotypes* (VAT/ASAT, muscle,
+DXA), accessed by application. These live in national-biobank portals and registries,
+not on Hugging Face or Grand Challenge:
+
+- Registries: [NHLBI BioLINCC](https://biolincc.nhlbi.nih.gov/), [dbGaP](https://www.ncbi.nlm.nih.gov/gap/), [Maelstrom Research catalogue](https://www.maelstrom-research.org/), the [EU cohort directory](https://www.eucanconnect.eu/).
+- National cohorts: UK Biobank, NAKO, SHIP, Rhineland, Rotterdam, Lifelines, Maastricht,
+  MESA, CARDIA, Framingham, COPDGene, SPIROMICS, NHANES, BioBank Japan, China Kadoorie,
+  KoGES, AGES-Reykjavik, and more.
+
+Because no API covers these, the tracker keeps a **curated watchlist** (`WATCHLIST` in
+`find_new_datasets.py`) of must-have resources and reports any that are missing from the
+catalog at the top of every run — so this category can't be silently dropped. These
+datasets use extra schema fields: `tags` (e.g. `population-cohort`, `body-composition`,
+`longitudinal`, `clinical-linkage`), `clinical_variables`, `body_composition`,
+`longitudinal`, and the `DXA` modality.
+
 ## Automated tracker
 
 `scripts/find_new_datasets.py` queries the API-backed sources above, filters for
 radiology relevance and (for Hugging Face) a minimum download/like count to skip
 personal reuploads, then **diffs against `data/datasets.json`** — including
-substring matching so mirrors of datasets we already list are suppressed.
+substring matching so mirrors of datasets we already list are suppressed. It also
+checks the curated watchlist of population cohorts described above.
 
 The [`Track new datasets`](.github/workflows/track-datasets.yml) GitHub Action runs
 it **monthly** (and on demand via *Run workflow*) and opens or updates a single

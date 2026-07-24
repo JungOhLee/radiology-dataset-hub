@@ -13,7 +13,8 @@ REGIONS = {"Neuro", "Chest", "Cardiac", "Vascular", "Abdomen", "Pelvis", "MSK",
            "Breast", "HeadNeck", "Dental", "WholeBody", "Multi"}
 TYPES = {"dataset", "repository"}
 ACCESS = {"open", "registration", "dua", "request"}
-BOOL_FIELDS = ["raw_image", "paired_text", "multi_sequence", "segmentation"]
+BOOL_FIELDS = ["raw_image", "paired_text", "multi_sequence", "segmentation",
+               "body_composition", "longitudinal"]  # last two optional (cohorts)
 
 
 def main():
@@ -49,6 +50,8 @@ def main():
         for b in BOOL_FIELDS:
             if b in d and not isinstance(d[b], bool):
                 errors.append(f"[{tag}] {b} must be a boolean")
+        if "tags" in d and not isinstance(d["tags"], list):
+            errors.append(f"[{tag}] tags must be a list")
         url = d.get("url", "")
         if url and not str(url).startswith("http"):
             errors.append(f"[{tag}] url should start with http: {url}")

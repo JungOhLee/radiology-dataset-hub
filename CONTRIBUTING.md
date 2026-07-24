@@ -35,7 +35,7 @@ Each entry is a JSON object with these fields:
 | `type` | enum | `dataset` or `repository` (hubs like TCIA/PhysioNet) |
 | `regions` | string[] | **one or more** body regions — a dataset spanning several lists them all: `Neuro`, `Chest`, `Cardiac`, `Vascular`, `Abdomen`, `Pelvis`, `MSK`, `Breast`, `HeadNeck`, `Dental`, `WholeBody`, `Multi` (various). Empty only for repositories. |
 | `anatomy` | string | organ/region, e.g. `"liver"` |
-| `modality` | string[] | any of `CT`, `MRI`, `PET`, `X-ray` (note others in `description`) |
+| `modality` | string[] | any of `CT`, `MRI`, `PET`, `X-ray`, `DXA` (mammography/DBT → `X-ray`, CBCT → `CT`) |
 | `year` | int \| null | release year |
 | `format` | string[] | e.g. `["DICOM"]`, `["NIfTI"]`, `["PNG"]` |
 | `raw_image` | bool | `true` if primarily DICOM/NIfTI/NRRD/MHA |
@@ -49,6 +49,10 @@ Each entry is a JSON object with these fields:
 | `other_labels` | string[] | e.g. `["classification","detection"]` |
 | `tasks` | string[] | `segmentation`, `classification`, `detection`, `reconstruction`, `registration`, `report-generation`, `vqa` |
 | `license` | string \| null | e.g. `"CC BY-NC 4.0"` |
+| `tags` | string[] | optional characteristics — e.g. `population-cohort`, `body-composition`, `longitudinal`, `clinical-linkage`, `genetics`, `opportunistic`, `mortality-outcome` |
+| `clinical_variables` | string \| null | for cohorts: the linkable clinical/phenotype/outcome data (labs, disease outcomes, genetics, mortality) |
+| `body_composition` | bool | VAT/ASAT/muscle/organ-fat/DXA phenotypes available or derivable |
+| `longitudinal` | bool | repeated imaging timepoints |
 | `access` | enum | `open`, `registration`, `dua`, `request` |
 | `host` | string | e.g. `TCIA`, `PhysioNet`, `Grand Challenge`, `Synapse`, `OpenNeuro`, `Zenodo`, `Kaggle` |
 | `url` | string | official homepage |

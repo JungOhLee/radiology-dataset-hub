@@ -39,13 +39,13 @@ This hub is built around **dataset selection**:
 
 <!-- AUTOGEN:START -->
 
-**383 curated datasets** · 188 CT · 180 MRI · 43 PET · 90 X-ray · 319 native DICOM/NIfTI · 90 with reports/text · 240 with segmentation labels
+**383 curated datasets** · 188 CT · 181 MRI · 43 PET · 90 X-ray · 319 native DICOM/NIfTI · 90 with reports/text · 240 with segmentation labels
 
 Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-thorax) · [Cardiac](#cardiac) · [Vascular](#vascular) · [Abdominal](#abdominal) · [Pelvic & Prostate](#pelvic-prostate) · [Musculoskeletal](#musculoskeletal) · [Breast](#breast) · [Head & Neck](#head-neck) · [Dental & Maxillofacial](#dental-maxillofacial) · [Whole-Body & PET](#whole-body-pet) · [Multiple / Various body parts](#multiple-various-body-parts) · [Data Repositories & Portals](#data-repositories-portals)
 
-**Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · Multi = multi-sequence MRI or multi-phase CT. Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · REQUEST = apply for access. **Datasets covering several body regions (56) appear under each region.**
+**Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · Multi = multi-sequence MRI or multi-phase CT. Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · REQUEST = apply for access. **Datasets covering several body regions (57) appear under each region.**
 
-### 🧠 Neuro (Brain & Spine)  <sub>(103)</sub>
+### 🧠 Neuro (Brain & Spine)  <sub>(104)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -142,6 +142,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [REMBRANDT](https://www.cancerimagingarchive.net/collection/rembrandt/) | MRI | 2014 | 🟢 DICOM | ✅ | ✅ | ✅ | OPEN | 10.59 GB |
 | [TCGA-GBM](https://www.cancerimagingarchive.net/collection/tcga-gbm/) | MRI, CT, X-ray | 2014 | 🟢 DICOM | ✅ | ✅ | ✅ | OPEN | 73.51 GB |
 | [TCGA-LGG](https://www.cancerimagingarchive.net/collection/tcga-lgg/) | MRI, CT | 2014 | 🟢 DICOM | ✅ | ✅ | ✅ | OPEN | 42.92 GB |
+| [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI, derived phenotypes (TSV) | — | — | ✅ | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 | [ABIDE](https://fcon_1000.projects.nitrc.org/indi/abide/) | MRI | 2012 | 🟢 NIfTI | — | — | ✅ | REGISTRATION | 1112 subjects (ABIDE I) |
 | [Mindboggle-101](https://mindboggle.info/data.html) | MRI | 2012 | 🟢 NIfTI, VTK | — | ✅ | — | OPEN | 101 subjects |
 | [Neonatal Brain Atlases (ALBERTs / Gousias)](https://brain-development.org/brain-atlases/neonatal-brain-atlases/) | MRI | 2012 | 🟢 NIfTI | — | ✅ | ✅ | REGISTRATION | 20 neonates, 50 labeled regions each (with corresponding T1/T2 MRI scans) |
@@ -252,7 +253,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [EMPIRE10](https://empire10.grand-challenge.org/) | CT | 2010 | 🟢 MetaImage (.mhd/.raw) | — | — | — | REGISTRATION | 30 intra-subject chest CT scan pairs |
 | [JSRT](http://db.jsrt.or.jp/eng.php) | X-ray | 2000 | 🟡 IMG | — | — | — | REGISTRATION | 247 posterior-anterior chest radiographs (154 with a lung nodule: 100 malignant, 54 benign; 93 without nodules); 2048x2048, 12-bit, 0.175 mm pixel spacing |
 
-### 🫀 Cardiac  <sub>(30)</sub>
+### 🫀 Cardiac  <sub>(31)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -284,6 +285,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [MM-WHS](https://zmiclab.github.io/zxh/0/mmwhs/) | CT, MRI | 2017 | 🟢 NIfTI | — | ✅ | — | REGISTRATION | 120 images (60 CT/CTA + 60 MRI) |
 | [HVSMR 2016](http://segchd.csail.mit.edu/) | MRI | 2016 | 🟢 NRRD | — | ✅ | — | OPEN | 20 3D cardiovascular MR images (10 training + 10 test) |
 | [Second Annual Data Science Bowl](https://www.kaggle.com/c/second-annual-data-science-bowl) | MRI | 2016 | 🟢 DICOM | — | — | — | REGISTRATION | ~1,140 patients (cine cardiac MRI studies) |
+| [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI, derived phenotypes (TSV) | — | — | ✅ | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 | [RVSC](https://rvsc.projets.litislab.fr/) | MRI | 2012 | 🟢 DICOM | — | ✅ | — | REGISTRATION | 48 patients (16 train + 32 test) |
 | [Sunnybrook Cardiac Data](https://www.cardiacatlas.org/sunnybrook-cardiac-data/) | MRI | 2009 | 🟢 DICOM | — | ✅ | — | OPEN | 45 patients |
 
@@ -316,7 +318,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [orCaScore](https://orcascore.grand-challenge.org/) | CT | 2014 | 🟢 MHD | — | ✅ | — | REGISTRATION | 72 patients (32 train + 40 test) |
 | [VESSEL12](https://vessel12.grand-challenge.org/) | CT | 2012 | 🟢 MHD | — | ✅ | — | REGISTRATION | 20 chest CT scans |
 
-### 🫃 Abdominal  <sub>(71)</sub>
+### 🫃 Abdominal  <sub>(72)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -391,6 +393,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [BTCV / Synapse Multi-organ](https://www.synapse.org/Synapse:syn3193805) | CT | 2015 | 🟢 NIfTI | — | ✅ | — | REGISTRATION | 30 train + 20 test contrast CT |
 | [CT Colonography](https://www.cancerimagingarchive.net/collection/ct-colonography/) | CT | 2015 | 🟢 DICOM | — | — | — | OPEN | 825 patients (prone + supine) |
 | [Pancreas-CT (NIH)](https://www.cancerimagingarchive.net/collection/pancreas-ct/) | CT | 2015 | 🟢 DICOM, NIfTI | — | ✅ | — | OPEN | 82 contrast-enhanced abdominal CT |
+| [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI, derived phenotypes (TSV) | — | — | ✅ | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 
 ### ⬇️ Pelvic & Prostate  <sub>(32)</sub>
 
@@ -429,7 +432,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Prostate-3T](https://www.cancerimagingarchive.net/collection/prostate-3t/) | MRI | 2015 | 🟢 DICOM, MHA, NRRD | — | ✅ | — | OPEN | 59 subjects, 1161 images (~269 MB) |
 | [PROMISE12](https://promise12.grand-challenge.org/) | MRI | 2012 | 🟢 MHD | — | ✅ | — | REGISTRATION | 50 train + 30 test T2W MRI |
 
-### 🦴 Musculoskeletal  <sub>(38)</sub>
+### 🦴 Musculoskeletal  <sub>(39)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -469,6 +472,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [KneeMRI](http://www.riteh.uniri.hr/~istajduh/projects/kneeMRI/) | MRI | 2017 | 🟢 PCK | — | — | — | OPEN | 917 sagittal PD-weighted knee MRI volumes |
 | [RSNA Bone Age](https://www.rsna.org/rsnai/ai-image-challenge/rsna-pediatric-bone-age-challenge-2017) | X-ray | 2017 | 🟡 PNG | — | — | — | OPEN | 14,236 pediatric hand radiographs |
 | [Soft-tissue-Sarcoma](https://www.cancerimagingarchive.net/collection/soft-tissue-sarcoma/) | PET, CT, MRI | 2015 | 🟢 DICOM | ✅ | ✅ | ✅ | OPEN | 9.87 GB |
+| [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI, derived phenotypes (TSV) | — | — | ✅ | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 | [Digital Hand Atlas](https://ipilab.usc.edu/research/baaweb/) | X-ray | 2007 | 🟡 JPEG | — | — | — | OPEN | ~1,400 normal pediatric hand radiographs |
 | [OAI](https://nda.nih.gov/oai/) | MRI, X-ray | — | 🟢 DICOM | — | — | ✅ | DUA | 4,796 participants, longitudinal bilateral knee MRI and X-ray |
 
@@ -547,7 +551,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [CTooth](https://github.com/liangjiubujiu/CTooth) | CT | 2022 | 🟢 NIfTI | — | ✅ | — | REQUEST | 22 annotated CBCT volumes (CTooth+ adds 146 unlabeled) |
 | [Tufts Dental Database](https://tdd.ece.tufts.edu/) | X-ray | 2022 | 🟡 JPG, TIFF | ✅ | ✅ | — | REQUEST | 1,000 panoramic X-rays |
 
-### 🌐 Whole-Body & PET  <sub>(25)</sub>
+### 🌐 Whole-Body & PET  <sub>(26)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -576,6 +580,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Pediatric-CT-SEG](https://www.cancerimagingarchive.net/collection/pediatric-ct-seg/) | CT | 2021 | 🟢 DICOM | — | ✅ | — | OPEN | 359 patients (ages 5 days to 16 years); 65.69 GB |
 | [CT-ORG](https://www.cancerimagingarchive.net/collection/ct-org/) | CT | 2020 | 🟢 NIfTI | — | ✅ | — | OPEN | 140 CT (119 train / 21 test) |
 | [Anti-PD-1_Melanoma](https://www.cancerimagingarchive.net/collection/anti-pd-1_melanoma/) | PET, CT, MRI | 2018 | 🟢 DICOM | ✅ | — | — | REQUEST | 98.41 GB |
+| [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI, derived phenotypes (TSV) | — | — | ✅ | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 
 ### 🧩 Multiple / Various body parts  <sub>(29)</sub>
 
@@ -611,7 +616,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [ROCO](https://github.com/razorx89/roco-dataset) | X-ray, CT, MRI, PET | 2018 | 🟡 JPG, PNG | ✅ | — | — | OPEN | ~81,000 radiology image-caption pairs |
 | [VQA-RAD](https://huggingface.co/datasets/flaviagiammarino/vqa-rad) | X-ray, CT, MRI | 2018 | 🟡 JPG | ✅ | — | — | OPEN | 315 images with 3,515 QA pairs |
 
-### 🗄️ Data Repositories & Portals  <sub>(16)</sub>
+### 🗄️ Data Repositories & Portals  <sub>(15)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -623,7 +628,6 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Medical Segmentation Decathlon](http://medicaldecathlon.com/) | CT, MRI | 2018 | 🟢 NIfTI | — | ✅ | ✅ | OPEN | 10 tasks / ~2,600 3D volumes |
 | [OpenNeuro](https://openneuro.org/) | Multiple | 2017 | 🟢 Various | — | — | ✅ | OPEN | 1,000+ datasets |
 | [Hugging Face](https://huggingface.co/datasets) | Multiple | 2016 | 🟢 Various | ✅ | — | — | OPEN | thousands of medical/imaging datasets |
-| [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | Multiple | 2014 | 🟢 Various | — | — | ✅ | REQUEST | 100,000 participants; 1B+ images |
 | [Zenodo](https://zenodo.org/) | Multiple | 2013 | 🟢 Various | — | — | — | OPEN | millions of records (general-purpose) |
 | [Grand Challenge](https://grand-challenge.org/) | Multiple | 2011 | 🟢 Various | — | ✅ | — | REGISTRATION | 390+ public and private challenges |
 | [Synapse](https://www.synapse.org/) | Multiple | 2011 | 🟢 Various | — | — | — | REGISTRATION | thousands of projects and datasets |

@@ -2847,7 +2847,16 @@
       ],
       "file_structure": "Low-dose chest CT stored as DICOM in the standard TCIA Collection/Patient/Study/Series folder hierarchy (26,254 subjects, ~21M images / 203,099 series); clinical/outcome labels are distributed separately as SAS, ZIP, and DOC files (questionnaires, screening results, diagnosis, follow-up, mortality) via the Cancer Data Access System (CDAS), and a 451-subject histopathology subset is provided as SVS whole-slide/tissue-microarray images - there are no DICOM-SEG or RTSTRUCT files in the core release.",
       "extra": "The core TCIA release ships no segmentations, but downstream projects add them: the NCI Imaging Data Commons (IDC) hosts harmonized/derived segmentations (e.g., AI-generated organ and nodule segmentations in DICOM-SEG) layered on NLST CTs, and the full clinical dataset (beyond the public CC BY 4.0 subset) requires a CDAS data request."
-    }
+    },
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "mortality-outcome",
+      "opportunistic"
+    ],
+    "clinical_variables": "Smoking history, lung-cancer diagnosis, screening results, treatment and cause-specific mortality (full trial data via NCI CDAS).",
+    "body_composition": true,
+    "longitudinal": true
   },
   {
     "id": "lung-pet-ct-dx",
@@ -7834,18 +7843,27 @@
     "id": "uk-biobank-imaging",
     "name": "UK Biobank Imaging",
     "full_name": "UK Biobank Imaging Study",
-    "type": "repository",
-    "regions": [],
+    "type": "dataset",
+    "regions": [
+      "WholeBody",
+      "Neuro",
+      "Cardiac",
+      "Abdomen",
+      "MSK"
+    ],
     "anatomy": "various",
     "modality": [
-      "Multiple"
+      "MRI",
+      "DXA"
     ],
     "year": 2014,
     "format": [
-      "Various"
+      "DICOM",
+      "NIfTI",
+      "derived phenotypes (TSV)"
     ],
     "raw_image": true,
-    "size": "100,000 participants; 1B+ images",
+    "size": "~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+",
     "paired_text": false,
     "paired_text_detail": null,
     "multi_sequence": true,
@@ -7863,7 +7881,18 @@
     "access": "request",
     "host": "ukbiobank.ac.uk",
     "url": "https://www.ukbiobank.ac.uk/",
-    "description": "World's largest multi-modal imaging study, scanning 100,000 volunteers with brain/cardiac/abdominal MRI, DXA and carotid ultrasound linked to genetic and phenotypic data."
+    "description": "Population imaging cohort with neck-to-knee Dixon MRI, brain & cardiac MRI, and whole-body DXA plus ready-made body-composition phenotypes (VAT, ASAT, muscle volume/fat, organ fat), linked to deep clinical, genetic and outcome data by application.",
+    "tags": [
+      "population-cohort",
+      "body-composition",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics",
+      "mortality-outcome"
+    ],
+    "clinical_variables": "Blood biochemistry & haematology, cardiometabolic and cancer outcomes, medications, lifestyle, whole-genome genetics, and hospital-episode & mortality linkage.",
+    "body_composition": true,
+    "longitudinal": true
   },
   {
     "id": "msd-suite",
@@ -12139,7 +12168,11 @@
       ],
       "file_structure": "CT images are DICOM (organized as 30 studies / 135 series across the 30 subjects and their multiple acquisition timepoints); segmentations are delivered separately as NIfTI (.nii) label maps at the 90-minute timepoint, bundled with an XLSX organ-value key and documentation (segmentations may need re-orientation to align with the DICOM CT).",
       "extra": "30 healthy adult subjects; segmentations were auto-generated (not manually verified) with the MOOSE AI whole-body tool (github.com/QIMP-Team/MOOSE) at the 90-min timepoint from low-dose whole-body CT — exact per-class integer indices are specified in the downloadable organ-values spreadsheet."
-    }
+    },
+    "body_composition": true,
+    "tags": [
+      "body-composition"
+    ]
   },
   {
     "id": "care-2024-liqa",
@@ -16502,7 +16535,16 @@
       ],
       "file_structure": "Raw imaging released as BIDS-organized NIfTI (T1/T2 sMRI, dMRI, rs-fMRI, three task fMRI) via the ABCD Community Collection/DCAN-BIDS derivatives; ROI-level imaging derivatives and all phenotypic measures distributed as tabulated data structures (CSV/tab-delimited tables) through the NIMH Data Archive (NDA).",
       "extra": "Longitudinal cohort of ~11,880 children enrolled at ages 9-10 with biennial imaging; access requires an approved NDA Data Use Certification (no fixed train/val/test partition)."
-    }
+    },
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Neurocognition, mental health, substance use, environment and genetics across adolescence, with biennial follow-up.",
+    "longitudinal": true,
+    "body_composition": false
   },
   {
     "id": "cobra2026",
@@ -17752,7 +17794,11 @@
       ],
       "file_structure": "One folder per case (data/case_000/, case_001/, ...), each containing image.nii.gz plus two label volumes body-regions.nii.gz and body-parts.nii.gz (NIfTI, gzip, resampled to 5mm); the annotations are natively distributed on TCIA as DICOM-SEG and the repo's download.py pulls the source CTs from TCIA and converts everything to NIfTI, guided by a Segmentation-Info CSV.",
       "extra": "Sparse annotation: only a subset of axial slices per scan are labeled (aggregated from 27 public TCIA CT collections, some requiring TCIA restricted-license access); the two provided nnUNet baselines train separate 2D models for regions and for parts, and three cases (case_609, case_623, case_816) have abnormal HU values."
-    }
+    },
+    "body_composition": true,
+    "tags": [
+      "body-composition"
+    ]
   },
   {
     "id": "dap-atlas",
@@ -17888,7 +17934,11 @@
       ],
       "file_structure": "Dense whole-body segmentation masks are distributed as compressed NIfTI files (.nii.gz), one label volume per CT scan, named AutoPET_[subject_id]_[last-5-digits-of-Study-UID].nii.gz; the mask volumes are downloaded from Google Drive while the matching CT images are obtained separately from the AutoPET/TCIA collection and paired by filename, with the integer-to-anatomy mapping given in Data/label_name.csv.",
       "extra": "533 whole-body CT volumes from the AutoPET dataset. The official label_name.csv defines integer label values 0-131 (label 0 = background, label 1 = 'Left to annotate'); the paper (arXiv:2307.13375, 'Towards Unifying Anatomy Segmentation') describes the dataset as 142 voxel-level anatomical labels. Masks were automatically generated by aggregating multiple segmentation models and refined using anatomical guideline post-processing scripts included in the repo; the repo also ships two nnU-Net v1 models (Task901/Task902) trained with 5-fold cross-validation but no official fixed train/val/test split."
-    }
+    },
+    "body_composition": true,
+    "tags": [
+      "body-composition"
+    ]
   },
   {
     "id": "sa-med2d-20m",
@@ -18450,7 +18500,16 @@
       ],
       "file_structure": "Imaging is downloaded from the LONI Image & Data Archive (IDA) as DICOM (raw) or preprocessed NIfTI, organized per-subject/per-visit (DaTSCAN SPECT and MRI including T1, DTI, resting-state fMRI); diagnosis/cohort labels, clinical assessments, and DaTscan SBR values are distributed separately as CSV/tabular data files keyed by subject ID and visit, with no per-voxel segmentation masks.",
       "extra": "PPMI is a longitudinal observational cohort (~5,500 participants) requiring a data-use application via LONI IDA; labels are subject/visit-level diagnosis and biomarker values rather than image annotations, and there is no official train/val/test partition."
-    }
+    },
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "clinical-linkage",
+      "genetics"
+    ],
+    "clinical_variables": "Parkinson's clinical assessments, biospecimens, genetics and longitudinal disease progression.",
+    "longitudinal": true,
+    "body_composition": false
   },
   {
     "id": "aibl",

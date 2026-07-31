@@ -147,7 +147,7 @@ function buildControls() {
     b.classList.add("toggle-chip");
     tWrap.appendChild(b);
   });
-  $("#search").addEventListener("input", e => { state.q = e.target.value.toLowerCase().trim(); render(); });
+  $("#search").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
   $("#sort-select").addEventListener("change", e => { state.sort = e.target.value; render(); });
   $("#reset").addEventListener("click", () => {
     state.q = ""; state.modalities.clear(); state.regions.clear(); state.toggles.clear();
@@ -175,25 +175,63 @@ function matchesRegion(d) {
   return (d.regions || []).some(r => state.regions.has(r));
 }
 
-function matches(d) {
+// facet filters only (modality / region / characteristic toggles); text is applied separately
+function facetMatches(d) {
   if (state.modalities.size && !(d.modality || []).some(m => state.modalities.has(m))) return false;
   if (!matchesRegion(d)) return false;
   for (const key of state.toggles) {
     const t = TOGGLES.find(x => x.key === key);
     if (t && !t.test(d)) return false;
   }
-  if (state.q) {
-    const hay = [d.name, d.full_name, d.description, d.anatomy, (d.modality || []).join(" "),
-      (d.regions || []).join(" "), (d.tags || []).join(" "), (d.tasks || []).join(" "), d.host,
-      (d.format || []).join(" "), d.clinical_variables, d.segmentation_detail,
-      d.multi_sequence_detail, d.paired_text_detail].filter(Boolean).join(" ").toLowerCase();
-    if (!hay.includes(state.q)) return false;
-  }
   return true;
 }
 
+/* ---------- flexible search ----------
+   Punctuation/space-insensitive so "picai" matches "PI-CAI" and "MR RATE" matches
+   "MR-RATE". Two passes: a precise whole-query match first, then a broad token
+   match (any order, any field) only when the precise pass finds nothing. */
+function squash(s) {
+  return String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function searchFilter(list, q) {
+  q = (q || "").trim();
+  if (!q) return list;
+  const sqQuery = squash(q);
+  if (!sqQuery) return list;
+  // Pass 1 — precise: the whole query with punctuation/spaces removed appears contiguously
+  // (catches "picai" -> PI-CAI, "mr rate" -> MR-RATE, "ct rate" -> CT-RATE, "kits23").
+  const contig = list.filter(d => searchIndex(d).sq.includes(sqQuery));
+  if (contig.length) return contig;
+  // Pass 2 — broad: every whitespace token appears somewhere, any order, any field
+  // (catches concept searches like "brain tumor segmentation").
+  const tokens = q.toLowerCase().split(/\s+/).map(squash).filter(Boolean);
+  if (tokens.length) {
+    const tok = list.filter(d => tokens.every(t => searchIndex(d).sq.includes(t)));
+    if (tok.length) return tok;
+  }
+  // Pass 3 — exact readable phrase as a last resort
+  return list.filter(d => searchIndex(d).raw.includes(q.toLowerCase()));
+}
+
+function searchIndex(d) {
+  if (d._sidx) return d._sidx;
+  const parts = [
+    d.id, d.name, d.full_name, d.description, d.anatomy,
+    (d.modality || []).join(" "),
+    (d.regions || []).map(r => REGION_LABEL[r] || r).join(" "), (d.regions || []).join(" "),
+    (d.tags || []).join(" "), (d.tasks || []).join(" "), (d.other_labels || []).join(" "),
+    d.host, (d.format || []).join(" "), d.license, d.size, d.year,
+    d.clinical_variables, d.segmentation_detail, d.multi_sequence_detail, d.paired_text_detail,
+    d.details ? (d.details.label_schema || []).join(" ") : "",
+  ];
+  const raw = parts.filter(Boolean).join(" ").toLowerCase();
+  d._sidx = { raw, sq: raw.replace(/[^a-z0-9]+/g, "") };
+  return d._sidx;
+}
+
 function render() {
-  const list = DATA.filter(matches);
+  const list = searchFilter(DATA.filter(facetMatches), state.q);
   const uniq = list.length;
   $("#count").innerHTML = `<b>${uniq}</b> of ${DATA.length} datasets`;
   const results = $("#results");

@@ -201,6 +201,14 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; }
 .empty { text-align: center; padding: 60px 20px; color: var(--text-faint); }
 .empty h2 { color: var(--text-soft); }
 
+/* search result tiers */
+.count-sub { color: var(--text-faint); font-weight: 400; }
+.tier-divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 16px;
+  color: var(--text-faint); font-size: .82rem; }
+.tier-divider::before, .tier-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.tier-divider span { white-space: nowrap; }
+.tier-more { margin: 18px 0 0; text-align: center; color: var(--text-faint); font-size: .82rem; }
+
 /* ---------- Detail modal ---------- */
 .overlay {
   position: fixed; inset: 0; z-index: 100;

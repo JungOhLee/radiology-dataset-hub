@@ -147,7 +147,13 @@ function buildControls() {
     b.classList.add("toggle-chip");
     tWrap.appendChild(b);
   });
-  $("#search").addEventListener("input", e => { state.q = e.target.value.trim(); render(); });
+  // debounce rendering so the input stays responsive while typing over a large catalog
+  let searchTimer = null;
+  $("#search").addEventListener("input", e => {
+    state.q = e.target.value.trim();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(render, 130);
+  });
   $("#sort-select").addEventListener("change", e => { state.sort = e.target.value; render(); });
   $("#reset").addEventListener("click", () => {
     state.q = ""; state.modalities.clear(); state.regions.clear(); state.toggles.clear();
@@ -194,24 +200,55 @@ function squash(s) {
   return String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
-function searchFilter(list, q) {
+/* Tiered, field-boosted ranking. Returns null when there is no query (browse mode),
+   else { t1, t2 }: t1 = title/name/id matches (shown first), t2 = extended matches
+   in description/labels/metadata (shown below a divider). Punctuation/space-insensitive
+   so "picai" -> PI-CAI and "MR RATE" -> MR-RATE. */
+function searchRank(list, q) {
   q = (q || "").trim();
-  if (!q) return list;
+  if (!q) return null;
   const sqQuery = squash(q);
-  if (!sqQuery) return list;
-  // Pass 1 — precise: the whole query with punctuation/spaces removed appears contiguously
-  // (catches "picai" -> PI-CAI, "mr rate" -> MR-RATE, "ct rate" -> CT-RATE, "kits23").
-  const contig = list.filter(d => searchIndex(d).sq.includes(sqQuery));
-  if (contig.length) return contig;
-  // Pass 2 — broad: every whitespace token appears somewhere, any order, any field
-  // (catches concept searches like "brain tumor segmentation").
-  const tokens = q.toLowerCase().split(/\s+/).map(squash).filter(Boolean);
-  if (tokens.length) {
-    const tok = list.filter(d => tokens.every(t => searchIndex(d).sq.includes(t)));
-    if (tok.length) return tok;
+  if (!sqQuery) return null;
+  // word-boundary tokens: a token matches a word that starts with it (prefix), so
+  // "rate" won't match inside "accurate" and "mr" still matches "MRI".
+  const tokens = q.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  const allTok = wblob => tokens.length > 0 && tokens.every(t => wblob.includes(" " + t));
+  const t1 = [], t2 = [];
+  for (const d of list) {
+    const x = searchIndex(d);
+    let score = 0, tier = 0;
+    if (x.sqName === sqQuery) { score = 100; tier = 1; }
+    else if (x.sqName.startsWith(sqQuery)) { score = 90; tier = 1; }
+    else if (x.sqName.includes(sqQuery)) { score = 80; tier = 1; }
+    else if (x.sqTitle.includes(sqQuery)) { score = 70; tier = 1; }
+    else if (allTok(x.wtitle)) { score = 60; tier = 1; }
+    else if (x.sq.includes(sqQuery)) { score = 40; tier = 2; }
+    else if (allTok(x.wraw)) { score = 20; tier = 2; }
+    else continue;
+    (tier === 1 ? t1 : t2).push({ d, score });
   }
-  // Pass 3 — exact readable phrase as a last resort
-  return list.filter(d => searchIndex(d).raw.includes(q.toLowerCase()));
+  const by = (a, b) => b.score - a.score || (b.d.year || 0) - (a.d.year || 0) || a.d.name.localeCompare(b.d.name);
+  t1.sort(by); t2.sort(by);
+  return { t1: t1.map(o => o.d), t2: t2.map(o => o.d) };
+}
+
+const SEARCH_CAP = 150;   // max cards rendered while searching (keeps typing smooth)
+
+function renderSearchHTML(t1, t2) {
+  let html = "";
+  if (t1.length) html += `<div class="grid">${t1.map(card).join("")}</div>`;
+  const room = Math.max(t1.length ? 0 : 30, SEARCH_CAP - t1.length);
+  const shownT2 = t2.slice(0, room);
+  if (shownT2.length) {
+    const label = t1.length
+      ? `More results — matched in description, labels or metadata (${t2.length})`
+      : `No title matches — showing matches in description, labels or metadata (${t2.length})`;
+    html += `<div class="tier-divider"><span>${label}</span></div>`;
+    html += `<div class="grid">${shownT2.map(card).join("")}</div>`;
+  }
+  const hidden = t2.length - shownT2.length;
+  if (hidden > 0) html += `<div class="tier-more">+${hidden} more extended matches — refine your search to see them.</div>`;
+  return html;
 }
 
 function searchIndex(d) {
@@ -226,24 +263,39 @@ function searchIndex(d) {
     d.details ? (d.details.label_schema || []).join(" ") : "",
   ];
   const raw = parts.filter(Boolean).join(" ").toLowerCase();
-  d._sidx = { raw, sq: raw.replace(/[^a-z0-9]+/g, "") };
+  const wordify = s => " " + String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() + " ";
+  d._sidx = {
+    sq: raw.replace(/[^a-z0-9]+/g, ""),                          // punctuation-free blob
+    sqName: squash(d.name),
+    sqTitle: squash([d.id, d.name, d.full_name].filter(Boolean).join(" ")),
+    wraw: wordify(raw),                                          // word-boundary blob (for prefix tokens)
+    wtitle: wordify([d.id, d.name, d.full_name].filter(Boolean).join(" ")),
+  };
   return d._sidx;
 }
 
-function render() {
-  const list = searchFilter(DATA.filter(facetMatches), state.q);
-  const uniq = list.length;
-  $("#count").innerHTML = `<b>${uniq}</b> of ${DATA.length} datasets`;
-  const results = $("#results");
+const EMPTY_HTML = `<div class="empty"><h2>No datasets match</h2>
+  <p>Try removing a filter or broadening your search.</p></div>`;
 
-  if (!uniq) {
-    results.innerHTML = `<div class="empty"><h2>No datasets match</h2>
-      <p>Try removing a filter or broadening your search.</p></div>`;
+function render() {
+  const base = DATA.filter(facetMatches);
+  const results = $("#results");
+  const ranked = searchRank(base, state.q);
+
+  // ----- search mode: ranked flat list, title matches first -----
+  if (ranked) {
+    const total = ranked.t1.length + ranked.t2.length;
+    $("#count").innerHTML = `<b>${total}</b> of ${DATA.length} · <span class="count-sub">by relevance</span>`;
+    results.innerHTML = total ? renderSearchHTML(ranked.t1, ranked.t2) : EMPTY_HTML;
     return;
   }
 
+  // ----- browse mode: no query -----
+  $("#count").innerHTML = `<b>${base.length}</b> of ${DATA.length} datasets`;
+  if (!base.length) { results.innerHTML = EMPTY_HTML; return; }
+
   if (state.sort === "year" || state.sort === "name") {
-    const sorted = [...list].sort((a, b) =>
+    const sorted = [...base].sort((a, b) =>
       state.sort === "year" ? (b.year || 0) - (a.year || 0) : a.name.localeCompare(b.name));
     results.innerHTML = `<div class="grid">${sorted.map(card).join("")}</div>`;
     return;
@@ -252,12 +304,12 @@ function render() {
   // grouped by region; a multi-region dataset appears under each of its regions
   let html = "";
   for (const r of REGION_ORDER) {
-    const items = list.filter(d => d.type !== "repository" && (d.regions || []).includes(r));
+    const items = base.filter(d => d.type !== "repository" && (d.regions || []).includes(r));
     if (!items.length) continue;
     items.sort((a, b) => (b.year || 0) - (a.year || 0));
     html += section(r, items);
   }
-  const repos = list.filter(d => d.type === "repository");
+  const repos = base.filter(d => d.type === "repository");
   if (repos.length) {
     repos.sort((a, b) => (b.year || 0) - (a.year || 0));
     html += section("Repository", repos);

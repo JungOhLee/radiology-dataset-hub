@@ -10,9 +10,11 @@ layers**: a broad one-time discovery sweep, and an ongoing automated tracker.
 | [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/) | DICOM cancer imaging collections (CT/MRI/PET) | NBIA REST API `getCollectionValues` |
 | [Hugging Face Datasets](https://huggingface.co/datasets) | Foundation-model / report-paired / VLM sets (CT-RATE, MR-RATE, Merlin, RadGenome…) | `/api/datasets` search + downloads/likes filter |
 | [Grand Challenge](https://grand-challenge.org/) | Segmentation/detection challenges with expert labels | `/api/v1/challenges/` |
-| [Zenodo](https://zenodo.org/) | DOI-minted dataset releases (ROCOv2, TotalSegmentator…) | `/api/records?type=dataset` |
-| [PhysioNet](https://physionet.org/) | Credentialed clinical imaging (MIMIC-CXR family) | manual / release feed |
-| [OpenNeuro](https://openneuro.org/) | BIDS neuroimaging | manual |
+| [Zenodo](https://zenodo.org/) | DOI-minted dataset releases (ROCOv2, TotalSegmentator, Duke Liver…) | `/api/records?type=dataset`, per modality/organ term, `sort=newest` **and** `sort=mostviewed` (back-catalog; unauthenticated page cap is 25) |
+| [Kaggle datasets](https://www.kaggle.com/datasets) | Community uploads & competition mirrors | `/api/v1/datasets/list` (unauthenticated) + download-count filter |
+| [Kaggle competitions](https://www.kaggle.com/competitions) | RSNA/SPR/UW-Madison etc. medical-imaging challenges | `/api/v1/competitions/list` — needs `KAGGLE_USERNAME`/`KAGGLE_KEY` repo secrets (kaggle.com → Settings → API); skipped gracefully if unset |
+| [PhysioNet](https://physionet.org/) | Credentialed clinical imaging (MIMIC-CXR family) | `/api/v1/project/published/` (full catalog JSON, filtered client-side) |
+| [OpenNeuro](https://openneuro.org/) | BIDS neuroimaging | GraphQL `/crn/graphql`, newest public datasets, clinical/pathology keyword filter |
 | [NCI Imaging Data Commons](https://portal.imaging.datacommons.cancer.gov/) | Cloud-hosted public collections | manual |
 | Stanford AIMI, arXiv, Papers With Code | New dataset papers & institutional releases | manual / literature |
 
@@ -45,15 +47,25 @@ substring matching so mirrors of datasets we already list are suppressed. It als
 checks the curated watchlist of population cohorts described above.
 
 The [`Track new datasets`](.github/workflows/track-datasets.yml) GitHub Action runs
-it **monthly** (and on demand via *Run workflow*) and opens or updates a single
-issue, **📡 New open radiology dataset candidates**, listing everything not yet in
-the catalog for human review.
+it **weekly (Mondays 06:00 UTC)** (and on demand via *Run workflow*) and opens or
+updates a single issue, **📡 New open radiology dataset candidates**, listing
+everything not yet in the catalog for human review. Candidates that were absent
+from the previous week's report are flagged **🆕** and sorted first, so the weekly
+review only needs to scan the new rows. To enable the Kaggle *competitions* source,
+add `KAGGLE_USERNAME` / `KAGGLE_KEY` repository secrets (all other sources are
+credential-free).
 
 Run it locally:
 
 ```bash
-python3 scripts/find_new_datasets.py --limit 100
+python3 scripts/find_new_datasets.py --limit 100          # full report
+python3 scripts/find_new_datasets.py --prev prev.md       # flag 🆕 vs a previous report
 ```
+
+The weekly loop end to end: **tracker issue → vet candidates (official page, scope,
+duplicates) → add entries to `data/datasets.json` with label-structure details →
+`python3 scripts/validate.py` → commit**. Asking Claude Code to "process this week's
+tracker issue" covers the vet-research-add-validate steps in one pass.
 
 The output is intentionally a *review queue*, not an auto-merge: candidates may be
 out of scope, non-open, or duplicates under another name. Vet each, then add the

@@ -200,10 +200,121 @@ function squash(s) {
   return String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
+/* ---------- facet vocabulary ----------
+   Maps query n-grams (squashed) to structured facets — modality, body region, or an
+   anatomy term — so "abdominal ct" surfaces every Abdomen-region CT dataset in its own
+   tier right after title matches instead of buried among description matches.
+   Facet kinds: {mod} matches d.modality; {region} matches d.regions;
+   {anat, terms} word-matches anatomy/title/segmentation fields. A facet may combine
+   kinds (mammography = X-ray + Breast); a dataset must satisfy EVERY facet parsed. */
+const FACET_VOCAB = (() => {
+  const V = Object.create(null);   // null prototype: a token like "constructor" must not resolve
+  const add = (facet, ...keys) => keys.forEach(k => { V[k] = facet; });
+  // modalities
+  add({ mod: "CT" }, "ct", "computedtomography", "computedtomographyscan");
+  add({ mod: "MRI" }, "mri", "mr", "magneticresonance", "magneticresonanceimaging");
+  add({ mod: "X-ray" }, "xray", "xrays", "radiograph", "radiographs", "radiography", "cxr");
+  add({ mod: "PET" }, "pet");
+  add({ mod: "DXA" }, "dxa", "dexa");
+  add({ mod: "Ultrasound" }, "ultrasound", "ultrasonography", "sonography");
+  // modality techniques: require the technique word itself in the record (term), not just
+  // the modality — otherwise "cta"/"fmri" would flood the tier with every CT/MRI dataset
+  const tech = (mod, ...keys) => keys.forEach(k => add({ mod, term: k }, k));
+  tech("CT", "cta", "cect", "ncct", "ldct", "hrct", "cbct");
+  tech("MRI", "mra", "fmri", "dmri");
+  // body regions
+  add({ region: "Neuro" }, "brain", "neuro", "neuroimaging", "cerebral", "intracranial", "head");
+  add({ region: "Chest" }, "chest", "thorax", "thoracic", "lung", "lungs", "pulmonary");
+  add({ region: "Cardiac" }, "cardiac", "heart", "cardiovascular", "coronary");
+  add({ region: "Vascular" }, "vascular", "vessel", "vessels", "angiography", "angiogram", "aorta", "aortic");
+  add({ region: "Abdomen" }, "abdomen", "abdominal");
+  add({ region: "Pelvis" }, "pelvis", "pelvic");
+  add({ region: "MSK" }, "msk", "musculoskeletal", "orthopedic", "orthopaedic", "bone", "bones", "joint", "joints");
+  add({ region: "Breast" }, "breast");
+  add({ region: "HeadNeck" }, "headneck", "headandneck");
+  add({ region: "Dental" }, "dental", "tooth", "teeth", "maxillofacial");
+  add({ region: "WholeBody" }, "wholebody", "totalbody");
+  // modality + region combos
+  add({ mod: "X-ray", region: "Breast" }, "mammography", "mammogram", "mammograms", "mammo");
+  // anatomy terms — matched against the dataset's anatomy/title/segmentation fields as
+  // whole words; a trailing "*" marks a deliberate prefix stem (pancrea* → pancreatic).
+  // Whole-word is the default so "hip" can't match hippocampus or HiPaS. Lookup keys
+  // are the de-starred terms plus any extra typed forms.
+  const anat = (label, terms, ...keys) => add({ anat: label, terms }, ...terms.map(t => t.replace("*", "")), ...keys);
+  anat("liver", ["liver", "livers", "hepatic"]);
+  anat("kidney", ["kidney", "kidneys", "renal"]);
+  anat("pancreas", ["pancrea*"], "pancreas", "pancreatic");
+  anat("spleen", ["spleen", "splenic"]);
+  anat("colon", ["colon", "colorectal"]);
+  anat("prostate", ["prostate"]);
+  anat("knee", ["knee", "knees"]);
+  anat("shoulder", ["shoulder", "shoulders"]);
+  anat("hip", ["hip", "hips"]);
+  anat("hand", ["hand", "hands"]);
+  anat("wrist", ["wrist", "wrists"]);
+  anat("spine", ["spine", "spinal", "vertebra*", "lumbar", "cervical"], "vertebrae");
+  anat("skull", ["skull", "cranial"]);
+  anat("thyroid", ["thyroid"]);
+  anat("bladder", ["bladder"]);
+  anat("uterus", ["uterus", "uterine", "cervix"]);
+  anat("ovary", ["ovar*"], "ovary", "ovarian", "ovaries");
+  anat("rectum", ["rectum", "rectal"]);
+  anat("stomach", ["stomach", "gastric"]);
+  anat("esophagus", ["esophag*", "oesophag*"], "esophagus", "esophageal", "oesophagus", "oesophageal");
+  anat("airway", ["airway", "airways"]);
+  anat("nodule", ["nodule", "nodules"]);
+  return V;
+})();
+
+/* Greedy n-gram scan (longest first) splitting query tokens into structured facets
+   and leftover free-text tokens: ["abdominal","ct"] -> 2 facets; ["duke","liver"]
+   -> facet liver + free "duke". */
+function parseFacets(tokens) {
+  const facets = [], free = [];
+  for (let i = 0; i < tokens.length; ) {
+    let hit = null, len = 1;
+    for (const n of [3, 2, 1]) {
+      if (i + n > tokens.length) continue;
+      const f = FACET_VOCAB[tokens.slice(i, i + n).join("")];
+      if (f) { hit = f; len = n; break; }
+    }
+    if (hit) facets.push(hit); else free.push(tokens[i]);
+    i += len;
+  }
+  return { facets, free };
+}
+
+function facetMatch(d, x, f) {
+  if (f.mod && !(d.modality || []).includes(f.mod)) return false;
+  if (f.region && !(d.regions || []).includes(f.region)) return false;
+  if (f.term && !x.wraw.includes(" " + f.term)) return false;
+  // "*" = prefix stem; otherwise whole word (wanat is padded with spaces at both ends)
+  if (f.anat && !f.terms.some(t => t.endsWith("*")
+      ? x.wanat.includes(" " + t.slice(0, -1))
+      : x.wanat.includes(" " + t + " "))) return false;
+  return true;
+}
+
+function facetTierLabel(facets, n) {
+  const chips = facets.map(f => {
+    let h = "";
+    if (f.mod) h += `<span class="mod">${esc(f.mod)}</span>`;
+    if (f.term) h += `<span class="rtag">${esc(f.term)}</span>`;
+    if (f.region) h += `<span class="rtag">${REGION_ICON[f.region] || ""} ${esc(REGION_SHORT[f.region] || f.region)}</span>`;
+    if (f.anat) h += `<span class="rtag">${esc(f.anat)}</span>`;
+    return h;
+  }).join("");
+  const hasMod = facets.some(f => f.mod), hasBody = facets.some(f => f.region || f.anat);
+  const by = hasMod && hasBody ? "modality & body part" : hasMod ? "modality" : "body part";
+  return `${chips}<span>matched by ${by} (${n})</span>`;
+}
+
 /* Tiered, field-boosted ranking. Returns null when there is no query (browse mode),
-   else { t1, t2 }: t1 = title/name/id matches (shown first), t2 = extended matches
-   in description/labels/metadata (shown below a divider). Punctuation/space-insensitive
-   so "picai" -> PI-CAI and "MR RATE" -> MR-RATE. */
+   else { t1, tf, t2, facets }: t1 = title/name/id matches (shown first), tf = facet
+   matches — datasets whose modality / body region / anatomy satisfy every structured
+   facet parsed from the query (e.g. "abdominal ct" -> Abdomen + CT), shown right after
+   title matches — and t2 = extended matches in description/labels/metadata.
+   Punctuation/space-insensitive so "picai" -> PI-CAI and "MR RATE" -> MR-RATE. */
 function searchRank(list, q) {
   q = (q || "").trim();
   if (!q) return null;
@@ -213,7 +324,10 @@ function searchRank(list, q) {
   // "rate" won't match inside "accurate" and "mr" still matches "MRI".
   const tokens = q.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
   const allTok = wblob => tokens.length > 0 && tokens.every(t => wblob.includes(" " + t));
-  const t1 = [], t2 = [];
+  const { facets, free } = parseFacets(tokens);
+  // leftover non-facet tokens ("duke" in "duke liver mri") must still match somewhere
+  const freeTok = wblob => free.every(t => wblob.includes(" " + t));
+  const t1 = [], tf = [], t2 = [];
   for (const d of list) {
     const x = searchIndex(d);
     let score = 0, tier = 0;
@@ -222,32 +336,43 @@ function searchRank(list, q) {
     else if (x.sqName.includes(sqQuery)) { score = 80; tier = 1; }
     else if (x.sqTitle.includes(sqQuery)) { score = 70; tier = 1; }
     else if (allTok(x.wtitle)) { score = 60; tier = 1; }
+    else if (facets.length && d.type !== "repository" &&
+             facets.every(f => facetMatch(d, x, f)) && freeTok(x.wraw)) { score = 50; tier = 15; }
     else if (x.sq.includes(sqQuery)) { score = 40; tier = 2; }
     else if (allTok(x.wraw)) { score = 20; tier = 2; }
     else continue;
-    (tier === 1 ? t1 : t2).push({ d, score });
+    (tier === 1 ? t1 : tier === 15 ? tf : t2).push({ d, score });
   }
   const by = (a, b) => b.score - a.score || (b.d.year || 0) - (a.d.year || 0) || a.d.name.localeCompare(b.d.name);
-  t1.sort(by); t2.sort(by);
-  return { t1: t1.map(o => o.d), t2: t2.map(o => o.d) };
+  t1.sort(by); tf.sort(by); t2.sort(by);
+  return { t1: t1.map(o => o.d), tf: tf.map(o => o.d), t2: t2.map(o => o.d), facets };
 }
 
 const SEARCH_CAP = 150;   // max cards rendered while searching (keeps typing smooth)
 
-function renderSearchHTML(t1, t2) {
+function renderSearchHTML(r) {
+  const { t1, tf, t2, facets } = r;
   let html = "";
   if (t1.length) html += `<div class="grid">${t1.map(card).join("")}</div>`;
-  const room = Math.max(t1.length ? 0 : 30, SEARCH_CAP - t1.length);
-  const shownT2 = t2.slice(0, room);
+  // facet tier: modality / body-part matches, right after title matches
+  const roomF = Math.max(t1.length ? 0 : 30, SEARCH_CAP - t1.length);
+  const shownTf = tf.slice(0, roomF);
+  if (shownTf.length) {
+    html += `<div class="tier-divider tier-facet">${facetTierLabel(facets, tf.length)}</div>`;
+    html += `<div class="grid">${shownTf.map(card).join("")}</div>`;
+  }
+  const shownSoFar = t1.length + shownTf.length;
+  const roomT2 = Math.max(shownSoFar ? 0 : 30, SEARCH_CAP - shownSoFar);
+  const shownT2 = t2.slice(0, roomT2);
   if (shownT2.length) {
-    const label = t1.length
+    const label = shownSoFar
       ? `More results — matched in description, labels or metadata (${t2.length})`
       : `No title matches — showing matches in description, labels or metadata (${t2.length})`;
     html += `<div class="tier-divider"><span>${label}</span></div>`;
     html += `<div class="grid">${shownT2.map(card).join("")}</div>`;
   }
-  const hidden = t2.length - shownT2.length;
-  if (hidden > 0) html += `<div class="tier-more">+${hidden} more extended matches — refine your search to see them.</div>`;
+  const hidden = (tf.length - shownTf.length) + (t2.length - shownT2.length);
+  if (hidden > 0) html += `<div class="tier-more">+${hidden} more matches — refine your search to see them.</div>`;
   return html;
 }
 
@@ -270,6 +395,8 @@ function searchIndex(d) {
     sqTitle: squash([d.id, d.name, d.full_name].filter(Boolean).join(" ")),
     wraw: wordify(raw),                                          // word-boundary blob (for prefix tokens)
     wtitle: wordify([d.id, d.name, d.full_name].filter(Boolean).join(" ")),
+    // anatomy scope for facet matching: where an anatomy term like "liver" must appear
+    wanat: wordify([d.anatomy, d.name, d.full_name, d.segmentation_detail].filter(Boolean).join(" ")),
   };
   return d._sidx;
 }
@@ -284,9 +411,9 @@ function render() {
 
   // ----- search mode: ranked flat list, title matches first -----
   if (ranked) {
-    const total = ranked.t1.length + ranked.t2.length;
+    const total = ranked.t1.length + ranked.tf.length + ranked.t2.length;
     $("#count").innerHTML = `<b>${total}</b> of ${DATA.length} · <span class="count-sub">by relevance</span>`;
-    results.innerHTML = total ? renderSearchHTML(ranked.t1, ranked.t2) : EMPTY_HTML;
+    results.innerHTML = total ? renderSearchHTML(ranked) : EMPTY_HTML;
     return;
   }
 

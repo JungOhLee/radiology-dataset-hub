@@ -207,6 +207,8 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; }
   color: var(--text-faint); font-size: .82rem; }
 .tier-divider::before, .tier-divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
 .tier-divider span { white-space: nowrap; }
+.tier-facet { gap: 8px; }
+.tier-facet .mod, .tier-facet .rtag { flex: none; }
 .tier-more { margin: 18px 0 0; text-align: center; color: var(--text-faint); font-size: .82rem; }
 
 /* ---------- Detail modal ---------- */

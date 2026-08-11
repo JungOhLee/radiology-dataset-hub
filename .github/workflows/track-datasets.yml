@@ -1,36 +1,79 @@
 name: Track new datasets
 
-# Monthly scan of dataset-source APIs for open radiology datasets not yet in the
-# catalog. Opens (or updates) a single GitHub issue with candidates for review.
+# Weekly scan of dataset-source APIs for open radiology datasets not yet in the
+# catalog. Opens (or updates) a single GitHub issue with candidates for review;
+# candidates that were not in the previous report are flagged 🆕.
+#
+# Optional secrets KAGGLE_USERNAME / KAGGLE_KEY enable the Kaggle *competitions*
+# source (get a token at kaggle.com → Settings → API → Create New Token).
+# Kaggle datasets, TCIA, Zenodo, Grand Challenge, PhysioNet, OpenNeuro and
+# Hugging Face need no credentials.
 
 on:
   schedule:
-    - cron: "0 6 1 * *"   # 06:00 UTC on the 1st of each month
+    - cron: "0 6 * * 1"   # 06:00 UTC every Monday
   workflow_dispatch:
 
 permissions:
   contents: read
   issues: write
 
+env:
+  ISSUE_TITLE: "📡 New open radiology dataset candidates"
+
 jobs:
   track:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Fetch previous report (for 🆕 markers)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # pipefail so a gh failure fails the job instead of silently creating a
+        # duplicate issue with an empty ISSUE_NUM
+        run: |
+          set -euo pipefail
+          find_issue() {
+            gh issue list --repo "$GITHUB_REPOSITORY" --state "$1" --search "$ISSUE_TITLE in:title" \
+              --json number,title --jq "[.[] | select(.title==\"$ISSUE_TITLE\") | .number] | first // empty"
+          }
+          NUM=$(find_issue open)
+          echo "ISSUE_NUM=$NUM" >> "$GITHUB_ENV"
+          if [ -n "$NUM" ]; then
+            gh issue view "$NUM" --repo "$GITHUB_REPOSITORY" --json body --jq .body > prev.md
+          else
+            # issue was closed (weekly review done): keep 🆕 continuity from its last body
+            PREV=$(find_issue closed)
+            if [ -n "$PREV" ]; then
+              gh issue view "$PREV" --repo "$GITHUB_REPOSITORY" --json body --jq .body > prev.md
+            fi
+          fi
+          touch prev.md
       - name: Find candidate datasets
-        run: python3 scripts/find_new_datasets.py --limit 100 > report.md || echo "_tracker run failed_" > report.md
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          if ! python3 scripts/find_new_datasets.py --limit 100 --prev prev.md > report.md; then
+            touch .tracker_failed
+          fi
       - name: Open or update review issue
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -e
-          TITLE="📡 New open radiology dataset candidates"
-          NUM=$(gh issue list --state open --search "$TITLE in:title" \
-                --json number,title --jq ".[] | select(.title==\"$TITLE\") | .number" | head -1)
-          if [ -n "$NUM" ]; then
-            gh issue edit "$NUM" --body-file report.md
-            echo "Updated issue #$NUM"
+          set -euo pipefail
+          if [ -f .tracker_failed ]; then
+            # don't clobber the last good review queue with a failure notice
+            if [ -n "$ISSUE_NUM" ]; then
+              gh issue comment "$ISSUE_NUM" --repo "$GITHUB_REPOSITORY" \
+                --body "⚠️ Tracker run failed on $(date -u +%F) — keeping the previous report. See the Actions log."
+            fi
+            exit 1
+          fi
+          if [ -n "$ISSUE_NUM" ]; then
+            gh issue edit "$ISSUE_NUM" --repo "$GITHUB_REPOSITORY" --body-file report.md
+            echo "Updated issue #$ISSUE_NUM"
           else
-            gh issue create --title "$TITLE" --body-file report.md --label dataset-candidates \
-              || gh issue create --title "$TITLE" --body-file report.md
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$ISSUE_TITLE" --body-file report.md --label dataset-candidates \
+              || gh issue create --repo "$GITHUB_REPOSITORY" --title "$ISSUE_TITLE" --body-file report.md
           fi

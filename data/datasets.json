@@ -37,12 +37,12 @@
     "description": "Multi-parametric MRI of adult glioma with expert tumor sub-region segmentations and MGMT methylation status; also mirrored on TCIA and Kaggle.",
     "details": {
       "label_schema": [
-        "Label 1 — necrotic tumor core (NCR)",
-        "Label 2 — peritumoral edematous/invaded tissue (ED)",
-        "Label 4 — GD-enhancing tumor (ET)",
+        "Label 1 \u2014 necrotic tumor core (NCR)",
+        "Label 2 \u2014 peritumoral edematous/invaded tissue (ED)",
+        "Label 4 \u2014 GD-enhancing tumor (ET)",
         "Evaluated regions: Whole Tumor (1+2+4), Tumor Core (1+4), Enhancing Tumor (4)"
       ],
-      "file_structure": "One folder per case: BraTS2021_XXXXX/ with _t1.nii.gz, _t1ce.nii.gz, _t2.nii.gz, _flair.nii.gz and _seg.nii.gz (all co-registered, skull-stripped, 1mm³).",
+      "file_structure": "One folder per case: BraTS2021_XXXXX/ with _t1.nii.gz, _t1ce.nii.gz, _t2.nii.gz, _flair.nii.gz and _seg.nii.gz (all co-registered, skull-stripped, 1mm\u00b3).",
       "splits": "1,251 training (public labels) / 219 validation / 570 hidden test",
       "extra": "Classification track adds a per-subject binary MGMT promoter methylation label (CSV)."
     }
@@ -97,7 +97,7 @@
   {
     "id": "brats-mets",
     "name": "BraTS-Mets",
-    "full_name": "Brain Tumor Segmentation — Metastases 2023",
+    "full_name": "Brain Tumor Segmentation \u2014 Metastases 2023",
     "type": "dataset",
     "regions": [
       "Neuro"
@@ -644,7 +644,7 @@
         "Per-subject clinical/demographic labels (spreadsheet): CDR (Clinical Dementia Rating: 0 nondemented, 0.5 very mild, 1 mild, 2 moderate AD), MMSE, Age, Sex (M/F), Handedness, Education, SES",
         "Per-subject derived measures: eTIV (estimated total intracranial volume), nWBV (normalized whole-brain volume), ASF (atlas scaling factor)"
       ],
-      "file_structure": "Data organized per subject (folders named OAS1_XXXX_MRn); each contains RAW T1-weighted scans and PROCESSED derivatives — the atlas-registered gain-field-corrected averaged image, the brain-masked image, and the FSL_SEG tissue-segmentation (_fseg) volume — stored in Analyze 7.5 format (.img/.hdr, gzipped); clinical/demographic labels are provided in a separate cross-sectional CSV/Excel spreadsheet (FreeSurfer outputs are also distributed as add-on archives).",
+      "file_structure": "Data organized per subject (folders named OAS1_XXXX_MRn); each contains RAW T1-weighted scans and PROCESSED derivatives \u2014 the atlas-registered gain-field-corrected averaged image, the brain-masked image, and the FSL_SEG tissue-segmentation (_fseg) volume \u2014 stored in Analyze 7.5 format (.img/.hdr, gzipped); clinical/demographic labels are provided in a separate cross-sectional CSV/Excel spreadsheet (FreeSurfer outputs are also distributed as add-on archives).",
       "extra": "416 subjects aged 18-96 (434 MR sessions); 100 subjects over age 60 are clinically diagnosed with very mild to moderate Alzheimer's disease (CDR > 0), and a 20-subject reliability subset was rescanned within 90 days. Segmentation/labels are algorithm-generated (FSL), not manual expert annotations."
     }
   },
@@ -804,7 +804,7 @@
   {
     "id": "hcp-ya",
     "name": "HCP Young Adult",
-    "full_name": "Human Connectome Project — WU-Minn Young Adult (1200 Subjects)",
+    "full_name": "Human Connectome Project \u2014 WU-Minn Young Adult (1200 Subjects)",
     "type": "dataset",
     "regions": [
       "Neuro"
@@ -1196,7 +1196,7 @@
     "description": "MICCAI 2019-2020 challenge with spine CT, per-vertebra segmentation masks and vertebral centroid keypoints.",
     "details": {
       "label_schema": [
-        "Per-vertebra integer masks: 1–7 cervical (C1–C7), 8–19 thoracic (T1–T12), 20–25 lumbar (L1–L6), 26 sacrum, 28 T13 variant",
+        "Per-vertebra integer masks: 1\u20137 cervical (C1\u2013C7), 8\u201319 thoracic (T1\u2013T12), 20\u201325 lumbar (L1\u2013L6), 26 sacrum, 28 T13 variant",
         "Vertebral centroid keypoints (JSON) per label"
       ],
       "file_structure": "Per scan: *_ct.nii.gz, *_seg.nii.gz and *_ctd.json (centroids).",
@@ -1391,7 +1391,7 @@
         "~27 pathology label classes, including: Nonspecific white matter lesion, Likely cysts, Normal for age, Mass, Resection cavity, Craniotomy, Lacunar infarct, Extra-axial mass, Edema, Craniectomy with Cranioplasty, Nonspecific lesion, Paranasal sinus opacification, Possible artifact, Posttreatment change, Dural thickening, Encephalomalacia, Enlarged ventricles, Global Ischemia",
         "Reviewed-but-normal studies appear in brain_file_list.csv with no entry in brain.csv (no findings)"
       ],
-      "file_structure": "Base fastMRI brain images are per-volume HDF5 (.h5) files holding raw multi-coil k-space (plus DICOM); the labels are a separate fastMRI+ companion repo with plain CSV files (brain.csv for annotations, brain_file_list.csv for reviewed files), keyed to volumes by the 'file' column and slice index — no DICOM-SEG/RTSTRUCT/NIfTI.",
+      "file_structure": "Base fastMRI brain images are per-volume HDF5 (.h5) files holding raw multi-coil k-space (plus DICOM); the labels are a separate fastMRI+ companion repo with plain CSV files (brain.csv for annotations, brain_file_list.csv for reviewed files), keyed to volumes by the 'file' column and slice index \u2014 no DICOM-SEG/RTSTRUCT/NIfTI.",
       "extra": "Annotations cover ~1000 brain studies; each image was labeled by a SINGLE radiologist without other views, so labels are explicitly not clinical ground truth. Note: DICOM conversion flips pixel arrays up/down, which matters for interpreting box coordinates."
     }
   },
@@ -1547,7 +1547,7 @@
   {
     "id": "nih-chestxray14",
     "name": "NIH ChestX-ray14",
-    "full_name": "ChestX-ray14 (ChestX-ray8) — NIH Clinical Center",
+    "full_name": "ChestX-ray14 (ChestX-ray8) \u2014 NIH Clinical Center",
     "type": "dataset",
     "regions": [
       "Chest"
@@ -1586,7 +1586,7 @@
         "14 binary disease labels (NLP-mined): Atelectasis, Cardiomegaly, Effusion, Infiltration, Mass, Nodule, Pneumonia, Pneumothorax, Consolidation, Edema, Emphysema, Fibrosis, Pleural_Thickening, Hernia",
         "984 bounding boxes (8 pathologies) in BBox_List_2017.csv"
       ],
-      "file_structure": "1024×1024 PNGs + Data_Entry_2017.csv (labels, patient age/sex/view) + train_val/test split lists.",
+      "file_structure": "1024\u00d71024 PNGs + Data_Entry_2017.csv (labels, patient age/sex/view) + train_val/test split lists.",
       "splits": "~86k train-val / ~25k test (official patient-wise split)"
     }
   },
@@ -1675,14 +1675,14 @@
         "Free-text reports (per study .txt): sections incl. FINDINGS and IMPRESSION",
         "Derived CheXpert & NegBio label CSVs (14 categories, in MIMIC-CXR-JPG)"
       ],
-      "file_structure": "p1x/pXXXXXXXX/sYYYYYYYY/ folders with DICOMs + a matching sYYYYYYYY.txt report; metadata CSV links study→view→labels.",
+      "file_structure": "p1x/pXXXXXXXX/sYYYYYYYY/ folders with DICOMs + a matching sYYYYYYYY.txt report; metadata CSV links study\u2192view\u2192labels.",
       "splits": "Official train/validate/test split provided"
     }
   },
   {
     "id": "mimic-cxr-jpg",
     "name": "MIMIC-CXR-JPG",
-    "full_name": "MIMIC-CXR-JPG — chest radiographs with structured labels",
+    "full_name": "MIMIC-CXR-JPG \u2014 chest radiographs with structured labels",
     "type": "dataset",
     "regions": [
       "Chest"
@@ -1916,7 +1916,7 @@
         "Bounding box columns: x, y (upper-left corner in pixels), width, height",
         "Companion 3-class label (stage_2_detailed_class_info.csv): 'Normal', 'No Lung Opacity / Not Normal', 'Lung Opacity'"
       ],
-      "file_structure": "Chest radiographs are stored as DICOM files (one per patientId); labels are provided as CSVs — stage_2_train_labels.csv (patientId, x, y, width, height, Target; multiple rows per patient when several boxes exist) and stage_2_detailed_class_info.csv (patientId, class).",
+      "file_structure": "Chest radiographs are stored as DICOM files (one per patientId); labels are provided as CSVs \u2014 stage_2_train_labels.csv (patientId, x, y, width, height, Target; multiple rows per patient when several boxes exist) and stage_2_detailed_class_info.csv (patientId, class).",
       "extra": "Data was released in two stages; the winning approaches trained on stage-1 data. The dataset re-annotates NIH ChestX-ray14 images with expert box annotations, and a single positive image can have multiple opacity boxes (one CSV row each)."
     }
   },
@@ -2446,8 +2446,8 @@
     "details": {
       "label_schema": [
         "Per-nodule contours from up to 4 radiologists (no forced consensus)",
-        "Nodule categories: nodule ≥3mm, nodule <3mm, non-nodule ≥3mm",
-        "Subjective characteristics (1–5): subtlety, calcification, sphericity, margin, lobulation, spiculation, texture, malignancy"
+        "Nodule categories: nodule \u22653mm, nodule <3mm, non-nodule \u22653mm",
+        "Subjective characteristics (1\u20135): subtlety, calcification, sphericity, margin, lobulation, spiculation, texture, malignancy"
       ],
       "file_structure": "DICOM image series per patient + one XML per scan holding each reader's nodule contours and characteristic ratings.",
       "splits": "No official split (1,018 scans); LUNA16 defines a 10-fold subset."
@@ -2491,12 +2491,12 @@
     "description": "888 CT scans derived from LIDC-IDRI with 1,186 nodule annotations for detection and false-positive reduction.",
     "details": {
       "label_schema": [
-        "annotations.csv — nodule center (x,y,z world coords) + diameter_mm, for nodules accepted by ≥3/4 radiologists",
-        "candidates_V2.csv — candidate locations with class 0/1 for false-positive reduction",
-        "seg-lungs-LUNA16 — whole-lung binary masks"
+        "annotations.csv \u2014 nodule center (x,y,z world coords) + diameter_mm, for nodules accepted by \u22653/4 radiologists",
+        "candidates_V2.csv \u2014 candidate locations with class 0/1 for false-positive reduction",
+        "seg-lungs-LUNA16 \u2014 whole-lung binary masks"
       ],
       "file_structure": "888 CT volumes as .mhd/.raw (MetaImage), organized in 10 subsets for cross-validation.",
-      "splits": "10 predefined folds (subset0–subset9)"
+      "splits": "10 predefined folds (subset0\u2013subset9)"
     }
   },
   {
@@ -2593,7 +2593,7 @@
     "description": "211 NSCLC patients with CT and PET/CT, tumor segmentations and matched genomic data (RNA-seq, mutation status).",
     "details": {
       "label_schema": [
-        "Segmentation: single foreground class — primary NSCLC tumor volume delineated on CT (3D binary tumor mask)",
+        "Segmentation: single foreground class \u2014 primary NSCLC tumor volume delineated on CT (3D binary tumor mask)",
         "Semantic image annotations: qualitative tumor characteristics scored by radiologists using a controlled vocabulary (delivered as AIM annotation objects)",
         "Clinical/molecular tabular labels (CSV): demographics, exposure/smoking history, follow-up/survival, treatment, and molecular-test (mutation) status",
         "Gene-expression labels: RNA-sequencing profiles for a 130-subject subset (available via NCBI GEO)"
@@ -2992,9 +2992,9 @@
     "description": "Cine cardiac MRI from 150 patients across 5 diagnostic classes with LV/RV/myocardium segmentations and disease labels.",
     "details": {
       "label_schema": [
-        "Label 1 — RV cavity",
-        "Label 2 — LV myocardium",
-        "Label 3 — LV cavity",
+        "Label 1 \u2014 RV cavity",
+        "Label 2 \u2014 LV myocardium",
+        "Label 3 \u2014 LV cavity",
         "Per-patient diagnosis: normal, MINF, DCM, HCM, ARV (5 classes)"
       ],
       "file_structure": "patientXXX/ with 4D cine NIfTI + frames at ED and ES, each with a _gt.nii.gz label. Info.cfg holds ED/ES frame numbers and diagnosis.",
@@ -3038,11 +3038,11 @@
     "description": "Generalization challenge with cine CMR from 375 patients scanned on four vendors across Spain, Germany and Canada.",
     "details": {
       "label_schema": [
-        "Label 1 — LV blood pool",
-        "Label 2 — LV myocardium",
-        "Label 3 — RV blood pool (annotated at ED and ES)"
+        "Label 1 \u2014 LV blood pool",
+        "Label 2 \u2014 LV myocardium",
+        "Label 3 \u2014 RV blood pool (annotated at ED and ES)"
       ],
-      "file_structure": "Per subject NIfTI cine + label; metadata CSV gives vendor (A–D), centre and pathology.",
+      "file_structure": "Per subject NIfTI cine + label; metadata CSV gives vendor (A\u2013D), centre and pathology.",
       "splits": "150 train (2 vendors) / 25 val / 200 test (4 vendors)"
     }
   },
@@ -3384,7 +3384,7 @@
   {
     "id": "msd-heart",
     "name": "MSD Heart (Task02)",
-    "full_name": "Medical Segmentation Decathlon — Task02 Heart",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task02 Heart",
     "type": "dataset",
     "regions": [
       "Cardiac"
@@ -3566,7 +3566,7 @@
       ],
       "file_structure": "Volumetric CCTA images and their matching binary lumen segmentation masks are distributed as NRRD (.nrrd) 3D volumes, organized into separate training and test sets and split by healthy vs. diseased status.",
       "splits": "60 CCTA cases total: 40 training (20 healthy + 20 confirmed coronary artery disease) and 20 test (10 healthy + 10 diseased); test-set ground truth not released during the challenge.",
-      "extra": "Each training case was annotated by three expert annotators; evaluation uses Dice score and 95% Hausdorff distance. Note: the official Grand Challenge description documents only lumen segmentation masks — the centerline and vessel-radius annotations mentioned in the prompt could not be verified from official sources and may not be part of the distributed ground truth."
+      "extra": "Each training case was annotated by three expert annotators; evaluation uses Dice score and 95% Hausdorff distance. Note: the official Grand Challenge description documents only lumen segmentation masks \u2014 the centerline and vessel-radius annotations mentioned in the prompt could not be verified from official sources and may not be part of the distributed ground truth."
     }
   },
   {
@@ -3665,7 +3665,7 @@
   {
     "id": "coca-stanford",
     "name": "COCA (Stanford)",
-    "full_name": "COCA — Coronary Calcium and Chest CTs",
+    "full_name": "COCA \u2014 Coronary Calcium and Chest CTs",
     "type": "dataset",
     "regions": [
       "Vascular"
@@ -3759,7 +3759,7 @@
   {
     "id": "msd-liver",
     "name": "MSD Liver (Task03)",
-    "full_name": "Medical Segmentation Decathlon — Task03 Liver",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task03 Liver",
     "type": "dataset",
     "regions": [
       "Abdomen"
@@ -3791,8 +3791,8 @@
     "description": "Portal-venous CT volumes with liver and tumor masks (shares imaging with the LiTS challenge).",
     "details": {
       "label_schema": [
-        "Label 1 — liver",
-        "Label 2 — tumor"
+        "Label 1 \u2014 liver",
+        "Label 2 \u2014 tumor"
       ],
       "file_structure": "Decathlon layout: imagesTr/, labelsTr/, imagesTs/ + dataset.json describing modality and labels.",
       "splits": "131 train / 70 test",
@@ -3802,7 +3802,7 @@
   {
     "id": "msd-pancreas",
     "name": "MSD Pancreas (Task07)",
-    "full_name": "Medical Segmentation Decathlon — Task07 Pancreas",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task07 Pancreas",
     "type": "dataset",
     "regions": [
       "Abdomen"
@@ -3847,7 +3847,7 @@
   {
     "id": "msd-spleen",
     "name": "MSD Spleen (Task09)",
-    "full_name": "Medical Segmentation Decathlon — Task09 Spleen",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task09 Spleen",
     "type": "dataset",
     "regions": [
       "Abdomen"
@@ -3892,7 +3892,7 @@
   {
     "id": "msd-colon",
     "name": "MSD Colon (Task10)",
-    "full_name": "Medical Segmentation Decathlon — Task10 Colon",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task10 Colon",
     "type": "dataset",
     "regions": [
       "Abdomen"
@@ -3936,7 +3936,7 @@
   {
     "id": "msd-hepatic-vessel",
     "name": "MSD Hepatic Vessel (Task08)",
-    "full_name": "Medical Segmentation Decathlon — Task08 Hepatic Vessel",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task08 Hepatic Vessel",
     "type": "dataset",
     "regions": [
       "Abdomen"
@@ -3981,7 +3981,7 @@
   {
     "id": "msd-prostate",
     "name": "MSD Prostate (Task05)",
-    "full_name": "Medical Segmentation Decathlon — Task05 Prostate",
+    "full_name": "Medical Segmentation Decathlon \u2014 Task05 Prostate",
     "type": "dataset",
     "regions": [
       "Pelvis"
@@ -4149,9 +4149,9 @@
     "description": "Chest/abdomen/pelvis CT volumes paired with radiology reports and VQA pairs for vision-language tasks.",
     "details": {
       "label_schema": [
-        "AMOS-MM annotations are text-based, covering two tasks over abdominal/chest/pelvis CT: Medical Report Generation (MRG) and Visual Question Answering (VQA) — no segmentation masks are part of AMOS-MM itself",
+        "AMOS-MM annotations are text-based, covering two tasks over abdominal/chest/pelvis CT: Medical Report Generation (MRG) and Visual Question Answering (VQA) \u2014 no segmentation masks are part of AMOS-MM itself",
         "MRG: each CT has a free-text radiology report with two sections stored as labels.report.findings and labels.report.impression",
-        "MRG findings are organized by three anatomical regions — chest, abdomen, and pelvis (each a sub-field of the findings object)",
+        "MRG findings are organized by three anatomical regions \u2014 chest, abdomen, and pelvis (each a sub-field of the findings object)",
         "VQA: 19,562 multiple-choice question-answer pairs (stored under labels.qa), each item = a question, four options {A, B, C, D}, and one correct answer letter",
         "VQA questions span 6 clinical scopes/regions (per the official page's '6 Clinical Scopes'); the exact six category names are not published on the page",
         "Dataset totals reported officially: 2000+ CT scans with reports and 19,562 VQA pairs"
@@ -4332,9 +4332,9 @@
     "description": "Largest KiTS cohort with kidney, tumor and cyst masks including nephrogenic-phase scans.",
     "details": {
       "label_schema": [
-        "Label 1 — kidney",
-        "Label 2 — tumor",
-        "Label 3 — cyst",
+        "Label 1 \u2014 kidney",
+        "Label 2 \u2014 tumor",
+        "Label 3 \u2014 cyst",
         "Hierarchical eval regions: Kidney+Masses, Masses (tumor+cyst), Tumor"
       ],
       "file_structure": "One folder per case (case_00000/) with imaging.nii.gz and segmentation.nii.gz.",
@@ -4376,8 +4376,8 @@
     "description": "Contrast-enhanced liver CT with liver and tumor annotations from multiple institutions.",
     "details": {
       "label_schema": [
-        "Label 1 — liver",
-        "Label 2 — tumor/lesion"
+        "Label 1 \u2014 liver",
+        "Label 2 \u2014 tumor/lesion"
       ],
       "file_structure": "volume-*.nii and segmentation-*.nii pairs (NIfTI).",
       "splits": "131 training / 70 test"
@@ -4796,7 +4796,7 @@
   {
     "id": "pi-cai",
     "name": "PI-CAI",
-    "full_name": "PI-CAI: Prostate Imaging — Cancer AI",
+    "full_name": "PI-CAI: Prostate Imaging \u2014 Cancer AI",
     "type": "dataset",
     "regions": [
       "Pelvis"
@@ -4832,7 +4832,7 @@
     "description": "Large public bi-parametric prostate MRI cohort with histopathology-linked labels for clinically significant cancer detection.",
     "details": {
       "label_schema": [
-        "csPCa lesion masks (ISUP ≥2)",
+        "csPCa lesion masks (ISUP \u22652)",
         "Whole-gland masks (AI-derived + subset human)",
         "Case-level label: clinically significant cancer yes/no with ISUP grade"
       ],
@@ -4879,7 +4879,7 @@
     "details": {
       "label_schema": [
         "Zonal masks: transition/central zone, peripheral zone",
-        "Cancer lesion masks (PI-RADS ≥4)"
+        "Cancer lesion masks (PI-RADS \u22654)"
       ],
       "file_structure": "Per case NIfTI: T2W, ADC, DWI + t2_anatomy_reader1.nii.gz and adc_tumor_reader1.nii.gz label files.",
       "splits": "139 training / 19 test"
@@ -5124,7 +5124,7 @@
       "label_schema": [
         "3 binary study-level labels: abnormal, ACL tear, meniscal tear"
       ],
-      "file_structure": "Per exam: sagittal.npy, coronal.npy, axial.npy (stack of slices, s×256×256) + train/valid label CSVs.",
+      "file_structure": "Per exam: sagittal.npy, coronal.npy, axial.npy (stack of slices, s\u00d7256\u00d7256) + train/valid label CSVs.",
       "splits": "1,130 train / 120 validation (internal) / 120 hidden test"
     }
   },
@@ -5164,7 +5164,7 @@
     "description": "Raw k-space and DICOM knee MRI data released by NYU and Meta AI for accelerated MRI reconstruction research.",
     "details": {
       "label_schema": [
-        "No pathology labels — raw fully-sampled multi-coil k-space + reconstructed images for MRI reconstruction"
+        "No pathology labels \u2014 raw fully-sampled multi-coil k-space + reconstructed images for MRI reconstruction"
       ],
       "file_structure": "HDF5 per volume (kspace, reconstruction_rss); singlecoil and multicoil tracks; DICOMs separately.",
       "splits": "Official train / val / test / challenge splits"
@@ -5464,7 +5464,7 @@
   {
     "id": "lera",
     "name": "LERA",
-    "full_name": "LERA — Lower Extremity Radiographs",
+    "full_name": "LERA \u2014 Lower Extremity Radiographs",
     "type": "dataset",
     "regions": [
       "MSK"
@@ -5608,7 +5608,7 @@
     "details": {
       "label_schema": [
         "Lesion type: mass or calcification",
-        "Pathology: BENIGN / BENIGN_WITHOUT_CALLBACK / MALIGNANT; BI-RADS assessment 0–5; breast density 1–4",
+        "Pathology: BENIGN / BENIGN_WITHOUT_CALLBACK / MALIGNANT; BI-RADS assessment 0\u20135; breast density 1\u20134",
         "ROI segmentation mask + cropped patch per lesion"
       ],
       "file_structure": "DICOM full images + ROI mask + cropped images; CSV descriptors for mass/calc train and test separately.",
@@ -5878,7 +5878,7 @@
   {
     "id": "bcs-dbt",
     "name": "BCS-DBT",
-    "full_name": "Breast Cancer Screening — Digital Breast Tomosynthesis",
+    "full_name": "Breast Cancer Screening \u2014 Digital Breast Tomosynthesis",
     "type": "dataset",
     "regions": [
       "Breast"
@@ -6119,7 +6119,7 @@
         "Lesion ROI bounding boxes (`ROI_coords`) as (ymin, xmin, ymax, xmax) with a `match_level` reliability score (1=primary, 2=secondary)",
         "Image type (`FinalImageType`): 2D, 3D (DBT tomosynthesis), C-view synthetic; laterality (L/R) and view position (CC, MLO, etc.)"
       ],
-      "file_structure": "Images are DICOM files organized on disk as ./cohort/patientID/studyID/SOPinstanceUID.dcm; labels come as CSV files — EMBED_OpenData_metadata.csv (one row per image file, with DICOM tags, ROI_coords, and file paths), a reduced metadata variant, and EMBED_OpenData_clinical.csv (one row per finding, with BI-RADS assessment, density, and pathology labels).",
+      "file_structure": "Images are DICOM files organized on disk as ./cohort/patientID/studyID/SOPinstanceUID.dcm; labels come as CSV files \u2014 EMBED_OpenData_metadata.csv (one row per image file, with DICOM tags, ROI_coords, and file paths), a reduced metadata variant, and EMBED_OpenData_clinical.csv (one row per finding, with BI-RADS assessment, density, and pathology labels).",
       "extra": "No official train/test split is provided; clinical and metadata CSVs must be joined on patient ID (empi_anon), exam ID (acc_anon), and laterality (clinical `side` vs metadata `ImageLateralityFinal`) to link labels/ROIs to the correct images. The full release contains ~3.4M+ images with roughly 60,000 annotated lesions across 110,000+ patients."
     }
   },
@@ -6163,8 +6163,8 @@
     "description": "MICCAI challenge for automatic segmentation of head and neck tumors and lymph nodes and outcome prediction in FDG-PET/CT.",
     "details": {
       "label_schema": [
-        "Label 1 — primary tumor GTVp",
-        "Label 2 — metastatic lymph nodes GTVn",
+        "Label 1 \u2014 primary tumor GTVp",
+        "Label 2 \u2014 metastatic lymph nodes GTVn",
         "Endpoint: recurrence-free survival (time + event)"
       ],
       "file_structure": "Per patient: CT.nii.gz, PT.nii.gz (PET) and a GTV label NIfTI; clinical CSV with HPV, treatment and survival.",
@@ -6319,7 +6319,7 @@
         "No image-level classification labels; matched clinical/genomic/pathology metadata is available separately via the NCI Genomic Data Commons (GDC), not as imaging annotations"
       ],
       "file_structure": "All data is stored as DICOM under a per-patient TCIA folder hierarchy (patient > study > series); imaging series are CT/PT/MR DICOM, and the radiation-therapy annotations are separate DICOM RTSTRUCT (contours), RTDOSE, and RTPLAN series rather than DICOM-SEG or NIfTI/CSV.",
-      "extra": "This is a TCIA archival collection (227 subjects; CT, PT, MR, RTDOSE, RTSTRUCT, RTPLAN, OT), not a segmentation challenge — RT structures are original clinical contours available only for a subset of patients, so there is no consistent, verified per-class segmentation schema across the cohort."
+      "extra": "This is a TCIA archival collection (227 subjects; CT, PT, MR, RTDOSE, RTSTRUCT, RTPLAN, OT), not a segmentation challenge \u2014 RT structures are original clinical contours available only for a subset of patients, so there is no consistent, verified per-class segmentation schema across the cohort."
     }
   },
   {
@@ -6466,12 +6466,12 @@
     "description": "TCIA collection of serial pre/post-therapy FDG-PET/CT with DICOM SEG/SR quantitative analysis objects for head and neck cancer.",
     "details": {
       "label_schema": [
-        "DICOM SEG: binary segmentations of PET-avid tumor/lesion regions of interest delineated on the PET/CT scans (one segment per ROI; no fixed multi-class integer palette — each SEG encodes a region)",
+        "DICOM SEG: binary segmentations of PET-avid tumor/lesion regions of interest delineated on the PET/CT scans (one segment per ROI; no fixed multi-class integer palette \u2014 each SEG encodes a region)",
         "DICOM SR (TID 1500 measurement report): quantitative SUVbw (standardized uptake value, body-weight normalized) statistics computed over each segmented region, i.e. structured PET/CT analysis results",
         "DICOM RWV (Real World Value Mapping): objects that map stored PET pixel values to SUVbw units",
         "DICOM SR 'Clinical Data' (series description = 'Clinical Data'): structured demographic, exposure, treatment, diagnosis, follow-up, and family-history records"
       ],
-      "file_structure": "All data are DICOM, organized on TCIA by patient/study/series — images as CT and PT (PET) series; labels/annotations as DICOM SEG (segmentation), DICOM SR (quantitative measurement reports and clinical-data reports), and DICOM RWV (real-world value mapping) objects; a supplementary clinical-data spreadsheet is also provided in XLSX format.",
+      "file_structure": "All data are DICOM, organized on TCIA by patient/study/series \u2014 images as CT and PT (PET) series; labels/annotations as DICOM SEG (segmentation), DICOM SR (quantitative measurement reports and clinical-data reports), and DICOM RWV (real-world value mapping) objects; a supplementary clinical-data spreadsheet is also provided in XLSX format.",
       "extra": "Collection = 279 subjects (1,032 studies) of head-and-neck cancer PET/CT. The DICOM SEG, SR, and RWV analysis objects were added in Version 2 (2017) as a standards-based re-encoding of quantitative PET/CT results (Fedorov et al.); exact SUV sub-metric names and per-lesion counts could not be fully enumerated from the public pages."
     }
   },
@@ -6916,7 +6916,7 @@
         "UMLS Semantic Types per image (semtypes.txt): UMLS SemType labels mapped from the caption",
         "UMLS Concept Unique Identifiers per image (cuis.txt): UMLS CUIs mapped from the caption (used for the ImageCLEF 2019 Concept Detection Task)",
         "Binary image-class organization: each image belongs to either 'radiology' or 'non-radiology' (out-of-class) via folder placement",
-        "No pixel-level segmentation, bounding boxes, or per-region annotations — labels are image-level text/concept tags only"
+        "No pixel-level segmentation, bounding boxes, or per-region annotations \u2014 labels are image-level text/concept tags only"
       ],
       "file_structure": "Images are distributed as download links (not pixel data in the repo); layout is data/{train,validation,test}/{radiology,non-radiology}/ with plain-text annotation files per split-and-class: dlinks.txt (PMC download URLs + image IDs), captions.txt, keywords.txt, semtypes.txt, cuis.txt, and licences.txt, and the fetch.py script downloads the JPGs into an images/ subfolder.",
       "splits": "Three official splits (train, validation, test), each further divided into radiology and non-radiology subsets; exact per-split image counts not verified from the fetched sources.",
@@ -8364,7 +8364,7 @@
         "Per-sample metadata fields: file_name, id (UUID), caption, source (originating dataset)"
       ],
       "file_structure": "Images plus a metadata.jsonl file are grouped into numbered shards (to avoid filesystem limits); each JSONL line holds file_name, id, caption, and source, with the annotations living inside the caption text (no per-image NIfTI/DICOM-SEG mask files).",
-      "extra": "No official train/val/test split; three released versions exist — a ~100k demo, the full 25M (text/metadata), and an ~18M 'accessible' subset with paired images. Annotations are automatically generated by an MLLM pipeline, not human-verified."
+      "extra": "No official train/val/test split; three released versions exist \u2014 a ~100k demo, the full 25M (text/metadata), and an ~18M 'accessible' subset with paired images. Annotations are automatically generated by an MLLM pipeline, not human-verified."
     }
   },
   {
@@ -11427,7 +11427,7 @@
       ],
       "file_structure": "Per-case folders named by patient code (e.g. fastMRI_breast_003_2) each holding raw radial k-space in HDF5 (.h5) plus reconstructed clinical images in DICOM; all case-level labels/metadata are supplied separately in an Excel spreadsheet (breast_fastMRI_final.xlsx), not embedded per pixel.",
       "splits": "Split 80:20 into training and testing cohorts (lesion-type ratios preserved); no separate validation split defined.",
-      "extra": "No segmentation masks or bounding-box annotations are provided — the authors state the dataset is currently less suitable for supervised segmentation. 284 patients / 300 exams (16 patients rescanned ~1 year later), axial DCE-MRI acquired with a 3D GRASP golden-angle radial sequence at 3T."
+      "extra": "No segmentation masks or bounding-box annotations are provided \u2014 the authors state the dataset is currently less suitable for supervised segmentation. 284 patients / 300 exams (16 patients rescanned ~1 year later), axial DCE-MRI acquired with a 3D GRASP golden-angle radial sequence at 3T."
     }
   },
   {
@@ -11476,7 +11476,7 @@
         "Evaluation collapses classes into 2 groups (bone, cartilage) scored with volume-weighted Dice (weights inversely proportional to structure size)"
       ],
       "file_structure": "3D fat-suppressed FSE-CUBE knee MRI provided as 8x-undersampled multi-channel k-space plus fully-sampled auxiliary reconstructed images, with paired dense bone/cartilage segmentation masks; k-space, images, and masks are distributed as HDF5 (.h5) files and predicted test masks must also be submitted as HDF5.",
-      "splits": "300 training/validation cases (no official validation split — participants create their own) and 50 test cases",
+      "splits": "300 training/validation cases (no official validation split \u2014 participants create their own) and 50 test cases",
       "extra": "Test-set segmentation ground truth was never released; fully-sampled images are given only as training auxiliary data (not available for test-set inference), and the organizers state no data is shared after the challenge concluded."
     }
   },
@@ -12159,7 +12159,7 @@
     "details": {
       "label_schema": [
         "Voxel-wise multi-class segmentation totaling 37 tissue classes (integer label values defined in the accompanying organ-values XLSX key)",
-        "13 abdominal organs (e.g. liver, spleen, pancreas, stomach, gallbladder, left/right kidney, left/right adrenal gland, bladder — per MOOSE clin_ct_organs)",
+        "13 abdominal organs (e.g. liver, spleen, pancreas, stomach, gallbladder, left/right kidney, left/right adrenal gland, bladder \u2014 per MOOSE clin_ct_organs)",
         "20 bones (peripheral/axial skeleton labels from MOOSE, e.g. femur, tibia, fibula, humerus, radius, ulna, pelvis, vertebrae, and additional bone structures)",
         "Subcutaneous fat",
         "Visceral fat",
@@ -12167,7 +12167,7 @@
         "Psoas / iliopsoas muscle"
       ],
       "file_structure": "CT images are DICOM (organized as 30 studies / 135 series across the 30 subjects and their multiple acquisition timepoints); segmentations are delivered separately as NIfTI (.nii) label maps at the 90-minute timepoint, bundled with an XLSX organ-value key and documentation (segmentations may need re-orientation to align with the DICOM CT).",
-      "extra": "30 healthy adult subjects; segmentations were auto-generated (not manually verified) with the MOOSE AI whole-body tool (github.com/QIMP-Team/MOOSE) at the 90-min timepoint from low-dose whole-body CT — exact per-class integer indices are specified in the downloadable organ-values spreadsheet."
+      "extra": "30 healthy adult subjects; segmentations were auto-generated (not manually verified) with the MOOSE AI whole-body tool (github.com/QIMP-Team/MOOSE) at the 90-min timepoint from low-dose whole-body CT \u2014 exact per-class integer indices are specified in the downloadable organ-values spreadsheet."
     },
     "body_composition": true,
     "tags": [
@@ -13768,17 +13768,17 @@
     "description": "Official MICCAI FLARE 2025 Task 4 dataset providing 10,000+ unlabeled 3D MRI volumes for imaging foundation-model pretraining, plus labeled brain, cardiac, and liver downstream benchmark tasks.",
     "details": {
       "label_schema": [
-        "PRETRAINING POOL (train/): 10,000+ raw MRI scans with NO annotations — raw images only; challenge rules forbid using any public annotations during pretraining",
+        "PRETRAINING POOL (train/): 10,000+ raw MRI scans with NO annotations \u2014 raw images only; challenge rules forbid using any public annotations during pretraining",
         "--- 6 LABELED DOWNSTREAM TASKS (val_downstream/) ---",
-        "ATLAS23_liver_tumor_seg (segmentation, CE-T1 liver MRI): liver and liver-tumor masks — per the source ATLAS dataset convention Label 1 = liver, Label 2 = liver tumor (background 0)",
-        "EMIDEC_heart_seg_and_class (segmentation, cardiac delayed-enhancement MRI): myocardial contours, infarcted area, and permanent microvascular obstruction (no-reflow) — per source EMIDEC convention 0 = background, 1 = LV cavity/blood pool, 2 = normal myocardium, 3 = myocardial infarction, 4 = no-reflow/PMO",
-        "EMIDEC_heart_seg_and_class (classification): binary — normal vs pathological heart",
-        "ABIDEII_classification: binary — autism spectrum disorder vs neurotypical (brain MRI)",
+        "ATLAS23_liver_tumor_seg (segmentation, CE-T1 liver MRI): liver and liver-tumor masks \u2014 per the source ATLAS dataset convention Label 1 = liver, Label 2 = liver tumor (background 0)",
+        "EMIDEC_heart_seg_and_class (segmentation, cardiac delayed-enhancement MRI): myocardial contours, infarcted area, and permanent microvascular obstruction (no-reflow) \u2014 per source EMIDEC convention 0 = background, 1 = LV cavity/blood pool, 2 = normal myocardium, 3 = myocardial infarction, 4 = no-reflow/PMO",
+        "EMIDEC_heart_seg_and_class (classification): binary \u2014 normal vs pathological heart",
+        "ABIDEII_classification: binary \u2014 autism spectrum disorder vs neurotypical (brain MRI)",
         "openneuro_NeuropsychiatricPhenomics_classification: phenotypic diagnostic classification (multi-/binary class; exact label set not disclosed on page)",
-        "openneuro_ds004856_regression: brain age prediction — continuous age in years",
-        "UPenn_GBM_regression: glioblastoma survival prediction — continuous survival outcome (concordance-index metric)"
+        "openneuro_ds004856_regression: brain age prediction \u2014 continuous age in years",
+        "UPenn_GBM_regression: glioblastoma survival prediction \u2014 continuous survival outcome (concordance-index metric)"
       ],
-      "file_structure": "Root splits into train/ (10,000+ unlabeled pretraining MRIs) and val_downstream/ with one subfolder per downstream task; imaging is volumetric MRI (NIfTI) with segmentation tasks providing paired label masks and classification/regression tasks providing tabular labels — the official test sets are withheld to prevent data leakage.",
+      "file_structure": "Root splits into train/ (10,000+ unlabeled pretraining MRIs) and val_downstream/ with one subfolder per downstream task; imaging is volumetric MRI (NIfTI) with segmentation tasks providing paired label masks and classification/regression tasks providing tabular labels \u2014 the official test sets are withheld to prevent data leakage.",
       "splits": "Pretraining: 10,000+ unlabeled scans (train/). Downstream (train/val, test withheld): ATLAS23 liver tumor 60 (40/20); EMIDEC heart 60 (40/20); ABIDEII autism 317 (253/64); NeuropsychiatricPhenomics 261 (148/113); ds004856 brain age 600 (480/120); UPenn_GBM survival 452 (361/91).",
       "extra": "This is a MICCAI FLARE 2025 Task 4 MRI foundation-model benchmark: the large train/ pool is deliberately annotation-free for self-supervised pretraining, and generalization is evaluated across the 6 heterogeneous downstream tasks (2 segmentation, 2 classification, 2 regression). Exact segmentation integer indices are not published on the gated HF page; the values listed follow the canonical original ATLAS and EMIDEC label conventions and should be confirmed against the downloaded masks."
     }
@@ -13880,7 +13880,7 @@
         "Auxiliary segmentation: TotalSegmentator-generated organ segmentation masks provided for the AMOS subset only (organ classes per the TotalSegmentator label set, distributed via a separate Google Drive link, not the core supervision target)"
       ],
       "file_structure": "CT volumes are stored as 3D image files grouped in per-subset image folders (e.g. train/CT-AMOS-1290 and train/CT-RATE-2000) with the report and QA annotations in accompanying JSON files (CT-AMOS-Tr.json, CT-RATE-Tr.json for training; val.json for validation), and TotalSegmentator organ masks distributed separately for the AMOS subset.",
-      "splits": "Training: two subsets — CT-AMOS with 1,290 scans and CT-RATE with 2,000 scans (~3,290 total). A separate validation set with its own JSON is provided. The test set is withheld / not released to prevent data leakage. Exact validation and per-subset test counts are not published on the page.",
+      "splits": "Training: two subsets \u2014 CT-AMOS with 1,290 scans and CT-RATE with 2,000 scans (~3,290 total). A separate validation set with its own JSON is provided. The test set is withheld / not released to prevent data leakage. Exact validation and per-subset test counts are not published on the page.",
       "extra": "One combined multimodal model is meant to be trained for both report generation and vision QA; total dataset size is ~374 GB. CT-RATE cases were pre-selected to unique patients with disease and clinical information."
     }
   },
@@ -14161,7 +14161,7 @@
     "description": "Large-scale dataset of ~215,000 bedside ICU chest radiographs with ordinal severity labels (0-4) for eight clinical findings plus patient metadata for multi-label classification.",
     "details": {
       "label_schema": [
-        "Multi-label ordinal severity grading (not segmentation/detection) — 8 clinical findings, each an int64 ordinal severity score",
+        "Multi-label ordinal severity grading (not segmentation/detection) \u2014 8 clinical findings, each an int64 ordinal severity score",
         "HeartSize",
         "PulmonaryCongestion",
         "PleuralEffusion_Right",
@@ -14305,7 +14305,7 @@
       ],
       "file_structure": "Distributed as TSV files for VLMEvalKit: one row per question with columns such as index, image (Base64-encoded), question, options (A/B/C/...), category/task/modality/department tags, and answer; a validation TSV includes the Answer column while the test TSV omits it.",
       "splits": "Two official splits: a public validation set (~25,731 QA pairs, answers released) and a held-out test set (answers withheld); exact test-set count not publicly confirmed.",
-      "extra": "Aggregated from 284 source datasets (268 public + 16 hospital datasets with ethical approval); no pixel-level segmentation masks are shipped — all annotations are converted into multiple-choice questions."
+      "extra": "Aggregated from 284 source datasets (268 public + 16 hospital datasets with ethical approval); no pixel-level segmentation masks are shipped \u2014 all annotations are converted into multiple-choice questions."
     }
   },
   {
@@ -14421,7 +14421,7 @@
         "Per-image metadata labels: modality (CT/MRI), anatomy (8 anatomical regions), pathology (97 pathologies)",
         "Alignment/instruction configs use conversation-style labels: 'conversations' (image-text turns) plus 'id', 'image', 'metadata'"
       ],
-      "file_structure": "Parquet files organized into three configs/folders — 'alignment' and 'instruct' (multi-part parquet, e.g. part 00001-of-00002) holding {id, image, conversations, metadata}, and 'benchmark' holding {image, question, choices, answer, question_type, metadata}; images are embedded in the parquet.",
+      "file_structure": "Parquet files organized into three configs/folders \u2014 'alignment' and 'instruct' (multi-part parquet, e.g. part 00001-of-00002) holding {id, image, conversations, metadata}, and 'benchmark' holding {image, question, choices, answer, question_type, metadata}; images are embedded in the parquet.",
       "splits": "Alignment: train ~750,009 / validation ~83,668 (1 QA per image). Instruction: train ~750,009 / validation ~83,668 (~9 QAs per image). Benchmark (test): 9,000 QA pairs over 1,000 images.",
       "extra": "Benchmark evaluation set has 1,000 images with 9,000 QA pairs; the full generated corpus spans ~750K images / ~7.5M QA samples across CT and MRI, 8 anatomical regions and 97 pathologies."
     }
@@ -14587,14 +14587,14 @@
       "classification",
       "object detection"
     ],
-    "license": "Segmed–iMerit Joint Research Use Agreement (non-commercial research only)",
+    "license": "Segmed\u2013iMerit Joint Research Use Agreement (non-commercial research only)",
     "access": "dua",
     "host": "Hugging Face",
     "url": "https://huggingface.co/datasets/iMerit/3D-MammographyDataset",
     "description": "A gated sample dataset of digital breast tomosynthesis (DBT) mammography studies in DICOM with expert breast-cancer detection annotations, published by iMerit with Segmed and Advocate Health.",
     "details": {
       "label_schema": [
-        "Lesion diagnosis (biopsy-confirmed binary classification): Malignant vs. Benign — 271 malignant lesions (48.5%) and 287 benign lesions (51.5%) across 558 female patients",
+        "Lesion diagnosis (biopsy-confirmed binary classification): Malignant vs. Benign \u2014 271 malignant lesions (48.5%) and 287 benign lesions (51.5%) across 558 female patients",
         "Lesion localization: expert-drawn coordinates / segmentation of each lesion (mean lesion size ~1.34 cm; ~85% under 2 cm)",
         "Note: no BI-RADS category or lesion-subtype (mass/calcification) labels are confirmed on the official pages"
       ],
@@ -15339,7 +15339,7 @@
         "Voxel value 1 - pulmonary embolism (PE) region / clot (foreground)",
         "Voxel value 0 - background (non-PE, everything else)"
       ],
-      "file_structure": "35 chest CT-angiography (CTA) volumes organized as per-patient DICOM folders (Patient01–Patient35, 8,792 slices total), each paired with a binary 3D ground-truth mask stored as a MATLAB .mat file where PE voxels = 1 and background = 0.",
+      "file_structure": "35 chest CT-angiography (CTA) volumes organized as per-patient DICOM folders (Patient01\u2013Patient35, 8,792 slices total), each paired with a binary 3D ground-truth mask stored as a MATLAB .mat file where PE voxels = 1 and background = 0.",
       "extra": "Annotations were manually delineated by one board-certified radiologist (5+ yrs PE-CTA experience) using the semi-automated MIS (Medical Image Segmenter) tool (thresholding + connected-component region growing from user seed points) and then reviewed/approved by the radiology department head (18 yrs experience); 3,438 PE regions labeled, ~67% in peripheral pulmonary arteries."
     }
   },
@@ -15489,7 +15489,7 @@
         "Physiological respiratory status and degree of contrast accumulation",
         "Additional structured reading fields such as nodules, infiltrates, and overall affected-lung extent recorded per imaging study"
       ],
-      "file_structure": "Images are stored per patient case as DICOM (chest X-ray in frontal view; CT of varying resolution), with X-rays also available as 512x512 JPEG when DICOM is absent; radiologist findings are stored as a structured reading/annotation record (tabular fields) attached to each image and linked to the clinical case record — there is no pixel-level segmentation mask (segmentation n/a).",
+      "file_structure": "Images are stored per patient case as DICOM (chest X-ray in frontal view; CT of varying resolution), with X-rays also available as 512x512 JPEG when DICOM is absent; radiologist findings are stored as a structured reading/annotation record (tabular fields) attached to each image and linked to the clinical case record \u2014 there is no pixel-level segmentation mask (segmentation n/a).",
       "extra": "Not a fixed ML benchmark: TB Portals is a growing federated data-sharing platform (tens of thousands of images) where imaging is one facet joined to clinical, laboratory, and genomic data; full data access requires a data-use agreement/registration, and image annotation completeness varies by case."
     }
   },
@@ -16064,8 +16064,8 @@
     "description": "A large multimodal pediatric and adolescent brain MRI dataset (T1w, T2w, diffusion, and fMRI) with deep clinical and behavioral phenotyping across ages 5-21, released by the Child Mind Institute for developmental and psychiatric neuroscience research.",
     "details": {
       "label_schema": [
-        "No image-level annotations/segmentations — labels are per-subject phenotypic/clinical variables, not voxel or pixel labels",
-        "Consensus clinician DSM-5 diagnoses per participant (categorical; multiple comorbid diagnoses allowed) — a transdiagnostic community-referred sample, so common labels include ADHD, anxiety disorders, autism spectrum disorder, and 'No Diagnosis Given'",
+        "No image-level annotations/segmentations \u2014 labels are per-subject phenotypic/clinical variables, not voxel or pixel labels",
+        "Consensus clinician DSM-5 diagnoses per participant (categorical; multiple comorbid diagnoses allowed) \u2014 a transdiagnostic community-referred sample, so common labels include ADHD, anxiety disorders, autism spectrum disorder, and 'No Diagnosis Given'",
         "Diagnoses derived from a semi-structured clinical interview (KSADS-COMP) plus clinician review",
         "Dimensional cognitive/IQ and academic scores (e.g. Wechsler WISC/WAIS, WIAT)",
         "Parent- and self-report psychiatric symptom scales (e.g. CBCL, SCARED, SDQ, SRS/ASSQ) as continuous scores",
@@ -18251,7 +18251,7 @@
         "ET (enhancing tumor)",
         "GM (gray matter)",
         "WM (white matter)",
-        "CSF (cerebrospinal fluid) — not all classes present in every case (integer label values not confirmed here)",
+        "CSF (cerebrospinal fluid) \u2014 not all classes present in every case (integer label values not confirmed here)",
         "TCIA-hosted radiologist annotations: VASARI imaging feature scores (Volumetric Analysis of Segmentation using Radiologic Indices) by Thomas Jefferson neuroradiologists",
         "TCIA-hosted clinical/classification labels: Demographic, Diagnosis, Follow-Up, Classification (glioma type/grade), Treatment; linked genomic data in Georgetown G-DOC"
       ],
@@ -19268,7 +19268,7 @@
     "description": "A MICCAI 2023 challenge dataset of thoracic CT scans with airway segmentation annotations aimed at quantitative imaging biomarkers for fibrotic lung disease.",
     "details": {
       "label_schema": [
-        "Task I (airway segmentation): binary 3D voxel mask of the airway tree — Label 1 = airway (bronchial tree lumen), Label 0 = background",
+        "Task I (airway segmentation): binary 3D voxel mask of the airway tree \u2014 Label 1 = airway (bronchial tree lumen), Label 0 = background",
         "Task II (mortality prediction): per-case mortality/survival status provided as clinical metadata for training cases (used as a prognostication target, not a voxel label)"
       ],
       "file_structure": "HRCT scans were collected in DICOM and released as NIfTI volumes (converted via SimpleITK), each paired with a same-geometry NIfTI binary airway segmentation mask; mortality status and clinical metadata (from OSIC) accompany the training cases.",
@@ -19832,8 +19832,8 @@
   },
   {
     "id": "troms-study",
-    "name": "Tromsø Study",
-    "full_name": "The Tromsø Study",
+    "name": "Troms\u00f8 Study",
+    "full_name": "The Troms\u00f8 Study",
     "type": "dataset",
     "regions": [
       "WholeBody",
@@ -19855,7 +19855,7 @@
     "paired_text": false,
     "paired_text_detail": "Derived DXA body-composition/bone measures and MRI-derived phenotypes; no clinical report distribution.",
     "multi_sequence": true,
-    "multi_sequence_detail": "Whole-body and regional DXA for fat, lean and bone mineral across waves (hip DEXA and forearm SXA in Tromsø 4-6, whole-body DXA body composition in Tromsø 7) plus a brain MRI sub-study.",
+    "multi_sequence_detail": "Whole-body and regional DXA for fat, lean and bone mineral across waves (hip DEXA and forearm SXA in Troms\u00f8 4-6, whole-body DXA body composition in Troms\u00f8 7) plus a brain MRI sub-study.",
     "segmentation": false,
     "segmentation_detail": "DXA quantitative body-composition output; brain metrics derived in the MRI sub-study; no distributed voxel segmentations.",
     "other_labels": [
@@ -19890,7 +19890,7 @@
   {
     "id": "kora-mri",
     "name": "KORA-MRI",
-    "full_name": "Cooperative Health Research in the Region of Augsburg – Whole-Body MRI sub-study (KORA-FF4)",
+    "full_name": "Cooperative Health Research in the Region of Augsburg \u2013 Whole-Body MRI sub-study (KORA-FF4)",
     "type": "dataset",
     "regions": [
       "WholeBody",
@@ -20007,7 +20007,7 @@
   {
     "id": "ages-reykjavik",
     "name": "AGES-Reykjavik",
-    "full_name": "Age, Gene/Environment Susceptibility – Reykjavik Study",
+    "full_name": "Age, Gene/Environment Susceptibility \u2013 Reykjavik Study",
     "type": "dataset",
     "regions": [
       "Neuro",
@@ -20071,7 +20071,7 @@
   {
     "id": "life-adult",
     "name": "LIFE-Adult",
-    "full_name": "Leipzig Research Centre for Civilization Diseases – LIFE-Adult Study",
+    "full_name": "Leipzig Research Centre for Civilization Diseases \u2013 LIFE-Adult Study",
     "type": "dataset",
     "regions": [
       "Neuro",
@@ -20099,12 +20099,12 @@
     ],
     "tasks": [
       "brain aging analysis",
-      "neuroimaging phenotype–genotype association",
+      "neuroimaging phenotype\u2013genotype association",
       "white matter hyperintensity quantification"
     ],
     "license": null,
     "access": "request",
-    "host": "Leipzig University – LIFE Research Centre for Civilization Diseases",
+    "host": "Leipzig University \u2013 LIFE Research Centre for Civilization Diseases",
     "url": "https://www.uniklinikum-leipzig.de/einrichtungen/life",
     "description": "Leipzig urban population cohort of ~10,000 deeply phenotyped adults with a large 3T brain MRI sub-study linkable to metabolic, cognitive, cardiovascular and genetic phenotyping, accessible to researchers by application via the LIFE Data Portal.",
     "tags": [
@@ -20258,7 +20258,7 @@
     ],
     "license": null,
     "access": "request",
-    "host": "University Hospital Essen (IMIBE) / Forschungszentrum Jülich",
+    "host": "University Hospital Essen (IMIBE) / Forschungszentrum J\u00fclich",
     "url": "https://imibe.uk-essen.de/recall/",
     "description": "German Ruhr-area population cohort pairing coronary artery calcium CT with the 1000BRAINS multimodal brain MRI sub-study, linkable to deep cardiometabolic and cognitive phenotyping.",
     "tags": [
@@ -21457,7 +21457,7 @@
   {
     "id": "three-city-study-3c",
     "name": "Three-City Study (3C)",
-    "full_name": "Three-City Study (Etude des Trois Cités)",
+    "full_name": "Three-City Study (Etude des Trois Cit\u00e9s)",
     "type": "dataset",
     "regions": [
       "Neuro"
@@ -22099,5 +22099,549 @@
     "clinical_variables": "Repeated maternal and child anthropometry and growth, metabolic and cardiovascular measures, blood biomarkers, neurodevelopmental and cognitive assessments, DXA/MRI body composition, lifestyle/diet, and genetic and epigenetic data.",
     "body_composition": true,
     "longitudinal": true
+  },
+  {
+    "id": "duke-liver-mri",
+    "name": "Duke Liver Dataset",
+    "full_name": "Duke Liver Dataset (DLDS) \u2014 Liver MRI with Series-Type Labels and Segmentation Masks",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
+    "anatomy": "liver (mostly cirrhotic cohort)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "DICOM",
+      "CSV"
+    ],
+    "raw_image": true,
+    "size": "2,146 MRI series (113,280 images) from 105 patients; liver masks for 310 series / 95 patients",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "17 series/contrast types across routine liver protocols: T1 in-/opposed-phase, precontrast fat-sat T1, dynamic post-contrast (arterial, portal venous, hepatobiliary), T2, DWI, MRCP, localizer",
+    "segmentation": true,
+    "segmentation_detail": "manual whole-liver binary masks (DICOM stacks) for 310 series across 95 patients, on 4 series types",
+    "other_labels": [
+      "series-type classification (17 classes)"
+    ],
+    "tasks": [
+      "classification",
+      "segmentation"
+    ],
+    "license": "CC BY-NC-ND 4.0 (or custom Duke license for commercial use)",
+    "access": "request",
+    "host": "Zenodo",
+    "url": "https://zenodo.org/records/7774566",
+    "description": "Abdominal liver MRI from Duke University \u2014 2,146 series from 105 patients (87/105 with imaging findings of cirrhosis), each labeled with one of 17 series types for automated sequence classification, plus whole-liver segmentation masks for a 310-series subset; files are restricted on Zenodo (login + license agreement + justification).",
+    "details": {
+      "label_schema": [
+        "Series-type classification \u2014 1 of 17 classes per series; class codes are randomized letters with the mapping in SeriesClassificationKey.csv and SequenceTypes.csv; class 17 is a catch-all 'anything else'",
+        "Liver segmentation \u2014 whole-liver binary masks (0 = background, 1 = liver) stored as DICOM stacks matching image dimensions, for 310 series across 95 patients on 4 series types: axial in-phase, axial opposed-phase, axial precontrast fat-sat T1w, portal-venous fat-sat T1w"
+      ],
+      "file_structure": "Two archives: Series_Classification.zip (2,146 series / 105 subjects + SeriesClassificationKey.csv, SequenceTypes.csv) and Segmentation.zip (310 series / 95 subjects + SegmentationKey.csv); segmentation cases organized by DLDS patient ID \u2192 series number \u2192 image/ and mask/ DICOM subfolders.",
+      "splits": "No official split in v2; v1 withheld ~25% of labels/masks (26 DLDS IDs, listed in v2) so the original 75/25 train/test design can be reproduced.",
+      "extra": "Paper: Macdonald et al., Radiology: Artificial Intelligence 2023 (DOI 10.1148/ryai.220275); dataset DOI 10.5281/zenodo.7774566. Scanners: 96 Siemens / 9 GE; 54 exams at 1.5T, 51 at 3.0T. Companion dataset: Duke Spleen Data Set."
+    }
+  },
+  {
+    "id": "rsna-2026-knee-abnormality-detection",
+    "name": "RSNA 2026 Knee Abnormality Detection",
+    "full_name": "RSNA Knee Abnormality Detection AI Challenge (Knee MRI, 2026)",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
+    "anatomy": "knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2026,
+    "format": [
+      "DICOM",
+      "CSV"
+    ],
+    "raw_image": true,
+    "size": ">5,000 knee MRI exams (train: 4,407 studies / 24,371 series / 819,078 DICOM files)",
+    "paired_text": true,
+    "paired_text_detail": "Free-text radiology reports in 12 languages for 4,349 of 4,407 training studies (weak supervision); only 58 training studies carry gold labels",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Sagittal, coronal and axial series per study (3\u201314 series; fluid-sensitive fat-suppressed series in all three planes for 3,991/4,407 studies)",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "12 study-level binary abnormality labels",
+      "series-level plane/sequence metadata"
+    ],
+    "tasks": [
+      "classification",
+      "weakly-supervised learning from reports"
+    ],
+    "license": "Competition rules (research use; winning models open-sourced)",
+    "access": "registration",
+    "host": "Kaggle (RSNA)",
+    "url": "https://www.kaggle.com/competitions/rsna-knee-abnormality-detection",
+    "description": "RSNA's 2026 challenge \u2014 its first MSK-MRI challenge and first to pair images with report text: >5,000 multi-planar knee MRI exams from 16 sites across five continents, labeled for 12 abnormalities (ACL/MCL tears, menisci, OA compartments, effusion, synovitis, Baker's cyst, contusion, fracture), with multilingual radiology reports for weak supervision; runs through Oct 2026.",
+    "details": {
+      "label_schema": [
+        "12 study-level binary targets: ACL, MCL, medial meniscus, lateral meniscus, medial tibiofemoral OA, lateral OA, patellofemoral OA, joint effusion, synovitis, Baker's (popliteal) cyst, bone contusion, fracture",
+        "Gold labels (two MSK radiologists + adjudicator, severity-thresholded) for only 58 training studies; the other 4,349 studies have free-text radiology reports only",
+        "Hidden test set annotated by expert MSK radiologists",
+        "Series-level metadata: anatomical plane, Fluid_Sensitive and Fat_Suppression flags"
+      ],
+      "file_structure": "train.csv (StudyInstanceUID + 12 label columns for gold studies), train_series.csv / test_series.csv (series-level plane/sequence metadata), per-study radiology report text, DICOM folders organized study \u2192 series \u2192 slice, sample_submission.csv (12 probability columns).",
+      "splits": "Train: 4,407 studies (58 gold-labeled + 4,349 report-only). Hidden expert-annotated test set scored via Kaggle code-competition rerun (macro ROC-AUC over the 12 findings).",
+      "extra": "Launched Aug 5, 2026; final submission Oct 22, 2026; $77,000 prizes incl. a first-time efficiency track. Code competition \u2014 submissions run in offline Kaggle notebooks (\u22649 h). Sagittal 9,864 / coronal 8,609 / axial 5,898 training series."
+    }
+  },
+  {
+    "id": "uw-madison-gi-tract",
+    "name": "UW-Madison GI Tract",
+    "full_name": "UW-Madison GI Tract Image Segmentation (Kaggle 2022)",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
+    "anatomy": "GI tract (stomach, small bowel, large bowel)",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "PNG",
+      "CSV"
+    ],
+    "raw_image": false,
+    "size": "85 cases / 38,496 slices (competition train); full release 107 patients / 467 scans / 67,248 slices",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "RLE-encoded 2D masks of stomach, small bowel and large bowel per axial slice, converted from DICOM-RT contours",
+    "other_labels": [],
+    "longitudinal": true,
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-SA 4.0 (post-competition full release); competition data under Kaggle competition rules",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/uw-madison-gi-tract-image-segmentation",
+    "description": "Serial abdominal MRIs (0.35T ViewRay MRIdian MR-Linac, TrueFISP) of cancer patients scanned on 1-5 treatment days during MR-guided radiotherapy at UW-Madison, released as 16-bit grayscale PNG axial slices with RLE-encoded stomach, small-bowel and large-bowel masks; the post-competition release adds the formerly hidden test set (107 patients, 467 scans).",
+    "details": {
+      "label_schema": [
+        "train.csv columns: id ('case{N}_day{D}_slice_{SSSS}'), class, segmentation (RLE run-length pairs on the flattened slice; empty when the organ is absent on that slice)",
+        "3 foreground classes, one row per slice-class pair (3 rows per slice): large_bowel, small_bowel, stomach; background implicit",
+        "Competition training set: ~16,590 of 38,496 slices have at least one non-empty mask (annotated slices: large_bowel ~14,085, small_bowel ~11,201, stomach ~8,627)",
+        "Contours drawn manually by a UW-Madison annotation team under supervision of a board-certified radiation oncologist, then converted from DICOM-RT to RLE"
+      ],
+      "file_structure": "train/case{N}/case{N}_day{D}/scans/ holds one 16-bit grayscale PNG per axial slice named slice_{SSSS}_{width}_{height}_{spacingW}_{spacingH}.png \u2014 slice size in pixels and pixel spacing in mm are encoded in the filename because DICOM headers were stripped during de-identification; all masks are RLE strings in a single train.csv. Slice sizes range 234x234 to 360x310 px (median 266x266); most scans have 144 slices at 1.5 x 1.5 x 3 mm.",
+      "splits": "Competition: 85 cases / 38,496 slices public training; hidden test set reachable only via Kaggle code submission, no public labels during the challenge. Post-competition release ('UW Madison GI Tract Image Segmentation Dataset' by co-author Yin Li on Kaggle, ~4.1 GB zip) contains both challenge partitions: 107 patients / 467 scans / 67,248 slices; no official validation split.",
+      "extra": "Scans acquired on a 0.35T ViewRay MRIdian MR-Linac (TrueFISP sequence) across 1-5 radiotherapy fractions per patient on different days (serial adaptive-RT imaging). Evaluation combined 3D Dice and 3D Hausdorff distance (official evaluation code in the data-tools repo). Companion data descriptor: Lee et al., 'Dataset for gastrointestinal tract segmentation on serial MRIs for abdominal tumor radiotherapy', Data in Brief 57:111159 (2024). De-identification/packaging code: https://github.com/happyharrycn/UW-Madison-GI-Tract-Segmentation-Data-Tools; full release: https://www.kaggle.com/datasets/happyharrycn/uw-madison-gi-tract-image-segmentation-dataset"
+    }
+  },
+  {
+    "id": "pansegdata",
+    "name": "PanSegData",
+    "full_name": "PanSegData \u2014 Large-Scale Multi-Center Pancreas MRI Segmentation Dataset (PanSegNet)",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
+    "anatomy": "pancreas",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2024,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "767 MRI (385 T1W + 382 T2W; 499 participants, 5 centers)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "T1W and T2W abdominal MRI; most participants contribute both sequences (released as two parallel nnUNet-style datasets, t1 and t2)",
+    "segmentation": true,
+    "segmentation_detail": "pancreas (whole organ, binary mask on every T1W and T2W scan)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC 4.0",
+    "access": "open",
+    "host": "OSF",
+    "url": "https://osf.io/kysnj/",
+    "description": "The largest public pancreas MRI segmentation dataset: 767 T1W/T2W abdominal MRI scans from 499 adults across five US centers, each with an expert binary pancreas mask, released with the PanSegNet paper (Zhang et al., Medical Image Analysis 2024).",
+    "details": {
+      "label_schema": [
+        "Voxel-wise binary segmentation mask per scan, 2 values",
+        "Label 0 - background",
+        "Label 1 - pancreas (single whole-organ class; no tumor or subregion labels)",
+        "Ground truth: pancreas manually contoured on axial T1W and T2W scans by five radiologists (one per center) in ITK-SNAP, with senior-radiologist quality review; paper reports moderate inter-observer (kappa 0.624 T1W / 0.638 T2W) and high intra-observer agreement"
+      ],
+      "file_structure": "OSF project holds Pancreas_MRI_Dataset/ with two nnUNet-style archives \u2014 t1.zip (~4.3 GB) and t2.zip (~1.5 GB). Each unpacks to imagesTr/ ({CENTER}_{NNNN}_0000.nii.gz volumes) and labelsTr/ ({CENTER}_{NNNN}.nii.gz masks); center prefixes are NYU (New York University), MCF (Mayo Clinic Florida), NWU (Northwestern), AHN (Allegheny Health Network), MCA (Mayo Clinic Arizona). A 'Meta informations' folder adds T1/T2 name-mapping JSONs (original -> released filenames) and t2_info_osf.xlsx; LICENSE.txt at the root.",
+      "splits": "No held-out test folder \u2014 all 767 scans ship with labels (t1: 385 image/mask pairs; t2: 382 pairs, verified from the zip directories). The paper trains/internally validates on Centers 1-2 (NYU 162 T1W/162 T2W; Mayo Florida 151/150) and uses Centers 3-5 as external test sets (Northwestern 30/19; AHN 17/28; Mayo Arizona 25/23).",
+      "extra": "Companion to PanSegNet (nnUNet + linear-attention Transformer); code and pretrained CT/T1/T2 weights at github.com/NUBagciLab/PaNSegNet. The paper's 1,350 CT scans come from existing public sets (AbdomenCT-1K, AMOS, WORD, BTCV) and are NOT redistributed here \u2014 the OSF release is MRI only. License note: the OSF node's license metadata is set to 'Other' and defers to the LICENSE.txt in OSF Storage (uploaded 2025-07-29), which declares CC BY-NC 4.0 with required citation. Cite: Zhang et al., 'Large-scale multi-center CT and MRI segmentation of pancreas with deep learning', Medical Image Analysis 99:103382 (2025; online 2024), doi:10.1016/j.media.2024.103382."
+    }
+  },
+  {
+    "id": "oai-zib",
+    "name": "OAI-ZIB",
+    "full_name": "OAI-ZIB Knee MRI Manual Segmentations (Zuse Institute Berlin)",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
+    "anatomy": "knee",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2019,
+    "format": [
+      "ITK MetaImage (MHD/RAW)",
+      "NIfTI (OAIZIB-CM mirror)"
+    ],
+    "raw_image": false,
+    "size": "507 manual segmentation masks (384x384x160 voxels) + 116 bone-only masks; ~90 MB zip (matching OAI MRIs obtained separately)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "Manual voxel-wise masks of femoral bone, femoral cartilage, tibial bone and tibial cartilage for 507 OAI baseline 3D DESS knee MRIs, plus a 116-scan bone-only subset for shape-based OA classification",
+    "other_labels": [],
+    "tasks": [
+      "segmentation",
+      "classification"
+    ],
+    "license": "CC BY 4.0 (ZIB record; bundled README restricts use to scientific purposes); underlying OAI MRIs under OAI/NDA data-use agreement",
+    "access": "open",
+    "host": "Zuse Institute Berlin (ZIB)",
+    "url": "https://doi.org/10.12752/4.ATEZ.1.0",
+    "description": "507 manual reference segmentations of femoral/tibial bone and cartilage for baseline right-knee sagittal 3D DESS MRIs from the Osteoarthritis Initiative, released by Zuse Institute Berlin alongside Ambellan et al. (Medical Image Analysis 2019). The masks download freely, but the corresponding MRI scans must be obtained from the OAI database under its data-use agreement.",
+    "details": {
+      "label_schema": [
+        "segmentation/ masks (507 volumes, one per OAI subject ID): integer voxel labels 0 background, 1 femoral bone, 2 femoral cartilage, 3 tibial bone, 4 tibial cartilage",
+        "classification/ masks (116 volumes, 108 overlapping the 507): labels 0 background, 1 femoral bone, 2 tibial bone (bone-only, used for statistical-shape OA classification in companion MICCAI/MedIA papers)",
+        "Each mask is a 160x384x384 uint8 MET_UCHAR volume at 0.7 x 0.36 x 0.36 mm matching the OAI sagittal DESS scan; masks carry identity transforms only, so they align with the MRIs up to rigid alignment (scanner pose must be removed/applied for overlay)",
+        "OAIZIB-CM community mirror refines labels to 5 classes: femur, femoral cartilage, tibia, medial tibial cartilage, lateral tibial cartilage"
+      ],
+      "file_structure": "Single ~90 MB zip (OAI-ZIB/): segmentation/segmentation_masks/ holds 507 {OAI_subject_ID}.segmentation_masks.mhd+.raw pairs and classification/segmentation_masks/ holds 116 more; each doc/ folder contains oai_mri_paths.txt (per-subject relative path of the matching baseline DESS scan inside the OAI download), citation bibtex, a SimpleITK reader snippet, and (segmentation only) two cross-validation ID lists. The MRI images themselves are NOT included.",
+      "splits": "No train/test split; the release ships an official 2-fold cross-validation setup (List1: 253 IDs, List2: 254 IDs). The OAIZIB-CM mirror instead defines 404 train / 103 test.",
+      "extra": "DOI 10.12752/4.ATEZ.1.0 resolves to the ZIB OPUS record (opus4.kobv.de docId 6995) with direct download https://www.zib.de/ext-data/2019_ATEZ_MEDIA-Supplementary-Material-OAI-ZIB.zip; the former pubdata.zib.de repository now redirects to a ZIB Zenodo community that does not list this record. Matching images are right-knee baseline sagittal 3D DESS with water excitation from OAI, requiring an OAI/NDA account (https://nda.nih.gov/oai/). Mirror OAIZIB-CM (Zenodo 10.5281/zenodo.14934086, Hugging Face YongchengYAO/OAIZIB-CM, CC BY-NC 4.0) repackages images+masks as NIfTI with the medial/lateral tibial-cartilage split and adds the CLAIR-Knee-103R template/atlas."
+    }
+  },
+  {
+    "id": "fastmri-plus",
+    "name": "fastMRI+",
+    "full_name": "fastMRI+: Clinical Pathology Annotations for the fastMRI Knee and Brain Datasets",
+    "type": "dataset",
+    "regions": [
+      "MSK",
+      "Neuro"
+    ],
+    "anatomy": "knee, brain",
+    "modality": [
+      "MRI"
+    ],
+    "year": 2022,
+    "format": [
+      "CSV (annotations only)"
+    ],
+    "raw_image": false,
+    "size": "24,380 annotations, no images: knee 16,154 bounding boxes + 13 study-level labels (22 classes, all 1,172 knee volumes) and brain 7,570 bounding boxes + 643 study-level labels (30 classes, 1,001 of 5,847 brain studies)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "2D bounding boxes per slice (x, y, width, height in pixels)",
+      "Study-level whole-study pathology labels",
+      "22 knee pathology classes (Meniscus Tear, Cartilage Partial/Full-Thickness defect, Joint Effusion, Bone Fracture/Contusion, Subchondral edema, ACL/MCL/PCL/LCL sprains by grade, Periarticular cysts, Displaced Meniscal Tissue, Bone/Soft-Tissue Lesion, Muscle Strain, Joint Bodies, Patellar Retinaculum sprain, artifact)",
+      "30 brain pathology classes (Nonspecific white matter lesion, Posttreatment change, Craniotomy, Nonspecific lesion, Possible artifact, Mass, Normal for age, Edema, Dural thickening, Enlarged ventricles, Resection cavity, Encephalomalacia, Lacunar infarct, Extra-axial mass, and rarer findings)"
+    ],
+    "tasks": [
+      "detection",
+      "classification",
+      "reconstruction evaluation"
+    ],
+    "license": "CC BY 4.0 (annotations, per Scientific Data paper); repo carries MIT license; underlying fastMRI images require the separate NYU fastMRI data-sharing agreement",
+    "access": "open",
+    "host": "GitHub (Microsoft) / Synapse",
+    "url": "https://github.com/microsoft/fastmri-plus",
+    "description": "Radiologist-created clinical pathology annotations (slice-level 2D bounding boxes plus study-level labels) for the NYU fastMRI knee and brain datasets, distributed as open CSV files. No images are included \u2014 the fastMRI k-space/DICOM data must be obtained separately from fastmri.med.nyu.edu under its data-sharing agreement.",
+    "details": {
+      "label_schema": [
+        "CSV columns: file, slice, study_level, x, y, width, height, label \u2014 one row per annotation",
+        "Bounding-box rows: study_level='No', pixel coordinates x,y,width,height on the given slice of the named fastMRI volume",
+        "Study-level rows: study_level='Yes', no box coordinates (whole-study finding, e.g. 'artifact', 'Normal for age', 'Global label: Small vessel chronic white matter ischemic change')",
+        "Knee (knee.csv): 16,154 boxes + 13 study-level labels across 22 classes; most frequent: Meniscus Tear (5,658), Cartilage Partial-Thickness loss/defect (2,985), Joint Effusion (1,311), Bone Fracture/Contusion/dislocation (1,060), Subchondral edema (986)",
+        "Brain (brain.csv): 7,570 boxes + 643 study-level labels across 30 classes; most frequent: Nonspecific white matter lesion (1,826), Posttreatment change (1,262), Craniotomy (1,025), Nonspecific lesion (757), Possible artifact (505)",
+        "knee_file_list.csv / brain_file_list.csv enumerate every reviewed volume; reviewed files with no row in knee.csv/brain.csv were read as having no findings"
+      ],
+      "file_structure": "Annotations/ folder with four plain CSVs (knee.csv, brain.csv, knee_file_list.csv, brain_file_list.csv); rows key to fastMRI volumes via the 'file' column (fastMRI HDF5 filename, e.g. file_brain_AXFLAIR_200_6002425) plus slice index. Repo also ships fastmri_to_dicom.py; that conversion flips pixel arrays up/down relative to raw HDF5 orientation, which must be accounted for when overlaying boxes.",
+      "splits": "No splits of its own \u2014 annotations key to fastMRI volumes, which carry the official fastMRI train/val splits (knee: all 1,172 train+val volumes annotated; brain: 1,001 randomly selected of 5,847 studies)",
+      "extra": "Published in Scientific Data 9:152 (2022) by Microsoft Research + NYU Langone. Each study was labeled by a single subspecialist radiologist (knee reader 6 yrs experience, brain reader 2 yrs) on MD.ai, without other views or clinical history \u2014 authors explicitly caution the labels are not clinical ground truth. Also mirrored on a Synapse repository. Knee study-level labels are all 'artifact' (13); brain has 643 study-level labels including 'Normal for age' and global small-vessel ischemic change."
+    }
+  },
+  {
+    "id": "most-knee-oa",
+    "name": "MOST",
+    "full_name": "Multicenter Osteoarthritis Study",
+    "type": "dataset",
+    "regions": [
+      "MSK"
+    ],
+    "anatomy": "knee",
+    "modality": [
+      "X-ray",
+      "MRI"
+    ],
+    "year": 2003,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "4,551 participants (3,026 original cohort enrolled 2003 + 1,525 new-cohort participants 2016-18); longitudinal knee radiographs, full-limb radiographs and 1.0T knee MRI through the 168-month visit",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Knee MRI on a 1.0T ONI OrthOne extremity scanner: sagittal and axial fat-suppressed PD-weighted FSE plus coronal STIR (3 mm slices, no gap); later visits (144-168 months) used 1.5T scanners; radiographs include bilateral fixed-flexion PA and weight-bearing lateral knee views plus full-limb alignment films",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "Kellgren-Lawrence grades",
+      "OARSI JSN/osteophyte grades",
+      "WORMS/MOAKS MRI readings",
+      "clinical variables"
+    ],
+    "tags": [
+      "population-cohort",
+      "longitudinal",
+      "body-composition"
+    ],
+    "clinical_variables": "Demographics and OA risk factors, WOMAC pain/stiffness/function and knee symptoms, physical performance, gait and strength measures, quantitative sensory testing, whole-body DXA body composition (baseline, 30 months), and banked biospecimens (serum, plasma, DNA, urine).",
+    "longitudinal": true,
+    "tasks": [
+      "classification",
+      "progression prediction"
+    ],
+    "license": "MOST / NIA Aging Research Biobank data-use agreement",
+    "access": "dua",
+    "host": "NIA Aging Research Biobank / MOST Online (UCSF SF Coordinating Center)",
+    "url": "https://agingresearchbiobank.nia.nih.gov/studies/most/",
+    "description": "Longitudinal knee-osteoarthritis cohort of 3,026 adults aged 50-79 (two US sites, enrolled 2003; plus a 1,525-participant new cohort from 2016-18) with serial fixed-flexion PA and lateral knee radiographs, full-limb films and 1.0T knee MRI through 168 months, all centrally read (KL/OARSI, WORMS/MOAKS). Companion cohort to OAI; public-use clinical datasets require MOST Online registration + DUA, and images are requested via the NIA Aging Research Biobank.",
+    "details": {
+      "label_schema": [
+        "Kellgren-Lawrence (KL) grade 0-4 (with an additional 3.5 category) for tibiofemoral OA from central longitudinal radiograph readings at baseline, 15, 30, 60 and 84 months (later visits read in MOST2/MOST4 phases)",
+        "OARSI-atlas individual radiographic features: joint space narrowing and osteophytes graded 0-3 per compartment with half-grade increments; quantitative full-limb alignment (hip-knee-ankle) measurements",
+        "WORMS (Whole-Organ MRI Score) semiquantitative knee MRI readings for MRI sub-study participants: cartilage morphology, bone marrow lesions, meniscal tear/extrusion, bone attrition, osteophytes, Hoffa-synovitis and effusion-synovitis; MOAKS used for later-phase readings",
+        "Patient-reported/clinical outcomes: WOMAC pain, stiffness and function, knee symptoms, physical performance, gait, strength; whole-body DXA body composition at baseline and 30 months",
+        "Labels are tabular clinical + central-read variables keyed to participant/knee/visit, NOT pixel-level image annotations"
+      ],
+      "file_structure": "Clinical and central-reading public-use datasets are distributed as documented tabular files (with data dictionaries) via MOST Online / the NIA Aging Research Biobank, keyed by participant ID, knee side and visit; knee radiographs, full-limb radiographs and knee MRIs through the 168-month visit are obtained separately by submitting a Request for Materials on the Biobank (material type 'Images'); no segmentation masks are included.",
+      "splits": "No official train/val/test split; longitudinal visits at baseline, 15, 30, 60, 72 (phone) and 84 months for the original cohort, with 144-, 152-, 160- and 168-month visits for the enriched cohort (new cohort of 1,525 recruited 2016-18).",
+      "extra": "Formerly hosted at most.ucsf.edu / mostdata.ucsf.edu (domains no longer resolve); current portals are MOST Online (mostonline.ucsf.edu, registration + acceptance of a Data Use Agreement) and the NIA Aging Research Biobank (data/image requests need an online form, study protocol, IRB approval or waiver, and investigator CV). Two clinical sites (Univ. of Alabama at Birmingham n=1,517; Univ. of Iowa n=1,509), ~60% women, ~15% African American; Boston University was the radiograph reading center and UCSF the MRI reading center; 83% of the cohort had baseline MRI on the 1.0T extremity scanner. Widely used alongside OAI for deep-learning KL grading and knee-OA progression/TKR prediction."
+    }
+  },
+  {
+    "id": "spr-head-ct-age",
+    "name": "SPR Head CT Age Prediction",
+    "full_name": "SPR Head CT Age Prediction Challenge (Sociedade Paulista de Radiologia, Kaggle 2024)",
+    "type": "dataset",
+    "regions": [
+      "Neuro"
+    ],
+    "anatomy": "brain",
+    "modality": [
+      "CT"
+    ],
+    "year": 2024,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "2,525 head CT studies (2,377 train + 148 test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "chronological age"
+    ],
+    "tasks": [
+      "regression"
+    ],
+    "license": "CC BY-NC-SA 4.0",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/spr-head-ct-age-prediction-challenge",
+    "description": "2,525 face-redacted (defaced) head CT studies donated by multiple Brazilian institutions and labeled with patient age, released by the Sao Paulo Radiological Society (SPR) for a 2024 Kaggle age-prediction regression challenge.",
+    "details": {
+      "label_schema": [
+        "Single regression target: patient chronological age (continuous, in years), one value per CT study",
+        "train.csv: StudyID (study/accession folder name) + Age (target); test studies unlabeled",
+        "Submission format: StudyID, Age; leaderboard metric = Mean Columnwise Mean Absolute Error (single column, i.e. MAE in years)",
+        "No abnormality/diagnosis labels, segmentation masks, bounding boxes, or radiology reports"
+      ],
+      "file_structure": "Raw axial DICOM (.dcm) slices grouped per study: the train archive (dataset_jpr_train/) contains subfolders 1/, 2/, 3/, each holding per-study folders named by StudyID with the study's DICOM slice files; the test archive (dataset_jpr_test2/) holds per-study DICOM folders; age labels are in train.csv keyed by StudyID. Faces are redacted in-volume (skin/subcutaneous and surrounding-air voxels replaced) while files remain standard DICOM with rescale/window metadata intact.",
+      "splits": "Fixed challenge split: 2,377 studies train / 148 studies test (test ages withheld; scored via Kaggle submissions, late submission still open)",
+      "extra": "Organized by Sociedade Paulista de Radiologia (Eduardo Farina, Felipe Kitamura, Gustavo Corradi); ran Mar 2 - May 1, 2024 alongside JPR 2024. Companion paper: 'Pixel Tampering: Does Face Redaction Harm Medical AI Performance?' (J Imaging Inform Med 2025, doi:10.1007/s10278-025-01776-0) reports top MAEs of 2.8 and 3.4 years on the redacted test set (3.2/3.8 on non-redacted). Redaction used the organizers' open-source face_deid_ct-style tool. Download requires a Kaggle account and accepting competition rules."
+    }
+  },
+  {
+    "id": "spr-xray-age",
+    "name": "SPR X-Ray Age Prediction",
+    "full_name": "SPR X-Ray Age Prediction Challenge (2023)",
+    "type": "dataset",
+    "regions": [
+      "Chest"
+    ],
+    "anatomy": "chest",
+    "modality": [
+      "X-ray"
+    ],
+    "year": 2023,
+    "format": [
+      "PNG"
+    ],
+    "raw_image": false,
+    "size": "11,747 chest radiographs (~10.7K train / ~1.1K test)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "patient age (years)"
+    ],
+    "tasks": [
+      "regression"
+    ],
+    "license": "Subject to competition rules (non-commercial use; no redistribution)",
+    "access": "registration",
+    "host": "Kaggle",
+    "url": "https://www.kaggle.com/competitions/spr-x-ray-age",
+    "description": "11,747 de-identified chest radiographs in PNG donated by four Brazilian institutions (Dasa, Fleury, InCor, Unifesp), released by the S\u00e3o Paulo Radiology Society (SPR) with AWS for patient age prediction scored by mean absolute error. The companion SPR X-Ray Gender Prediction Challenge uses the same images and the same train/test partition with sex labels.",
+    "details": {
+      "label_schema": [
+        "Regression target: age \u2014 patient age in years, one value per image (train_age.csv columns: imageId, age; imageId matches the PNG filename)",
+        "Test-partition images carry no public labels; submissions predict age for every image and are scored by mean absolute error on the hidden test split",
+        "Patient sex labels for the identical images and identical partition are available through the companion SPR X-Ray Gender Prediction Challenge (spr-x-ray-gender)"
+      ],
+      "file_structure": "Chest radiographs distributed as individual PNG files named by imageId; labels supplied in train_age.csv (imageId, age) with a sample_submission_age.csv template; images are de-identified PNGs without DICOM metadata.",
+      "splits": "~10.7K labeled training images + ~1.1K unlabeled test images (11,747 total images per the official solution file); test labels withheld for leaderboard scoring.",
+      "extra": "Organized by the Sociedade Paulista de Radiologia e Diagn\u00f3stico por Imagem (SPR) with Amazon Web Services; images donated by Dasa, Fleury, InCor, and Unifesp; ran Feb 28 - Apr 26, 2023 with winners recognized at JPR 2023. Rules prohibit redistribution and re-identification and restrict data use to non-commercial competition purposes. The full data remains available post-competition as the host-published public Kaggle dataset 'SPR X-Ray Age and Gender Dataset' (kaggle.com/datasets/felipekitamura/spr-x-ray-age-and-gender-dataset, archive.zip ~15.6 GB, licensed CC BY-NC-ND 4.0, includes train_age.csv and train_gender.csv). Do not conflate with the separate SPR Head CT Age Prediction Challenge."
+    }
+  },
+  {
+    "id": "tcga-lihc",
+    "name": "TCGA-LIHC",
+    "full_name": "The Cancer Genome Atlas Liver Hepatocellular Carcinoma Collection",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
+    "anatomy": "Liver (hepatocellular carcinoma)",
+    "modality": [
+      "CT",
+      "MRI",
+      "PET"
+    ],
+    "year": 2016,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "56.38 GB (97 subjects / 237 studies / 1,688 series / 125,397 images)",
+    "paired_text": true,
+    "paired_text_detail": "Matched clinical, demographic, pathological, and genomic data available via the NCI Genomic Data Commons (GDC) Data Portal through shared TCGA patient identifiers",
+    "multi_sequence": true,
+    "multi_sequence_detail": "MRI studies include multiple sequences (the BAMF liver-MR annotations target the T1 series); collection spans CT, MR, and PET series",
+    "segmentation": false,
+    "segmentation_detail": null,
+    "other_labels": [
+      "Genomic data",
+      "Clinical/pathological data",
+      "Cancer diagnosis"
+    ],
+    "tasks": [
+      "Radiogenomics",
+      "Liver cancer characterization",
+      "Liver/tumor segmentation (via linked analysis results)"
+    ],
+    "license": "CC BY 3.0",
+    "access": "open",
+    "host": "The Cancer Imaging Archive (TCIA)",
+    "url": "https://www.cancerimagingarchive.net/collection/tcga-lihc/",
+    "description": "Radiology imaging (CT, MRI, and PET) of 97 hepatocellular carcinoma patients from The Cancer Genome Atlas, paired with matched clinical, genomic, and histopathology data via the Genomic Data Commons.",
+    "details": {
+      "label_schema": [
+        "Cohort/classification label: liver hepatocellular carcinoma (HCC) patients; matched TCGA clinical, genomic, and pathology labels available via the Genomic Data Commons using shared patient IDs (not stored in the imaging files)",
+        "The base imaging collection ships with NO per-image or per-voxel labels (radiology DICOM only)",
+        "Segmentation class from the linked BAMF AIMI Annotations liver-CT analysis result: Liver (single foreground class, AI-generated on 89 CT scans; no tumor class)",
+        "Segmentation class from the linked BAMF AIMI Annotations liver-MR analysis result: Liver (single foreground class, AI-generated on 67 T1-weighted MR scans; no tumor class)",
+        "Crowds-Cure-2017 analysis result: reader-placed lesion annotations/measurements (crowdsourced radiologist markups)",
+        "SAROS analysis result: sparsely annotated body-region and organ segmentations covering CT series from many TCIA collections including this one"
+      ],
+      "file_structure": "Images are DICOM organized per patient (97 subjects / 237 studies / 1,688 series / 125,397 images; modalities CT, MR, PT), downloaded via the NBIA Data Retriever. No labels are bundled with the base collection; BAMF AIMI liver segmentations are distributed separately as DICOM-SEG (optionally NIfTI) via the IDC Zenodo community (10.5281/zenodo.13244892), and Crowds-Cure-2017 / SAROS annotations are separate downloadable analysis results.",
+      "splits": "No official train/val/test split; the BAMF AIMI liver annotations reserve ~10% of scans as a validation subset that was Likert-scored and manually corrected by a radiologist and a non-expert.",
+      "extra": "TCIA collection DOI 10.7937/K9/TCIA.2016.IMMQW8UQ; version 5 (updated 2020-05-29), status Complete. BAMF liver labels are AI-generated (nnU-Net ensemble; CT model trained on TotalSegmentator+FLARE21, MR model on AMOS+Duke Liver Dataset V2) with radiologist corrections for the ~10% validation subset. Integer label values inside the DICOM-SEG segments were not confirmed from the source and are omitted."
+    }
+  },
+  {
+    "id": "duke-spleen",
+    "name": "Duke Spleen Data Set",
+    "full_name": "Duke Spleen Data Set (DSDS) \u2014 Spleen MRI and CT with Segmentation Masks",
+    "type": "dataset",
+    "regions": [
+      "Abdomen"
+    ],
+    "anatomy": "spleen (chronic liver disease / portal hypertension cohort)",
+    "modality": [
+      "CT",
+      "MRI"
+    ],
+    "year": 2023,
+    "format": [
+      "DICOM"
+    ],
+    "raw_image": true,
+    "size": "109 CT/MRI series (6,322 images) from 69 patients: 29 axial post-contrast CT, 40 coronal SSFSE MRI, 40 axial T1w opposed-phase MRI",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": true,
+    "multi_sequence_detail": "Two MRI contrasts (coronal SSFSE, axial T1w opposed-phase) plus axial post-contrast CT; 109 series drawn from 69 patients, so many patients contribute more than one series type",
+    "segmentation": true,
+    "segmentation_detail": "Manual binary spleen masks for all 109 series, provided as separate binary DICOM image stacks (0 = background, 1 = spleen)",
+    "other_labels": [],
+    "tasks": [
+      "segmentation"
+    ],
+    "license": "CC BY-NC-ND 4.0 (or custom Duke license for commercial use)",
+    "access": "request",
+    "host": "Zenodo",
+    "url": "https://zenodo.org/records/7636640",
+    "description": "Multi-modality, multi-vendor spleen segmentation dataset from Duke University \u2014 109 abdominal CT and MRI series (6,322 images) from 69 patients with known or suspected chronic liver disease and portal hypertension, each with a manual binary spleen mask; spleens range from normal to markedly abnormal (104\u20132,025 cm\u00b3) with confounders such as ascites and varices, and files are restricted on Zenodo (access by request).",
+    "details": {
+      "label_schema": [
+        "Voxel-wise binary spleen segmentation \u2014 masks distributed as separate binary DICOM images matching the source series (pixel value 0 = background, 1 = spleen)",
+        "All 109 series are segmented: 29 axial CT post-contrast, 40 coronal MRI SSFSE, 40 axial MRI T1w opposed-phase",
+        "Segmentation provenance: manual segmentation by one of four trained imaging core-lab technologists, reviewed and adjusted by a fellowship-trained abdominal radiologist (12 years post-fellowship experience)"
+      ],
+      "file_structure": "Anonymized image series and their matching binary spleen masks are both stored as DICOM (Zenodo version 2023.02); the total archive size is not publicly listed because the files are restricted (the ~80.7 GB figure on the record page is Zenodo's cumulative download-traffic 'Data volume' stat, not the dataset size), and the exact folder layout inside the restricted archives is not publicly documented on the record page.",
+      "splits": "No official train/validation/test split is defined in the paper or on Zenodo.",
+      "extra": "Paper: Wang et al., arXiv:2305.05732. Cohort: 69 patients (47 M / 22 F, age 41\u201388) randomly selected from prior studies of known or suspected chronic liver disease, with and without cirrhosis/portal hypertension; GE and Siemens scanners at 1.5T and 3.0T; CT 34\u2013150 slices at 2.5\u20135.0 mm, SSFSE 20\u201345 slices at 6\u20137 mm, opposed-phase 26\u201380 slices at 4\u20138 mm. Companion dataset: Duke Liver Dataset (DLDS, catalog id duke-liver-mri). Access: Zenodo files are restricted \u2014 request CC BY-NC-ND access via DOCR.Help@dm.Duke.edu, or a custom unrestricted/commercial license via Duke OTC (otcquestions@duke.edu)."
+    }
   }
 ]

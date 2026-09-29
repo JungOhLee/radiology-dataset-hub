@@ -67,4 +67,4 @@ use `null` rather than guessing. Corrections are very welcome — open an issue 
 
 We monitor dataset sources automatically — see [SOURCES.md](SOURCES.md). Run
 `python3 scripts/find_new_datasets.py` to list open radiology datasets not yet in the catalog,
-or check the monthly **📡 New open radiology dataset candidates** issue.
+or check the weekly **📡 New open radiology dataset candidates** issue.

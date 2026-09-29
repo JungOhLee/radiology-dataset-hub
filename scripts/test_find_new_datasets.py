@@ -35,6 +35,9 @@ def fixture_get_json(url, timeout=25, headers=None, data=None):
             # catalog entry (by URL slug) -> known
             {"id": "AbdomenAtlas/AbdomenAtlas1.0Mini", "createdAt": recent, "tags": [],
              "description": "abdominal CT organ segmentation"},
+            # only an auto tag says "segmentation": not radiology -> skipped
+            {"id": "AbdomenAtlas/StreetScenes", "createdAt": recent,
+             "tags": ["task_categories:image-segmentation"], "description": "Urban street scene images."},
             # older than the publisher lookback -> skipped
             {"id": "AbdomenAtlas/OldCTRelease", "createdAt": old, "tags": [],
              "description": "abdominal CT dataset"},
@@ -46,6 +49,10 @@ def fixture_get_json(url, timeout=25, headers=None, data=None):
              "stargazers_count": 40, "topics": [],
              "description": "[MICCAI 2026] Merlin Plus is the first large-scale public CT dataset with "
                             "radiologist-created tumor masks across 9 organs"},
+            # model repo that only *uses* data
+            {"name": "CheXThing", "full_name": "MrGiovanni/CheXThing", "html_url": "https://github.com/MrGiovanni/CheXThing",
+             "created_at": recent, "topics": [],
+             "description": "A generative model trained on a large corpus of chest X-rays"},
             # code-only repo: relevant words but not a dataset release
             {"name": "SomeNet", "full_name": "MrGiovanni/SomeNet", "html_url": "https://github.com/MrGiovanni/SomeNet",
              "created_at": recent, "description": "Official code for CT tumor detection", "topics": []},
@@ -81,7 +88,10 @@ def priority_section(report):
 
 class NormAndClassify(unittest.TestCase):
     def setUp(self):
-        self.names, self.slugs, self.short, self.display = f.load_known(BEFORE)
+        self.names, self.slugs, self.short, self.display, self.cover = f.load_known(BEFORE)
+
+    def cls(self, name):
+        return f.classify(f.norm(name), self.names, self.slugs, self.short, self.cover)
 
     def test_plus_is_spelled_out(self):
         self.assertEqual(f.norm("Merlin+"), f.norm("MerlinPlus"))
@@ -90,7 +100,7 @@ class NormAndClassify(unittest.TestCase):
 
     def test_merlin_plus_is_a_derivative_of_merlin(self):
         for name in ("Merlin+", "MerlinPlus", "Merlin Plus", "Merlin-Plus"):
-            status, base = f.classify(f.norm(name), self.names, self.slugs, self.short)
+            status, base = self.cls(name)
             self.assertEqual(status, "derivative", name)
             self.assertEqual(self.display[base], "Merlin")
 
@@ -99,8 +109,17 @@ class NormAndClassify(unittest.TestCase):
 
     def test_extension_of_long_name_not_swallowed_as_mirror(self):
         # before: any superstring of an 8+ char catalog name was suppressed as a reupload
-        status, base = f.classify(f.norm("TotalSegmentator v3"), self.names, self.slugs, self.short)
+        status, base = self.cls("TotalSegmentator v3")
         self.assertEqual(status, "derivative")
+
+    def test_editions_the_catalog_covers_are_known(self):
+        # VerSe entry: "(2019 & 2020)"; LiTS entry: "(LiTS17)", 2017
+        for name in ("VerSe'20", "VerSe`19", "LiTS17", "LiTS 2017"):
+            self.assertEqual(self.cls(name), ("known", None), name)
+
+    def test_residue_cannot_continue_a_number(self):
+        # "HVSMR 2024" is not catalog "HVSMR-2.0" (key hvsmr20) + "24"
+        self.assertNotEqual(self.cls("HVSMR 2024")[1], "hvsmr20")
 
     def test_longest_base_wins(self):
         names = {"totalsegmentator", "totalsegmentatormri"}
@@ -113,6 +132,53 @@ class NormAndClassify(unittest.TestCase):
 
     def test_unrelated_is_new(self):
         self.assertEqual(f.classify("somebrandnewctcohort", self.names, self.slugs, self.short), (None, None))
+
+
+class Relevance(unittest.TestCase):
+    def test_stems_match_whole_words(self):
+        # the \b...\b wrapper used to stop stems like "radiolog" matching "radiology"
+        for text in ("radiology reports", "Mammography screening", "renal tumors", "pancreatic cancer",
+                     "computed tomography", "medical-imaging"):
+            self.assertTrue(f.relevant(text), text)
+
+    def test_exclude_unless_in_scope_modality(self):
+        self.assertFalse(f.relevant("100,000 histological images of human colorectal cancer"))
+        self.assertTrue(f.relevant("CT scans of histologically confirmed lung nodules"))
+
+    def test_claims_dataset(self):
+        yes = [("MerlinPlus", "[MICCAI 2026] Merlin Plus is the first large-scale public CT dataset with "
+                              "radiologist-created tumor masks across 9 organs"),
+               ("BreastMammo", "BreastMammo and DenseMammo: Benchmarks for Mammography Domain Generalization"),
+               ("Dataset_GBC_CT", "Gallbladder cancer CT scans")]
+        no = [("CheXThing", "A generative model trained on a large corpus of chest X-rays"),
+              ("CycleMED", "CycleGAN framework for CT/MRI translation with a custom dataset loader"),
+              ("newmajor", "Alzheimer's disease detection using MRI datasets"),
+              ("SomeNet", "Official code for CT tumor detection")]
+        for name, desc in yes:
+            self.assertTrue(f.claims_dataset(name, desc), name)
+        for name, desc in no:
+            self.assertFalse(f.claims_dataset(name, desc), name)
+
+    def test_publisher_rows_need_imaging_terms(self):
+        self.assertFalse(f.imaging("org/StreetScenes", "Urban street scene segmentation"))
+        self.assertTrue(f.imaging("AbdomenAtlas/MerlinPlus", "tumor masks for abdominal CT"))
+
+
+class HfToken(unittest.TestCase):
+    def test_rejected_token_falls_back_to_anonymous(self):
+        calls = []
+
+        def fake(url, timeout=25, headers=None, data=None):
+            calls.append(bool(headers))
+            if headers:
+                raise f.urllib.error.HTTPError(url, 401, "Unauthorized", {}, None)
+            return [{"id": "x"}]
+        with mock.patch.object(f, "get_json", fake), mock.patch.object(f, "_hf_token_ok", True), \
+                mock.patch.dict(os.environ, {"HF_TOKEN": "hf_revoked"}), \
+                contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(f.hf_get("u1"), [{"id": "x"}])
+            self.assertEqual(f.hf_get("u2"), [{"id": "x"}])
+        self.assertEqual(calls, [True, False, False])   # token tried once, then anonymous
 
 
 class Publishers(unittest.TestCase):
@@ -132,6 +198,8 @@ class EndToEnd(unittest.TestCase):
         self.assertIn("extends **Merlin**", pri)
         self.assertEqual(report.count("[MerlinPlus]("), 1)   # HF + GitHub deduped
         self.assertNotIn("OldCTRelease", report)
+        self.assertNotIn("StreetScenes", report)
+        self.assertNotIn("CheXThing", report)
         self.assertNotIn("SomeNet", report)
         self.assertNotIn("ForkedCT", report)
         self.assertNotIn("AbdomenAtlas1.0Mini", report)
@@ -146,6 +214,15 @@ class EndToEnd(unittest.TestCase):
             self.skipTest("merlin-plus not in catalog yet")
         self.assertNotIn("MerlinPlus", run_main(CATALOG))
 
+    def test_new_candidate_marked_fresh(self):
+        cat = BEFORE + [{"id": "merlin-plus", "name": "Merlin Plus", "full_name": None,
+                         "url": "https://huggingface.co/datasets/" + MERLIN_PLUS_HF}]
+        first = run_main(cat, prev_text="")
+        self.assertNotIn("MerlinPlus", first)
+        again = run_main(BEFORE, prev_text=first)
+        self.assertIn(f"- 🆕 [MerlinPlus](https://huggingface.co/datasets/{MERLIN_PLUS_HF})", again)
+        self.assertIn("_1 candidate(s) marked 🆕", again)
+
     def test_fresh_on_second_run_only_for_new(self):
         first = run_main(BEFORE, prev_text="")
         self.assertNotIn("- 🆕", first)                    # no previous report -> nothing flagged
@@ -159,7 +236,7 @@ def cands(n, prefix="Candidate"):
             for i in range(n)]
 
 
-KNOWN_EMPTY = (set(), set(), set(), {})
+KNOWN_EMPTY = (set(), set(), set(), {}, {})
 
 
 class SeenState(unittest.TestCase):
@@ -171,14 +248,38 @@ class SeenState(unittest.TestCase):
         finally:
             os.unlink(t.name)
 
-    def test_rows_cut_by_display_cap_are_not_refreshed(self):
-        week1 = f.select_new(cands(200), KNOWN_EMPTY, set())
-        report1 = f.build_report(week1, [], [])
-        self.assertIn("…and 150 more", report1)            # only 50 rows visible
-        prev = self.roundtrip(report1)
-        week2 = f.select_new(cands(200) + cands(1, "Brand new"), KNOWN_EMPTY, set(prev))
-        fresh = [c["name"] for c in week2 if c["fresh"]]
-        self.assertEqual(fresh, ["Brand new 00000 CT"])      # was: 151 (every cut row re-flagged)
+    def week(self, candidates, prev):
+        new = f.select_new(candidates, KNOWN_EMPTY, set(prev))
+        report = f.build_report(new, [], prev)
+        return new, report, self.roundtrip(report)
+
+    def test_first_run_baselines_everything(self):
+        new, report, seen = self.week(cands(200), [])
+        self.assertIn("…and 150 more", report)             # only 50 rows visible
+        self.assertEqual(len(seen), 200)                    # no previous report: all baseline
+
+    def test_backlog_of_cut_new_rows_drains(self):
+        _, _, prev = self.week(cands(3, "Old"), [])        # an earlier report exists
+        shown_ever, fresh_counts = set(), []
+        for _ in range(5):
+            new, report, prev = self.week(cands(3, "Old") + cands(200), prev)
+            fresh_counts.append(sum(c["fresh"] for c in new))
+            shown_ever |= {c["name"] for c in new if f"[{c['name']}](" in report}
+        # 200 new rows, 50 visible per week: each is shown once, flagged 🆕 until then
+        self.assertEqual(fresh_counts, [200, 150, 100, 50, 0])
+        self.assertTrue({c["name"] for c in cands(200)} <= shown_ever)
+
+    def test_only_genuinely_new_rows_fresh(self):
+        _, _, prev = self.week(cands(40), [])
+        _, _, prev = self.week(cands(40), prev)
+        new, _, _ = self.week(cands(40) + cands(1, "Brand new"), prev)
+        self.assertEqual([c["name"] for c in new if c["fresh"]], ["Brand new 00000 CT"])
+
+    def test_priority_rows_not_cut_by_source_cap(self):
+        rows = [{"name": f"Release {i:03d} CT", "url": f"https://x/{i}", "source": "HuggingFace",
+                 "publisher": "Org"} for i in range(80)]
+        report = f.build_report(f.select_new(rows, KNOWN_EMPTY, set()), [], [])
+        self.assertNotIn("more priority candidates not shown", report)
 
     def test_legacy_report_without_hidden_list(self):
         legacy = "## Zenodo (1)\n\n- [Old One](https://zenodo.org/records/1)\n"

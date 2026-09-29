@@ -8,9 +8,9 @@ layers**: a broad one-time discovery sweep, and an ongoing automated tracker.
 | Source | What it holds | How we query it |
 | --- | --- | --- |
 | [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/) | DICOM cancer imaging collections (CT/MRI/PET) | NBIA REST API `getCollectionValues` |
-| **Catalog publishers** | Follow-up releases from groups already in the catalog (AbdomenAtlas → PanTS → Merlin Plus) | Every Hugging Face org and GitHub owner in a catalog `url` (plus a few extras, e.g. `stanfordmimi`): `/api/datasets?author=…&sort=createdAt` and `/users/…/repos?sort=created`, last 365 days, **no popularity floor** — reported in the ⭐ Priority section |
+| **Catalog publishers** | Follow-up releases from groups already in the catalog (AbdomenAtlas → PanTS → Merlin Plus) | Every Hugging Face org and GitHub owner in a catalog `url` (plus a few extras: `stanfordmimi`, and `BodyMaps` / HF `MrGiovanni` for the AbdomenAtlas group): `/api/datasets?author=…&sort=createdAt` and `/users/…/repos?sort=created`, last 365 days, **no popularity floor** but must name an imaging modality or medical term — reported in the ⭐ Priority section |
 | [Hugging Face Datasets](https://huggingface.co/datasets) | Foundation-model / report-paired / VLM sets (CT-RATE, MR-RATE, Merlin, RadGenome…) | `/api/datasets` `search` (matches the **repo id only**) **and** card-tag `filter` (`radiology`, `ct`, `mri`, `medical-imaging`…, by downloads and newest) + downloads/likes filter |
-| [GitHub](https://github.com/search?type=repositories) | Dataset releases announced as a repo (README + download link to HF/Zenodo) | `/search/repositories` for "CT/MRI/X-ray/PET/mammography/radiology/medical imaging dataset" created in the last 120 days, top-starred; must describe itself as a dataset (uses the workflow's `GITHUB_TOKEN`) |
+| [GitHub](https://github.com/search?type=repositories) | Dataset releases announced as a repo (README + download link to HF/Zenodo) | `/search/repositories` for "CT/MRI/X-ray/PET/mammography/radiology/medical imaging dataset" created in the last 120 days, top-starred; must *introduce* a dataset rather than use one ("the first public CT dataset" vs "trained on …") (uses the workflow's `GITHUB_TOKEN`) |
 | [Grand Challenge](https://grand-challenge.org/) | Segmentation/detection challenges with expert labels | `/api/v1/challenges/` |
 | [Zenodo](https://zenodo.org/) | DOI-minted dataset releases (ROCOv2, TotalSegmentator, Duke Liver…) | `/api/records?type=dataset`, per modality/organ term, `sort=newest` **and** `sort=mostviewed` (back-catalog; unauthenticated page cap is 25) |
 | [Kaggle datasets](https://www.kaggle.com/datasets) | Community uploads & competition mirrors | `/api/v1/datasets/list` (unauthenticated) + download-count filter |
@@ -47,8 +47,9 @@ radiology relevance and (for Hugging Face search/tags) a minimum download/like c
 to skip personal reuploads, then **diffs against `data/datasets.json`** — including
 substring matching so mirrors of datasets we already list are suppressed. A name
 that is a catalog name plus a version/extension marker (`X+`, `X Plus`, `X v2`,
-`X 2026`, `X-MRI`) is *not* treated as a mirror: it is flagged "extends **X**" and
-listed in the ⭐ Priority section with the catalog-publisher releases. It also
+`X 2026`, `X-MRI`) is *not* treated as a mirror: unless the catalog entry already
+covers that edition/modality (VerSe "(2019 & 2020)" covers VerSe'20), it is flagged
+"extends **X**" and listed in the ⭐ Priority section with the catalog-publisher releases. It also
 checks the curated watchlist of population cohorts described above.
 
 **Why the publisher watch exists — the Merlin Plus miss (Sep 2026).** Merlin Plus
@@ -63,10 +64,11 @@ the catalog — so watching catalog publishers catches this whole class.
 The [`Track new datasets`](.github/workflows/track-datasets.yml) GitHub Action runs
 it **weekly (Mondays 06:00 UTC)** (and on demand via *Run workflow*) and opens or
 updates a single issue, **📡 New open radiology dataset candidates**, listing
-everything not yet in the catalog for human review. Candidates that never appeared
-in an earlier report are flagged **🆕** and sorted first, so the weekly review only
-needs to scan the new rows (the issue body carries the full seen-set in a hidden
-`<!-- tracker-seen: … -->` comment, because the visible rows are capped per source).
+everything not yet in the catalog for human review. Candidates not yet shown in an
+earlier report are flagged **🆕** and sorted first, so the weekly review only needs
+to scan the new rows. The issue body carries the cumulative seen-set in a hidden
+`<!-- tracker-seen: … -->` comment; rows cut by the per-source display cap are *not*
+recorded as seen, so a 🆕 backlog drains over the following weeks instead of being lost.
 To enable the Kaggle *competitions* source, add `KAGGLE_USERNAME` / `KAGGLE_KEY`
 repository secrets; an optional `HF_TOKEN` secret raises the Hugging Face rate limit
 (all other sources are credential-free). *Run workflow* with **dry run** checked

@@ -39,11 +39,11 @@ This hub is built around **dataset selection**:
 
 <!-- AUTOGEN:START -->
 
-**443 curated datasets** · 207 CT · 227 MRI · 48 PET · 94 X-ray · 371 native DICOM/NIfTI · 96 with reports/text · 259 with segmentation labels
+**444 curated datasets** · 208 CT · 227 MRI · 48 PET · 94 X-ray · 371 native DICOM/NIfTI · 97 with reports/text · 261 with segmentation labels
 
 Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-thorax) · [Cardiac](#cardiac) · [Vascular](#vascular) · [Abdominal](#abdominal) · [Pelvic & Prostate](#pelvic-prostate) · [Musculoskeletal](#musculoskeletal) · [Breast](#breast) · [Head & Neck](#head-neck) · [Dental & Maxillofacial](#dental-maxillofacial) · [Whole-Body & PET](#whole-body-pet) · [Multiple / Various body parts](#multiple-various-body-parts) · [Data Repositories & Portals](#data-repositories-portals)
 
-**Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · Multi = multi-sequence MRI or multi-phase CT. Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · REQUEST = apply for access. **Datasets covering several body regions (94) appear under each region.**
+**Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · Multi = multi-sequence MRI or multi-phase CT. Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · REQUEST = apply for access. **Datasets covering several body regions (95) appear under each region.**
 
 ### 🧠 Neuro (Brain & Spine)  <sub>(139)</sub>
 
@@ -394,7 +394,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [MESA](https://biolincc.nhlbi.nih.gov/studies/mesa/) | MRI, CT | 2000 | 🟢 DICOM, derived | — | — | ✅ | REQUEST | 6,814 participants |
 | [ARIC](https://sites.cscc.unc.edu/aric/) | MRI, PET | 1993 | 🟢 DICOM, derived | ✅ | ✅ | ✅ | DUA | 15,792 participants enrolled (1987-89); brain MRI in subsets (~1,900 at visit 3 and ~1,900 in ARIC-NCS) and amyloid PET in a smaller subset (ARIC-PET) |
 
-### 🫃 Abdominal  <sub>(96)</sub>
+### 🫃 Abdominal  <sub>(97)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -404,6 +404,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [CMB-OV](https://www.cancerimagingarchive.net/collection/cmb-ov/) | CT, MRI | 2026 | 🟢 DICOM, SVS, JSON | ✅ | — | ✅ | OPEN | 36.99 GB radiology (Version 4); 19 radiology subjects, 71 studies, 554 series, 68,415 images; 162 GB histopathology (48 subjects) |
 | [FLARE26-MLLM-3D](https://huggingface.co/datasets/FLARE-MedFM/FLARE26-MLLM-3D) | CT | 2026 | 🟢 NIfTI, JSON | ✅ | ✅ | — | REGISTRATION | ~374 GB; thousands of 3D CT volumes with paired reports/QA |
 | [Gastric-X](https://huggingface.co/datasets/HaoChen2/Gastric-X) | CT | 2026 | 🟢 NIfTI, JSON, PNG | ✅ | ✅ | ✅ | REGISTRATION | 1,403 patients; 4,897 CT phases (~155 GB) |
+| [Merlin Plus](https://github.com/MrGiovanni/MerlinPlus) | CT | 2026 | 🟡 NIfTI, CSV | ✅ | ✅ | — | OPEN | 1,193 radiologist-created tumor masks (9 organs) + 44-class AI organ masks for the 25,494 Merlin CT scans (18,317 patients); 3,830 patients with 2+ scans; no images included |
 | [AbdomenAtlas 3.0](https://github.com/MrGiovanni/RadGPT) | CT | 2025 | 🟢 NIfTI | ✅ | ✅ | ✅ | OPEN | 9,262 CT volumes (3,220 with a contrast-enhanced phase) + reports |
 | [CURVAS-PDAC](https://curvas-pdacvi.grand-challenge.org/) | CT | 2025 | 🟢 NIfTI | — | ✅ | — | OPEN | Training set: 40 contrast-enhanced abdominal CT cases (of a 125-scan cohort; validation=5, test=85 withheld); ~5.5 GB; each case has 5 PDAC segmentations plus STAPLE consensus and vessel annotations |
 | [CirrMRI600+](https://github.com/NUBagciLab/CirrMRI600Plus) | MRI | 2025 | 🟢 NIfTI | — | ✅ | ✅ | OPEN | 600+ MRI volumes (T1W and T2W); ~15GB |
@@ -411,6 +412,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [FLARE-Task4-CT-FM](https://huggingface.co/datasets/FLARE-MedFM/FLARE-Task4-CT-FM) | CT | 2025 | 🟢 NIfTI | — | — | — | REGISTRATION | 10,000+ 3D CT volumes (807 GB) |
 | [FLARE-Task4-MRI-FM](https://huggingface.co/datasets/FLARE-MedFM/FLARE-Task4-MRI-FM) | MRI | 2025 | 🟢 NIfTI | — | ✅ | ✅ | REGISTRATION | 10,000+ unlabeled 3D MRI volumes for pretraining, plus smaller labeled downstream sets |
 | [MedVision](https://huggingface.co/datasets/YongchengYAO/MedVision) | CT, MRI, PET, X-ray | 2025 | 🟢 NIfTI | — | ✅ | ✅ | OPEN | 29K 3D images / 11.2M 2D slices (~1TB complete) |
+| [Merlin](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40) | CT | 2025 | 🟢 NIfTI, XLSX, CSV | ✅ | ✅ | — | DUA | 25,494 abdominal/pelvic CT scans from 18,317 patients |
 | [PanTS](https://github.com/MrGiovanni/PanTS) | CT | 2025 | 🟢 NIfTI | ✅ | ✅ | — | OPEN | 36,390 3D CT volumes from 145 centers; ~300GB |
 | [PancancerCTSeg](https://huggingface.co/datasets/FLARE-MedFM/PancancerCTSeg) | CT | 2025 | 🟢 NIfTI | — | ✅ | — | REQUEST | ~1.24 TB; 17,000+ labeled CT scans plus unlabeled and validation subsets |
 | [PreCT-160K](https://huggingface.co/datasets/Luffy503/PreCT-160K) | CT | 2025 | 🟢 NIfTI | — | — | — | OPEN | ~160,000 CT volumes; ~5.63TB |
@@ -429,7 +431,6 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [IMed-361M](https://huggingface.co/datasets/General-Medical-AI/IMed-361M) | CT, MRI, X-ray, PET | 2024 | 🟢 NPZ, PNG, NIfTI | — | ✅ | — | REGISTRATION | 287 GB; ~6.4M image-mask pairs with 361 million masks |
 | [Learn2Reg](https://learn2reg.grand-challenge.org/) | CT, MRI, PET | 2024 | 🟢 NIfTI | — | ✅ | ✅ | OPEN | Multiple task datasets (e.g., OASIS 416 brain MR scans, extended NLST lung CT, ThoraxCBCT, Abdomen CT-CT 30/20, Abdomen MR-CT, Hippocampus MR 263/131, whole-body PSMA PET/CT ~597 scans) |
 | [MedPix-2.0](https://huggingface.co/datasets/architojha/medpix-2.0-dataset) | CT, MRI, X-ray | 2024 | 🟡 Parquet | ✅ | — | — | OPEN | 2,050 image-text case items |
-| [Merlin](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40) | CT | 2024 | 🟢 NIfTI | ✅ | — | — | DUA | 25,494 abdominal/pelvic CT scans from 18,317 patients (>6M images) |
 | [OmniMedVQA](https://huggingface.co/datasets/foreverbeliever/OmniMedVQA) | CT, MRI, X-ray | 2024 | 🟡 PNG, JSON | ✅ | — | — | OPEN | 118,010 images / 127,995 QA items from 73 source datasets |
 | [PANORAMA](https://panorama.grand-challenge.org/) | CT | 2024 | 🟢 NIfTI | — | ✅ | — | REGISTRATION | ~2,238 CECT training scans (two centers) plus 194 MSD and 80 NIH external cases; ~197 GB |
 | [PanSegData](https://osf.io/kysnj/) | MRI | 2024 | 🟢 NIfTI | — | ✅ | ✅ | OPEN | 767 MRI (385 T1W + 382 T2W; 499 participants, 5 centers) |
@@ -495,7 +496,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Health ABC](https://agingresearchbiobank.nia.nih.gov/studies/healthabc/) | CT, DXA | 1997 | 🟢 DICOM, derived | — | ✅ | — | DUA | 3,075 older adults (aged 70-79 at baseline) |
 | [Fenland Study](https://studies.epi.ims.cam.ac.uk/fenland/data-sharing) | DXA | — | 🟡 derived | — | — | — | REQUEST | ~12,435 participants |
 
-### ⬇️ Pelvic & Prostate  <sub>(34)</sub>
+### ⬇️ Pelvic & Prostate  <sub>(35)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -503,7 +504,9 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [CMB-OV](https://www.cancerimagingarchive.net/collection/cmb-ov/) | CT, MRI | 2026 | 🟢 DICOM, SVS, JSON | ✅ | — | ✅ | OPEN | 36.99 GB radiology (Version 4); 19 radiology subjects, 71 studies, 554 series, 68,415 images; 162 GB histopathology (48 subjects) |
 | [CMB-PCA](https://www.cancerimagingarchive.net/collection/cmb-pca/) | MRI, CT, PET, X-ray | 2026 | 🟢 DICOM, SVS, JSON | ✅ | — | ✅ | OPEN | 98.09 GB; 76 subjects (open radiology tier: 26 subjects, ~16.41 GB) |
 | [COBRA2026](https://doi.org/10.5281/zenodo.21322350) | CT | 2026 | 🟢 MHA, XML, YAML, PNG | — | — | — | OPEN | 867 cases (692 train / 52 val / 123 test); ~950 GB total |
+| [Merlin Plus](https://github.com/MrGiovanni/MerlinPlus) | CT | 2026 | 🟡 NIfTI, CSV | ✅ | ✅ | — | OPEN | 1,193 radiologist-created tumor masks (9 organs) + 44-class AI organ masks for the 25,494 Merlin CT scans (18,317 patients); 3,830 patients with 2+ scans; no images included |
 | [LUND-PROBE](https://datahub.aida.scilifelab.se/10.23698/aida/lund-probe) | MRI, CT | 2025 | 🟢 NIfTI | — | ✅ | ✅ | REQUEST | 467 patients (432 primary + 35 extended deep-learning subset), 176.56 GB |
+| [Merlin](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40) | CT | 2025 | 🟢 NIfTI, XLSX, CSV | ✅ | ✅ | — | DUA | 25,494 abdominal/pelvic CT scans from 18,317 patients |
 | [PancancerCTSeg](https://huggingface.co/datasets/FLARE-MedFM/PancancerCTSeg) | CT | 2025 | 🟢 NIfTI | — | ✅ | — | REQUEST | ~1.24 TB; 17,000+ labeled CT scans plus unlabeled and validation subsets |
 | [PreCT-160K](https://huggingface.co/datasets/Luffy503/PreCT-160K) | CT | 2025 | 🟢 NIfTI | — | — | — | OPEN | ~160,000 CT volumes; ~5.63TB |
 | [RadImageNet-VQA](https://huggingface.co/datasets/raidium/RadImageNet-VQA) | CT, MRI | 2025 | 🟡 Parquet | ✅ | — | — | REGISTRATION | ~77 GB; 750K images with ~7.5M generated samples (750K captions + 6.75M QA pairs) |
@@ -512,7 +515,6 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Healthy-Total-Body-CTs](https://www.cancerimagingarchive.net/collection/healthy-total-body-cts/) | CT | 2024 | 🟢 DICOM, NIfTI, XLSX | — | ✅ | — | REQUEST | 30 healthy adult subjects; 59.03 GB; 111,778 images across 135 series |
 | [IMed-361M](https://huggingface.co/datasets/General-Medical-AI/IMed-361M) | CT, MRI, X-ray, PET | 2024 | 🟢 NPZ, PNG, NIfTI | — | ✅ | — | REGISTRATION | 287 GB; ~6.4M image-mask pairs with 361 million masks |
 | [MedPix-2.0](https://huggingface.co/datasets/architojha/medpix-2.0-dataset) | CT, MRI, X-ray | 2024 | 🟡 Parquet | ✅ | — | — | OPEN | 2,050 image-text case items |
-| [Merlin](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40) | CT | 2024 | 🟢 NIfTI | ✅ | — | — | DUA | 25,494 abdominal/pelvic CT scans from 18,317 patients (>6M images) |
 | [VoComni](https://huggingface.co/datasets/Luffy503/VoComni) | CT | 2024 | 🟢 NIfTI | — | ✅ | — | OPEN | 20,000 CT volumes; ~1.7TB |
 | [fastMRI Prostate](https://fastmri.med.nyu.edu/) | MRI | 2024 | 🟡 HDF5 | — | — | ✅ | DUA | — |
 | [DAP Atlas](https://github.com/alexanderjaus/AtlasDataset) | CT | 2023 | 🟢 NIfTI | — | ✅ | — | OPEN | 533 whole-body CT scans (from AutoPET), 142 anatomical structures |

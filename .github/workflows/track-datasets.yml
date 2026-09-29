@@ -5,14 +5,22 @@ name: Track new datasets
 # candidates that were not in the previous report are flagged 🆕.
 #
 # Optional secrets KAGGLE_USERNAME / KAGGLE_KEY enable the Kaggle *competitions*
-# source (get a token at kaggle.com → Settings → API → Create New Token).
-# Kaggle datasets, TCIA, Zenodo, Grand Challenge, PhysioNet, OpenNeuro and
-# Hugging Face need no credentials.
+# source (get a token at kaggle.com → Settings → API → Create New Token); optional
+# HF_TOKEN raises the Hugging Face rate limit. The built-in GITHUB_TOKEN covers the
+# GitHub sources. Every other source needs no credentials.
+#
+# Run workflow → "dry run" prints the report to the job log / summary without
+# touching the issue (for checking tracker changes on a branch).
 
 on:
   schedule:
     - cron: "0 6 * * 1"   # 06:00 UTC every Monday
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run: print the report to the log/summary, don't update the issue"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -53,11 +61,20 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}   # GitHub search/repo-list rate limits
         run: |
           if ! python3 scripts/find_new_datasets.py --limit 100 --prev prev.md > report.md; then
             touch .tracker_failed
           fi
+      - name: Show report (dry run)
+        if: ${{ inputs.dry_run }}
+        run: |
+          cat report.md
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          test ! -f .tracker_failed
       - name: Open or update review issue
+        if: ${{ !inputs.dry_run }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

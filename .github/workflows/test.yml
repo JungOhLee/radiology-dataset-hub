@@ -1,0 +1,21 @@
+name: Test
+
+# Offline checks: catalog schema + tracker unit tests (no network needed).
+on:
+  push:
+    paths: ["data/**", "scripts/**", ".github/workflows/test.yml"]
+  pull_request:
+    paths: ["data/**", "scripts/**", ".github/workflows/test.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate datasets.json
+        run: python3 scripts/validate.py
+      - name: Tracker unit tests
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v

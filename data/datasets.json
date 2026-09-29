@@ -8273,6 +8273,69 @@
     "longitudinal": true
   },
   {
+    "id": "cancerverse",
+    "name": "CancerVerse",
+    "full_name": "CancerVerse: A Fully Open Longitudinal and Multimodal Dataset for Multicancer Screening",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Pelvis",
+      "Chest"
+    ],
+    "anatomy": "Chest, abdomen and pelvis; target cancers of the liver, kidney, pancreas, colon, adrenal gland, bladder, duodenum, esophagus, gallbladder, prostate, spleen, stomach and uterus",
+    "modality": [
+      "CT"
+    ],
+    "year": 2026,
+    "format": [
+      "NIfTI",
+      "CSV"
+    ],
+    "raw_image": true,
+    "size": "24,168 CT volumes from 13,863 patients (staged release; stage 1: 22,865 volumes with reports)",
+    "paired_text": true,
+    "paired_text_detail": "Each CT volume is paired with the radiologist's original free-text report (full impression); the first release stage lists 22,865 scan-report pairs, and structured oncology labels are announced for a later release.",
+    "multi_sequence": true,
+    "multi_sequence_detail": "Scans span 4 CT contrast phases, with the phase recorded per volume in the scan metadata (one ct.nii.gz per volume); the card does not name the phases, but third-party code reading the metadata uses values such as non-contrast, arterial/arterial_early, arterial_late and portal_venous/venous, plus 'u' for unknown.",
+    "segmentation": false,
+    "segmentation_detail": "Not confirmed released: expert manual voxel-wise tumor masks for 13 cancer types (no AI-generated masks, per the card and paper) were scheduled 'by September 2026'; as of the BodyMaps viewer code on 2026-09-27, CancerVerse was still CT-only with 'no masks yet'. Re-check the HF repo.",
+    "other_labels": [
+      "radiology reports",
+      "longitudinal metadata (de-identified patient IDs, exam dates)",
+      "demographics (sex, age)",
+      "scan acquisition metadata (contrast phase, scanner, study/series/protocol descriptions)"
+    ],
+    "tasks": [
+      "report generation",
+      "image-text learning",
+      "longitudinal analysis",
+      "multicancer detection/screening"
+    ],
+    "license": "CC BY-NC-ND 4.0 (non-commercial research use; commercial use licensed separately by BodyMaps)",
+    "access": "registration",
+    "host": "Hugging Face (BodyMaps/CancerVerse)",
+    "url": "https://huggingface.co/datasets/BodyMaps/CancerVerse",
+    "description": "A MICCAI 2026 longitudinal chest/abdomen/pelvis CT dataset for multicancer screening, with 24,168 scans from 13,863 patients paired with radiology reports and scan metadata, released in stages on Hugging Face with expert tumor masks for 13 cancer types announced.",
+    "details": {
+      "label_schema": [
+        "Released: one free-text radiology report per CT volume (the radiologist's full impression); the paper reports reports for 99.8% of patients",
+        "Released: scan-level metadata table (CancerVerse_dataset_metadata.csv, one row per CT volume keyed by 'CancerVerse ID', with 'Patient ID', 'exam_date' and 'phase' columns per third-party code) with sex, age, exam date, contrast phase (4 phases), scanner, and study/series/protocol descriptions",
+        "Released: longitudinal linkage through stable de-identified patient IDs plus exam dates, so each patient's imaging timeline can be rebuilt (HF card: up to 26 timepoints spanning up to 14.4 years; paper: 1-32 scans per cancer patient, median 3 scans among patients with follow-up, median follow-up 299 days)",
+        "Announced for September 2026, release not confirmed: manual voxel-wise, radiologist-verified tumor masks (no AI-generated masks; every lesion drawn by at least one of 28 expert annotators over more than 13 months) for 13 cancer types: liver, kidney, pancreas, colon, adrenal gland, bladder, duodenum, esophagus, gallbladder, prostate, spleen, stomach, uterus. Label indices and mask file layout are not published yet",
+        "Announced for August 2026, release not confirmed: pathology results as ICD-10 codes (the paper reports pathology results for 44.8% of patients)",
+        "Announced for September 2026, release not confirmed: a clinical and longitudinal layer with cancer histology, TNM stage, treatments received, surgical resections, RECIST treatment response, metastatic sites, disease-status narratives, follow-up recommendations, comorbidities and devices/implants (the paper reports demographics for 80.4% of patients and clinical variables for 74.7%)",
+        "Announced, not yet released: structured, machine-readable oncology labels (card: 'masks and structured oncology labels are coming next')"
+      ],
+      "file_structure": "Downloaded from the Hugging Face dataset repo BodyMaps/CancerVerse with the card's download_cancerverse.sh script after installing huggingface_hub[cli] and running `hf auth login`. The download root holds CancerVerse_dataset_metadata.csv (one row per CT volume) and a CancerVerse/ folder with one compressed NIfTI CT per case at CancerVerse/CV_########/ct.nii.gz (8-digit ids). This layout comes from third-party code that ran `hf download BodyMaps/CancerVerse` and from the BodyMaps viewer README, not from the HF file tree (BodyMaps' own server copy adds an image_only/ level). How the reports are stored is not documented in the sources read.",
+      "splits": "No official train/val/test split is documented in the sources read. The paper evaluates multicancer screening as tumor detection/segmentation, measuring sensitivity at fixed false positives per scan, and uses a verified healthy cohort of 8,799 patients with more than 1 year of follow-up to estimate specificity; split IDs are not published.",
+      "extra": "Staged release (HF card seen only through search snippets, since huggingface.co is blocked here): Stage 1 lists 22,865 CT volumes and reports from 13,863 patients; the remaining volumes/reports and pathology ICD-10 codes were scheduled by August 2026, and expert tumor masks and the clinical/longitudinal layer by September 2026. Whether these have shipped could not be verified; the BodyMaps viewer code (last commit 2026-09-27, reading JHU's internal copy) still says 'no masks yet', and a third-party project's notes count 22,863 scans in the downloaded metadata. Counts differ by source: the MICCAI Open Access abstract gives 23,742 scans from 9,316 patients (1-19 scans per patient), while the JHU-hosted paper PDF and HF card give 24,168 scans from 13,863 patients (1-32 per cancer patient). Data come from multiple institutions in Switzerland and Turkey, acquired 2010-2025 on multiple scanners. The HF card calls the scans abdominal/pelvic, while the paper and the BodyMaps releases page say chest, abdomen and pelvis. Access is assumed gated from the card's `hf auth login` step; switch to 'open' if the HF repo is ungated. The NV-Reason-CT model card lists CancerVerse (public) in its training data: 22,720 cases from 13,778 patients (4,668 chest and 4,438 abdomen crops). The RT-Super README describes CancerVerse as having 'per-voxel annotations for organs and 13 tumor types' and no overlap with Merlin Plus; organ masks are not mentioned elsewhere. There is no dedicated GitHub repo. Not to be confused with the AAPM 2026 abstract 'Cancerverse: Multicenter CT Segmentation of 16 Cancers for Radiotherapy Targets and OARs', whose relation to this release is not documented."
+    },
+    "tags": [
+      "longitudinal"
+    ],
+    "longitudinal": true
+  },
+  {
     "id": "rexgradient-160k",
     "name": "ReXGradient-160K",
     "full_name": "ReXGradient-160K: A Large-Scale Publicly Available Dataset of Chest Radiographs with Free-text Reports",
@@ -8663,6 +8726,87 @@
       ],
       "file_structure": "Per-case folders (e.g. BDMAP_00000001/) each containing ct.nii.gz plus a combined label mask and a segmentations/ subfolder of one NIfTI file per structure (spleen.nii.gz, liver.nii.gz, ...), all in compressed NIfTI (.nii.gz) format.",
       "extra": "Organ masks are real annotations but tumor labels are AI-generated pseudo-labels (README notes only ~8 organs are 'pretty accurate'); the README says 'six types of tumors' rather than seven, and the tumor class names are not enumerated on the official GitHub page."
+    }
+  },
+  {
+    "id": "abdomenatlas-2-0",
+    "name": "AbdomenAtlas 2.0",
+    "full_name": "AbdomenAtlas 2.0: The Multi-Tumor Segmentation Dataset",
+    "type": "dataset",
+    "regions": [
+      "Abdomen",
+      "Pelvis"
+    ],
+    "anatomy": "Tumors of the liver, pancreas, kidney, colon, esophagus and uterus, plus abdominal and pelvic organs, vessels, lungs and femurs (26 anatomical classes in the label map)",
+    "modality": [
+      "CT"
+    ],
+    "year": 2025,
+    "format": [
+      "NIfTI"
+    ],
+    "raw_image": true,
+    "size": "10,135 CT scans from 89 hospitals; 15,130 tumor masks; 5,893 control scans (~400 GB)",
+    "paired_text": false,
+    "paired_text_detail": null,
+    "multi_sequence": false,
+    "multi_sequence_detail": null,
+    "segmentation": true,
+    "segmentation_detail": "Per-voxel masks for six tumor types (liver, pancreas, kidney, colon, esophagus, uterus), 15,130 tumor instances, built with the paper's SMART-Annotator pipeline: AI-generated tumor candidates at a high-sensitivity threshold, false positives removed by senior radiologists and final masks revised by junior radiologists (23 radiologists in total, per the paper). The 32-class label map also defines 26 anatomical classes (the 25 AbdomenAtlas 1.1 structures plus uterus); how the organ masks were made and whether they ship for every case is not documented. data/README.md shows one binary NIfTI mask per class; a combined_labels.nii.gz multi-label volume is also reported by users (issue #3).",
+    "other_labels": [],
+    "tasks": [
+      "tumor segmentation",
+      "tumor detection",
+      "multi-organ segmentation",
+      "benchmarking"
+    ],
+    "license": "CC BY-NC-ND 4.0",
+    "access": "open",
+    "host": "GitHub (BodyMaps/AbdomenAtlas2.0) / Hugging Face (MrGiovanni/AbdomenAtlas2.0Mini: CT) / JHU web server (labels)",
+    "url": "https://github.com/BodyMaps/AbdomenAtlas2.0",
+    "description": "A Johns Hopkins multi-tumor abdominal CT segmentation dataset (ICCV 2025) of 10,135 scans from 89 hospitals, with 15,130 per-voxel tumor masks across six organs (liver, pancreas, kidney, colon, esophagus, uterus) and 5,893 control scans, released as NIfTI with a 32-class label map.",
+    "details": {
+      "label_schema": [
+        "Voxel-wise segmentation with 32 classes, per the official class_map_abdomenatlas_2_0 in data/README.md (integer index - structure). data/README.md shows one binary NIfTI mask per class under label/BDMAP_XXXXXXXX/segmentations/ (only lesion files are listed, e.g. liver_lesion.nii.gz), while a user report (GitHub issue #3) describes a combined_labels.nii.gz multi-label volume; which organ masks ship for each case is not documented:",
+        "Label 1 - aorta",
+        "Label 2 - gall_bladder",
+        "Label 3 - kidney_left",
+        "Label 4 - kidney_right",
+        "Label 5 - liver",
+        "Label 6 - pancreas",
+        "Label 7 - postcava (inferior vena cava)",
+        "Label 8 - spleen",
+        "Label 9 - stomach",
+        "Label 10 - adrenal_gland_left",
+        "Label 11 - adrenal_gland_right",
+        "Label 12 - bladder",
+        "Label 13 - celiac_trunk",
+        "Label 14 - colon",
+        "Label 15 - duodenum",
+        "Label 16 - esophagus",
+        "Label 17 - femur_left",
+        "Label 18 - femur_right",
+        "Label 19 - hepatic_vessel",
+        "Label 20 - intestine",
+        "Label 21 - lung_left",
+        "Label 22 - lung_right",
+        "Label 23 - portal_vein_and_splenic_vein",
+        "Label 24 - prostate",
+        "Label 25 - rectum",
+        "Label 26 - uterus",
+        "Label 27 - liver_lesion (liver tumor)",
+        "Label 28 - pancreatic_lesion (pancreatic tumor)",
+        "Label 29 - kidney_lesion (kidney tumor)",
+        "Label 30 - colon_lesion (colon tumor)",
+        "Label 31 - endometrioma_tumor (the uterine tumor class; the README figure calls it 'uterus tumor')",
+        "Label 32 - esophagus_tumor",
+        "Labels 1-25 are the same as the AbdomenAtlas 1.1 class map. Label 26 (uterus) and the six tumor classes, labels 27-32, are new.",
+        "The paper and README figure describe '31 annotated structures (25 organs + 6 tumors)', one fewer than the 32-entry class map.",
+        "Tumor totals (README / arXiv v2): 15,130 per-voxel tumor instances across the six organs, plus 5,893 control scans. Per-organ tumor counts are not listed in the README. The official download scripts fetch no metadata or tumor-vs-control list, and GitHub issue #1 (Nov 2025, unanswered) asks for the IDs of the control cases; the Hugging Face file listing could not be checked."
+      ],
+      "file_structure": "Download with the two scripts in the repo's data/ folder. download_AbdomenAtlas2.0_ct.sh fetches the CT volumes from the Hugging Face dataset MrGiovanni/AbdomenAtlas2.0Mini (~400 GB) as 21 tar.gz shards of 500 case IDs each, AbdomenAtlas2.0Mini_ct_<start>_<end>.tar.gz, covering BDMAP_00000001 to BDMAP_00010500; it uses plain wget, with no token, and extracts each shard into AbdomenAtlas2.0/. download_AbdomenAtlas2.0_label.sh fetches a single archive, AbdomenAtlas2.0Mini_label.tar.gz, from www.cs.jhu.edu/~zongwei/dataset/ and copies its contents into AbdomenAtlas2.0/. data/README.md documents the layout AbdomenAtlas2.0/ct/BDMAP_XXXXXXXX/ct.nii.gz for the images and AbdomenAtlas2.0/label/BDMAP_XXXXXXXX/segmentations/<class>.nii.gz for the masks (e.g. liver_lesion.nii.gz, pancreatic_lesion.nii.gz, kidney_lesion.nii.gz). The archive internals were not inspected, so whether the extracted tree matches that layout is unconfirmed. GitHub issue #3 (Mar 2026, unanswered) loads BDMAP_00000030/combined_labels.nii.gz (474x362x194) against ct.nii.gz (512x512x194), with the same origin, i.e. the label volume appears cropped in-plane; no official script for realigning them is given.",
+      "splits": "The README lists all 10,135 scans as the 'Official training and Validation set' but publishes no split file lists. GitHub issue #2 (Jan 2026, unanswered) asks for the IID train/val list used in paper Table 3. The README names four external out-of-distribution test sets, none of them part of this release: the proprietary JHH Pancreatic Dataset, 3D-IRCADb, PANORAMA and KiPA.",
+      "extra": "Paper: Chen et al., 'Scaling Tumor Segmentation: Best Lessons from Real and Synthetic Data', ICCV 2025, pp. 24001-24013 (arXiv 2510.14831). The repo was created in July 2025; the CT download script was added on 23 Oct 2025 and the label script on 1 Nov 2025. Headline counts differ between versions: the README, the GitHub 'About' text and arXiv v2 give 10,135 scans / 15,130 tumors / 5,893 controls, while search snippets of arXiv v1 and the ICCV proceedings give 10,134 / 13,223 / 6,511. Per the paper, tumor masks were made with its SMART-Annotator pipeline (a model trained on public data proposed tumors at a high-sensitivity FROC threshold, senior radiologists removed false positives, junior radiologists revised the final masks), and it is the first public dataset with voxel-level esophageal and uterine tumor masks. The RadGPT paper (arXiv 2501.04678) uses the name AbdomenAtlas 2.0 for an earlier stage: the 9,262 AbdomenAtlas 1.1 CTs with AI-drafted, radiologist-revised liver, kidney and pancreatic tumor masks. How that relates to this 10,135-scan, six-tumor release, and which source datasets the scans come from beyond '89 source hospitals', is not documented in the sources read. The README does not say how many scans the 'Mini' download (HF MrGiovanni/AbdomenAtlas2.0Mini and AbdomenAtlas2.0Mini_label.tar.gz) contains; the CT shard names span IDs 00000001-00010500, and for AbdomenAtlas 1.0 'Mini' meant a subset. The README states 'The AI ranks first in Medical Segmentation Decathlon (MSD)' without giving results; its benchmark table has no numbers yet and no model checkpoints have been released. The README and LICENSE do not say how the licenses of the underlying public CT datasets apply; the README adds 'Paper content is covered by patents pending.' AbdomenAtlas 3.0 (RadGPT) is a separate catalog entry that pairs the 9,262 AbdomenAtlas 1.1 scans with reports. License: CC BY-NC-ND 4.0 per the GitHub LICENSE (\u00a9 The Johns Hopkins University); the Hugging Face card's license tag could not be checked."
     }
   },
   {
@@ -12095,7 +12239,7 @@
       "report generation",
       "anatomy-aware modeling"
     ],
-    "license": null,
+    "license": "CC BY-NC-ND 4.0",
     "access": "open",
     "host": "GitHub (Johns Hopkins, Zongwei Zhou group); data via download scripts",
     "url": "https://github.com/MrGiovanni/PanTS",

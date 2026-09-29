@@ -122,10 +122,10 @@ DATA_USE = re.compile(
 MEDICAL = re.compile(r"\b(medical|clinical|patients?|hospitals?|cancers?|tumou?rs?|diseases?)\b", re.I)
 
 # Publishers the catalog URLs don't reveal: Merlin is linked on stanfordaimi.azurewebsites.net,
-# and the JHU group behind AbdomenAtlas/PanTS/Merlin Plus also releases under BodyMaps
-# (AbdomenAtlas 2.0, CancerVerse) and the HF user MrGiovanni.
-EXTRA_HF_PUBLISHERS = ["stanfordmimi", "BodyMaps", "MrGiovanni"]
-EXTRA_GITHUB_PUBLISHERS = ["StanfordMIMI", "BodyMaps"]
+# and the JHU AbdomenAtlas group also hosts data under the HF user MrGiovanni
+# (AbdomenAtlas2.0Mini) while its catalog URLs point at GitHub.
+EXTRA_HF_PUBLISHERS = ["stanfordmimi", "MrGiovanni"]
+EXTRA_GITHUB_PUBLISHERS = ["StanfordMIMI"]
 PUBLISHER_LOOKBACK_DAYS = 365      # publisher watch: repos created in the last year
 GITHUB_SEARCH_LOOKBACK_DAYS = 120  # GitHub search: repos created in the last ~4 months
 

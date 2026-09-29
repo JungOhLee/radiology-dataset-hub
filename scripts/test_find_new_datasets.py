@@ -187,6 +187,9 @@ class Publishers(unittest.TestCase):
         self.assertIn("AbdomenAtlas", hf)     # AbdomenAtlas 1.0 is on HF under this org
         self.assertIn("MrGiovanni", gh)       # AbdomenAtlas 1.1 / 3.0, PanTS on GitHub
         self.assertIn("stanfordmimi", hf)     # Merlin's own publisher (extra)
+        hf_now, gh_now = f.catalog_publishers(CATALOG)
+        self.assertIn("BodyMaps", hf_now)     # CancerVerse
+        self.assertIn("BodyMaps", gh_now)     # AbdomenAtlas 2.0
         self.assertNotIn("datasets", [a.lower() for a in hf])
 
 

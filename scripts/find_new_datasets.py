@@ -26,6 +26,7 @@ import os
 import pathlib
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -34,17 +35,25 @@ DATA = ROOT / "data" / "datasets.json"
 HF_DATASET = "https://huggingface.co/datasets/"
 GH_API = "https://api.github.com"
 
-# radiology-relevance keywords (title/description must contain at least one)
+# radiology-relevance keywords (title/description must contain at least one). The
+# whole alternation sits between \b...\b, so stems need an explicit \w* ("radiolog\w*")
+# and nouns an explicit plural, or "radiology", "mammography", "tumors" never match.
 RELEVANT = re.compile(
-    r"\b(radiolog|\bct\b|computed tomog|\bmri\b|magnetic reson|\bpet\b|x-?ray|"
-    r"radiograph|mammograph|tomosynthesis|dicom|nifti|chest|brain|tumor|tumour|"
-    r"lesion|lung|cardiac|abdomen|abdominal|prostate|vertebra|spine|nodule|segmentation|"
-    r"liver|hepatic|kidney|renal|pancrea|spleen|knee|shoulder|hip|bone|breast|"
-    r"stroke|aneurysm|fracture|osteo|meniscus|glioma|carcinoma|metasta|"
-    r"biobank|cohort|population imaging|body composition|\bdxa\b|dexa|"
-    r"epidemiolog|phenotyp|opportunistic|sarcopenia|whole-?body)\b",
+    r"\b(radiolog\w*|ct|computed[\s-]tomog\w*|mri|magnetic[\s-]reson\w*|pet|x-?rays?|"
+    r"radiograph\w*|mammogra\w*|tomosynthesis|dicom|nifti|medical[\s-]imag\w*|chest|brains?|"
+    r"tumou?rs?|lesions?|lungs?|cardiac|abdomen|abdominal|prostate|vertebra\w*|spine|spinal|"
+    r"nodules?|segmentation|liver|hepatic|kidneys?|renal|pancrea\w*|spleen|knees?|shoulders?|"
+    r"hips?|bones?|breast|stroke|aneurysms?|fractures?|osteo\w*|meniscus|gliomas?|carcinomas?|"
+    r"metasta\w*|biobank|cohorts?|population imaging|body composition|dxa|dexa|"
+    r"epidemiolog\w*|phenotyp\w*|opportunistic|sarcopenia|whole-?body)\b",
     re.I,
 )
+
+# explicit in-scope imaging modality: overrides EXCLUDE ("CT of histologically confirmed
+# nodules") and is required of publisher-watch rows, which have no medical pre-filter
+MODALITY = re.compile(
+    r"\b(radiolog\w*|ct|cta|cbct|computed[\s-]tomog\w*|mri|magnetic[\s-]reson\w*|pet[\s/-]?ct|"
+    r"x-?rays?|radiograph\w*|mammogra\w*|tomosynthesis|dicom|nifti|dxa|dexa)\b", re.I)
 
 # OpenNeuro is dominated by task-fMRI cognitive studies; only surface records that
 # look clinical/pathological (the radiology-relevant slice of BIDS neuroimaging).
@@ -88,10 +97,10 @@ WATCHLIST = [
     ("NHLBI BioLINCC", "https://biolincc.nhlbi.nih.gov/"),
     ("dbGaP", "https://www.ncbi.nlm.nih.gov/gap/"),
 ]
-# exclude obvious non-radiology modalities
+# exclude obvious non-radiology modalities (unless an in-scope MODALITY is also named)
 EXCLUDE = re.compile(
-    r"\b(histopatholog|whole slide|dermoscop|fundus|retina|oct\b|endoscop|"
-    r"ultrasound echocardio|ecg|eeg|audio|speech|genom|protein)\b", re.I,
+    r"\b(histopatholog\w*|histolog\w*|whole[\s-]slide|dermoscop\w*|fundus|retina\w*|oct|"
+    r"endoscop\w*|ultrasound echocardio\w*|ecg|eeg|audio|speech|genom\w*|proteins?)\b", re.I,
 )
 
 # What's left of a candidate name after removing a catalog name, when that residue
@@ -100,14 +109,23 @@ EXCLUDE = re.compile(
 DERIVATIVE = re.compile(r"plus|v?\d{1,2}|20\d\d|ext|extended|extension|xl|large|next|"
                         r"pro|ii|iii|iv|mri|ct|pet|cxr|3d|4d")
 
-# GitHub hosts mostly code; a repo counts as a dataset release only if it says so
-DATASETISH = re.compile(r"\b(datasets?|benchmark|annotations?|masks?|cohort|"
-                        r"collection|corpus|atlas)\b", re.I)
+# GitHub hosts mostly code; a repo counts as a dataset release only if it introduces
+# one. DATA_USE marks mentions of data the repo merely uses ("trained on a large
+# corpus of chest X-rays", "detection using MRI datasets", "custom dataset loader").
+DATASETISH = re.compile(r"\b(datasets?|benchmarks?|annotations?|masks?|cohorts?|"
+                        r"collections?|corpus|atlas)\b", re.I)
+DATA_USE = re.compile(
+    r"\b(?:using|uses|use|on|from|with|of|in|for|across|into|like|trained|train|built|"
+    r"evaluat\w*|tested|validated|fine-?tuned|pre-?trained)\s+(?:[\w'/+.-]+\s+){0,5}?"
+    r"(?:datasets?|benchmarks?|annotations?|masks?|cohorts?|collections?|corpus|atlas)\b"
+    r"|\b(?:datasets?|data)[\s_-]*loaders?\b", re.I)
+MEDICAL = re.compile(r"\b(medical|clinical|patients?|hospitals?|cancers?|tumou?rs?|diseases?)\b", re.I)
 
-# Publishers whose datasets are in the catalog under a non-HF/GitHub URL (Merlin is
-# linked on stanfordaimi.azurewebsites.net), so catalog_publishers() can't see them.
-EXTRA_HF_PUBLISHERS = ["stanfordmimi"]
-EXTRA_GITHUB_PUBLISHERS = ["StanfordMIMI"]
+# Publishers the catalog URLs don't reveal: Merlin is linked on stanfordaimi.azurewebsites.net,
+# and the JHU group behind AbdomenAtlas/PanTS/Merlin Plus also releases under BodyMaps
+# (AbdomenAtlas 2.0, CancerVerse) and the HF user MrGiovanni.
+EXTRA_HF_PUBLISHERS = ["stanfordmimi", "BodyMaps", "MrGiovanni"]
+EXTRA_GITHUB_PUBLISHERS = ["StanfordMIMI", "BodyMaps"]
 PUBLISHER_LOOKBACK_DAYS = 365      # publisher watch: repos created in the last year
 GITHUB_SEARCH_LOOKBACK_DAYS = 120  # GitHub search: repos created in the last ~4 months
 
@@ -129,9 +147,25 @@ def get_json(url, timeout=25, headers=None, data=None):
         return json.loads(r.read().decode("utf-8", "replace"))
 
 
-def hf_auth():
-    tok = os.environ.get("HF_TOKEN")
-    return {"Authorization": "Bearer " + tok} if tok else {}
+_hf_token_ok = True
+
+
+def hf_get(url):
+    """GET a Hugging Face API URL with the optional HF_TOKEN. A stale or revoked token
+    gets 401 even on public listings, so fall back to anonymous for the rest of the
+    run rather than silently losing every Hugging Face source."""
+    global _hf_token_ok
+    tok = os.environ.get("HF_TOKEN") if _hf_token_ok else None
+    if tok:
+        try:
+            return get_json(url, headers={"Authorization": "Bearer " + tok})
+        except urllib.error.HTTPError as e:
+            if e.code != 401:
+                raise
+            _hf_token_ok = False
+            print("  (HF_TOKEN rejected with 401 - continuing anonymously; update or remove the secret)",
+                  file=sys.stderr)
+    return get_json(url)
 
 
 def gh_auth():
@@ -149,10 +183,15 @@ def load_catalog():
 def load_known(ds=None):
     ds = load_catalog() if ds is None else ds
     display = {}   # norm key -> catalog display name (to say what a derivative extends)
+    cover = {}     # norm key -> tokens of that entry's names/year/modalities
     for d in ds:
+        text = " ".join([d.get("full_name") or "", d["name"], str(d.get("year") or "")]
+                        + list(d.get("modality") or []))
+        toks = set(re.findall(r"[a-z]+|\d+", text.lower().replace("+", " plus ")))
         for n in (d.get("full_name"), d["name"]):   # name wins on a clash
             if n:
                 display[norm(n)] = d["name"]
+                cover[norm(n)] = cover.get(norm(n), set()) | toks
     names = set(display)
     urls = {(d.get("url") or "").lower().rstrip("/") for d in ds}
     slugs = set()
@@ -163,22 +202,39 @@ def load_known(ds=None):
     # canonical tokens used for substring matching to catch reuploads; min length 8 so
     # short generic names ("ATLAS", "BraTS") can't swallow unrelated new candidates
     short = {k for k in names if 8 <= len(k) <= 24}
-    return names, slugs, short, display
+    return names, slugs, short, display, cover
 
 
-def classify(key, names, slugs, short):
+def covered(residue, toks):
+    """True if the catalog entry already covers the edition/modality the residue names:
+    VerSe "(2019 & 2020)" covers VerSe'20; LiTS (2017) covers LiTS17; AMOS [CT, MRI]
+    covers AMOS-MRI."""
+    alts = {residue}
+    m = re.fullmatch(r"v?(\d+)", residue)
+    if m:
+        alts |= {m.group(1), "20" + m.group(1)}
+    return bool(alts & toks)
+
+
+def classify(key, names, slugs, short, cover=None):
     """("known", None): in the catalog, or a mirror/reupload of a catalog dataset.
-    ("derivative", base): a catalog name + version/extension marker (DERIVATIVE) —
-      likely a new release building on catalog dataset `base`, so it must surface.
+    ("derivative", base): a catalog name + version/extension marker (DERIVATIVE) that
+      the catalog entry doesn't already cover — likely a new release building on catalog
+      dataset `base`, so it must surface.
     (None, None): unrelated to the catalog."""
     if not key or key in names or key in slugs:
         return "known", None
     # longest catalog name the candidate starts with: "totalsegmentatormriv2" extends
-    # "TotalSegmentator MRI" (residue v2), not "TotalSegmentator" (residue mriv2)
+    # "TotalSegmentator MRI" (residue v2), not "TotalSegmentator" (residue mriv2). A
+    # residue can't continue a number: "HVSMR 2024" is not "HVSMR-2.0" + "24".
     bases = [k for k in names if len(k) >= 4 and key.startswith(k)
-             and DERIVATIVE.fullmatch(key[len(k):])]
+             and DERIVATIVE.fullmatch(key[len(k):])
+             and not (k[-1].isdigit() and key[len(k)].isdigit())]
     if bases:
-        return "derivative", max(bases, key=len)
+        base = max(bases, key=len)
+        if cover and covered(key[len(base):], cover.get(base, set())):
+            return "known", None
+        return "derivative", base
     # reupload/mirror under a different account: canonical name embedded in the id
     for k in short:
         if k in key or (len(key) >= 6 and key in k):
@@ -192,7 +248,18 @@ def is_known(key, names, slugs, short):
 
 def relevant(*texts):
     blob = " ".join(t for t in texts if t)
-    return bool(RELEVANT.search(blob)) and not EXCLUDE.search(blob)
+    if not RELEVANT.search(blob):
+        return False
+    return not EXCLUDE.search(blob) or bool(MODALITY.search(blob))
+
+
+def claims_dataset(name, desc, topics=""):
+    """A GitHub repo that introduces a dataset ("the first public CT dataset", repo
+    named *-Dataset), not one that uses one. Every GitHub-search hit mentions
+    "dataset" by construction, so a bare keyword check filters nothing."""
+    words = re.sub(r"(?<=[a-z])(?=[A-Z])|[_.-]", " ", name)   # Dataset_GBC_CT -> Dataset GBC CT
+    text = f"{words}. {desc}. {topics}"
+    return len(DATASETISH.findall(text)) > len(DATA_USE.findall(text))
 
 
 def catalog_publishers(ds):
@@ -228,17 +295,19 @@ def huggingface(limit, min_downloads=50, min_likes=3):
     out = []
     terms = ["radiology", "CT scan", "MRI", "chest x-ray", "medical imaging segmentation",
              "PET CT", "DICOM", "brain MRI", "mammography"]
-    # no "pet" tag: it means pets, and RELEVANT's \bpet\b would let those through
+    # no "pet" tag: it means pets, and RELEVANT's \bpet\b would let those through. A
+    # "+" joins tags that must all be present (repeated `filter` params are ANDed).
     tags = ["radiology", "medical-imaging", "ct", "ct-scan", "computed-tomography", "mri",
-            "x-ray", "chest-x-ray", "mammography"]
+            "x-ray", "chest-x-ray", "mammography", "medical+modality:3d"]
     queries = [("search", t, "downloads") for t in terms]
     queries += [("filter", t, sort) for t in tags for sort in ("downloads", "createdAt")]
     seen = set()
     for param, value, sort in queries:
-        url = ("https://huggingface.co/api/datasets?full=true&limit=%d&sort=%s&direction=-1&%s=%s"
-               % (limit, sort, param, urllib.parse.quote(value)))
+        qs = "&".join("%s=%s" % (param, urllib.parse.quote(v)) for v in value.split("+"))
+        url = ("https://huggingface.co/api/datasets?full=true&limit=%d&sort=%s&direction=-1&%s"
+               % (limit, sort, qs))
         try:
-            for d in get_json(url, headers=hf_auth()):
+            for d in hf_get(url):
                 did = d.get("id", "")
                 if did in seen:
                     continue
@@ -256,6 +325,13 @@ def huggingface(limit, min_downloads=50, min_likes=3):
     return out
 
 
+def imaging(*texts):
+    """Publisher-watch gate: orgs like OpenGVLab or microsoft publish plenty of
+    non-radiology data, so an anatomy/task word ("segmentation", "hip") isn't enough."""
+    blob = " ".join(t for t in texts if t)
+    return relevant(blob) and bool(MODALITY.search(blob) or MEDICAL.search(blob))
+
+
 def hf_publishers(authors, since):
     """Recent datasets from HF orgs that already publish catalog datasets. No
     download/like floor: a release is worth reviewing on day one, before it has any."""
@@ -264,7 +340,7 @@ def hf_publishers(authors, since):
         url = ("https://huggingface.co/api/datasets?author=%s&full=true&limit=50&sort=createdAt&direction=-1"
                % urllib.parse.quote(a))
         try:
-            data = get_json(url, headers=hf_auth())
+            data = hf_get(url)
         except Exception as e:
             print(f"  (HuggingFace publisher '{a}' skipped: {e})", file=sys.stderr)
             continue
@@ -273,8 +349,10 @@ def hf_publishers(authors, since):
             if created and created < since:
                 continue
             did = d.get("id", "")
-            desc = (d.get("description") or "") + " " + " ".join(d.get("tags", []))
-            if relevant(did, desc):
+            # free-form card tags only: auto tags like task_categories:image-segmentation
+            # would make any segmentation dataset look radiological
+            tags = " ".join(t for t in d.get("tags") or [] if ":" not in t)
+            if imaging(did, d.get("description") or "", tags):
                 out.append({"name": did.split("/")[-1], "id": did, "url": HF_DATASET + did,
                             "source": "HuggingFace", "publisher": a,
                             "pop": " · ".join(x for x in (a, created) if x)})
@@ -284,9 +362,15 @@ def hf_publishers(authors, since):
 def github_repo(r, source="GitHub", publisher=None):
     topics = " ".join(r.get("topics") or [])
     desc = r.get("description") or ""
+    name = r.get("name", "")
     if r.get("fork") or r.get("archived"):
         return None
-    if not (relevant(r.get("name", ""), desc, topics) and DATASETISH.search(f"{r.get('name', '')} {desc} {topics}")):
+    # this catalog and awesome-lists mention every dataset but release none
+    if (r.get("full_name", "").lower() == os.environ.get("GITHUB_REPOSITORY", "").lower()
+            or re.search(r"awesome|curated list", f"{name} {desc}", re.I)):
+        return None
+    gate = imaging if publisher else relevant
+    if not (gate(name, desc, topics) and claims_dataset(name, desc, topics)):
         return None
     created = (r.get("created_at") or "")[:10]
     stars = r.get("stargazers_count", 0) or 0
@@ -510,7 +594,8 @@ def grand_challenge(limit):
 
 SEEN_RE = re.compile(r"<!--\s*tracker-seen:([0-9a-f\s]*)-->")
 BODY_LIMIT = 64000     # GitHub rejects issue bodies over 65,536 chars; keep headroom
-MAX_ROWS = 50          # per section, shrunk automatically if the body would not fit
+MAX_ROWS = 50          # per source section, shrunk automatically if the body would not fit
+PRIORITY_MAX_ROWS = 100   # ⭐ Priority is never shrunk to make room
 
 
 def khash(key):
@@ -518,12 +603,12 @@ def khash(key):
 
 
 def load_prev_seen(path):
-    """Hashed keys of every candidate listed in earlier reports (the current issue
-    body), newest first, so this run can flag first-time candidates with 🆕.
-    Reports carry the full seen-set in a hidden `tracker-seen` comment: the visible
-    rows are capped per source, so keying on them alone re-flagged every row that
-    was cut last week (hundreds of false 🆕). Link TEXT (not URL: TCIA shares one
-    landing URL) is still read so reports from before the comment keep working."""
+    """Hashed keys of every candidate shown in earlier reports (the current issue
+    body), newest first, so this run can flag the rest with 🆕. Reports carry the
+    cumulative seen-set in a hidden `tracker-seen` comment: visible rows alone forget
+    everything shown in older reports, so rows rotated back in as 🆕 week after week
+    (hundreds of false 🆕). Link TEXT (not URL: TCIA shares one landing URL) is still
+    read so reports from before the comment keep working."""
     try:
         text = pathlib.Path(path).read_text(errors="replace")
     except OSError:
@@ -549,19 +634,23 @@ def row(c):
     return f"- {mark}[{name}]({c['url']}){pop}{ext}"
 
 
-def section(lines, title, rows, max_rows, what, intro=None):
+def section(lines, title, rows, max_rows, what, shown, intro=None):
     lines.append(f"## {title} ({len(rows)})\n")
     if intro:
         lines.append(intro + "\n")
     # first-time candidates first, then alphabetical
     rows = sorted(rows, key=lambda x: (not x.get("fresh"), x["name"].lower()))
-    lines += [row(c) for c in rows[:max_rows]]
+    visible = rows[:max_rows]
+    lines += [row(c) for c in visible]
+    shown.update(c["key"] for c in visible)
     if len(rows) > max_rows:
         lines.append(f"- _…and {len(rows) - max_rows} more {what} not shown (🆕 items always shown first)._")
     lines.append("")
 
 
 def render(new, missing_watch, have_prev, max_rows):
+    """Report body, plus the keys of the candidate rows it actually displays."""
+    shown = set()
     lines = [f"# Candidate radiology datasets not yet in the catalog ({len(new)})\n",
              "_Auto-generated by `scripts/find_new_datasets.py`. Heuristic — review each before adding; "
              "some may be out of scope, duplicates under another name, or non-open._\n",
@@ -575,11 +664,12 @@ def render(new, missing_watch, have_prev, max_rows):
     lines.append("")
     if have_prev:
         n_fresh = sum(1 for c in new if c.get("fresh"))
-        lines.append(f"_{n_fresh} candidate(s) marked 🆕 were not in any previous report — review those first._\n")
+        lines.append(f"_{n_fresh} candidate(s) marked 🆕 have not been shown in a previous report — "
+                     "review those first._\n")
     priority = [c for c in new if c.get("priority")]
     if priority:
         section(lines, "⭐ Priority — new from catalog publishers, or extending a catalog dataset",
-                priority, max_rows, "priority candidates",
+                priority, PRIORITY_MAX_ROWS, "priority candidates", shown,
                 intro="_Recent releases by Hugging Face orgs / GitHub owners that already publish a "
                       "catalog dataset, and names that extend one (X → X+ / X Plus / X v2). The likeliest "
                       "real additions — review these first._")
@@ -588,25 +678,28 @@ def render(new, missing_watch, have_prev, max_rows):
         if not c.get("priority"):
             by_src.setdefault(c["source"], []).append(c)
     for src in sorted(by_src):
-        section(lines, src, by_src[src], max_rows, f"from {src}")
+        section(lines, src, by_src[src], max_rows, f"from {src}", shown)
     if not new:
         lines.append("_No new candidates found this run._")
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines) + "\n", shown
 
 
 def build_report(new, missing_watch, prev_seen):
     """Render the report under GitHub's issue-body cap, then append the hidden
-    seen-set: this run's candidates first (all of them, so none resurfaces as 🆕
-    next week), then previously seen keys newest-first as room allows — keeping
-    them means a source that fails one week doesn't turn its whole backlog 🆕."""
-    cur = list(dict.fromkeys(khash(c["key"]) for c in new))
-    cur_set = set(cur)
-    carried = [h for h in prev_seen if h not in cur_set]
+    seen-set. Only rows a reviewer has actually seen are recorded (shown now, or
+    already seen before): a 🆕 row cut by the display cap stays 🆕 and sorts first
+    next week, so a backlog drains instead of being silently marked seen. Previously
+    seen keys follow newest-first as room allows — keeping them means a source that
+    fails one week doesn't turn its whole backlog 🆕."""
     for max_rows in (MAX_ROWS, 40, 30, 20, 10, 5):
-        body = render(new, missing_watch, bool(prev_seen), max_rows)
+        body, shown = render(new, missing_watch, bool(prev_seen), max_rows)
+        cur = list(dict.fromkeys(khash(c["key"]) for c in new
+                                 if c["key"] in shown or not c.get("fresh")))
         room = (BODY_LIMIT - u16len(body) - 40) // 9   # 8 hex chars + separator each
         if room >= len(cur):
             break
+    cur_set = set(cur)
+    carried = [h for h in prev_seen if h not in cur_set]
     seen = (cur + carried)[:max(room, len(cur))]
     return body + "\n<!-- tracker-seen: " + " ".join(seen) + " -->\n"
 
@@ -614,13 +707,13 @@ def build_report(new, missing_watch, prev_seen):
 def select_new(candidates, known, prev_set):
     """Drop catalog datasets and their mirrors, dedupe by name (first row wins),
     and tag each survivor: extends (catalog name it builds on), priority, fresh."""
-    names, slugs, short, display = known
+    names, slugs, short, display, cover = known
     new, seen = [], set()
     for c in candidates:
         key = norm(c["name"])
         if not key or key in seen:
             continue
-        status, base = classify(key, names, slugs, short)
+        status, base = classify(key, names, slugs, short, cover)
         if status == "known":
             continue
         seen.add(key)
@@ -647,7 +740,8 @@ def main():
     prev_seen = load_prev_seen(prev) if prev else []
     prev_set = set(prev_seen)   # empty on the very first run: then nothing is marked 🆕
     ds = load_catalog()
-    known_names, known_slugs, known_short, display = load_known(ds)
+    known = load_known(ds)
+    known_names, known_slugs, known_short = known[:3]
     hf_pubs, gh_pubs = catalog_publishers(ds)
 
     # publisher watch first: on a duplicate name across sources the first row wins,
@@ -665,7 +759,7 @@ def main():
     candidates += physionet()
     candidates += openneuro(limit)
 
-    new = select_new(candidates, (known_names, known_slugs, known_short, display), prev_set)
+    new = select_new(candidates, known, prev_set)
 
     # curated watchlist: important resources (esp. population cohorts) that are missing
     missing_watch = [(nm, url) for nm, url in WATCHLIST

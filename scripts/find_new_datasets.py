@@ -109,6 +109,12 @@ EXCLUDE = re.compile(
 DERIVATIVE = re.compile(r"plus|v?\d{1,2}|20\d\d|ext|extended|extension|xl|large|next|"
                         r"pro|ii|iii|iv|mri|ct|pet|cxr|3d|4d")
 
+# Packaging suffixes of a reformatted copy of a dataset (AMOS22-Lite, PI-CAI-preprocessed,
+# X-nifti-2d): a catalog name followed only by these is a mirror, not a new release.
+MIRROR_SUFFIX = re.compile(r"(?:lite|mini|subset|samples?|demo|preprocessed|processed|prepared|"
+                           r"nifti|nii|npz|png|jpe?g|2d|slices|resized|mirror|reupload|"
+                           r"dataset|data|hf|parquet|clean(?:ed)?)+$")
+
 # GitHub hosts mostly code; a repo counts as a dataset release only if it introduces
 # one. DATA_USE marks mentions of data the repo merely uses ("trained on a large
 # corpus of chest X-rays", "detection using MRI datasets", "custom dataset loader").
@@ -224,6 +230,8 @@ def classify(key, names, slugs, short, cover=None):
     (None, None): unrelated to the catalog."""
     if not key or key in names or key in slugs:
         return "known", None
+    if is_mirror(key, names, slugs):
+        return "known", None
     # longest catalog name the candidate starts with: "totalsegmentatormriv2" extends
     # "TotalSegmentator MRI" (residue v2), not "TotalSegmentator" (residue mriv2). A
     # residue can't continue a number: "HVSMR 2024" is not "HVSMR-2.0" + "24".
@@ -240,6 +248,17 @@ def classify(key, names, slugs, short, cover=None):
         if k in key or (len(key) >= 6 and key in k):
             return "known", None
     return None, None
+
+
+def is_mirror(key, names, slugs):
+    """Catalog name + packaging suffix: AMOS22-Lite, VerSe-Lite, AbdomenAtlas1.1Mini.
+    A 2-digit year may be abbreviated: HNTSMRG24-Lite copies HNTS-MRG 2024."""
+    m = MIRROR_SUFFIX.search(key)
+    base = key[:m.start()] if m else ""
+    if len(base) < 4:
+        return False
+    y = re.fullmatch(r"(.*\D)(\d\d)", base)
+    return any(b in names or b in slugs for b in {base, y and y.group(1) + "20" + y.group(2)} if b)
 
 
 def is_known(key, names, slugs, short):
@@ -286,12 +305,14 @@ def days_ago(n):
     return (datetime.date.today() - datetime.timedelta(days=n)).isoformat()
 
 
-def huggingface(limit, min_downloads=50, min_likes=3):
+def huggingface(limit, min_downloads=50, min_likes=3, tag_min_downloads=200, tag_min_likes=5):
     """Only surface established datasets (enough downloads/likes) to cut reupload noise.
     `search` matches the repo id only (owner/name), so it finds ids like
     "x/brain-mri" but never research releases with non-generic names
     (AbdomenAtlas/MerlinPlus); card-tag filters catch those by what the card
-    declares, newest-first as well as most-downloaded."""
+    declares, newest-first as well as most-downloaded. Tags match far more repos than
+    id terms (82 -> 371 rows in the first live run, mostly personal uploads), so tag
+    hits need a higher floor; known publishers are covered without one by hf_publishers()."""
     out = []
     terms = ["radiology", "CT scan", "MRI", "chest x-ray", "medical imaging segmentation",
              "PET CT", "DICOM", "brain MRI", "mammography"]
@@ -299,10 +320,11 @@ def huggingface(limit, min_downloads=50, min_likes=3):
     # "+" joins tags that must all be present (repeated `filter` params are ANDed).
     tags = ["radiology", "medical-imaging", "ct", "ct-scan", "computed-tomography", "mri",
             "x-ray", "chest-x-ray", "mammography", "medical+modality:3d"]
-    queries = [("search", t, "downloads") for t in terms]
-    queries += [("filter", t, sort) for t in tags for sort in ("downloads", "createdAt")]
-    seen = set()
-    for param, value, sort in queries:
+    queries = [("search", t, "downloads", min_downloads, min_likes) for t in terms]
+    queries += [("filter", t, sort, tag_min_downloads, tag_min_likes)
+                for t in tags for sort in ("downloads", "createdAt")]
+    seen = set()   # lowest floor runs first, so a repo seen once never deserved a laxer one
+    for param, value, sort, floor_dl, floor_likes in queries:
         qs = "&".join("%s=%s" % (param, urllib.parse.quote(v)) for v in value.split("+"))
         url = ("https://huggingface.co/api/datasets?full=true&limit=%d&sort=%s&direction=-1&%s"
                % (limit, sort, qs))
@@ -313,7 +335,7 @@ def huggingface(limit, min_downloads=50, min_likes=3):
                     continue
                 seen.add(did)
                 dl, likes = d.get("downloads", 0) or 0, d.get("likes", 0) or 0
-                if dl < min_downloads and likes < min_likes:
+                if dl < floor_dl and likes < floor_likes:
                     continue
                 desc = (d.get("description") or "") + " " + " ".join(d.get("tags", []))
                 if relevant(did, desc):
@@ -406,8 +428,9 @@ def github_search(since):
     """New dataset repos anywhere on GitHub, top-starred first. Search allows 10
     requests/min unauthenticated (30 with GITHUB_TOKEN); this makes 7."""
     out, seen = [], set()
+    # "PET CT", not "PET": a bare "PET dataset" search returns pet-animal datasets
     terms = ["CT dataset", "MRI dataset", "X-ray dataset", "radiology dataset",
-             "PET dataset", "mammography dataset", "medical imaging dataset"]
+             "PET CT dataset", "mammography dataset", "medical imaging dataset"]
     for term in terms:
         q = f"{term} in:name,description created:>={since} fork:false"
         url = "%s/search/repositories?q=%s&sort=stars&order=desc&per_page=30" % (GH_API, urllib.parse.quote(q))

@@ -130,6 +130,17 @@ class NormAndClassify(unittest.TestCase):
         names = {"totalsegmentator"}
         self.assertEqual(f.classify("totalsegmentatordatasetmirror", names, set(), names)[0], "known")
 
+    def test_reformatted_copies_are_mirrors(self):
+        # seen as "-Lite" rows in the ⭐ Priority section of the first live dry run
+        for name in ("AMOS22-Lite", "VerSe-Lite", "PI-CAI-Lite", "MAMA-MIA-Lite", "LNQ2023-Lite",
+                     "HNTSMRG24-Lite",          # 2-digit year: catalog "HNTS-MRG 2024"
+                     "AbdomenAtlas1.1Mini", "PI-CAI_preprocessed_nifti"):
+            self.assertEqual(self.cls(name), ("known", None), name)
+
+    def test_copy_of_uncatalogued_base_still_surfaces(self):
+        self.assertEqual(self.cls("AFIDs-Lite"), (None, None))   # AFIDs itself isn't catalogued
+        self.assertEqual(self.cls("MSD-Lite"), (None, None))     # base "msd" too short to trust
+
     def test_unrelated_is_new(self):
         self.assertEqual(f.classify("somebrandnewctcohort", self.names, self.slugs, self.short), (None, None))
 
@@ -162,6 +173,32 @@ class Relevance(unittest.TestCase):
     def test_publisher_rows_need_imaging_terms(self):
         self.assertFalse(f.imaging("org/StreetScenes", "Urban street scene segmentation"))
         self.assertTrue(f.imaging("AbdomenAtlas/MerlinPlus", "tumor masks for abdominal CT"))
+
+
+class SourceQueries(unittest.TestCase):
+    def test_github_search_has_no_bare_pet_query(self):
+        urls = []
+
+        def fake(url, timeout=25, headers=None, data=None):
+            urls.append(f.urllib.parse.unquote(url))
+            return {"items": []}
+        with mock.patch.object(f, "get_json", fake):
+            f.github_search("2026-01-01")
+        self.assertTrue(urls)
+        self.assertFalse([u for u in urls if "q=PET dataset" in u])   # finds pet-animal datasets
+        self.assertTrue([u for u in urls if "q=PET CT dataset" in u])
+
+    def test_hf_tag_hits_need_higher_floor(self):
+        def fake(url, timeout=25, headers=None, data=None):
+            if "search=radiology" in url:
+                return [{"id": "a/IdHit-CT", "downloads": 100, "likes": 0, "tags": []}]
+            if "filter=radiology" in url:
+                return [{"id": "b/TagLowPop-CT", "downloads": 100, "likes": 0, "tags": []},
+                        {"id": "c/TagPopular-CT", "downloads": 500, "likes": 0, "tags": []}]
+            return []
+        with mock.patch.object(f, "get_json", fake), mock.patch.object(f, "_hf_token_ok", False):
+            names = [c["name"] for c in f.huggingface(100)]
+        self.assertEqual(names, ["IdHit-CT", "TagPopular-CT"])
 
 
 class HfToken(unittest.TestCase):

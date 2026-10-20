@@ -1,0 +1,35 @@
+# <slug> code/.pre-commit-config.yaml — 비밀·PHI 만 막는다 (2026-10-20)
+# 설치: brew install pre-commit gitleaks (세 Mac 모두. 사람이 설치 — bootstrap.sh 는 안내만. 한 Mac 에만 있으면 다른 Mac 에서 커밋이 실패한다)
+#   → 이 저장소에서 `pre-commit install && pre-commit install --hook-type pre-push` (.git/hooks/pre-commit·pre-push 가 생긴다)
+# 2026-10-20 사용자: 노트북 출력은 남긴다 (결과를 공유하고 싶을 수 있다). 기본적으로 비밀만 안 빠져나가게.
+#   → nbstripout 훅은 뺐다. ws phi-check 는 출력이 남은 .ipynb 를 막지 않고 묻기(ask)로만 센다 (99_System/config/phi-check.yaml rules.ipynb_outputs).
+#     출력 셀 안의 PHI·비밀 패턴(us-ssn·mrn·dob·secret-prefix …)은 그대로 block. 환자 단위 출력(표 head·이름)은 커밋 전에 지운다.
+# gitleaks (비밀): Go 빌드를 피하려고 brew 설치본을 쓴다 (repo: local · language: system). 없으면 이 훅이 'Executable not found' 로 실패 → brew install gitleaks
+#   --redact: 찾은 값은 출력하지 않는다. 오탐은 저장소 루트 `.gitleaksignore` (gitleaks 가 보고한 Fingerprint 한 줄) 또는 그 줄 끝 주석 `gitleaks:allow`.
+# ws phi-check (PHI·차단 확장자·크기·비밀 파일 이름): `ws` 는 PATH 의 ~/.local/bin/ws 런처 (99_System 절대 경로를 쓰지 않는다, D26). Mac 전용.
+#   PATH 에 ~/.local/bin 이 없는 GUI git 클라이언트에서는 'ws not found' 로 실패한다 → 터미널에서 커밋.
+#   오탐: 코드에 `# phi-check:allow <이유>` 또는 저장소 루트 `.phi-allow` (커밋한다). 저장소 전체 확장자 허용은 phi-check.yaml repo_overrides (사람이 정한다).
+# 목록 밖 확장자·출력이 남은 노트북(ask)은 커밋·push 를 막지 않고 한 줄만 낸다 (D45). 막는 것은 block 뿐.
+default_install_hook_types: [pre-commit, pre-push]
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (staged, 비밀)
+        entry: gitleaks protect --staged --redact --no-banner
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+      - id: ws-phi-check
+        name: ws phi-check (staged)
+        entry: ws phi-check --staged
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+      # pre-push 시점에는 스테이징이 비어 있어 --staged 는 아무것도 보지 않는다 → 추적 파일 전부(--tracked)를 본다
+      - id: ws-phi-check-push
+        name: ws phi-check (tracked)
+        entry: ws phi-check --tracked
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

@@ -137,6 +137,15 @@ class NormAndClassify(unittest.TestCase):
                      "AbdomenAtlas1.1Mini", "PI-CAI_preprocessed_nifti"):
             self.assertEqual(self.cls(name), ("known", None), name)
 
+    def test_derivative_with_packaging_word_still_flagged(self):
+        # pre-merge review: "COVIDx CXR-4" was flagged but "COVIDx CXR-4 Dataset" was
+        # swallowed by the substring mirror rule; Kaggle/Zenodo titles often end so
+        self.assertEqual(self.cls("TotalSegmentator v3 Dataset"), ("derivative", "totalsegmentator"))
+        for name in ("COVIDx CXR-4 Dataset", "CancerVerse-v2-Dataset", "OmniMedVQA-V2-Data",
+                     "Merlin v2 Dataset"):
+            self.assertEqual(self.cls(name)[0], "derivative", name)
+        self.assertEqual(self.cls("AMOS22-Lite"), ("known", None))     # plain copies stay mirrors
+
     def test_copy_of_uncatalogued_base_still_surfaces(self):
         self.assertEqual(self.cls("AFIDs-Lite"), (None, None))   # AFIDs itself isn't catalogued
         self.assertEqual(self.cls("MSD-Lite"), (None, None))     # base "msd" too short to trust

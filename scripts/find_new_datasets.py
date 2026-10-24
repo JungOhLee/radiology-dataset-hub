@@ -234,15 +234,19 @@ def classify(key, names, slugs, short, cover=None):
         return "known", None
     # longest catalog name the candidate starts with: "totalsegmentatormriv2" extends
     # "TotalSegmentator MRI" (residue v2), not "TotalSegmentator" (residue mriv2). A
-    # residue can't continue a number: "HVSMR 2024" is not "HVSMR-2.0" + "24".
-    bases = [k for k in names if len(k) >= 4 and key.startswith(k)
-             and DERIVATIVE.fullmatch(key[len(k):])
-             and not (k[-1].isdigit() and key[len(k)].isdigit())]
-    if bases:
-        base = max(bases, key=len)
-        if cover and covered(key[len(base):], cover.get(base, set())):
-            return "known", None
-        return "derivative", base
+    # residue can't continue a number: "HVSMR 2024" is not "HVSMR-2.0" + "24". Also try
+    # the name minus a packaging suffix, or "COVIDx CXR-4 Dataset" (residue 4dataset)
+    # would fall through to the substring rule and be dropped as a mirror.
+    m = MIRROR_SUFFIX.search(key)
+    for core in dict.fromkeys([key, key[:m.start()] if m else key]):
+        bases = [k for k in names if len(k) >= 4 and len(core) > len(k) and core.startswith(k)
+                 and DERIVATIVE.fullmatch(core[len(k):])
+                 and not (k[-1].isdigit() and core[len(k)].isdigit())]
+        if bases:
+            base = max(bases, key=len)
+            if cover and covered(core[len(base):], cover.get(base, set())):
+                return "known", None
+            return "derivative", base
     # reupload/mirror under a different account: canonical name embedded in the id
     for k in short:
         if k in key or (len(key) >= 6 and key in k):

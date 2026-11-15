@@ -21,7 +21,9 @@ Optional GITHUB_TOKEN / HF_TOKEN raise API rate limits.
 Run in CI (network required). Prints a Markdown report of candidate datasets not
 yet in data/datasets.json for human review; the GitHub Action opens/updates an issue.
 
-Usage: python scripts/find_new_datasets.py [--limit N] [--prev PREV_REPORT.md]
+Usage: python scripts/find_new_datasets.py [--limit N] [--prev PREV_REPORT.md] [--json OUT.json]
+  --json: also write every candidate (not only the displayed rows) as JSON — the
+          monthly triage job (scripts/triage_candidates.py) reads it.
   --prev: previous report (e.g. the current issue body); candidates never listed in
           an earlier report are flagged 🆕 so weekly reviews only need to scan new
           rows. The report carries its full seen-set in a hidden comment, so rows cut
@@ -1065,6 +1067,11 @@ def main():
                      if not is_known(norm(nm.split("(")[0]), known_names, known_slugs, known_short)]
 
     print(build_report(new, missing_watch, prev_seen), end="")
+    out = arg_value("--json")
+    if out:   # every surviving candidate (not just displayed rows) for scripts/triage_candidates.py
+        keep = ("name", "url", "source", "id", "pop", "publisher", "extends", "priority", "fresh", "key")
+        rows = [{k: c.get(k) for k in keep if c.get(k) not in (None, "")} for c in new]
+        pathlib.Path(out).write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n")
 
 
 if __name__ == "__main__":

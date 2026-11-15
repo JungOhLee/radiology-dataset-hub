@@ -60,8 +60,8 @@ def check_details(tag, d):
     return errs
 
 
-def main():
-    datasets = json.loads(DATA.read_text())
+def validate(datasets):
+    """All schema errors for a list of catalog entries (empty list = valid)."""
     errors = []
     ids = set()
     for i, d in enumerate(datasets):
@@ -104,7 +104,12 @@ def main():
                 isinstance(x, dict) and str(x.get("url", "")).startswith(("http://", "https://")) for x in d["links"])):
             errors.append(f"[{tag}] links must be a list of {{label, url}} objects with http urls")
         errors += check_details(tag, d)
+    return errors
 
+
+def main():
+    datasets = json.loads(DATA.read_text())
+    errors = validate(datasets)
     if errors:
         print(f"✗ {len(errors)} validation error(s):")
         for e in errors:

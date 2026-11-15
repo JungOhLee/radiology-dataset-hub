@@ -326,7 +326,26 @@ def _figshare(art_id, get):
     ])
 
 
+def _osf(node, get):
+    """OSF project pages are rendered client-side (no text in the HTML); use the API."""
+    n = json.loads(get(f"https://api.osf.io/v2/nodes/{node}/?embed=license")[1])["data"]
+    a = n.get("attributes") or {}
+    lic = ((((n.get("embeds") or {}).get("license") or {}).get("data") or {}).get("attributes") or {}).get("name")
+    out = [f"OSF project {node}: {a.get('title')}",
+           f"created: {a.get('date_created')} · public: {a.get('public')} · licence: {lic}"
+           f" · tags: {', '.join(a.get('tags') or [])}",
+           "Description: " + (a.get("description") or "")]
+    try:
+        files = json.loads(get(f"https://api.osf.io/v2/nodes/{node}/files/osfstorage/")[1]).get("data") or []
+        out.append("Files: " + "; ".join(f"{(x.get('attributes') or {}).get('name')} "
+                                         f"({_size((x.get('attributes') or {}).get('size'))})" for x in files[:30]))
+    except Exception:   # noqa: BLE001
+        out.append("Files: (not listed)")
+    return "\n".join(out)
+
+
 ROUTES = [
+    (re.compile(r"osf\.io/([a-z0-9]{5})(?:[/?#]|$)", re.I), _osf),
     (re.compile(r"zenodo\.org/(?:records?|doi/10\.5281/zenodo\.)/?(\d{5,})", re.I), _zenodo),
     (re.compile(r"doi\.org/10\.5281/zenodo\.(\d{5,})", re.I), _zenodo),
     (re.compile(r"huggingface\.co/datasets/([\w.-]+/[\w.-]+)", re.I), _huggingface),

@@ -106,6 +106,11 @@ class Evidence(unittest.TestCase):
                 return "application/json", json.dumps({"description": "repo", "license": {"spdx_id": "MIT"}})
             if "huggingface.co/api" in url:
                 return "application/json", json.dumps({"cardData": {"license": "cc-by-4.0"}, "tags": ["ct"]})
+            if "api.osf.io/v2/nodes/abcd1/files" in url:
+                return "application/json", json.dumps({"data": [{"attributes": {"name": "dicom.zip", "size": 1048576}}]})
+            if "api.osf.io/v2/nodes/abcd1" in url:
+                return "application/json", json.dumps({"data": {"attributes": {"title": "OSF data", "public": True},
+                                                                "embeds": {"license": {"data": {"attributes": {"name": "CC-By Attribution 4.0 International"}}}}}})
             if "api.figshare.com" in url:
                 return "application/json", json.dumps({"title": "<b>F</b>", "files": [], "description": "x"})
             return "text/html", "<html><script>bad()</script><h1>Title</h1><p>Body &amp; more</p></html>"
@@ -120,6 +125,9 @@ class Evidence(unittest.TestCase):
         t.evidence({"url": "https://huggingface.co/datasets/org/name"}, get)
         t.evidence({"url": "https://github.com/o/r"}, get)
         t.evidence({"url": "https://figshare.com/articles/dataset/x/24522883"}, get)
+        osf = t.evidence({"url": "https://osf.io/abcd1/"}, get)
+        self.assertIn("CC-By Attribution 4.0", osf)
+        self.assertIn("dicom.zip (1.0 MB)", osf)
         page = t.evidence({"url": "https://example.org/data"}, get)
         self.assertIn("https://zenodo.org/api/records/1234567", seen)
         self.assertTrue(any(u.startswith("https://huggingface.co/api/datasets/org/name") for u in seen))

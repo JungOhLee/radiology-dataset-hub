@@ -21,7 +21,7 @@ on:
     inputs:
       max_candidates:
         description: "How many candidates to triage this run"
-        default: "40"
+        default: "100"
       budget_usd:
         description: "Stop when the estimated spend reaches this many USD"
         default: "15"
@@ -48,7 +48,7 @@ env:
 jobs:
   triage:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 300   # ~6 s per candidate; a 1,000-candidate backlog run fits
     steps:
       - uses: actions/checkout@v4
 
@@ -68,7 +68,7 @@ jobs:
 
       - name: Triage with Claude
         env:
-          MAX_CANDIDATES: ${{ inputs.max_candidates || '40' }}
+          MAX_CANDIDATES: ${{ inputs.max_candidates || '100' }}
           BUDGET_USD: ${{ inputs.budget_usd || '15' }}
           DRY_RUN: ${{ inputs.dry_run && '1' || '' }}
           ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/anthropic-oidc.jwt

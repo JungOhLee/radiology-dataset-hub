@@ -128,6 +128,26 @@ class Evidence(unittest.TestCase):
         self.assertIn("Body & more", page)
         self.assertNotIn("bad()", page)
 
+    def test_follows_linked_data_pages_once(self):
+        seen = []
+
+        def get(url, headers=None):
+            seen.append(url)
+            if "api.github.com/repos/o/r/readme" in url:
+                return "text/plain", ("Data: https://osf.io/abcd1/ and https://zenodo.org/records/7654321 "
+                                      "and https://osf.io/zzzz9/ and https://example.org/x")
+            if "api.github.com" in url:
+                return "application/json", json.dumps({"description": "code"})
+            if "zenodo.org/api/records/7654321" in url:
+                return "application/json", json.dumps({"metadata": {"title": "Z", "description": "see https://osf.io/deep1/"}})
+            return "text/html", "<p>OSF page with licence CC BY</p>"
+        ev = t.evidence({"url": "https://github.com/o/r"}, get)
+        self.assertIn("--- Linked data page https://osf.io/abcd1 ---", ev)
+        self.assertIn("--- Linked data page https://zenodo.org/records/7654321 ---", ev)
+        self.assertNotIn("zzzz9", " ".join(seen))       # at most two linked pages
+        self.assertNotIn("deep1", " ".join(seen))       # one hop only
+        self.assertNotIn("https://example.org/x", seen)  # only known dataset hosts
+
     def test_fetch_failure_becomes_evidence(self):
         def boom(url, headers=None):
             raise OSError("down")

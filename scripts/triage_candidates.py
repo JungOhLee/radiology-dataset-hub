@@ -335,9 +335,45 @@ ROUTES = [
 ]
 
 
+# Dataset hosts worth one extra hop: a code repo or model card often points at the real
+# data page (OSF, Zenodo, PhysioNet, ...), which is where size, access and licence live.
+DATA_LINK = re.compile(
+    r"https?://(?:www\.)?(?:osf\.io/[\w/-]+|zenodo\.org/(?:records?|doi)/[\w./-]+|doi\.org/10\.5281/[\w./-]+"
+    r"|figshare\.com/[\w/.%-]+|physionet\.org/content/[\w./-]+|cancerimagingarchive\.net/[\w/-]+"
+    r"|synapse\.org/[#!\w:/.-]+|openneuro\.org/datasets/[\w/.-]+|huggingface\.co/datasets/[\w./-]+"
+    r"|kaggle\.com/(?:datasets|competitions)/[\w/-]+|[\w-]+\.grand-challenge\.org[\w/-]*"
+    r"|aimi\.stanford\.edu/[\w/-]+|datadryad\.org/[\w/:.-]+|registry\.opendata\.aws/[\w-]+"
+    r"|mira\.rsna\.org/[\w/-]+|frdr-dfdr\.ca/[\w/?=.-]+|scidb\.cn/[\w/?=.-]+)", re.I)
+LINKED_PAGES = 2
+LINKED_CHARS = 6000
+
+
+def linked_data_pages(text, own_url, limit=LINKED_PAGES):
+    seen, out = {str(own_url).rstrip("/").lower()}, []
+    for m in DATA_LINK.finditer(text):
+        u = m.group(0).rstrip(".,;:/")
+        if u.lower() not in seen:
+            seen.add(u.lower())
+            out.append(u)
+            if len(out) >= limit:
+                break
+    return out
+
+
 def evidence(c, get=fetch):
-    """Text evidence for one candidate, from the host's API when we know it, else the page."""
+    """Evidence for one candidate: its own page/API, plus up to two dataset-host pages it links to."""
     url = c.get("url") or ""
+    text = page_evidence(url, get)
+    if len(text) > MAX_EVIDENCE_CHARS:
+        text = text[:MAX_EVIDENCE_CHARS] + "\n[… truncated]"
+    for u in linked_data_pages(text, url):
+        sub = page_evidence(u, get)
+        text += f"\n\n--- Linked data page {u} ---\n" + sub[:LINKED_CHARS] + ("\n[… truncated]" if len(sub) > LINKED_CHARS else "")
+    return text
+
+
+def page_evidence(url, get=fetch):
+    """Text for one URL, from the host's API when we know it, else the page."""
     text = None
     for rx, fn in ROUTES:   # host API first; on any failure fall back to the page itself
         m = rx.search(url)
@@ -355,8 +391,6 @@ def evidence(c, get=fetch):
         except Exception as e:   # noqa: BLE001
             code = getattr(e, "code", None)
             text = f"(fetching {url} failed: {f'HTTP {code}' if code else type(e).__name__}: {e})"
-    if len(text) > MAX_EVIDENCE_CHARS:
-        text = text[:MAX_EVIDENCE_CHARS] + "\n[… truncated]"
     return text
 
 
@@ -582,7 +616,7 @@ def summary(results, spent, total, today, budget):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--candidates", required=True)
-    ap.add_argument("--max", type=int, default=40)
+    ap.add_argument("--max", type=int, default=100)
     ap.add_argument("--budget-usd", type=float, default=15.0)
     ap.add_argument("--summary", default="triage_summary.md")
     ap.add_argument("--results", default="triage_results.json")

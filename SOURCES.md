@@ -108,9 +108,9 @@ good ones to `data/datasets.json` (see [CONTRIBUTING.md](CONTRIBUTING.md)).
   be invisible forever once they lost 🆕; the report now shows a different window of 25 of
   them every week (🗂 Backlog rotation) until they are added or triaged.
 - **Monthly auto-triage.** On the 5th, `.github/workflows/triage-candidates.yml` re-runs the
-  scan and `scripts/triage_candidates.py` works through up to 40 candidates (priority rows
+  scan and `scripts/triage_candidates.py` works through up to 100 candidates (priority rows
   first): it fetches each candidate's official metadata itself (Zenodo / Hugging Face /
-  GitHub / figshare APIs, else the page text) and asks Claude (`claude-opus-5-5`, no tools —
+  GitHub / figshare APIs, else the page text, plus up to two dataset-host pages it links to) and asks Claude (`claude-opus-5-5`, no tools —
   page text can't make it run anything) for a JSON decision: `add` with a full entry,
   `duplicate`, `reject` or `defer`. The script validates every proposed entry, records the
   other decisions in `data/triage.json` (field `by` marks automatic ones) and the workflow

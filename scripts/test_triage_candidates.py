@@ -264,6 +264,21 @@ class Run(unittest.TestCase):
         self.assertEqual([r["name"] for r in t.order(rows)], ["a", "c", "b"])
 
 
+class Replay(unittest.TestCase):
+    def test_replay_matches_a_live_run(self):
+        cands = [dict(CAND, name=f"Set {i}", url=f"https://example.org/{i}") for i in range(5)]
+        outs = [out(), out("reject"), out("defer"), out("duplicate", duplicate_of=CAT[0]["id"]),
+                out(confidence="low")]
+        cat1, tri1 = list(CAT), {"decisions": []}
+        res, _ = t.run(cands, cat1, tri1, 5, 100, client_factory=Run().client(outs),
+                       get=lambda u, headers=None: ("text/html", "x"), today=TODAY, log=lambda *_: None)
+        saved = json.loads(json.dumps(res, default=str))   # what the artifact holds
+        cat2, tri2 = list(CAT), {"decisions": []}
+        self.assertEqual(t.replay(saved, cat2, tri2, TODAY), 5)
+        self.assertEqual(cat1, cat2)
+        self.assertEqual(tri1, tri2)
+
+
 class Summary(unittest.TestCase):
     def test_untrusted_text_is_neutralised(self):
         s = t.md("@someone [x](javascript:alert(1)) | <img>")

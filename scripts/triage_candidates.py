@@ -574,6 +574,38 @@ def run(candidates, cat, triage, max_n, budget, client_factory=make_client, get=
     return results, spent
 
 
+def replay(results, cat, triage, today):
+    """Re-apply saved results (triage_results.json) to the data files without calling the
+    API — for when a run's decisions were made but its branch could not be pushed."""
+    ids = {e["id"] for e in cat}
+    plus = lambda days: (datetime.date.fromisoformat(today) + datetime.timedelta(days=days)).isoformat()
+    n = 0
+    for r in results:
+        st, c, reason = r.get("status"), r["candidate"], r.get("reason", "")
+        if st == "added":
+            e = r["entry"]
+            if e["id"] in ids or val.validate([e]):
+                st, reason = "needs-human", f"replay: entry {e['id']} collides or is invalid now — {reason}"
+            else:
+                cat.append(e)
+                ids.add(e["id"])
+                triage["decisions"].append(record(c, "added", reason, today))
+                n += 1
+                continue
+        if st == "duplicate":
+            rec = record(c, "added", reason, today)
+        elif st == "rejected":
+            rec = record(c, "rejected", reason, today)
+        elif st in ("deferred", "needs-human"):
+            short = st == "needs-human" or reason.startswith("said duplicate of unknown id")
+            rec = record(c, "deferred", reason, today, plus(FAILED_DEFER_DAYS if short else DEFER_DAYS))
+        else:
+            continue   # errors were never recorded
+        triage["decisions"].append(rec)
+        n += 1
+    return n
+
+
 def md(s):
     """Neutralise untrusted text for a PR body: no @mentions, links, tables or HTML."""
     s = " ".join(str(s or "").split())
@@ -658,16 +690,28 @@ def summary(results, spent, total, today, budget):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--candidates", required=True)
+    ap.add_argument("--candidates")
+    ap.add_argument("--replay", metavar="RESULTS_JSON",
+                    help="re-apply a previous run's triage_results.json to the data files (no API calls)")
+    ap.add_argument("--date", help="decision date for --replay (default today)")
     ap.add_argument("--max", type=int, default=100)
     ap.add_argument("--budget-usd", type=float, default=15.0)
     ap.add_argument("--summary", default="triage_summary.md")
     ap.add_argument("--results", default="triage_results.json")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
-    candidates = json.loads(pathlib.Path(a.candidates).read_text())
     cat = json.loads(DATA.read_text())
     triage = json.loads(TRIAGE.read_text()) if TRIAGE.exists() else {"schema": "triage/1", "decisions": []}
+    if a.replay:
+        n = replay(json.loads(pathlib.Path(a.replay).read_text()), cat, triage,
+                   a.date or datetime.date.today().isoformat())
+        DATA.write_text(json.dumps(cat, indent=2) + "\n")
+        TRIAGE.write_text(json.dumps(triage, ensure_ascii=False, indent=2) + "\n")
+        print(f"replayed {n} decisions")
+        return
+    if not a.candidates:
+        ap.error("--candidates is required (unless --replay)")
+    candidates = json.loads(pathlib.Path(a.candidates).read_text())
     if a.dry_run:
         system = system_prompt(cat)
         print(f"{len(candidates)} candidates; system prompt {len(system):,} chars")

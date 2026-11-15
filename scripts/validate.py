@@ -48,6 +48,9 @@ def check_details(tag, d):
         v = dt.get(key)
         if v is not None and not (isinstance(v, list) and all(isinstance(x, dict) for x in v)):
             errs.append(f"[{tag}] details.{key} must be a list of objects")
+    for x in dt.get("label_variants") or []:
+        if x.get("url") and not str(x["url"]).startswith(("http://", "https://")):
+            errs.append(f"[{tag}] details.label_variants url must be http(s): {x['url']}")
     for r in dt.get("related") or []:
         if r.get("relation") not in RELATIONS:
             errs.append(f"[{tag}] details.related: unknown relation {r.get('relation')!r}")
@@ -93,12 +96,12 @@ def main():
         if "tags" in d and not isinstance(d["tags"], list):
             errors.append(f"[{tag}] tags must be a list")
         url = d.get("url", "")
-        if url and not str(url).startswith("http"):
+        if url and not str(url).startswith(("http://", "https://")):
             errors.append(f"[{tag}] url should start with http: {url}")
         if "aliases" in d and not (isinstance(d["aliases"], list) and all(isinstance(a, str) for a in d["aliases"])):
             errors.append(f"[{tag}] aliases must be a list of strings")
         if "links" in d and not (isinstance(d["links"], list) and all(
-                isinstance(x, dict) and str(x.get("url", "")).startswith("http") for x in d["links"])):
+                isinstance(x, dict) and str(x.get("url", "")).startswith(("http://", "https://")) for x in d["links"])):
             errors.append(f"[{tag}] links must be a list of {{label, url}} objects with http urls")
         errors += check_details(tag, d)
 

@@ -463,6 +463,12 @@ function section(r, items) {
   </section>`;
 }
 
+// only http(s) links are rendered as hrefs — a javascript:/data: URL in the catalog
+// must never become clickable (defense in depth; validate.py also rejects them)
+function safeUrl(u) {
+  return /^https?:\/\//i.test(String(u || "")) ? String(u) : "";
+}
+
 function esc(s) {
   return String(s == null ? "" : s).replace(/[&<>"]/g, c =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -501,7 +507,7 @@ function card(d) {
   if (d.license) meta.push(`<span class="m"><b>License</b> ${esc(d.license)}</span>`);
 
   const title = d.url
-    ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.name)}</a>`
+    ? (safeUrl(d.url) ? `<a href="${esc(safeUrl(d.url))}" target="_blank" rel="noopener">${esc(d.name)}</a>` : esc(d.name))
     : esc(d.name);
   const hasDetails = !!d.details;
 
@@ -546,8 +552,8 @@ function openDetail(id) {
     request: "Request — application/approval required",
   };
   const links = [];
-  if (d.url) links.push(`<a href="${esc(d.url)}" target="_blank" rel="noopener">Official source ↗</a>`);
-  for (const l of d.links || []) links.push(`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label || "Also at")} ↗</a>`);
+  if (safeUrl(d.url)) links.push(`<a href="${esc(safeUrl(d.url))}" target="_blank" rel="noopener">Official source ↗</a>`);
+  for (const l of d.links || []) if (safeUrl(l.url)) links.push(`<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(l.label || "Also at")} ↗</a>`);
   links.push(`<a href="data/datasets.json" target="_blank" rel="noopener">JSON entry</a>`);
 
   let structure = "";
@@ -575,7 +581,7 @@ function openDetail(id) {
       return `<li>${esc(r.relation)}: ${tgt ? `<a href="#" data-goto="${esc(r.id)}">${nm}</a>` : nm}</li>`;
     });
     const vars = (dt.label_variants || []).map(v =>
-      `<li>${v.url ? `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.name)}</a>` : esc(v.name)}${v.note ? " — " + esc(v.note) : ""}</li>`);
+      `<li>${safeUrl(v.url) ? `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.name)}</a>` : esc(v.name)}${v.note ? " — " + esc(v.note) : ""}</li>`);
     if (rel.length) parts += `<h4>Related datasets</h4><ul class="schema">${rel.join("")}</ul>`;
     if (vars.length) parts += `<h4>Other label sets for these images</h4><ul class="schema">${vars.join("")}</ul>`;
     if (dt.extra) parts += `<p class="note">${esc(dt.extra)}</p>`;
@@ -585,7 +591,7 @@ function openDetail(id) {
       <h4>Data & label structure</h4>
       <p>A detailed label schema hasn't been catalogued for this ${d.type === "repository" ? "repository" : "dataset"} yet.
       The fields above summarize what's inside; see the
-      <a href="${esc(d.url || "#")}" target="_blank" rel="noopener">official source</a>
+      <a href="${esc(safeUrl(d.url) || "#")}" target="_blank" rel="noopener">official source</a>
       for the exact folder layout and label definitions.
       <a href="https://github.com/JungOhLee/radiology-dataset-hub/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute it →</a></p>
     </section>`;

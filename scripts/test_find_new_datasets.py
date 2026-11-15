@@ -355,5 +355,59 @@ class SeenState(unittest.TestCase):
         self.assertTrue({f.khash(c["key"]) for c in many} <= set(hidden))
 
 
+class GapAudit(unittest.TestCase):
+    """2026-11 audit: datasets surfaced but never reviewed, or published under a
+    second URL / a paper title, must not stay invisible or keep reappearing."""
+
+    def test_triage_drops_rejected_and_keeps_expired_deferrals(self):
+        doc = {"decisions": [
+            {"name": "Junk Upload CT", "decision": "rejected", "reason": "personal reupload"},
+            {"url": "https://example.org/x/7", "decision": "rejected", "reason": "not data"},
+            {"name": "Later Dataset CT", "decision": "deferred", "until": "2000-01-01"}]}
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as t:
+            json.dump(doc, t)
+        try:
+            triaged = f.load_triage(t.name)
+        finally:
+            os.unlink(t.name)
+        rows = [{"name": "Junk Upload CT", "url": "https://a/1", "source": "Zenodo"},
+                {"name": "Other CT", "url": "https://example.org/x/7/", "source": "Zenodo"},
+                {"name": "Later Dataset CT", "url": "https://a/3", "source": "Zenodo"}]
+        new = f.select_new(rows, KNOWN_EMPTY, set(), triaged)
+        self.assertEqual([c["name"] for c in new], ["Later Dataset CT"])
+
+    def test_candidate_on_a_catalog_url_or_link_is_known(self):
+        ds = [{"id": "x", "name": "VinDr-Multiphase", "url": "https://vindr.ai/datasets/abdomen-phases",
+               "links": [{"label": "AWS", "url": "https://registry.opendata.aws/x-ct/"}]}]
+        urls = f.known_urls(ds)
+        rows = [{"name": "VinDr abdomen phases", "url": "https://vindr.ai/datasets/abdomen-phases",
+                 "source": "VinDr"},
+                {"name": "X CT on AWS", "url": "https://registry.opendata.aws/x-ct", "source": "AWS Open Data"}]
+        self.assertEqual(f.select_new(rows, KNOWN_EMPTY, set(), urls=urls), [])
+
+    def test_aliases_make_paper_titles_known(self):
+        title = "Full Field Digital Mammography Dataset from a Population Screening Program"
+        ds = [{"id": "nl", "name": "NL-Breast-Screening", "url": "https://frdr.example/nl", "aliases": [title]}]
+        rows = [{"name": title, "url": "https://doi.org/10.0/x", "source": "Papers — Scientific Data"}]
+        self.assertEqual(f.select_new(rows, f.load_known(ds), set()), [])
+
+    def test_backlog_rotation_shows_only_rows_that_lost_new_flag(self):
+        prev = SeenState().roundtrip(f.build_report(f.select_new(cands(120), KNOWN_EMPTY, set()), [], []))
+        new = f.select_new(cands(120), KNOWN_EMPTY, set(prev))     # all seen before: none 🆕
+        report = f.build_report(new, [], prev)
+        self.assertIn("Backlog rotation", report)
+        section = report.split("Backlog rotation")[1].split("\n## ")[0]
+        rows = [l for l in section.splitlines() if l.startswith("- [")]
+        self.assertEqual(len(rows), f.BACKLOG_ROTATION)
+        visible = {c["name"] for c in sorted(new, key=lambda c: c["name"])[:f.MAX_ROWS]}
+        self.assertFalse(any(any(f"[{n}](" in r for n in visible) for r in rows))   # all from the hidden tail
+
+    def test_portal_checklist_is_not_read_back_as_seen_candidates(self):
+        report = f.build_report(f.select_new(cands(3), KNOWN_EMPTY, set()), [], [])
+        self.assertIn("Portals without an API", report)
+        prev = SeenState().roundtrip(report)
+        self.assertEqual(len(prev), 3)
+
+
 if __name__ == "__main__":
     unittest.main()

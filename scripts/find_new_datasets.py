@@ -241,7 +241,15 @@ def load_known(ds=None):
     # canonical tokens used for substring matching to catch reuploads; min length 8 so
     # short generic names ("ATLAS", "BraTS") can't swallow unrelated new candidates
     short = {k for k in names if 8 <= len(k) <= 24}
-    return names, slugs, short, display, cover, urls
+    return names, slugs, short, display, cover
+
+
+def known_urls(ds=None):
+    """Catalog URLs plus each entry's `links` (other official locations, mirrors),
+    normalised: a candidate on one of these pages is a catalog dataset."""
+    ds = load_catalog() if ds is None else ds
+    return {(u or "").lower().rstrip("/") for d in ds
+            for u in [d.get("url")] + [x.get("url") for x in d.get("links") or []] if u}
 
 
 def covered(residue, toks):
@@ -906,7 +914,8 @@ def render(new, missing_watch, have_prev, max_rows):
     lines.append(f"## 🧭 Portals without an API — check by hand once a month ({len(PORTALS)})\n")
     lines.append("_No listing API to poll, so new releases here only surface through papers or by "
                  "looking. Record what you checked in data/triage.json._\n")
-    lines += [f"- [{nm}]({url})" for nm, url in PORTALS]
+    # autolinks, not [text](url): load_prev_seen() reads every [text](http…) as a seen candidate
+    lines += [f"- {nm}: <{url}>" for nm, url in PORTALS]
     lines.append("")
     if have_prev:
         n_fresh = sum(1 for c in new if c.get("fresh"))
@@ -923,13 +932,14 @@ def render(new, missing_watch, have_prev, max_rows):
     for c in new:
         if not c.get("priority"):
             by_src.setdefault(c["source"], []).append(c)
-    # Rows past a source's display cap never come back on their own once they lose 🆕,
+    # Rows past a source's display cap never come back on their own once they lose 🆕
+    # (a cut 🆕 row stays 🆕 and sorts first next week, so those drain by themselves),
     # so an unreviewed backlog (CPTAC-CCRCC, 4D-Lung, CXR-LT sat there for months) is
     # invisible. Show a window of them each report, cycling by ISO week until triaged.
     hidden = []
     for src in by_src:
         rows = sorted(by_src[src], key=lambda x: (not x.get("fresh"), x["name"].lower()))
-        hidden += rows[max_rows:]
+        hidden += [c for c in rows[max_rows:] if not c.get("fresh")]
     if hidden:
         hidden.sort(key=lambda c: khash(c["key"]))
         n = len(hidden)
@@ -985,10 +995,10 @@ def load_triage(path=TRIAGE):
     return drop
 
 
-def select_new(candidates, known, prev_set, triaged=frozenset()):
+def select_new(candidates, known, prev_set, triaged=frozenset(), urls=frozenset()):
     """Drop catalog datasets, their mirrors and triaged rows, dedupe by name (first row
     wins), and tag each survivor: extends (catalog name it builds on), priority, fresh."""
-    names, slugs, short, display, cover, urls = known
+    names, slugs, short, display, cover = known
     new, seen = [], set()
     for c in candidates:
         key = norm(c["name"])
@@ -1048,7 +1058,7 @@ def main():
     candidates += vindr()
     candidates += dataset_papers()
 
-    new = select_new(candidates, known, prev_set, load_triage())
+    new = select_new(candidates, known, prev_set, load_triage(), known_urls(ds))
 
     # curated watchlist: important resources (esp. population cohorts) that are missing
     missing_watch = [(nm, url) for nm, url in WATCHLIST

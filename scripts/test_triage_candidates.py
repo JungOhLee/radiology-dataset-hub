@@ -276,6 +276,16 @@ class Summary(unittest.TestCase):
         self.assertEqual(t.link({"name": "ok", "url": "https://zenodo.org/records/1"}),
                          "[ok](https://zenodo.org/records/1)")
 
+    def test_big_run_fits_pr_body_limit(self):
+        res = [{"candidate": dict(CAND, name=f"Candidate {i}", url=f"https://example.org/{i}"), "usage": {},
+                "status": "rejected" if i % 3 else "deferred", "reason": "x" * 400} for i in range(1500)]
+        res.append({"candidate": CAND, "usage": {}, "status": "added", "reason": "r",
+                    "entry": t.clean_entry(entry()), "confidence": "high"})
+        body = t.summary(res, 60, 1500, TODAY, 80)
+        self.assertLess(len(body), 65536)
+        self.assertIn("`new-ct-set`", body)            # added entries are never cut
+        self.assertIn("more — see `data/triage.json`", body)
+
     def test_summary_sections(self):
         res = [{"candidate": CAND, "usage": {"input": 10}, "status": "added", "reason": "r",
                 "entry": t.clean_entry(entry()), "confidence": "high"},
@@ -283,7 +293,7 @@ class Summary(unittest.TestCase):
         body = t.summary(res, 0.5, 10, TODAY, 15)
         self.assertIn("### ➕ Added to the catalog (1)", body)
         self.assertIn("`new-ct-set`", body)
-        self.assertIn("### ✖ Rejected (1)", body)
+        self.assertIn("✖ Rejected (1)", body)
 
 
 if __name__ == "__main__":

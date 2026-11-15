@@ -435,7 +435,7 @@ def refresh_github_oidc():
 def make_client():
     import anthropic   # imported lazily so --dry-run and the unit tests need no SDK
     refresh_github_oidc()   # each client exchanges once; GitHub tokens are single-use
-    return anthropic.Anthropic()
+    return anthropic.Anthropic(max_retries=8)   # rate limits: back off and retry, don't drop the row
 
 
 def call_claude(client, system, c, ev):
@@ -594,16 +594,24 @@ def link(c):
     return f"{name} (`{url.replace('`', '')}`)" if url else name
 
 
+BODY_LIMIT = 60000   # GitHub caps PR bodies at 65,536 characters
+
+
 def summary(results, spent, total, today, budget):
+    """PR body. The added-entry table and needs-human list are always shown in full; the
+    long lists (deferred, duplicates, rejected, errors) are folded and cut to fit the PR
+    body limit — every decision is in the data/triage.json diff anyway."""
     by = {}
     for r in results:
         by.setdefault(r["status"], []).append(r)
     tok = {k: sum(r["usage"].get(k, 0) for r in results) for k in PRICE}
+    counts = " · ".join(f"{k} {len(v)}" for k, v in sorted(by.items()))
     lines = [f"## Monthly dataset triage — {today}", "",
              f"Processed **{len(results)}** of {total} tracker candidates with `{MODEL}` "
              f"(Claude API via workload identity federation — monthly subscriber credits). "
              f"Estimated cost **${spent:.2f}** of a ${budget:.0f} cap "
-             f"({tok['input']:,} input · {tok['output']:,} output · {tok['cache_read']:,} cache-read tokens).",
+             f"({tok['input']:,} input · {tok['output']:,} output · {tok['cache_read']:,} cache-read tokens). "
+             f"Outcome: {counts}.",
              "", "The model only proposed these changes; the script validated every entry. "
              "**Review the added entries against their sources before merging.**", ""]
     added = by.get("added", [])
@@ -615,21 +623,37 @@ def summary(results, spent, total, today, budget):
             lines.append(f"| `{e['id']}` | {link(r['candidate'])} | {md(', '.join(e.get('modality') or []))} · "
                          f"{md(', '.join(e.get('regions') or []))} | {md(e.get('access'))} · {md(e.get('license'))} | "
                          f"{md(r.get('confidence'))} |")
-    for status, title in (("needs-human", "⚠️ Needs a human (proposed entry not added)"),
+    rows = by.get("needs-human", [])
+    if rows:
+        lines += ["", f"### ⚠️ Needs a human — proposed entry not added ({len(rows)})", ""]
+        lines += [f"- {link(r['candidate'])} — {md(r['reason'])}" for r in rows]
+    footer = ["", "---", "Checks run in this job: `validate.py`, unit tests, README regeneration "
+              "(pull requests opened by Actions don't trigger the Test workflow). To undo a "
+              "rejection, delete its line in `data/triage.json` (field `by` marks automatic decisions)."]
+    body = "\n".join(lines)
+    room = BODY_LIMIT - len(body) - len("\n".join(footer)) - 200
+    for status, title in (("deferred", "⏸ Deferred (comes back later)"),
                           ("duplicate", "🔁 Already in the catalog"),
-                          ("deferred", "⏸ Deferred (comes back later)"),
-                          ("rejected", "✖ Rejected"),
-                          ("error", "❗ API errors (retried next run, nothing recorded)")):
+                          ("error", "❗ API errors (retried next run, nothing recorded)"),
+                          ("rejected", "✖ Rejected")):
         rows = by.get(status, [])
         if not rows:
             continue
-        lines += ["", f"### {title} ({len(rows)})", ""]
-        lines += [f"- {link(r['candidate'])} — {md(r['reason'])}" for r in rows]
-    lines += ["", "---", "Checks run in this job: `validate.py`, unit tests, README regeneration "
-              "(pull requests opened by Actions don't trigger the Test workflow). To undo a "
-              "rejection, delete its line in `data/triage.json` (field `by` marks automatic decisions)."]
-    body = "\n".join(lines) + "\n"
-    return body if len(body) < 60000 else body[:59000] + "\n\n_[summary truncated — see the job artifact]_\n"
+        head = f"\n\n<details><summary><b>{title} ({len(rows)})</b></summary>\n\n"
+        tail = "\n\n</details>"
+        items, used = [], len(head) + len(tail)
+        for r in rows:
+            reason = md(r["reason"])
+            item = f"- {link(r['candidate'])} — {reason[:160] + ('…' if len(reason) > 160 else '')}"
+            if used + len(item) + 120 > room:
+                items.append(f"- _…and {len(rows) - len(items)} more — see `data/triage.json` in this PR._")
+                break
+            items.append(item)
+            used += len(item) + 1
+        block = head + "\n".join(items) + tail
+        body += block
+        room -= len(block)
+    return body + "\n".join(footer) + "\n"
 
 
 def main():

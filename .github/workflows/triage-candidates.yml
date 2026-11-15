@@ -25,6 +25,9 @@ on:
       budget_usd:
         description: "Stop when the estimated spend reaches this many USD"
         default: "15"
+      base_branch:
+        description: "Build on this branch instead of main (e.g. the previous bot/triage-… branch, to chain backlog rounds before merging)"
+        default: "main"
       dry_run:
         description: "Dry run: fetch evidence only, no Claude calls, no PR"
         type: boolean
@@ -50,7 +53,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 300   # ~6 s per candidate; a 1,000-candidate backlog run fits
     steps:
+      - name: Check the base branch name
+        env:
+          BASE: ${{ inputs.base_branch || 'main' }}
+        shell: bash
+        run: |
+          [[ "$BASE" == "main" || "$BASE" =~ ^bot/triage-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]+$ ]] \
+            || { echo "base_branch must be main or a bot/triage-YYYY-MM-DD-<run> branch"; exit 1; }
+          echo "BASE=$BASE" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASE }}
 
       - uses: actions/setup-python@v5
         with:
@@ -107,9 +121,9 @@ jobs:
           git add data/datasets.json data/triage.json README.md
           git commit -q -m "Monthly dataset triage $(date -u +%F) (Claude-proposed, needs review)"
           git push -q origin "$BR"
-          if ! gh pr create --draft --base main --head "$BR" \
+          if ! gh pr create --draft --base "$BASE" --head "$BR" \
                --title "Monthly dataset triage $(date -u +%Y-%m)" --body-file "$RUNNER_TEMP/pr_body.md"; then
-            echo "::warning::Could not open the PR (enable 'Allow GitHub Actions to create and approve pull requests'). Open it from: https://github.com/$GITHUB_REPOSITORY/compare/main...$BR"
+            echo "::warning::Could not open the PR (enable 'Allow GitHub Actions to create and approve pull requests'). Open it from: https://github.com/$GITHUB_REPOSITORY/compare/$BASE...$BR"
           fi
 
       - name: Keep the per-candidate results
@@ -117,5 +131,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: triage-results
-          path: ${{ runner.temp }}/triage_results.json
+          path: |
+            ${{ runner.temp }}/triage_results.json
+            ${{ runner.temp }}/pr_body.md
           if-no-files-found: ignore

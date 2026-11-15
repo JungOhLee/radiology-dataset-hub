@@ -122,6 +122,13 @@ class Evidence(unittest.TestCase):
         with self.assertRaises(ValueError):
             t.fetch("file:///etc/passwd")
 
+    def test_private_addresses_refused(self):
+        for url in ("http://127.0.0.1/", "http://169.254.169.254/latest/meta-data/",
+                    "http://10.0.0.5/", "http://[::1]/", "http://localhost:8080/"):
+            with self.assertRaises(ValueError, msg=url):
+                t.check_public_url(url)
+        self.assertIn("failed", t.evidence({"url": "http://127.0.0.1/x"}))   # default fetcher
+
 
 class Apply(unittest.TestCase):
     def test_add_valid(self):
@@ -220,7 +227,11 @@ class Summary(unittest.TestCase):
         self.assertNotIn("@s", s.replace("@​", ""))
         self.assertNotIn("<img>", s)
         self.assertIn("\\|", s)
-        self.assertEqual(t.link({"name": "x", "url": "javascript:alert(1)"}), "x")
+        self.assertNotIn("](javascript", t.link({"name": "x", "url": "javascript:alert(1)"}))
+        evil = t.link({"name": "x", "url": "https://a.org/x) [click](https://evil.example"})
+        self.assertFalse(evil.startswith("["))
+        self.assertEqual(t.link({"name": "ok", "url": "https://zenodo.org/records/1"}),
+                         "[ok](https://zenodo.org/records/1)")
 
     def test_summary_sections(self):
         res = [{"candidate": CAND, "usage": {"input": 10}, "status": "added", "reason": "r",

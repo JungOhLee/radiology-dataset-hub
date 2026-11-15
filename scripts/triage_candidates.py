@@ -32,10 +32,12 @@ Usage:
 import argparse
 import datetime
 import html
+import ipaddress
 import json
 import os
 import pathlib
 import re
+import socket
 import sys
 import urllib.error
 import urllib.parse
@@ -225,13 +227,37 @@ def strip_html(s):
     return re.sub(r"\s*\n\s*(?:\n\s*)*", "\n", s).strip()
 
 
-def fetch(url, headers=None):
-    """GET an http(s) URL -> (content type, text). Size-capped; raises on HTTP errors."""
-    if not str(url).lower().startswith(("http://", "https://")):
+def check_public_url(url):
+    """Refuse anything but http(s) to a public address — candidate URLs come from the web,
+    so a crafted one must not reach the runner's loopback, private or metadata addresses."""
+    p = urllib.parse.urlsplit(str(url))
+    if p.scheme not in ("http", "https") or not p.hostname:
         raise ValueError(f"not an http(s) URL: {url!r}")
+    try:
+        infos = socket.getaddrinfo(p.hostname, p.port or (443 if p.scheme == "https" else 80))
+    except socket.gaierror as e:
+        raise ValueError(f"cannot resolve {p.hostname}: {e}") from None
+    for info in infos:
+        ip = ipaddress.ip_address(info[4][0].split("%")[0])
+        if not ip.is_global or ip.is_multicast:
+            raise ValueError(f"refusing non-public address {ip} for {p.hostname}")
+
+
+class _CheckedRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        check_public_url(newurl)   # every hop, not just the first URL
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+_OPENER = urllib.request.build_opener(_CheckedRedirect)
+
+
+def fetch(url, headers=None):
+    """GET a public http(s) URL -> (content type, text). Size-capped; raises on HTTP errors."""
+    check_public_url(url)
     h = {"User-Agent": "Mozilla/5.0 (radiology-dataset-hub-triage)"}
     h.update(headers or {})
-    with urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=30) as r:
+    with _OPENER.open(urllib.request.Request(url, headers=h), timeout=30) as r:
         return r.headers.get_content_type(), r.read(FETCH_MAX_BYTES).decode("utf-8", "replace")
 
 
@@ -497,10 +523,17 @@ def md(s):
     return s.replace("<", "&lt;").replace(">", "&gt;")
 
 
+SAFE_LINK = re.compile(r"^https?://[A-Za-z0-9.-]+(?::\d+)?(?:/[A-Za-z0-9._~!$&'*+,;=:%/?#-]*)?$")
+
+
 def link(c):
-    url = c.get("url") or ""
+    """Markdown link only for plain URLs (no ( ) [ ] < > @ or spaces that could break out of
+    the link); otherwise the escaped name plus the URL as inert code."""
+    url = str(c.get("url") or "")
     name = md(c.get("name"))
-    return f"[{name}]({url})" if url.startswith(("http://", "https://")) and " " not in url else name
+    if SAFE_LINK.match(url) and not re.search(r"[()\[\]<>@\s`]", url):
+        return f"[{name}]({url})"
+    return f"{name} (`{url.replace('`', '')}`)" if url else name
 
 
 def summary(results, spent, total, today, budget):

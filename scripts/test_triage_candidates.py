@@ -26,7 +26,7 @@ def entry(**over):
                     "reference_standard": None, "related": [], "version": None, "release_date": None,
                     "dicom_headers": None, "third_party_processing": "permitted",
                     "third_party_note": "CC BY 4.0", "extra": None},
-        "tags": [], "longitudinal": None, "aliases": [], "links": [],
+        "tags": [], "aliases": [], "links": [],
     }
     e.update(over)
     return e
@@ -34,7 +34,7 @@ def entry(**over):
 
 def out(decision="add", confidence="high", **over):
     o = {"decision": decision, "reason": "official Zenodo record with DICOM files",
-         "duplicate_of": None, "confidence": confidence, "entry": entry() if decision == "add" else None}
+         "duplicate_of": "", "confidence": confidence, "entry": entry() if decision == "add" else None}
     o.update(over)
     return o
 
@@ -55,6 +55,21 @@ class Schema(unittest.TestCase):
                 for i, v in enumerate(x):
                     walk(v, f"{path}[{i}]")
         walk(t.output_schema())
+
+    def test_at_most_one_union_parameter(self):
+        # the API rejects schemas with many nullable/union parameters (400, "too many
+        # parameters with union types") — only `entry` may be a union
+        n = json.dumps(t.output_schema()).count('"anyOf"')
+        self.assertLessEqual(n, 1)
+        self.assertNotIn('"type": [', json.dumps(t.output_schema()))
+
+    def test_placeholders_become_null(self):
+        e = t.clean_entry(entry(full_name="", year=0, size="", license="",
+                                details=dict(entry()["details"], dicom_headers="unknown", splits="")))
+        self.assertEqual((e["full_name"], e["year"], e["size"], e["license"]), (None, None, None, None))
+        self.assertNotIn("dicom_headers", e["details"])
+        self.assertNotIn("splits", e["details"])
+        self.assertEqual(t.val.validate([e]), [])
 
     def test_enums_follow_validator(self):
         e = t.output_schema()["properties"]["entry"]["anyOf"][0]["properties"]

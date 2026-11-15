@@ -10406,7 +10406,7 @@
       "name": "Pituitary_tumor",
       "url": "https://huggingface.co/datasets/MedOtter/Pituitary_tumor",
       "decision": "added",
-      "reason": "catalog id pituitary-pitnet-carotid-mri-ucl (auto-added): The MedOtter Hugging Face upload is a clearly labelled CC BY 4.0 mirror of the Pandit et al. Sci Data 2025 pituitary tumour and carotid MRI dataset (figshare 27894084), and that upstream dataset is not in the catalog.",
+      "reason": "same as catalog id pituitary-net-mri-carotid-seg: same figshare record (10.6084/m9.figshare.27894084) as the Scientific Data paper's entry; removed the duplicate auto-added in the same run",
       "date": "2026-11-15",
       "by": "claude-opus-5-5 (monthly auto-triage)"
     },

@@ -39,13 +39,13 @@ This hub is built around **dataset selection**:
 
 <!-- AUTOGEN:START -->
 
-**778 curated datasets** · 372 CT · 390 MRI · 85 PET · 176 X-ray · 599 native DICOM/NIfTI · 147 with reports/text · 416 with segmentation labels
+**777 curated datasets** · 372 CT · 389 MRI · 85 PET · 176 X-ray · 598 native DICOM/NIfTI · 147 with reports/text · 415 with segmentation labels
 
 Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-thorax) · [Cardiac](#cardiac) · [Vascular](#vascular) · [Abdominal](#abdominal) · [Pelvic & Prostate](#pelvic-prostate) · [Musculoskeletal](#musculoskeletal) · [Breast](#breast) · [Head & Neck](#head-neck) · [Dental & Maxillofacial](#dental-maxillofacial) · [Whole-Body & PET](#whole-body-pet) · [Multiple / Various body parts](#multiple-various-body-parts) · [Data Repositories & Portals](#data-repositories-portals)
 
 **Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · Multi = multi-sequence MRI or multi-phase CT. 🏷 = label/annotation set for another dataset's images. Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · REQUEST = apply for access. **Datasets covering several body regions (140) appear under each region.**
 
-### 🧠 Neuro (Brain & Spine)  <sub>(228)</sub>
+### 🧠 Neuro (Brain & Spine)  <sub>(227)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -91,7 +91,6 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Nigerian Brain MRI](https://doi.org/10.25663/brainlife.pub.61) | MRI | 2025 | 🟢 NIfTI, BIDS | — | ✅ | ✅ | DUA | 88 participants (31 dementia, 22 Parkinson's disease, 35 controls); 761 anatomical sequences; >15 GB including derivatives |
 | [OpenMind](https://huggingface.co/datasets/AnonRes/OpenMind) | MRI | 2025 | 🟢 NIfTI | — | — | ✅ | OPEN | ~114K MRI images (1.04 TB) curated from 800 OpenNeuro datasets across 30+ scanners |
 | [Paired 3T-7T MRI Hippocampal Subfields](https://doi.org/10.1038/s41597-025-04586-9) | MRI | 2025 | 🟢 DICOM, NIfTI | — | ✅ | ✅ | OPEN | 20 healthy volunteers, each with paired 3T and 7T scans |
-| [Pituitary NET & Carotid MRI (UCL)](https://doi.org/10.6084/m9.figshare.27894084.v1) | MRI | 2025 | 🟢 NIfTI | — | ✅ | ✅ | OPEN | 136 patients, one scan each (136 contrast-enhanced T1w, 100 co-registered T2w) |
 | [Pituitary NET MRI (UCL)](https://doi.org/10.6084/m9.figshare.27894084) | MRI | 2025 | 🟢 NIfTI, XLSX | — | ✅ | ✅ | OPEN | 136 patients (T1w-CE for all, co-registered T2w for most) |
 | [PreCT-160K](https://huggingface.co/datasets/Luffy503/PreCT-160K) | CT | 2025 | 🟢 NIfTI | — | — | — | OPEN | ~160,000 CT volumes; ~5.63TB |
 | [RSNA 2025 Aneurysm Detection](https://www.kaggle.com/competitions/rsna-intracranial-aneurysm-detection) | CT, MRI | 2025 | 🟢 DICOM | — | ✅ | ✅ | REGISTRATION | 4,000+ studies (CTA/MRA/MRI); ~200 with segmentation |

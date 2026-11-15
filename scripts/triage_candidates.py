@@ -211,9 +211,13 @@ def system_prompt(cat):
             + catalog_index(cat) + "\n")
 
 
-def user_message(c, evidence):
+def user_message(c, evidence, added_this_run=()):
     row = {k: c.get(k) for k in ("name", "url", "source", "id", "pop", "publisher", "extends") if c.get(k)}
-    return ("<candidate>\n" + json.dumps(row, ensure_ascii=False, indent=1) + "\n</candidate>\n\n"
+    extra = ""
+    if added_this_run:   # not in the cached catalog index yet — duplicates count against these too
+        extra = ("Catalog entries added earlier in this run (also part of the catalog):\n"
+                 + "\n".join(added_this_run) + "\n\n")
+    return (extra + "<candidate>\n" + json.dumps(row, ensure_ascii=False, indent=1) + "\n</candidate>\n\n"
             "<evidence>\n" + evidence + "\n</evidence>\n\nTriage this candidate.")
 
 
@@ -438,7 +442,7 @@ def make_client():
     return anthropic.Anthropic(max_retries=8)   # rate limits: back off and retry, don't drop the row
 
 
-def call_claude(client, system, c, ev):
+def call_claude(client, system, c, ev, added_this_run=()):
     """-> (parsed JSON or None, error string or None, usage dict)."""
     resp = client.beta.messages.create(
         model=MODEL,
@@ -448,7 +452,7 @@ def call_claude(client, system, c, ev):
         output_config={"effort": "medium",
                        "format": {"type": "json_schema", "schema": output_schema()}},
         system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-        messages=[{"role": "user", "content": user_message(c, ev)}],
+        messages=[{"role": "user", "content": user_message(c, ev, added_this_run)}],
     )
     u = resp.usage
     usage = {"input": u.input_tokens or 0, "output": u.output_tokens or 0,
@@ -495,6 +499,22 @@ def clean_entry(e):
     return out
 
 
+def url_key(u):
+    """Comparable form of a dataset URL: no scheme/www/trailing slash/query, no figshare-style
+    .vN version suffix (…/27894084 and …/27894084.v1 are the same record)."""
+    u = re.sub(r"^https?://(www\.)?", "", str(u or "").strip().lower()).split("#")[0].split("?")[0]
+    return re.sub(r"(\.v\d+|/v\d+)$", "", u.rstrip("/")).rstrip("/")
+
+
+def catalog_urls(cat):
+    out = {}
+    for e in cat:
+        for u in [e.get("url")] + [x.get("url") for x in e.get("links") or []]:
+            if u:
+                out.setdefault(url_key(u), e["id"])
+    return out
+
+
 def record(c, decision, reason, today, until=None):
     r = {"name": c.get("name"), "url": c.get("url"), "decision": decision, "reason": reason,
          "date": today, "by": BY}
@@ -515,6 +535,9 @@ def apply_decision(c, out, cat, today):
         if out.get("confidence") == "low" or not out.get("entry"):
             return "deferred", None, record(c, "deferred", f"low-confidence add: {reason}", today, plus(DEFER_DAYS))
         entry = clean_entry(out["entry"])
+        same = catalog_urls(cat).get(url_key(entry.get("url")))
+        if same:
+            return "duplicate", None, record(c, "added", f"same as catalog id {same} (same URL): {reason}", today)
         if entry["id"] in ids:
             return ("needs-human", None, record(c, "deferred", f"proposed id {entry['id']} already exists — "
                                                 f"check for a duplicate: {reason}", today, plus(FAILED_DEFER_DAYS)))
@@ -548,14 +571,14 @@ def run(candidates, cat, triage, max_n, budget, client_factory=make_client, get=
     Mutates cat (appends entries) and triage (appends decisions). Returns result rows."""
     today = today or datetime.date.today().isoformat()
     system = system_prompt(cat)
-    spent, results = 0.0, []
+    spent, results, added = 0.0, [], []
     for i, c in enumerate(order(candidates)[:max_n], 1):
         if spent >= budget:
             log(f"budget ${budget:.2f} reached after {i - 1} candidates")
             break
         ev = evidence(c, get)
         try:
-            out, err, usage = call_claude(client_factory(), system, c, ev)
+            out, err, usage = call_claude(client_factory(), system, c, ev, added)
         except Exception as e:   # one failed call must not lose the month's work
             out, err, usage = None, f"API error: {type(e).__name__}: {e}"[:300], {}
         spent += cost(usage)
@@ -566,6 +589,8 @@ def run(candidates, cat, triage, max_n, budget, client_factory=make_client, get=
             status, entry, rec = apply_decision(c, out, cat, today)
             if entry:
                 cat.append(entry)
+                added.append(" | ".join(x for x in (entry["id"], entry.get("name") or "",
+                                                     entry.get("full_name") or "", entry.get("url") or "") if x))
             triage.setdefault("decisions", []).append(rec)
             row.update(status=status, reason=rec["reason"], entry=entry, confidence=out.get("confidence"),
                        duplicate_of=out.get("duplicate_of") or None)

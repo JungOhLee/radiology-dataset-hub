@@ -205,6 +205,15 @@ class Apply(unittest.TestCase):
         status, _, rec = t.apply_decision(CAND, out("duplicate", duplicate_of="no-such-id"), CAT, TODAY)
         self.assertEqual(status, "deferred")
 
+    def test_same_url_becomes_duplicate(self):
+        base = dict(CAT[0])
+        dup = out(entry=entry(id="brand-new-id", url=base["url"].rstrip("/") + "/"))
+        status, e, rec = t.apply_decision(CAND, dup, CAT, TODAY)
+        self.assertEqual((status, e, rec["decision"]), ("duplicate", None, "added"))
+        self.assertIn(base["id"], rec["reason"])
+        self.assertEqual(t.url_key("https://doi.org/10.6084/m9.figshare.27894084.v1"),
+                         t.url_key("http://www.doi.org/10.6084/m9.figshare.27894084/"))
+
     def test_reject_and_defer(self):
         self.assertEqual(t.apply_decision(CAND, out("reject"), CAT, TODAY)[2]["decision"], "rejected")
         rec = t.apply_decision(CAND, out("defer"), CAT, TODAY)[2]
@@ -257,6 +266,28 @@ class Run(unittest.TestCase):
               get=lambda u, headers=None: ("text/html", "x"), today=TODAY, log=lambda *_: None)
         self.assertEqual(cat[-1]["id"], "new-ct-set")
         self.assertEqual(t.val.validate(cat), [])
+
+    def test_same_run_additions_are_shown_and_deduplicated(self):
+        cat, triage = list(CAT), {"decisions": []}
+        seen = []
+        outs = [out(), out(entry=entry(id="other-id"))]          # same URL proposed twice
+
+        def factory():
+            def create(**kw):
+                seen.append(kw["messages"][0]["content"])
+                o = outs.pop(0)
+                u = types.SimpleNamespace(input_tokens=1, output_tokens=1, cache_read_input_tokens=0,
+                                          cache_creation_input_tokens=0)
+                return types.SimpleNamespace(stop_reason="end_turn", usage=u,
+                                             content=[types.SimpleNamespace(type="text", text=json.dumps(o))])
+            return types.SimpleNamespace(beta=types.SimpleNamespace(messages=types.SimpleNamespace(create=create)))
+        cands = [CAND, dict(CAND, name="Mirror of it", url="https://huggingface.co/datasets/x/y")]
+        res, _ = t.run(cands, cat, triage, 2, 10, client_factory=factory,
+                       get=lambda u, headers=None: ("text/html", "x"), today=TODAY, log=lambda *_: None)
+        self.assertEqual([r["status"] for r in res], ["added", "duplicate"])
+        self.assertIn("added earlier in this run", seen[1])
+        self.assertIn("new-ct-set", seen[1])
+        self.assertNotIn("added earlier in this run", seen[0])
 
     def test_priority_rows_first(self):
         rows = [{"name": "b", "source": "Kaggle"}, {"name": "a", "source": "GitHub", "priority": True},

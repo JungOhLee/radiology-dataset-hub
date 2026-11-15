@@ -62,9 +62,16 @@ jobs:
             || { echo "base_branch must be main or a bot/triage-YYYY-MM-DD-<run> branch"; exit 1; }
           echo "BASE=$BASE" >> "$GITHUB_ENV"
 
+      # The code that runs is always main's. A chained backlog round takes only the two
+      # data files from the previous round's branch (never its scripts or workflows).
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ env.BASE }}
+
+      - name: Take the catalog data from the base branch
+        if: ${{ env.BASE != 'main' }}
+        shell: bash
+        run: |
+          git fetch -q origin "+refs/heads/$BASE:refs/remotes/origin/$BASE"
+          git checkout "origin/$BASE" -- data/datasets.json data/triage.json
 
       - uses: actions/setup-python@v5
         with:
@@ -111,13 +118,19 @@ jobs:
         run: |
           set -euo pipefail
           cat "$RUNNER_TEMP/pr_body.md" >> "$GITHUB_STEP_SUMMARY"
-          if git diff --quiet -- data README.md; then
-            echo "No catalog or triage changes this run."; exit 0
-          fi
+          OUT="$RUNNER_TEMP/out"; mkdir -p "$OUT"
+          cp data/datasets.json data/triage.json README.md "$OUT/"
+          # the new branch starts from the base branch and carries only the three files
+          git fetch -q origin "+refs/heads/$BASE:refs/remotes/origin/$BASE"
           BR="bot/triage-$(date -u +%Y-%m-%d)-$GITHUB_RUN_ID"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "$BR"
+          git switch -q -f -c "$BR" "origin/$BASE"
+          cp "$OUT/datasets.json" "$OUT/triage.json" data/
+          cp "$OUT/README.md" README.md
+          if git diff --quiet -- data README.md; then
+            echo "No catalog or triage changes this run."; exit 0
+          fi
           git add data/datasets.json data/triage.json README.md
           git commit -q -m "Monthly dataset triage $(date -u +%F) (Claude-proposed, needs review)"
           git push -q origin "$BR"

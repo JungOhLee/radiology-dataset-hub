@@ -110,6 +110,8 @@ function wireDetailModal() {
   document.getElementById("modal-close").addEventListener("click", closeDetail);
   document.getElementById("detail-overlay").addEventListener("click", e => {
     if (e.target.id === "detail-overlay") closeDetail();
+    const go = e.target.closest("[data-goto]");    // "Related datasets" links
+    if (go) { e.preventDefault(); openDetail(go.dataset.goto); }
   });
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !document.getElementById("detail-overlay").hidden) closeDetail();
@@ -386,6 +388,11 @@ function searchIndex(d) {
     d.host, (d.format || []).join(" "), d.license, d.size, d.year,
     d.clinical_variables, d.segmentation_detail, d.multi_sequence_detail, d.paired_text_detail,
     d.details ? (d.details.label_schema || []).join(" ") : "",
+    d.details ? [(d.details.label_source || []).join(" "), (d.details.label_unit || []).join(" "),
+                 d.details.reference_standard, d.details.label_readers,
+                 (d.details.label_variants || []).map(v => v.name).join(" "),
+                 (d.details.related || []).map(r => r.name || r.id).join(" ")].join(" ") : "",
+    (d.aliases || []).join(" "), d.type === "annotation" ? "annotation label set relabel expert labels" : "",
   ];
   const raw = parts.filter(Boolean).join(" ").toLowerCase();
   const wordify = s => " " + String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() + " ";
@@ -479,6 +486,7 @@ function card(d) {
   if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(d.multi_sequence_detail || "Multi-sequence / multi-phase")}">≋ Multi-seq</span>`);
   if (hasTag(d, "population-cohort")) badges.push(`<span class="badge cohort" title="Population / epidemiological cohort${d.clinical_variables ? " — " + esc(d.clinical_variables) : ""}">◉ Cohort</span>`);
   if (d.body_composition) badges.push(`<span class="badge bodycomp" title="Body-composition phenotypes available (VAT/ASAT/muscle/DXA)">⚖ Body comp</span>`);
+  if (d.type === "annotation") badges.push(`<span class="badge seq" title="Label/annotation set for another dataset's images — images come from the base dataset">🏷 Label set</span>`);
   const fmt = (d.format || []).slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
 
   const access = (d.access || "").toLowerCase();
@@ -539,6 +547,7 @@ function openDetail(id) {
   };
   const links = [];
   if (d.url) links.push(`<a href="${esc(d.url)}" target="_blank" rel="noopener">Official source ↗</a>`);
+  for (const l of d.links || []) links.push(`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label || "Also at")} ↗</a>`);
   links.push(`<a href="data/datasets.json" target="_blank" rel="noopener">JSON entry</a>`);
 
   let structure = "";
@@ -550,6 +559,25 @@ function openDetail(id) {
     }
     if (dt.file_structure) parts += `<h4>File & data structure</h4><p class="mono">${esc(dt.file_structure)}</p>`;
     if (dt.splits) parts += `<h4>Splits</h4><p>${esc(dt.splits)}</p>`;
+    // label provenance — what a label means and how trustworthy it is (CONTRIBUTING.md)
+    const prov = [
+      row("Label source", dt.label_source), row("Readers", dt.label_readers),
+      row("Label unit", dt.label_unit), row("Reference standard", dt.reference_standard),
+      row("Version", [dt.version, dt.release_date].filter(Boolean).join(" · ")),
+      row("DICOM headers", dt.dicom_headers),
+      row("Sending images to external services", dt.third_party_processing
+        ? dt.third_party_processing + (dt.third_party_note ? " — " + dt.third_party_note : "") : ""),
+    ].join("");
+    if (prov) parts += `<h4>Label provenance & use</h4><table class="detail-table">${prov}</table>`;
+    const rel = (dt.related || []).map(r => {
+      const tgt = r.id && DATA.find(x => x.id === r.id);
+      const nm = esc(r.name || (tgt && tgt.name) || r.id);
+      return `<li>${esc(r.relation)}: ${tgt ? `<a href="#" data-goto="${esc(r.id)}">${nm}</a>` : nm}</li>`;
+    });
+    const vars = (dt.label_variants || []).map(v =>
+      `<li>${v.url ? `<a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.name)}</a>` : esc(v.name)}${v.note ? " — " + esc(v.note) : ""}</li>`);
+    if (rel.length) parts += `<h4>Related datasets</h4><ul class="schema">${rel.join("")}</ul>`;
+    if (vars.length) parts += `<h4>Other label sets for these images</h4><ul class="schema">${vars.join("")}</ul>`;
     if (dt.extra) parts += `<p class="note">${esc(dt.extra)}</p>`;
     structure = `<section class="detail-structure">${parts}</section>`;
   } else {

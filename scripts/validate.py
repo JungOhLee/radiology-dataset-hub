@@ -11,10 +11,50 @@ REQUIRED = ["id", "name", "type", "regions", "modality", "format", "raw_image",
             "access", "url", "description"]
 REGIONS = {"Neuro", "Chest", "Cardiac", "Vascular", "Abdomen", "Pelvis", "MSK",
            "Breast", "HeadNeck", "Dental", "WholeBody", "Multi"}
-TYPES = {"dataset", "repository"}
+TYPES = {"dataset", "repository", "annotation"}   # annotation = label set on another dataset's images
+ACCESS_TP = {"permitted", "prohibited", "unclear"}
+LABEL_SOURCE = {"nlp-report", "radiologist-single", "radiologist-multi", "radiologist-consensus",
+                "pathology", "follow-up", "clinical-record", "dataset-definition", "model-generated", "crowd"}
+LABEL_UNIT = {"patient", "study", "series", "image", "breast", "lesion", "voxel", "sentence"}
+DICOM_HEADERS = {"intact", "partially-anonymized", "stripped (converted to NIfTI/PNG/JPEG)", "n/a"}
+RELATIONS = {"derived-from", "subset-of", "superset-of", "overlaps", "extends", "label-addon-for",
+             "mirror-of", "same-images-as"}
 ACCESS = {"open", "registration", "dua", "request"}
 BOOL_FIELDS = ["raw_image", "paired_text", "multi_sequence", "segmentation",
                "body_composition", "longitudinal"]  # last two optional (cohorts)
+
+
+def check_details(tag, d):
+    """Optional structured label/provenance keys inside `details` (see CONTRIBUTING.md)."""
+    errs, dt = [], d.get("details")
+    if dt is None:
+        if d.get("type") == "annotation":
+            errs.append(f"[{tag}] annotation entries need details.related (label-addon-for <base>)")
+        return errs
+    if not isinstance(dt, dict):
+        return [f"[{tag}] details must be an object"]
+    for key, allowed in (("label_source", LABEL_SOURCE), ("label_unit", LABEL_UNIT)):
+        v = dt.get(key)
+        if v is not None:
+            if not isinstance(v, list):
+                errs.append(f"[{tag}] details.{key} must be a list")
+            else:
+                errs += [f"[{tag}] details.{key}: unknown value {x!r}" for x in v if x not in allowed]
+    if dt.get("third_party_processing") not in (None, *ACCESS_TP):
+        errs.append(f"[{tag}] details.third_party_processing must be one of {sorted(ACCESS_TP)}")
+    if dt.get("dicom_headers") not in (None, *DICOM_HEADERS):
+        errs.append(f"[{tag}] details.dicom_headers must be one of {sorted(DICOM_HEADERS)}")
+    for key in ("related", "label_variants"):
+        v = dt.get(key)
+        if v is not None and not (isinstance(v, list) and all(isinstance(x, dict) for x in v)):
+            errs.append(f"[{tag}] details.{key} must be a list of objects")
+    for r in dt.get("related") or []:
+        if r.get("relation") not in RELATIONS:
+            errs.append(f"[{tag}] details.related: unknown relation {r.get('relation')!r}")
+    if d.get("type") == "annotation" and not any(
+            r.get("relation") == "label-addon-for" for r in dt.get("related") or []):
+        errs.append(f"[{tag}] annotation entries need details.related with relation label-addon-for")
+    return errs
 
 
 def main():
@@ -55,6 +95,12 @@ def main():
         url = d.get("url", "")
         if url and not str(url).startswith("http"):
             errors.append(f"[{tag}] url should start with http: {url}")
+        if "aliases" in d and not (isinstance(d["aliases"], list) and all(isinstance(a, str) for a in d["aliases"])):
+            errors.append(f"[{tag}] aliases must be a list of strings")
+        if "links" in d and not (isinstance(d["links"], list) and all(
+                isinstance(x, dict) and str(x.get("url", "")).startswith("http") for x in d["links"])):
+            errors.append(f"[{tag}] links must be a list of {{label, url}} objects with http urls")
+        errors += check_details(tag, d)
 
     if errors:
         print(f"✗ {len(errors)} validation error(s):")

@@ -50,6 +50,8 @@ def dataset_row(d):
     name = cell(d.get("name"))
     url = d.get("url")
     name_md = f"[{name}]({url})" if url else name
+    if d.get("type") == "annotation":   # label set for another dataset's images
+        name_md += " 🏷"
     mods = ", ".join(d.get("modality") or []) or "—"
     fmt = ", ".join(d.get("format") or []) or "—"
     raw = "🟢" if d.get("raw_image") else "🟡"
@@ -101,7 +103,7 @@ def build():
     out.append("")
     out.append("**Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). "
                "Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · "
-               "Multi = multi-sequence MRI or multi-phase CT. "
+               "Multi = multi-sequence MRI or multi-phase CT. 🏷 = label/annotation set for another dataset's images. "
                "Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · "
                "REQUEST = apply for access. "
                f"**Datasets covering several body regions ({n_multi_region}) appear under each region.**")

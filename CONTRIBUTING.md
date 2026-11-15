@@ -16,7 +16,14 @@ tables are generated from it.
 
 ## Inclusion criteria
 
-- **Must contain image data.** Prefer native raw formats (DICOM, NIfTI, NRRD, MHA). Derived
+- **Label/annotation sets count too.** Expert relabels, adjudicated reference standards and
+  analysis results for a public image dataset (Google's adjudicated labels for NIH ChestX-ray14,
+  CXR-LT on MIMIC-CXR, TCIA analysis results) are often what decides whether a dataset is usable
+  for evaluation. Add them as `"type": "annotation"` entries that point at the base dataset
+  (`details.related`, relation `label-addon-for`), or — for a small add-on — as
+  `details.label_variants` on the base entry.
+- **Must contain image data** (or, for `annotation` entries, label an image dataset in the catalog).
+  Prefer native raw formats (DICOM, NIfTI, NRRD, MHA). Derived
   formats (PNG/JPEG) are accepted but flagged `"raw_image": false`.
 - **Must be open** for research use: direct download, free registration, a data-use agreement,
   or an application process. No fully closed/commercial-only data.
@@ -32,7 +39,9 @@ Each entry is a JSON object with these fields:
 | `id` | string | unique kebab-case id |
 | `name` | string | short display name |
 | `full_name` | string \| null | expanded name |
-| `type` | enum | `dataset` or `repository` (hubs like TCIA/PhysioNet) |
+| `type` | enum | `dataset`, `repository` (hubs like TCIA/PhysioNet), or `annotation` (labels for another dataset's images) |
+| `aliases` | string[] | optional — other names the dataset is announced under (paper title, challenge name), so trackers recognise it |
+| `links` | object[] | optional — `{label, url}` for other official locations (AWS registry, Zenodo record, AIMI page) and clearly-labelled unofficial mirrors |
 | `regions` | string[] | **one or more** body regions — a dataset spanning several lists them all: `Neuro`, `Chest`, `Cardiac`, `Vascular`, `Abdomen`, `Pelvis`, `MSK`, `Breast`, `HeadNeck`, `Dental`, `WholeBody`, `Multi` (various). Empty only for repositories. |
 | `anatomy` | string | organ/region, e.g. `"liver"` |
 | `modality` | string[] | any of `CT`, `MRI`, `PET`, `X-ray`, `DXA` (mammography/DBT → `X-ray`, CBCT → `CT`) |
@@ -57,6 +66,29 @@ Each entry is a JSON object with these fields:
 | `host` | string | e.g. `TCIA`, `PhysioNet`, `Grand Challenge`, `Synapse`, `OpenNeuro`, `Zenodo`, `Kaggle` |
 | `url` | string | official homepage |
 | `description` | string | one factual sentence |
+| `details` | object | optional — data & label structure shown in the site's detail view (below) |
+
+### `details` — what the labels are and how far to trust them
+
+When you need a dataset later ("adjudicated chest X-ray labels", "biopsy-proven mammography with
+real screening prevalence", "multiphase CT with intact DICOM headers", "may I send these images to
+an external LLM API?"), these fields answer it. All optional; use `null` rather than guessing.
+
+| Key | Type | Notes |
+| --- | --- | --- |
+| `label_schema` | string[] | each label/column and what it means |
+| `file_structure` | string | folders, file formats, label files |
+| `splits` | string | official splits |
+| `label_source` | string[] | `nlp-report`, `radiologist-single`, `radiologist-multi`, `radiologist-consensus`, `pathology`, `follow-up`, `clinical-record`, `dataset-definition` (implied by protocol/design), `model-generated`, `crowd` |
+| `label_readers` | string | e.g. "3 radiologists, disagreements adjudicated" |
+| `label_unit` | string[] | `patient`, `study`, `series`, `image`, `breast`, `lesion`, `voxel`, `sentence` |
+| `reference_standard` | string | what "positive" means and how it was confirmed, incl. prevalence if enriched |
+| `label_variants` | object[] | `{name, url, note}` — other label sets on the same images |
+| `related` | object[] | `{id, name, relation}`; relation = `derived-from`, `subset-of`, `superset-of`, `overlaps`, `extends`, `label-addon-for`, `mirror-of`, `same-images-as` — flag overlaps before using two datasets as independent test sets |
+| `version`, `release_date` | string | current version and public release date (matters for pre-training contamination) |
+| `dicom_headers` | enum | `intact`, `partially-anonymized`, `stripped (converted to NIfTI/PNG/JPEG)`, `n/a` |
+| `third_party_processing` | enum | `permitted`, `prohibited`, `unclear` — whether the licence/DUA allows sending images to external online services (e.g. commercial LLM APIs); quote the clause in `third_party_note`. Not legal advice — re-read the licence before use. |
+| `extra` | string | anything else (known label issues, caveats) |
 
 ## Accuracy
 

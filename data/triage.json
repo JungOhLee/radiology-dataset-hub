@@ -1,0 +1,41 @@
+{
+  "schema": "triage/1",
+  "note": "Review decisions for tracker / scan_mentions candidates that are NOT catalog entries. decision: rejected | deferred (with until) | added (exists under another catalog id). The tracker drops these rows (by name or url).",
+  "decisions": [
+    {
+      "name": "AMOS-MM challenge design document",
+      "url": "https://zenodo.org/records/10992155",
+      "decision": "rejected",
+      "reason": "challenge design PDF, not data; dataset is catalog id amos-mm",
+      "date": "2026-11-15"
+    },
+    {
+      "name": "M&Ms challenge description",
+      "url": "https://zenodo.org/records/3715890",
+      "decision": "rejected",
+      "reason": "challenge description PDF, not data; dataset is catalog id mnms",
+      "date": "2026-11-15"
+    },
+    {
+      "name": "idc-index-data",
+      "url": "https://huggingface.co/datasets/ImagingDataCommons/idc-index-data",
+      "decision": "rejected",
+      "reason": "IDC metadata index for tooling, not an image dataset (IDC is catalog id nci-idc)",
+      "date": "2026-11-15"
+    },
+    {
+      "name": "jsrt-database (TCIA)",
+      "url": "https://www.cancerimagingarchive.net/collection/jsrt-database/",
+      "decision": "rejected",
+      "reason": "URL does not exist (404); JSRT is catalog id jsrt",
+      "date": "2026-11-15"
+    },
+    {
+      "name": "M3D-VQA",
+      "url": "https://huggingface.co/datasets/GoodBaiBai88/M3D-VQA",
+      "decision": "rejected",
+      "reason": "QA CSVs only; its images (M3D-Cap, Radiopaedia-derived) were taken down by DMCA on 2025-03-12, so it is not usable",
+      "date": "2026-11-15"
+    }
+  ]
+}

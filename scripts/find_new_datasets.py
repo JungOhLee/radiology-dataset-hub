@@ -5,10 +5,19 @@ skipped so the report is always produced.
 
 Sources: catalog publishers (Hugging Face orgs / GitHub owners that already publish
 a dataset in the catalog — e.g. AbdomenAtlas, MrGiovanni), Hugging Face Datasets
-(repo-id search + card-tag filters), GitHub repository search, TCIA collections,
-Zenodo (newest + most-viewed back-catalog), Grand Challenge, Kaggle datasets
+(repo-id search + card-tag filters), GitHub repository search, TCIA (NBIA API +
+the website's collection and analysis-result listings — collections distributed
+outside NBIA, e.g. CDD-CESM via Aspera, and label-only analysis results), Zenodo
+(newest + most-viewed back-catalog, 2 pages), Grand Challenge, Kaggle datasets
 (unauthenticated), Kaggle competitions (needs KAGGLE_USERNAME/KAGGLE_KEY),
-PhysioNet, OpenNeuro. Optional GITHUB_TOKEN / HF_TOKEN raise API rate limits.
+PhysioNet, OpenNeuro, AWS Open Data Registry (RSNA / Emory / UCSF releases),
+figshare, Harvard Dataverse, VinDr, and dataset papers (Scientific Data, Data in
+Brief via Crossref — catches datasets hosted anywhere, incl. hosts we don't poll).
+Portals without an API (RSNA MIRA, Stanford AIMI, BIMCV, Science Data Bank, FRDR)
+are listed as a monthly manual checklist. data/triage.json records review
+decisions so rejected candidates stop reappearing and the backlog can drain; a
+rotating backlog window resurfaces rows the per-source cap would hide forever.
+Optional GITHUB_TOKEN / HF_TOKEN raise API rate limits.
 Run in CI (network required). Prints a Markdown report of candidate datasets not
 yet in data/datasets.json for human review; the GitHub Action opens/updates an issue.
 
@@ -60,8 +69,26 @@ MODALITY = re.compile(
 CLINICAL = re.compile(
     r"\b(lesion|tumou?r|glioma|stroke|epilep|sclerosis|alzheim|parkinson|dementia|"
     r"clinical|patient|trauma|injur|carcinoma|cancer|hemorrhage|haemorrhage|"
-    r"aneurysm|hydrocephalus|schizophren|psychosis|depressi|disorder)\b", re.I,
+    r"aneurysm|hydrocephalus|schizophren|psychosis|depressi|disorder|"
+    # image-quality / artefact / test-retest sets (MR-ART was missed without these)
+    r"motion|artefacts?|artifacts?|quality control|image quality|test-retest|phantom)\b", re.I,
 )
+
+# Portals with no usable listing API: printed every report as a manual checklist so a
+# whole host can't drop out of sight (REVEAL-CXR on RSNA MIRA, BrainMetShare on AIMI,
+# PLC-CECT on Science Data Bank, NL-Breast-Screening on FRDR were all missed this way).
+PORTALS = [
+    ("RSNA MIRA (RSNA datasets & benchmarks)", "https://mira.rsna.org/"),
+    ("Stanford AIMI dataset index", "https://aimidatasetindex.stanford.edu/"),
+    ("BIMCV projects (PadChest family)", "https://bimcv.cipf.es/bimcv-projects/"),
+    ("Science Data Bank (scidb.cn) — Chinese imaging datasets", "https://www.scidb.cn/en"),
+    ("FRDR (Canada) — search 'mammography', 'CT', 'MRI'", "https://www.frdr-dfdr.ca/repo/"),
+    ("NCI Imaging Data Commons collections", "https://portal.imaging.datacommons.cancer.gov/explore/"),
+    ("Mendeley Data — search radiology terms", "https://data.mendeley.com/"),
+]
+
+TRIAGE = ROOT / "data" / "triage.json"
+BACKLOG_ROTATION = 25   # backlog rows resurfaced per report, cycling through all of them
 
 # Curated "must-have" resources across categories — especially application-access
 # population cohorts that the dataset-repository APIs above do NOT surface. The
@@ -194,12 +221,18 @@ def load_known(ds=None):
         text = " ".join([d.get("full_name") or "", d["name"], str(d.get("year") or "")]
                         + list(d.get("modality") or []))
         toks = set(re.findall(r"[a-z]+|\d+", text.lower().replace("+", " plus ")))
-        for n in (d.get("full_name"), d["name"]):   # name wins on a clash
+        # aliases: paper titles and other names the same dataset is announced under
+        # ("Full Field Digital Mammography Dataset from a Population Screening Program"
+        # = NL-Breast-Screening), so paper/portal rows for catalog datasets drop out
+        for n in (*(d.get("aliases") or []), d.get("full_name"), d["name"]):   # name wins on a clash
             if n:
                 display[norm(n)] = d["name"]
                 cover[norm(n)] = cover.get(norm(n), set()) | toks
     names = set(display)
-    urls = {(d.get("url") or "").lower().rstrip("/") for d in ds}
+    # official alternative locations (AWS registry, Zenodo record, AIMI page, mirrors) count
+    # too, or the same dataset resurfaces from every host it is published on
+    urls = {(u or "").lower().rstrip("/") for d in ds
+            for u in [d.get("url")] + [x.get("url") for x in d.get("links") or []]}
     slugs = set()
     for u in urls:
         for part in re.split(r"[/:]", u):
@@ -208,7 +241,7 @@ def load_known(ds=None):
     # canonical tokens used for substring matching to catch reuploads; min length 8 so
     # short generic names ("ATLAS", "BraTS") can't swallow unrelated new candidates
     short = {k for k in names if 8 <= len(k) <= 24}
-    return names, slugs, short, display, cover
+    return names, slugs, short, display, cover, urls
 
 
 def covered(residue, toks):
@@ -453,16 +486,183 @@ def github_search(since):
     return out
 
 
+def get_text(url, timeout=30, headers=None):
+    h = {"User-Agent": "Mozilla/5.0 (radiology-dataset-hub-tracker)"}
+    h.update(headers or {})
+    with urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=timeout) as r:
+        return r.read().decode("utf-8", "replace")
+
+
+TCIA_SITE = "https://www.cancerimagingarchive.net"
+
+
 def tcia():
+    """NBIA lists only collections whose DICOM is served by NBIA. The website's
+    browse pages also list collections distributed another way (CDD-CESM: JPEG via
+    Aspera) and label-only analysis results (e.g. tumour annotations on a TCGA
+    collection), so both are read; each row links to its own collection page."""
+    out, seen = [], set()
     try:
-        url = "https://services.cancerimagingarchive.net/nbia-api/services/v1/getCollectionValues"
-        data = get_json(url)
-        return [{"name": c.get("Collection"), "id": c.get("Collection"),
-                 "url": "https://www.cancerimagingarchive.net/collections/", "source": "TCIA"}
-                for c in data if c.get("Collection")]
+        data = get_json("https://services.cancerimagingarchive.net/nbia-api/services/v1/getCollectionValues")
+        for c in data:
+            nm = c.get("Collection")
+            if nm and norm(nm) not in seen:
+                seen.add(norm(nm))
+                slug = re.sub(r"[^a-z0-9]+", "-", nm.lower()).strip("-")
+                out.append({"name": nm, "id": nm, "url": f"{TCIA_SITE}/collection/{slug}/", "source": "TCIA"})
     except Exception as e:
-        print(f"  (TCIA skipped: {e})", file=sys.stderr)
+        print(f"  (TCIA NBIA skipped: {e})", file=sys.stderr)
+    for page, kind in (("browse-collections", "collection"), ("browse-analysis-results", "analysis-result")):
+        try:
+            html = get_text(f"{TCIA_SITE}/{page}/")
+            for slug in dict.fromkeys(re.findall(rf"cancerimagingarchive\.net/{kind}/([a-z0-9-]+)/", html)):
+                nm = slug.upper() if kind == "collection" else slug.replace("-", " ")
+                if norm(nm) in seen:
+                    continue
+                seen.add(norm(nm))
+                out.append({"name": nm, "id": slug, "url": f"{TCIA_SITE}/{kind}/{slug}/",
+                            "source": "TCIA" if kind == "collection" else "TCIA analysis results",
+                            "pop": "" if kind == "collection" else "labels only"})
+        except Exception as e:
+            print(f"  (TCIA {page} skipped: {e})", file=sys.stderr)
+    return out
+
+
+AWS_REGISTRY_TREE = "https://api.github.com/repos/awslabs/open-data-registry/git/trees/main?recursive=1"
+AWS_REGISTRY_RAW = "https://raw.githubusercontent.com/awslabs/open-data-registry/main/"
+AWS_FILE_HINT = re.compile(r"rsna|emory|embed|ucsf|radiolog|imaging|mri|\bct\b|-ct-|ct-|chest|xray|x-ray|"
+                           r"mammo|breast|brain|lung|tcia|idc|nih|cancer|tumor|medical|clinical|"
+                           r"spine|knee|cardiac|liver|kidney|prostate|aneurysm|hemorrhage|trauma", re.I)
+
+
+def aws_open_data():
+    """AWS Open Data Registry: RSNA challenge datasets, EMBED, UCSF-RMaC live here and
+    nowhere else we poll. One tree call lists ~1,500 YAML files; only names that hint at
+    medical imaging are fetched (raw.githubusercontent, no API quota)."""
+    out = []
+    try:
+        tree = get_json(AWS_REGISTRY_TREE, headers=gh_auth())
+        paths = [t["path"] for t in tree.get("tree", [])
+                 if t["path"].startswith("datasets/") and t["path"].endswith(".yaml")]
+    except Exception as e:
+        print(f"  (AWS Open Data skipped: {e})", file=sys.stderr)
+        return out
+    for p in paths:
+        slug = p[len("datasets/"):-len(".yaml")]
+        if not AWS_FILE_HINT.search(slug.replace("-", " ")) and not AWS_FILE_HINT.search(slug):
+            continue
+        try:
+            y = get_text(AWS_REGISTRY_RAW + p)
+        except Exception:
+            continue
+        m = re.search(r"^Name:\s*\"?(.+?)\"?\s*$", y, re.M)
+        name = m.group(1) if m else slug
+        tags = " ".join(re.findall(r"^\s*-\s*([\w .-]+)\s*$", y.split("License:")[0], re.M))
+        desc = (re.search(r"^Description:\s*\|?\s*\n?(.{0,600})", y, re.M | re.S) or [None, ""])[1]
+        if re.search(r"medic|imaging|radiolog|health|cancer|x-ray|mri", tags, re.I) and relevant(name, desc, tags):
+            out.append({"name": name[:80], "id": slug,
+                        "url": f"https://registry.opendata.aws/{slug}/", "source": "AWS Open Data"})
+    return out
+
+
+def figshare():
+    """figshare (DMID, FUMPE, AVT and many journal-linked datasets live here). Public
+    search API; item_type 3 = dataset. Figure/table records with HTML-caption titles
+    are dropped."""
+    out, seen = [], set()
+    terms = ["mammography dataset", "CT dataset", "MRI dataset", "chest x-ray dataset",
+             "radiology dataset", "medical imaging dataset", "PET dataset", "segmentation CT MRI"]
+    for term in terms:
+        try:
+            data = get_json("https://api.figshare.com/v2/articles/search",
+                            data={"search_for": term, "item_type": 3, "page_size": 100})
+        except Exception as e:
+            print(f"  (figshare '{term}' skipped: {e})", file=sys.stderr)
+            continue
+        for a in data or []:
+            # titles may carry HTML (DMID's is wrapped in <b>); captions of figure/table
+            # records don't name a dataset and fail PAPER_TITLE
+            title = re.sub(r"<[^>]+>", "", a.get("title") or "").strip()
+            if not title or a.get("id") in seen:
+                continue
+            seen.add(a.get("id"))
+            if relevant(title) and MODALITY.search(title) and PAPER_TITLE.search(title):
+                out.append({"name": title[:80], "id": str(a.get("id")),
+                            "url": a.get("url_public_html") or f"https://figshare.com/articles/{a.get('id')}",
+                            "source": "figshare", "pop": (a.get("published_date") or "")[:10]})
+    return out
+
+
+def dataverse():
+    """Harvard Dataverse public search (e.g. DeepSight mammography sets)."""
+    out, seen = [], set()
+    for term in ["mammography", "computed tomography", "MRI imaging dataset", "chest radiograph", "DICOM"]:
+        try:
+            data = get_json("https://dataverse.harvard.edu/api/search?type=dataset&per_page=50&q="
+                            + urllib.parse.quote(term))
+        except Exception as e:
+            print(f"  (Dataverse '{term}' skipped: {e})", file=sys.stderr)
+            continue
+        for it in (data.get("data") or {}).get("items", []):
+            name, gid = it.get("name") or "", it.get("global_id") or ""
+            if gid in seen:
+                continue
+            seen.add(gid)
+            if relevant(name, it.get("description", "")) and MODALITY.search(name) and PAPER_TITLE.search(name):
+                out.append({"name": name[:80], "id": gid, "url": it.get("url") or "",
+                            "source": "Harvard Dataverse", "pop": (it.get("published_at") or "")[:10]})
+    return out
+
+
+def vindr():
+    """VinDr (Vingroup) releases on its own portal, some only by request
+    (VinDr-Multiphase); PhysioNet carries only part of them."""
+    try:
+        html = get_text("https://vindr.ai/datasets")
+    except Exception as e:
+        print(f"  (VinDr skipped: {e})", file=sys.stderr)
         return []
+    return [{"name": "VinDr " + s.replace("-", " "), "id": s, "url": f"https://vindr.ai/datasets/{s}",
+             "source": "VinDr"} for s in dict.fromkeys(re.findall(r'href="(?:https://vindr\.ai/)?/?datasets/([a-z0-9-]+)"', html))]
+
+
+# Dataset-descriptor journals. A paper is often the only announcement of a dataset
+# hosted somewhere we don't poll (CDD-CESM, NL-Breast-Screening, PLC-CECT, DMID).
+PAPER_JOURNALS = [("2052-4463", "Scientific Data"), ("2352-3409", "Data in Brief")]
+PAPER_TERMS = ["mammography dataset", "CT dataset", "MRI dataset", "chest radiograph dataset",
+               "computed tomography dataset", "medical imaging dataset", "PET dataset",
+               "contrast-enhanced dataset", "segmentation dataset CT"]
+PAPER_TITLE = re.compile(r"\b(dataset|database|data set|benchmark|cohort|collection|repository)\b", re.I)
+
+
+def dataset_papers(recent_days=730):
+    """Crossref: dataset descriptors of the last two years per term, by relevance. Titles must name a
+    dataset and an in-scope modality; the DOI page is the link to vet."""
+    out, seen = [], set()
+    since = days_ago(recent_days)
+    for issn, journal in PAPER_JOURNALS:
+        for term in PAPER_TERMS:
+            # relevance order inside the date window (sort=created returned the newest
+            # papers of any field, so nearly nothing survived the modality filter)
+            url = (f"https://api.crossref.org/journals/{issn}/works?rows=40"
+                   f"&filter=from-created-date:{since}&select=title,DOI,created"
+                   f"&query.bibliographic={urllib.parse.quote(term)}")
+            try:
+                items = get_json(url, timeout=40).get("message", {}).get("items", [])
+            except Exception as e:
+                print(f"  (Crossref {journal} '{term}' skipped: {e})", file=sys.stderr)
+                continue
+            for it in items:
+                title = re.sub(r"<[^>]+>", "", (it.get("title") or [""])[0]).strip()
+                doi = it.get("DOI", "")
+                if not title or doi in seen:
+                    continue
+                seen.add(doi)
+                if PAPER_TITLE.search(title) and MODALITY.search(title) and relevant(title):
+                    created = ((it.get("created") or {}).get("date-time") or "")[:10]
+                    out.append({"name": title[:100], "id": doi, "url": "https://doi.org/" + doi,
+                                "source": f"Papers — {journal}", "pop": created})
+    return out
 
 
 def zenodo(limit):
@@ -473,14 +673,17 @@ def zenodo(limit):
     below the 25-per-page unauthenticated cap."""
     out, seen = [], set()
     size = min(limit, 25)   # unauthenticated Zenodo caps page size at 25 (400 above that)
+    # phase/protocol terms added after WAW-TACE (multiphase liver CT) and UniToBrain
+    # (CT perfusion) were missed by the generic ones
     terms = ["radiology dataset", "medical imaging dataset", "CT dataset", "MRI dataset",
              "x-ray dataset", "PET dataset", "brain MRI", "liver MRI", "cardiac MRI",
-             "chest x-ray", "abdominal CT", "mammography"]
+             "chest x-ray", "abdominal CT", "mammography", "multiphase CT", "contrast-enhanced CT",
+             "CT perfusion", "MR enterography", "breast MRI", "tomosynthesis", "CBCT"]
     for term in terms:
-        for sort in ("newest", "mostviewed"):
+        for sort, page in (("newest", 1), ("mostviewed", 1), ("mostviewed", 2)):
             try:
-                url = ("https://zenodo.org/api/records?q=%s&size=%d&type=dataset&sort=%s"
-                       % (urllib.parse.quote(term), size, sort))
+                url = ("https://zenodo.org/api/records?q=%s&size=%d&type=dataset&sort=%s&page=%d"
+                       % (urllib.parse.quote(term), size, sort, page))
                 data = get_json(url)
                 for h in data.get("hits", {}).get("hits", []):
                     if h.get("id") in seen:
@@ -583,13 +786,22 @@ def physionet():
 def openneuro(limit):
     """Unauthenticated GraphQL (verified). Only clinical/pathology records — the
     bulk of OpenNeuro is task-fMRI cognitive studies out of catalog scope."""
-    out = []
-    query = ("query { datasets(first: %d, orderBy: {publishDate: descending}, "
-             "filterBy: {public: true}) { edges { node { id publishDate "
-             "latestSnapshot { description { Name } summary { modalities } } } } } }" % min(limit, 100))
-    try:
-        data = get_json("https://openneuro.org/crn/graphql", data={"query": query})
-        for e in (data.get("data", {}).get("datasets", {}) or {}).get("edges", []):
+    out, after = [], None
+    # newest-first, several pages: one page only reached back a few weeks, so a 2022
+    # release like MR-ART (ds004173) could never appear
+    for _ in range(5):
+        cursor = f', after: "{after}"' if after else ""
+        query = ("query { datasets(first: %d%s, orderBy: {publishDate: descending}, "
+                 "filterBy: {public: true}) { pageInfo { hasNextPage endCursor } edges { node { id publishDate "
+                 "latestSnapshot { description { Name } summary { modalities } } } } } }"
+                 % (min(limit, 100), cursor))
+        try:
+            data = (get_json("https://openneuro.org/crn/graphql", data={"query": query}).get("data", {})
+                    .get("datasets", {})) or {}
+        except Exception as e:
+            print(f"  (OpenNeuro skipped: {e})", file=sys.stderr)
+            break
+        for e in data.get("edges", []):
             node = (e or {}).get("node") or {}
             snap = node.get("latestSnapshot") or {}
             name = ((snap.get("description") or {}).get("Name") or "").strip()
@@ -597,8 +809,10 @@ def openneuro(limit):
                 out.append({"name": name[:80], "id": node.get("id", ""),
                             "url": "https://openneuro.org/datasets/" + node.get("id", ""),
                             "source": "OpenNeuro", "pop": (node.get("publishDate") or "")[:10]})
-    except Exception as e:
-        print(f"  (OpenNeuro skipped: {e})", file=sys.stderr)
+        info = data.get("pageInfo") or {}
+        if not info.get("hasNextPage"):
+            break
+        after = info.get("endCursor")
     return out
 
 
@@ -689,6 +903,11 @@ def render(new, missing_watch, have_prev, max_rows):
     else:
         lines.append("_All watchlist resources are in the catalog. ✅_")
     lines.append("")
+    lines.append(f"## 🧭 Portals without an API — check by hand once a month ({len(PORTALS)})\n")
+    lines.append("_No listing API to poll, so new releases here only surface through papers or by "
+                 "looking. Record what you checked in data/triage.json._\n")
+    lines += [f"- [{nm}]({url})" for nm, url in PORTALS]
+    lines.append("")
     if have_prev:
         n_fresh = sum(1 for c in new if c.get("fresh"))
         lines.append(f"_{n_fresh} candidate(s) marked 🆕 have not been shown in a previous report — "
@@ -704,6 +923,22 @@ def render(new, missing_watch, have_prev, max_rows):
     for c in new:
         if not c.get("priority"):
             by_src.setdefault(c["source"], []).append(c)
+    # Rows past a source's display cap never come back on their own once they lose 🆕,
+    # so an unreviewed backlog (CPTAC-CCRCC, 4D-Lung, CXR-LT sat there for months) is
+    # invisible. Show a window of them each report, cycling by ISO week until triaged.
+    hidden = []
+    for src in by_src:
+        rows = sorted(by_src[src], key=lambda x: (not x.get("fresh"), x["name"].lower()))
+        hidden += rows[max_rows:]
+    if hidden:
+        hidden.sort(key=lambda c: khash(c["key"]))
+        n = len(hidden)
+        start = (datetime.date.today().isocalendar()[1] * BACKLOG_ROTATION) % n
+        window = [hidden[(start + i) % n] for i in range(min(BACKLOG_ROTATION, n))]
+        section(lines, f"🗂 Backlog rotation — {len(window)} of {n} rows hidden by the per-source cap",
+                window, BACKLOG_ROTATION, "backlog rows", shown,
+                intro="_Different rows each week. Add them to the catalog, or record a decision in "
+                      "data/triage.json (rejected / deferred) so they leave the queue._")
     for src in sorted(by_src):
         section(lines, src, by_src[src], max_rows, f"from {src}", shown)
     if not new:
@@ -731,14 +966,36 @@ def build_report(new, missing_watch, prev_seen):
     return body + "\n<!-- tracker-seen: " + " ".join(seen) + " -->\n"
 
 
-def select_new(candidates, known, prev_set):
-    """Drop catalog datasets and their mirrors, dedupe by name (first row wins),
-    and tag each survivor: extends (catalog name it builds on), priority, fresh."""
-    names, slugs, short, display, cover = known
+def load_triage(path=TRIAGE):
+    """Review decisions: {"decisions": [{"name" | "url", "decision": added|rejected|deferred,
+    "reason", "date", "until"?}]}. added/rejected leave the queue for good (added = the
+    candidate is a catalog entry under another name); deferred returns after `until`."""
+    try:
+        doc = json.loads(pathlib.Path(path).read_text())
+    except (OSError, ValueError):
+        return set()
+    today = datetime.date.today().isoformat()
+    drop = set()
+    for d in doc.get("decisions", []):
+        if d.get("decision") == "deferred" and (d.get("until") or "9999") <= today:
+            continue
+        for k in (d.get("name"), d.get("url")):
+            if k:
+                drop.add(norm(k) if k == d.get("name") else k.lower().rstrip("/"))
+    return drop
+
+
+def select_new(candidates, known, prev_set, triaged=frozenset()):
+    """Drop catalog datasets, their mirrors and triaged rows, dedupe by name (first row
+    wins), and tag each survivor: extends (catalog name it builds on), priority, fresh."""
+    names, slugs, short, display, cover, urls = known
     new, seen = [], set()
     for c in candidates:
         key = norm(c["name"])
         if not key or key in seen:
+            continue
+        url = (c.get("url") or "").lower().rstrip("/")
+        if key in triaged or url in triaged or url in urls:   # same page as a catalog entry or its links
             continue
         status, base = classify(key, names, slugs, short, cover)
         if status == "known":
@@ -785,8 +1042,13 @@ def main():
     candidates += kaggle_competitions()
     candidates += physionet()
     candidates += openneuro(limit)
+    candidates += aws_open_data()
+    candidates += figshare()
+    candidates += dataverse()
+    candidates += vindr()
+    candidates += dataset_papers()
 
-    new = select_new(candidates, known, prev_set)
+    new = select_new(candidates, known, prev_set, load_triage())
 
     # curated watchlist: important resources (esp. population cohorts) that are missing
     missing_watch = [(nm, url) for nm, url in WATCHLIST

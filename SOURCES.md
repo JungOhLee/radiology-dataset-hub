@@ -7,7 +7,7 @@ layers**: a broad one-time discovery sweep, and an ongoing automated tracker.
 
 | Source | What it holds | How we query it |
 | --- | --- | --- |
-| [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/) | DICOM cancer imaging collections (CT/MRI/PET) | NBIA REST API `getCollectionValues` |
+| [The Cancer Imaging Archive (TCIA)](https://www.cancerimagingarchive.net/) | DICOM cancer imaging collections (CT/MRI/PET), plus collections distributed outside NBIA (e.g. CDD-CESM, JPEG via Aspera) and label-only *analysis results* | NBIA REST API `getCollectionValues` **and** the site's `browse-collections` / `browse-analysis-results` listings |
 | **Catalog publishers** | Follow-up releases from groups already in the catalog (AbdomenAtlas → PanTS → Merlin Plus) | Every Hugging Face org and GitHub owner in a catalog `url` (plus a few extras the URLs don't reveal: `stanfordmimi`, HF `MrGiovanni`): `/api/datasets?author=…&sort=createdAt` and `/users/…/repos?sort=created`, last 365 days, **no popularity floor** but must name an imaging modality or medical term — reported in the ⭐ Priority section |
 | [Hugging Face Datasets](https://huggingface.co/datasets) | Foundation-model / report-paired / VLM sets (CT-RATE, MR-RATE, Merlin, RadGenome…) | `/api/datasets` `search` (matches the **repo id only**) **and** card-tag `filter` (`radiology`, `ct`, `mri`, `medical-imaging`…, by downloads and newest) + downloads/likes filter |
 | [GitHub](https://github.com/search?type=repositories) | Dataset releases announced as a repo (README + download link to HF/Zenodo) | `/search/repositories` for "CT/MRI/X-ray/PET/mammography/radiology/medical imaging dataset" created in the last 120 days, top-starred; must *introduce* a dataset rather than use one ("the first public CT dataset" vs "trained on …") (uses the workflow's `GITHUB_TOKEN`) |
@@ -17,8 +17,14 @@ layers**: a broad one-time discovery sweep, and an ongoing automated tracker.
 | [Kaggle competitions](https://www.kaggle.com/competitions) | RSNA/SPR/UW-Madison etc. medical-imaging challenges | `/api/v1/competitions/list` — needs `KAGGLE_USERNAME`/`KAGGLE_KEY` repo secrets (kaggle.com → Settings → API); skipped gracefully if unset |
 | [PhysioNet](https://physionet.org/) | Credentialed clinical imaging (MIMIC-CXR family) | `/api/v1/project/published/` (full catalog JSON, filtered client-side) |
 | [OpenNeuro](https://openneuro.org/) | BIDS neuroimaging | GraphQL `/crn/graphql`, newest public datasets, clinical/pathology keyword filter |
-| [NCI Imaging Data Commons](https://portal.imaging.datacommons.cancer.gov/) | Cloud-hosted public collections | manual |
-| Stanford AIMI, arXiv, Papers With Code | New dataset papers & institutional releases | manual / literature |
+| [AWS Open Data Registry](https://registry.opendata.aws/) | RSNA challenge datasets, EMBED, UCSF releases (RMaC, BMSR, PCNSL, prostate) | registry YAML on GitHub (one tree call, medical-looking files fetched raw) |
+| [figshare](https://figshare.com/) | Journal-linked datasets (DMID, CSAW-M, FUMPE, AVT) | `/v2/articles/search`, `item_type=3`, title must name a dataset and a modality |
+| [Harvard Dataverse](https://dataverse.harvard.edu/) | Institutional deposits | `/api/search?type=dataset` |
+| [VinDr](https://vindr.ai/datasets) | Vingroup releases, some request-only (VinDr-Multiphase) | dataset page listing |
+| Dataset papers — *Scientific Data*, *Data in Brief* | The announcement of datasets hosted anywhere (CDD-CESM, NL-Breast-Screening, PLC-CECT, BreastDCEDL) | Crossref `journals/{ISSN}/works`, last two years, by relevance |
+| [NCI Imaging Data Commons](https://portal.imaging.datacommons.cancer.gov/) | Cloud-hosted public collections | manual (portal checklist) |
+| Portals with no listing API — [RSNA MIRA](https://mira.rsna.org/), [Stanford AIMI index](https://aimidatasetindex.stanford.edu/), [BIMCV](https://bimcv.cipf.es/bimcv-projects/), [Science Data Bank](https://www.scidb.cn/en), [FRDR](https://www.frdr-dfdr.ca/repo/), [Mendeley Data](https://data.mendeley.com/) | Society benchmarks (REVEAL-CXR), AIMI releases (BrainMetShare), Chinese and Canadian repositories | printed in every report as a monthly manual checklist |
+| Your own project notes | Datasets a research project discusses or downloads | `scripts/scan_mentions.py <folders>` (local) |
 
 ## Population / epidemiological imaging cohorts
 
@@ -90,6 +96,36 @@ tracker issue" covers the vet-research-add-validate steps in one pass.
 The output is intentionally a *review queue*, not an auto-merge: candidates may be
 out of scope, non-open, or duplicates under another name. Vet each, then add the
 good ones to `data/datasets.json` (see [CONTRIBUTING.md](CONTRIBUTING.md)).
+
+## Review loop — so candidates don't pile up unseen
+
+- **Triage file.** `data/triage.json` records every decision on a candidate that is *not* added:
+  `rejected` (out of scope, not data, broken link), `deferred` (with `until`), or `added`
+  (it is a catalog entry under another name). The tracker drops those rows, so the queue
+  shrinks instead of growing. Synonyms of catalog entries go into the entry's `aliases`
+  (names, paper titles) and `links` (other official locations) instead.
+- **Backlog rotation.** Each source section shows at most 50 rows. Rows past that cap used to
+  be invisible forever once they lost 🆕; the report now shows a different window of 25 of
+  them every week (🗂 Backlog rotation) until they are added or triaged.
+- **Portal checklist.** Hosts without an API are listed in every report; check them monthly.
+- **Your notes.** Research projects find datasets before the tracker does. Run
+  `python3 scripts/scan_mentions.py <notes folders>` — it lists dataset links in your Markdown
+  notes whose identifier appears nowhere in the catalog (or triage file).
+
+## Gap audit (2026-11) — why datasets were missed
+
+Two research projects (an LLM/decision-model calibration study on CXR + mammography, and a
+CT/MRI series-identity program) had used or discussed ~25 datasets that were not in the
+catalog. Causes, and the fix for each:
+
+| Cause | Examples | Fix |
+| --- | --- | --- |
+| Host not polled | DMID (figshare), UCSF-RMaC (AWS), REVEAL-CXR (RSNA MIRA), BrainMetShare (AIMI), VinDr-Multiphase (VinDr portal), PLC-CECT (Science Data Bank) | figshare, Dataverse, AWS registry, VinDr sources; paper-first Crossref layer; portal checklist |
+| TCIA collections outside NBIA / analysis results | CDD-CESM (Aspera, JPEG), LiverHccSeg | read the TCIA site listings as well as NBIA |
+| Label-only sets out of scope | Google expert labels for NIH ChestX-ray14, CXR-LT | new `annotation` type and `label_variants` |
+| Surfaced but never reviewed (cap of 50 rows/source; seen ≠ reviewed) | CPTAC-CCRCC, CPTAC-PDA, 4D-Lung, LDCT-and-Projection, Pelvic-Reference-Data | backlog rotation + `data/triage.json` |
+| Search too shallow / filters too narrow | WAW-TACE, UniToBrain (Zenodo page cap, generic terms); MR-ART (OpenNeuro newest-100, "clinical" keyword filter) | phase/protocol Zenodo terms + 2nd page; OpenNeuro paging + artefact/QC keywords |
+| Same dataset under another URL looked new | RSNA AWS releases, Zenodo records of challenge data | `links` on the catalog entry |
 
 ## Bulk discovery (occasional)
 

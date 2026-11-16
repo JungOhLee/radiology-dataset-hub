@@ -740,10 +740,10 @@
     {
       "name": "ICDC-Glioma",
       "url": "https://www.cancerimagingarchive.net/collection/icdc-glioma/",
-      "decision": "added",
-      "reason": "catalog id icdc-glioma (auto-added): The official TCIA page documents an open CC BY 4.0 collection of 650 DICOM MR series from 57 dogs with glioma; no catalog entry covers it.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "Lung Phantom",
@@ -832,18 +832,18 @@
     {
       "name": "Mouse-Astrocytoma",
       "url": "https://www.cancerimagingarchive.net/collection/mouse-astrocytoma/",
-      "decision": "added",
-      "reason": "catalog id mouse-astrocytoma (auto-added): The official TCIA collection page lists 48 mouse MRI studies (T2-weighted and DCE) in DICOM under CC BY 3.0 with open download, and no such entry is in the catalog.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "Mouse-Mammary",
       "url": "https://www.cancerimagingarchive.net/collection/mouse-mammary/",
-      "decision": "added",
-      "reason": "catalog id mouse-mammary (auto-added): The official TCIA collection page documents an open CC BY 3.0 DICOM MRI collection (32 mice, 23,487 images) that is not in the catalog; it is preclinical animal imaging rather than human data.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "MRI-DIR",
@@ -905,18 +905,18 @@
     {
       "name": "PDMR-292921-168-R",
       "url": "https://www.cancerimagingarchive.net/collection/pdmr-292921-168-r/",
-      "decision": "added",
-      "reason": "catalog id pdmr-292921-168-r (auto-added): Official TCIA collection page documents a CC BY 4.0 DICOM MRI dataset of 19–20 mice (a pancreatic adenocarcinoma patient-derived xenograft model) that is not in the catalog; note it is preclinical animal imaging.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "PDMR-425362-245-T",
       "url": "https://www.cancerimagingarchive.net/collection/pdmr-425362-245-t/",
-      "decision": "added",
-      "reason": "catalog id pdmr-425362-245-t (auto-added): The official TCIA collection page documents an open CC BY 4.0 DICOM MRI collection of 20 melanoma PDX mice with pathology-confirmed metastasis tracking, not in the catalog; it is preclinical (mouse) rather than human data.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "PDMR-521955-158-R4",
@@ -929,18 +929,18 @@
     {
       "name": "PDMR-833975-119-R",
       "url": "https://www.cancerimagingarchive.net/collection/pdmr-833975-119-r/",
-      "decision": "added",
-      "reason": "catalog id pdmr-833975-119-r (auto-added): Official TCIA collection page documents a complete, openly downloadable (CC BY 3.0) DICOM MRI collection of 20 mice with a pancreatic adenocarcinoma patient-derived xenograft, and no catalog entry covers it.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "PDMR-997537-175-T",
       "url": "https://www.cancerimagingarchive.net/collection/pdmr-997537-175-t/",
-      "decision": "added",
-      "reason": "catalog id pdmr-997537-175-t (auto-added): Official TCIA collection (DOI 10.7937/TCIA.2020.BRY9-4N29) of open CC BY 4.0 DICOM MRI from 24 mice with a metastatic colon PDX; no matching id is in the catalog.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "PDMR-BL0293-F563",
@@ -953,10 +953,10 @@
     {
       "name": "PDMR-Texture-Analysis",
       "url": "https://www.cancerimagingarchive.net/collection/pdmr-texture-analysis/",
-      "decision": "added",
-      "reason": "catalog id pdmr-texture-analysis (auto-added): The official TCIA collection page documents an open (CC BY 4.0) serial T2w MRI DICOM dataset of 175 mice across 18 patient-derived xenograft cancer models, and no catalog entry matches it.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "PEDI-CRANIAL-CT-HEALTHY",
@@ -3979,10 +3979,10 @@
     {
       "name": "RabbitCT: a C-arm cone-beam CT benchmark dataset",
       "url": "https://zenodo.org/records/21267885",
-      "decision": "added",
-      "reason": "catalog id rabbitct (auto-added): The Zenodo record is an author-agreed, CC BY 4.0 open archival re-release of the RabbitCT C-arm cone-beam CT projection benchmark, and no catalog entry covers it.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "RAD-ChestCT Dataset",
@@ -6125,10 +6125,10 @@
     {
       "name": "A relaxation-diffusion MRI dataset of aging mouse brains at 9.4 Tesla",
       "url": "https://doi.org/10.1038/s41597-025-06088-0",
-      "decision": "added",
-      "reason": "catalog id aging-mouse-brain-rdmri-9-4t (auto-added): The Scientific Data descriptor documents an openly downloadable figshare BIDS/NIfTI dataset of in-vivo 9.4 T multi-TE diffusion MRI in 30 mice; it is not in the catalog, and preclinical MRI collections are already catalogued.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "A spatially and temporally aligned contrast-non-contrast cardiac CT dataset of pigs",
@@ -8682,10 +8682,10 @@
     {
       "name": "In vivo submillimeter diffusion MRI dataset of 9 macaque brains curated for tractography",
       "url": "https://doi.org/10.1038/s41597-025-05350-9",
-      "decision": "added",
-      "reason": "catalog id madi-700-macaque-diffusion-mri (auto-added): Scientific Data descriptor presents MADI@700, an openly shared in vivo 3T submillimeter diffusion plus T1/T2 MRI dataset of 9 macaques on EBRAINS and PRIME-DE; animal MRI datasets are in scope and it is not in the catalog.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)"
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     },
     {
       "name": "ink-8um-pherc1447-surfaces",
@@ -12176,6 +12176,94 @@
       "reason": "same as catalog id rsna-cspine: Personal Kaggle PNG re-upload of the RSNA 2022 Cervical Spine Fracture Detection training images, which are already catalogued as rsna-cspine.",
       "date": "2026-11-15",
       "by": "claude-opus-5-5 (monthly auto-triage)"
+    },
+    {
+      "name": "PDMR-425362-245-T",
+      "url": "https://www.cancerimagingarchive.net/collection/pdmr-425362-245-t/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "PDMR-Texture-Analysis",
+      "url": "https://www.cancerimagingarchive.net/collection/pdmr-texture-analysis/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "Mouse-Astrocytoma",
+      "url": "https://www.cancerimagingarchive.net/collection/mouse-astrocytoma/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "ICDC-Glioma",
+      "url": "https://www.cancerimagingarchive.net/collection/icdc-glioma/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "PDMR-292921-168-R",
+      "url": "https://www.cancerimagingarchive.net/collection/pdmr-292921-168-r/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "PDMR-997537-175-T",
+      "url": "https://www.cancerimagingarchive.net/collection/pdmr-997537-175-t/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "RabbitCT",
+      "url": "https://zenodo.org/records/21267885",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "Aging Mouse Brain rdMRI 9.4T",
+      "url": "https://doi.org/10.6084/m9.figshare.28433102",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "MADI@700",
+      "url": "https://doi.org/10.25493/XGXR-BRD",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "Mouse-Mammary",
+      "url": "https://www.cancerimagingarchive.net/collection/mouse-mammary/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
+    },
+    {
+      "name": "PDMR-833975-119-R",
+      "url": "https://www.cancerimagingarchive.net/collection/pdmr-833975-119-r/",
+      "decision": "rejected",
+      "reason": "animal/preclinical subjects — out of scope (catalog policy 2026-11-15: human imaging only)",
+      "date": "2026-11-16",
+      "by": "claude-opus-5-5 (catalog enrichment)"
     }
   ]
 }

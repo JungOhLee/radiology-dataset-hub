@@ -119,7 +119,7 @@ older ones are migrated by `scripts/migrate_v2.py` + `scripts/enrich_entries.py`
 | `subjects` | enum[] | `human`, `phantom`, `synthetic`, `ex-vivo`. Animal subjects are out of scope; human data that also has animals gets tag `includes-animal` |
 | `phantom` | object | phantoms: `{type: physical/digital/hybrid, anthropomorphic, body_part (an organs value or none-geometric), model, purpose}` |
 | `organs` | enum[] | organs/body parts imaged (`brain`, `lung`, `colon-rectum`, `knee`, `whole-body`, `none-geometric` …); `anatomy` stays as display text |
-| `protocols` | enum[] | acquisitions, prefixed by modality: `MRI:T1w`, `MRI:T1w-CE`, `MRI:FLAIR`, `MRI:DWI` …, `CT:non-contrast`, `CT:portal-venous`, `CT:CTA`, `CT:low-dose` …, `PET:FDG`, `PET:PSMA` …, `X-ray:mammography`, `X-ray:DBT` … (`CT:contrast-unspecified` rather than guessing a phase) |
+| `protocols` | enum[] | acquisitions, prefixed by modality: `MRI:T1w`, `MRI:T1w-CE`, `MRI:FLAIR`, `MRI:DWI` …, `CT:non-contrast`, `CT:portal-venous`, `CT:CTA`, `CT:low-dose` …, `PET:FDG`, `PET:PSMA` …, `X-ray:mammography`, `X-ray:DBT` … (`CT:contrast-unspecified` rather than guessing a phase); each prefix must also be in `modality` |
 | `protocol_note` | string | the source's own wording — field strength, vendors, b-values (replaces v1 `multi_sequence_detail`) |
 | `field_strength` | enum[] | MRI: `low-field`, `1.5T`, `3T`, `7T` |
 | `multi_sequence` | bool | ≥2 sequences / phases per subject |
@@ -129,7 +129,7 @@ older ones are migrated by `scripts/migrate_v2.py` + `scripts/enrich_entries.py`
 | `population` | enum[] | `adult`, `pediatric`, `fetal-neonatal` |
 | `setting` | enum[] | `screening`, `diagnostic`, `emergency`, `pre-treatment`, `post-treatment-follow-up`, `radiotherapy-planning`, `population-cohort`, `healthy-volunteer` |
 | `label_types` | enum[] | `mask`, `bounding-box`, `landmark`, `image-level-class`, `report`, `caption`, `qa-pairs`, `outcome`, `molecular`, `pathology-result`, `measurement`, `none` (finding names go in `details.label_schema`, which absorbed v1 `other_labels`) |
-| `image_format` | enum[] | formats of the **images** (`DICOM`, `NIfTI`, `NRRD`, `MHA`, `PNG`, `JPEG`, `NumPy`, `HDF5`, `raw-data` …; `none` for label-only sets); replaces v1 `format` |
+| `image_format` | enum[] | formats of the **images** (`DICOM`, `NIfTI`, `NRRD`, `MHA`, `PNG`, `JPEG`, `NumPy`, `HDF5`, `raw-data` …; `none` for label-only sets, `unspecified` when the source does not say); replaces v1 `format` |
 | `label_format` | string[] | label / metadata files (`CSV`, `JSON`, `DICOM-SEG`, `RTSTRUCT` …) |
 | `preprocessing` | enum[] | `native`, `registered-resampled`, `skull-stripped-defaced`, `cropped-resized`, `8-bit-windowed`, `2d-from-3d` |
 | `images_included` | bool | false when the download has only labels and the images come from the source dataset |

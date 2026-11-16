@@ -66,6 +66,31 @@ def seed(e, curated_ids=None):
     return e
 
 
+OTHER_MODALITY = {"ultrasound": "ultrasound", "us": "ultrasound", "pathology": "pathology-wsi",
+                  "wsi": "pathology-wsi", "endoscopy": "endoscopy", "photography": "photography",
+                  "fundus": "ophthalmology", "oct": "ophthalmology", "ecg": "ecg-physiology"}
+
+
+def fix_modality(e):
+    """modality holds only the core values: other imaging moves to other_modalities, and a
+    modality named by a protocol prefix (e.g. X-ray:radiograph on a CT entry) is added."""
+    core, other = [], list(e.get("other_modalities") or [])
+    for m in e.get("modality") or []:
+        if m in cs.V["modality"]:
+            core.append(m)
+        else:
+            other.append(OTHER_MODALITY.get(str(m).strip().lower(), "other"))
+    for p in e.get("protocols") or []:
+        m = p.split(":", 1)[0]
+        if m in cs.V["modality"] and m not in core:
+            core.append(m)
+    if core:            # never empty a modality list (the validator reports it instead)
+        e["modality"] = dedup(core)
+        if other:
+            e["other_modalities"] = dedup(other)
+    return e
+
+
 def finalize(e):
     """v2 entries only: drop v1 fields, normalise lists, derive booleans, order keys."""
     if not cs.is_v2(e):
@@ -97,6 +122,7 @@ def finalize(e):
             e.pop(k)
     if e.get("host"):
         e["host"] = cs.map_host(e["host"])
+    fix_modality(e)
     if len(e.get("regions") or []) > 1 and "Multi" in e["regions"]:   # Multi only when nothing is itemised
         e["regions"] = [r for r in e["regions"] if r != "Multi"]
     cs.derive(e)

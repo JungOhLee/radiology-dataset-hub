@@ -105,6 +105,9 @@ def check_v2(tag, d, all_ids):
     if "animal" in (d.get("subjects") or []):
         errs.append(f"[{tag}] animal subjects are out of scope (human imaging only)")
     errs += [f"[{tag}] modality: unknown value {m!r}" for m in d.get("modality") or [] if m not in cs.V["modality"]]
+    mods = set(d.get("modality") or [])
+    errs += [f"[{tag}] protocol {p!r} names a modality the entry does not list"
+             for p in d.get("protocols") or [] if p.split(":", 1)[0] not in mods]
     for key, allowed in (("review", cs.V["review"]), ("license_id", cs.V["license_id"]),
                          ("commercial_use", cs.V["commercial_use"])):
         if d.get(key) not in allowed:

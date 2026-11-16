@@ -65,6 +65,14 @@ class Migration(unittest.TestCase):
         self.assertEqual(mig.finalize(dict(v2, regions=["Multi", "Chest"]))["regions"], ["Chest"])
         self.assertEqual(mig.finalize(dict(v2, regions=["Multi"]))["regions"], ["Multi"])
 
+    def test_finalize_fixes_modality(self):
+        v2 = {"subjects": ["human"], "id": "a", "label_types": ["mask"], "image_format": ["DICOM"],
+              "modality": ["CT", "Ultrasound"], "protocols": ["CT:non-contrast", "X-ray:radiograph"]}
+        f = mig.finalize(v2)
+        self.assertEqual((f["modality"], f["other_modalities"]), (["CT", "X-ray"], ["ultrasound"]))
+        only_other = mig.finalize({"subjects": ["human"], "id": "b", "modality": ["Ultrasound"]})
+        self.assertEqual(only_other["modality"], ["Ultrasound"])      # left for the validator to report
+
 
 class Validator(unittest.TestCase):
     def good(self, **over):
@@ -84,7 +92,8 @@ class Validator(unittest.TestCase):
         bad = {
             "animal": self.good(subjects=["animal"]),
             "protocol": self.good(protocols=["MRI:T9"]),
-            "modality": self.good(modality=["Ultrasound"]),
+            "modality": dict(self.good(), modality=["Ultrasound"]),     # finalize would move it
+            "protocol modality": dict(self.good(), protocols=["CT:low-dose", "X-ray:radiograph"]),
             "conditions": dict(self.good(), conditions=["Lung Cancer"]),   # finalize would lowercase it
             "derived": dict(self.good(), raw_image=False),
             "v1 field": dict(self.good(), format=["DICOM"]),

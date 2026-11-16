@@ -35,7 +35,7 @@
   "label_types": ["mask", "bounding-box", "landmark", "image-level-class", "report", "caption",
                   "qa-pairs", "outcome", "molecular", "pathology-result", "measurement", "none"],
   "image_format": ["DICOM", "NIfTI", "NRRD", "MHA", "Analyze", "PNG", "JPEG", "TIFF", "NumPy", "HDF5",
-                   "MAT", "raw-data", "other", "none"],
+                   "MAT", "raw-data", "other", "none", "unspecified"],
   "preprocessing": ["native", "registered-resampled", "skull-stripped-defaced", "cropped-resized",
                     "8-bit-windowed", "2d-from-3d"],
   "tasks": ["segmentation", "classification", "detection", "registration", "reconstruction",

@@ -598,7 +598,7 @@ function card(d) {
   if (hasTag(d, "population-cohort")) badges.push(`<span class="badge cohort" title="Population / epidemiological cohort${d.clinical_variables ? " — " + esc(d.clinical_variables) : ""}">◉ Cohort</span>`);
   if (d.body_composition) badges.push(`<span class="badge bodycomp" title="Body-composition phenotypes available (VAT/ASAT/muscle/DXA)">⚖ Body comp</span>`);
   if (d.type === "annotation") badges.push(`<span class="badge seq" title="Label/annotation set for another dataset's images — images come from the base dataset">🏷 Label set</span>`);
-  const fmt = fmts(d).slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
+  const fmt = fmts(d).filter(f => f !== "unspecified").slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
 
   const access = (d.access || "").toLowerCase();
   const accessCls = access === "open" ? "access-open"

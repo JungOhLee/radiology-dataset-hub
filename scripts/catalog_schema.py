@@ -208,7 +208,9 @@ def llm_v2_properties():
 
 
 GUIDE = """\
-Schema v2 fields (controlled values only — use the listed enums):
+Schema v2 fields (controlled values only — use the listed enums). subjects, organs, \
+condition_groups, label_types and image_format are never empty — use the fallback value named \
+below when the source says nothing.
 - subjects: whose images — human, phantom, synthetic (simulated / generated), ex-vivo (cadaver, \
 specimens); "animal" for any non-human subject (mouse, rat, rabbit, pig, canine, xenograft).
 - protocols: every acquisition the data contains, prefixed by modality — MRI sequences \
@@ -219,13 +221,15 @@ phase from the disease), PET tracers, X-ray types. protocol_note: the source's o
 - conditions: lowercase common names of the diseases/findings the data is about ("glioma", \
 "ischemic stroke", "lung nodule", "pneumothorax"); [] for healthy or unselected data. \
 condition_groups: the broad groups (healthy-normal for healthy-volunteer sets, \
-unselected-mixed for consecutive/unselected clinical data, not-applicable for phantoms). \
+unselected-mixed for consecutive/unselected clinical data and for anatomy-only sets drawn from \
+routine scans, not-applicable for phantoms and purely technical data). \
 population: adult / pediatric / fetal-neonatal as stated. setting: clinical context.
 - organs: the organs/body parts imaged (none-geometric for non-anatomical phantoms; \
 whole-body / multi-organ when broad).
 - label_types: what the labels are (mask, bounding-box, landmark, image-level-class, report, \
 caption, qa-pairs, outcome, molecular, pathology-result, measurement; none if unlabelled).
-- image_format: formats of the IMAGES as distributed ("none" when only labels are shipped); \
+- image_format: formats of the IMAGES as distributed ("none" when only labels are shipped, \
+"unspecified" when the source does not say — do not infer it from the modality); \
 label_format: label/metadata file formats (CSV, JSON, DICOM-SEG …). preprocessing: native when \
 images are as acquired, else what was done. images_included: false when the download has \
 only labels and images must be fetched from the source dataset.

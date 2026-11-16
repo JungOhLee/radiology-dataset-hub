@@ -16,6 +16,21 @@ tables are generated from it.
 
 ## Inclusion criteria
 
+The catalog exists so that someone who needs images for a given modality, MRI sequence / CT
+phase or clinical situation can see which datasets exist and roughly what is inside them before
+downloading anything. Record modality, sequences/phases, anatomy, size, labels and splits as
+precisely as the official source allows.
+
+- **Human imaging only.** Animal, preclinical and veterinary datasets (mouse, rat, canine,
+  patient-derived xenograft models, …) are out of scope.
+- **Phantoms count.** Physical and digital phantoms are useful for QA, harmonisation, dose and
+  reconstruction work. Describe them in `details.phantom` (type, body part, phantom model,
+  purpose), put the body part in `anatomy` and tag them `phantom`.
+- **Derived and aggregated sets count** when they are radiology: preprocessed or resized
+  versions, relabels, benchmark mixes, VQA / caption collections built from other datasets.
+  List every source dataset in `details.related` (relation `derived-from`, catalog `id` when it
+  exists, and a `note` on what was done — e.g. "2D slices resized to 28×28 PNG", "questions
+  generated from MIMIC-CXR reports"), and tag them `derived` (plus `vqa` for question-answer sets).
 - **Label/annotation sets count too.** Expert relabels, adjudicated reference standards and
   analysis results for a public image dataset (Google's adjudicated labels for NIH ChestX-ray14,
   CXR-LT on MIMIC-CXR, TCIA analysis results) are often what decides whether a dataset is usable
@@ -84,7 +99,8 @@ an external LLM API?"), these fields answer it. All optional; use `null` rather 
 | `label_unit` | string[] | `patient`, `study`, `series`, `image`, `breast`, `lesion`, `voxel`, `sentence` |
 | `reference_standard` | string | what "positive" means and how it was confirmed, incl. prevalence if enriched |
 | `label_variants` | object[] | `{name, url, note}` — other label sets on the same images |
-| `related` | object[] | `{id, name, relation}`; relation = `derived-from`, `subset-of`, `superset-of`, `overlaps`, `extends`, `label-addon-for`, `mirror-of`, `same-images-as` — flag overlaps before using two datasets as independent test sets |
+| `phantom` | object | phantoms only: `{type, body_part, model, purpose}` — type = `physical`, `digital` or `hybrid`; e.g. `{"type": "physical", "body_part": "chest", "model": "Kyoto Kagaku Lungman N1 with synthetic nodules", "purpose": "CT radiomics repeatability across dose and kernel"}` |
+| `related` | object[] | `{id, name, relation, note?}` (`note`: for `derived-from`, what was done to the source); relation = `derived-from`, `subset-of`, `superset-of`, `overlaps`, `extends`, `label-addon-for`, `mirror-of`, `same-images-as` — flag overlaps before using two datasets as independent test sets |
 | `version`, `release_date` | string | current version and public release date (matters for pre-training contamination) |
 | `dicom_headers` | enum | `intact`, `partially-anonymized`, `stripped (converted to NIfTI/PNG/JPEG)`, `n/a` |
 | `third_party_processing` | enum | `permitted`, `prohibited`, `unclear` — whether the licence/DUA allows sending images to external online services (e.g. commercial LLM APIs); quote the clause in `third_party_note`. Not legal advice — re-read the licence before use. |

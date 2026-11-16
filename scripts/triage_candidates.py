@@ -92,6 +92,11 @@ def _obj(props):
     return {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
 
 
+def phantom_schema():
+    return _obj({"type": {"type": "string", "enum": sorted(val.PHANTOM_TYPES) + ["not-a-phantom"]},
+                 "body_part": _s(), "model": _s(), "purpose": _s()})
+
+
 def output_schema():
     details = _obj({
         "label_schema": _arr(_s()),
@@ -102,7 +107,9 @@ def output_schema():
         "label_unit": _arr({"type": "string", "enum": sorted(val.LABEL_UNIT)}),
         "reference_standard": _ns(),
         "related": _arr(_obj({"id": _s(), "name": _s(),
-                              "relation": {"type": "string", "enum": sorted(val.RELATIONS)}})),
+                              "relation": {"type": "string", "enum": sorted(val.RELATIONS)},
+                              "note": _s()})),
+        "phantom": phantom_schema(),
         "version": _ns(),
         "release_date": _ns(),
         "dicom_headers": {"type": "string", "enum": sorted(val.DICOM_HEADERS) + ["unknown"]},
@@ -146,7 +153,10 @@ def output_schema():
 
 INSTRUCTIONS = """\
 You triage candidate datasets for the Radiology Dataset Hub, a public catalog of open \
-radiology imaging datasets (CT, MRI, PET, X-ray incl. mammography/DBT, DXA). An automated \
+radiology imaging datasets (CT, MRI, PET, X-ray incl. mammography/DBT, DXA). The catalog \
+exists so that someone who needs images for a given modality, MRI sequence / CT phase or \
+clinical situation can find which datasets exist and roughly what is inside them before \
+downloading — so modality, sequences/phases, anatomy, size, labels and splits matter most. An automated \
 tracker found each candidate on a source API; most candidates are noise. For each one you \
 get the tracker's row and evidence the triage script fetched from the candidate's page or \
 API. Decide one of:
@@ -157,7 +167,8 @@ the core fields. Return a complete catalog entry in `entry`.
 - "duplicate": the same data is already in the catalog under another id — a re-upload, \
 mirror, version, alternate host, or the paper/challenge page of a catalog dataset. Put that \
 id in `duplicate_of`.
-- "reject": out of scope — no image data (code, models, papers or challenge documents \
+- "reject": out of scope — animal / preclinical / veterinary subjects (mouse, rat, canine, \
+xenograft models), no image data (code, models, papers or challenge documents \
 without data, radiomics tables only), ultrasound / pathology / dermatology / ophthalmology \
 / endoscopy / non-medical images, closed or commercial-only data, an unofficial personal \
 re-upload of someone else's data whose original is not in the catalog, a dead link, or a \
@@ -175,6 +186,14 @@ official source, not mirrors. `url` is the official landing page.
 - `id`: a new kebab-case id that is not in the catalog index. `description`: one factual \
 sentence. Put label provenance in `details` (label_source, label_readers, label_unit, \
 reference_standard, third_party_processing with the licence clause in third_party_note).
+- Phantoms are in scope: fill `details.phantom` (type physical / digital / hybrid, body \
+part, phantom model or product, purpose), put the body part in `anatomy`, add tag "phantom". \
+For anything that is not a phantom set `details.phantom.type` to "not-a-phantom".
+- Derived or aggregated sets (preprocessed/resized versions, relabels, benchmark mixes, VQA / \
+caption collections) are in scope when radiology: list EVERY source dataset in \
+`details.related` with relation "derived-from", the catalog id when the source is in the index \
+(else ""), its name, and a `note` saying what was done to it; add tag "derived" (and "vqa" for \
+question-answer sets, with "vqa" in tasks).
 - `confidence`: high = official page with explicit facts; medium = some fields inferred \
 from a reliable secondary page; low = mostly guesswork (low "add" decisions are deferred).
 - `reason`: one short English sentence naming the deciding evidence.
@@ -486,6 +505,13 @@ def clean_entry(e):
     if not e.get("year"):
         e["year"] = None
     details = {k: v for k, v in (e.get("details") or {}).items() if v not in (None, "", [], "unknown")}
+    ph = details.get("phantom")
+    if not isinstance(ph, dict) or ph.get("type") not in val.PHANTOM_TYPES:
+        details.pop("phantom", None)
+    else:
+        details["phantom"] = {k: v for k, v in ph.items() if v}
+    if details.get("related"):
+        details["related"] = [{k: v for k, v in r.items() if v} for r in details["related"]]
     out = {}
     for k in CORE_ORDER:
         if k == "details":

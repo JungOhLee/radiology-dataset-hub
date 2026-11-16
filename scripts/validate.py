@@ -17,6 +17,7 @@ LABEL_SOURCE = {"nlp-report", "radiologist-single", "radiologist-multi", "radiol
                 "pathology", "follow-up", "clinical-record", "dataset-definition", "model-generated", "crowd"}
 LABEL_UNIT = {"patient", "study", "series", "image", "breast", "lesion", "voxel", "sentence"}
 DICOM_HEADERS = {"intact", "partially-anonymized", "stripped (converted to NIfTI/PNG/JPEG)", "n/a"}
+PHANTOM_TYPES = {"physical", "digital", "hybrid"}
 RELATIONS = {"derived-from", "subset-of", "superset-of", "overlaps", "extends", "label-addon-for",
              "mirror-of", "same-images-as"}
 ACCESS = {"open", "registration", "dua", "request"}
@@ -51,6 +52,12 @@ def check_details(tag, d):
     for x in dt.get("label_variants") or []:
         if x.get("url") and not str(x["url"]).startswith(("http://", "https://")):
             errs.append(f"[{tag}] details.label_variants url must be http(s): {x['url']}")
+    ph = dt.get("phantom")
+    if ph is not None:
+        if not isinstance(ph, dict) or ph.get("type") not in PHANTOM_TYPES:
+            errs.append(f"[{tag}] details.phantom must be an object with type in {sorted(PHANTOM_TYPES)}")
+        elif any(not isinstance(ph.get(k, ""), str) for k in ("body_part", "model", "purpose")):
+            errs.append(f"[{tag}] details.phantom body_part/model/purpose must be strings")
     for r in dt.get("related") or []:
         if r.get("relation") not in RELATIONS:
             errs.append(f"[{tag}] details.related: unknown relation {r.get('relation')!r}")

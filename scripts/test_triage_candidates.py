@@ -24,6 +24,7 @@ def entry(**over):
         "details": {"label_schema": ["nodule mask"], "file_structure": None, "splits": None,
                     "label_source": ["radiologist-single"], "label_readers": None, "label_unit": ["lesion"],
                     "reference_standard": None, "related": [], "version": None, "release_date": None,
+                    "phantom": {"type": "not-a-phantom", "body_part": "", "model": "", "purpose": ""},
                     "dicom_headers": None, "third_party_processing": "permitted",
                     "third_party_note": "CC BY 4.0", "extra": None},
         "tags": [], "aliases": [], "links": [],
@@ -62,6 +63,19 @@ class Schema(unittest.TestCase):
         n = json.dumps(t.output_schema()).count('"anyOf"')
         self.assertLessEqual(n, 1)
         self.assertNotIn('"type": [', json.dumps(t.output_schema()))
+
+    def test_phantom_and_derived_fields(self):
+        e = t.clean_entry(entry())
+        self.assertNotIn("phantom", e["details"])          # not-a-phantom is dropped
+        ph = {"type": "physical", "body_part": "chest", "model": "Lungman", "purpose": ""}
+        rel = [{"id": "", "name": "LIDC-IDRI", "relation": "derived-from", "note": "nodule crops resized"}]
+        e = t.clean_entry(entry(details=dict(entry()["details"], phantom=ph, related=rel)))
+        self.assertEqual(e["details"]["phantom"], {"type": "physical", "body_part": "chest", "model": "Lungman"})
+        self.assertEqual(e["details"]["related"], [{"name": "LIDC-IDRI", "relation": "derived-from",
+                                                    "note": "nodule crops resized"}])
+        self.assertEqual(t.val.validate([e]), [])
+        bad = dict(e, details=dict(e["details"], phantom={"type": "toy"}))
+        self.assertTrue(t.val.validate([bad]))
 
     def test_placeholders_become_null(self):
         e = t.clean_entry(entry(full_name="", year=0, size="", license="",

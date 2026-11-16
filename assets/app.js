@@ -391,7 +391,9 @@ function searchIndex(d) {
     d.details ? [(d.details.label_source || []).join(" "), (d.details.label_unit || []).join(" "),
                  d.details.reference_standard, d.details.label_readers,
                  (d.details.label_variants || []).map(v => v.name).join(" "),
-                 (d.details.related || []).map(r => r.name || r.id).join(" ")].join(" ") : "",
+                 (d.details.related || []).map(r => [r.name || r.id, r.note].join(" ")).join(" "),
+                 d.details.phantom ? ["phantom", d.details.phantom.type, d.details.phantom.body_part,
+                                      d.details.phantom.model, d.details.phantom.purpose].join(" ") : ""].join(" ") : "",
     (d.aliases || []).join(" "), d.type === "annotation" ? "annotation label set relabel expert labels" : "",
   ];
   const raw = parts.filter(Boolean).join(" ").toLowerCase();
@@ -575,10 +577,14 @@ function openDetail(id) {
         ? dt.third_party_processing + (dt.third_party_note ? " — " + dt.third_party_note : "") : ""),
     ].join("");
     if (prov) parts += `<h4>Label provenance & use</h4><table class="detail-table">${prov}</table>`;
+    const ph = dt.phantom;
+    if (ph) parts += `<h4>Phantom</h4><table class="detail-table">${[
+      row("Type", ph.type), row("Body part", ph.body_part), row("Model", ph.model), row("Purpose", ph.purpose),
+    ].join("")}</table>`;
     const rel = (dt.related || []).map(r => {
       const tgt = r.id && DATA.find(x => x.id === r.id);
       const nm = esc(r.name || (tgt && tgt.name) || r.id);
-      return `<li>${esc(r.relation)}: ${tgt ? `<a href="#" data-goto="${esc(r.id)}">${nm}</a>` : nm}</li>`;
+      return `<li>${esc(r.relation)}: ${tgt ? `<a href="#" data-goto="${esc(r.id)}">${nm}</a>` : nm}${r.note ? " — " + esc(r.note) : ""}</li>`;
     });
     const vars = (dt.label_variants || []).map(v =>
       `<li>${safeUrl(v.url) ? `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.name)}</a>` : esc(v.name)}${v.note ? " — " + esc(v.note) : ""}</li>`);

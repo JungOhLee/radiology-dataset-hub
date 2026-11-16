@@ -44,7 +44,9 @@ import urllib.parse
 import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import catalog_schema as cs  # noqa: E402
 import find_new_datasets as fnd  # noqa: E402
+import migrate_v2 as mig  # noqa: E402
 import validate as val  # noqa: E402
 
 ROOT = fnd.ROOT
@@ -64,11 +66,6 @@ BY = f"{MODEL} (monthly auto-triage)"
 SOURCE_RANK = {"TCIA": 0, "PhysioNet": 1, "Dataset papers": 2, "Zenodo": 3, "figshare": 4,
                "AWS Open Data": 5, "Dataverse": 6, "VinDr": 7, "OpenNeuro": 8, "Grand Challenge": 9,
                "Hugging Face": 10, "GitHub": 11, "Kaggle": 12}
-CORE_ORDER = ["id", "name", "full_name", "type", "regions", "anatomy", "modality", "year", "format",
-              "raw_image", "size", "paired_text", "paired_text_detail", "multi_sequence",
-              "multi_sequence_detail", "segmentation", "segmentation_detail", "other_labels", "tasks",
-              "license", "access", "host", "url", "description", "details"]
-OPTIONAL_TOP = ["tags", "longitudinal", "aliases", "links"]
 
 # ---------------------------------------------------------------- output schema
 
@@ -92,7 +89,11 @@ def _obj(props):
     return {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
 
 
+phantom_schema = cs.phantom_schema
+
+
 def output_schema():
+    """Decision + a schema v2 catalog entry (CONTRIBUTING.md); unknown = "" / 0 / []."""
     details = _obj({
         "label_schema": _arr(_s()),
         "file_structure": _ns(),
@@ -102,7 +103,9 @@ def output_schema():
         "label_unit": _arr({"type": "string", "enum": sorted(val.LABEL_UNIT)}),
         "reference_standard": _ns(),
         "related": _arr(_obj({"id": _s(), "name": _s(),
-                              "relation": {"type": "string", "enum": sorted(val.RELATIONS)}})),
+                              "relation": {"type": "string", "enum": sorted(val.RELATIONS)},
+                              "process": _arr({"type": "string", "enum": cs.V["related_process"]}),
+                              "note": _s()})),
         "version": _ns(),
         "release_date": _ns(),
         "dicom_headers": {"type": "string", "enum": sorted(val.DICOM_HEADERS) + ["unknown"]},
@@ -110,35 +113,31 @@ def output_schema():
         "third_party_note": _ns(),
         "extra": _ns(),
     })
-    entry = _obj({
+    entry = {
         "id": _s(), "name": _s(), "full_name": _ns(),
         "type": {"type": "string", "enum": ["dataset", "annotation"]},
         "regions": _arr({"type": "string", "enum": sorted(val.REGIONS)}),
         "anatomy": _s(),
-        "modality": _arr({"type": "string", "enum": ["CT", "MRI", "PET", "X-ray", "DXA"]}),
+        "modality": _arr({"type": "string", "enum": cs.V["modality"]}),
+        "multi_sequence": {"type": "boolean"},
         "year": {"type": "integer"},
-        "format": _arr(_s()),
-        "raw_image": {"type": "boolean"},
         "size": _ns(),
-        "paired_text": {"type": "boolean"}, "paired_text_detail": _ns(),
-        "multi_sequence": {"type": "boolean"}, "multi_sequence_detail": _ns(),
-        "segmentation": {"type": "boolean"}, "segmentation_detail": _ns(),
-        "other_labels": _arr(_s()),
-        "tasks": _arr(_s()),
+        "paired_text_detail": _ns(),
+        "segmentation_detail": _ns(),
         "license": _ns(),
         "access": {"type": "string", "enum": sorted(val.ACCESS)},
         "host": _s(), "url": _s(), "description": _s(),
         "details": details,
-        "tags": _arr(_s()),
         "aliases": _arr(_s()),
         "links": _arr(_obj({"label": _s(), "url": _s()})),
-    })
+    }
+    entry.update(cs.llm_v2_properties())
     return _obj({
         "decision": {"type": "string", "enum": ["add", "duplicate", "reject", "defer"]},
         "reason": _s(),
         "duplicate_of": _s(),
         "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
-        "entry": {"anyOf": [entry, {"type": "null"}]},
+        "entry": {"anyOf": [_obj(entry), {"type": "null"}]},
     })
 
 
@@ -146,7 +145,10 @@ def output_schema():
 
 INSTRUCTIONS = """\
 You triage candidate datasets for the Radiology Dataset Hub, a public catalog of open \
-radiology imaging datasets (CT, MRI, PET, X-ray incl. mammography/DBT, DXA). An automated \
+radiology imaging datasets (CT, MRI, PET, X-ray incl. mammography/DBT, DXA). The catalog \
+exists so that someone who needs images for a given modality, MRI sequence / CT phase or \
+clinical situation can find which datasets exist and roughly what is inside them before \
+downloading — so modality, sequences/phases, anatomy, size, labels and splits matter most. An automated \
 tracker found each candidate on a source API; most candidates are noise. For each one you \
 get the tracker's row and evidence the triage script fetched from the candidate's page or \
 API. Decide one of:
@@ -157,7 +159,8 @@ the core fields. Return a complete catalog entry in `entry`.
 - "duplicate": the same data is already in the catalog under another id — a re-upload, \
 mirror, version, alternate host, or the paper/challenge page of a catalog dataset. Put that \
 id in `duplicate_of`.
-- "reject": out of scope — no image data (code, models, papers or challenge documents \
+- "reject": out of scope — animal / preclinical / veterinary subjects (mouse, rat, canine, \
+xenograft models), no image data (code, models, papers or challenge documents \
 without data, radiomics tables only), ultrasound / pathology / dermatology / ophthalmology \
 / endoscopy / non-medical images, closed or commercial-only data, an unofficial personal \
 re-upload of someone else's data whose original is not in the catalog, a dead link, or a \
@@ -175,12 +178,23 @@ official source, not mirrors. `url` is the official landing page.
 - `id`: a new kebab-case id that is not in the catalog index. `description`: one factual \
 sentence. Put label provenance in `details` (label_source, label_readers, label_unit, \
 reference_standard, third_party_processing with the licence clause in third_party_note).
+- Phantoms are in scope: subjects "phantom" and the `phantom` object (type, anthropomorphic, \
+body part, model/product, purpose); for anything else phantom.type = "not-a-phantom".
+- Derived or aggregated sets (preprocessed/resized versions, relabels, benchmark mixes, VQA / \
+caption collections) are in scope when radiology: list EVERY source dataset in \
+`details.related` with relation "derived-from", the catalog id when the source is in the index \
+(else ""), its name, `process` (controlled list) and a `note` saying what was done to it. \
+Annotation (label-only) entries link their base dataset with relation "label-addon-for".
+- Animal-only data is out of scope (reject); human data that also includes animals: tag \
+"includes-animal".
+
 - `confidence`: high = official page with explicit facts; medium = some fields inferred \
 from a reliable secondary page; low = mostly guesswork (low "add" decisions are deferred).
 - `reason`: one short English sentence naming the deciding evidence.
 - When the decision is not "add", set `entry` to null. Set `duplicate_of` to "" unless the \
 decision is "duplicate".
-"""
+
+""" + cs.GUIDE
 
 
 def contributing_rules():
@@ -211,9 +225,13 @@ def system_prompt(cat):
             + catalog_index(cat) + "\n")
 
 
-def user_message(c, evidence):
+def user_message(c, evidence, added_this_run=()):
     row = {k: c.get(k) for k in ("name", "url", "source", "id", "pop", "publisher", "extends") if c.get(k)}
-    return ("<candidate>\n" + json.dumps(row, ensure_ascii=False, indent=1) + "\n</candidate>\n\n"
+    extra = ""
+    if added_this_run:   # not in the cached catalog index yet — duplicates count against these too
+        extra = ("Catalog entries added earlier in this run (also part of the catalog):\n"
+                 + "\n".join(added_this_run) + "\n\n")
+    return (extra + "<candidate>\n" + json.dumps(row, ensure_ascii=False, indent=1) + "\n</candidate>\n\n"
             "<evidence>\n" + evidence + "\n</evidence>\n\nTriage this candidate.")
 
 
@@ -438,7 +456,7 @@ def make_client():
     return anthropic.Anthropic(max_retries=8)   # rate limits: back off and retry, don't drop the row
 
 
-def call_claude(client, system, c, ev):
+def call_claude(client, system, c, ev, added_this_run=()):
     """-> (parsed JSON or None, error string or None, usage dict)."""
     resp = client.beta.messages.create(
         model=MODEL,
@@ -448,7 +466,7 @@ def call_claude(client, system, c, ev):
         output_config={"effort": "medium",
                        "format": {"type": "json_schema", "schema": output_schema()}},
         system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-        messages=[{"role": "user", "content": user_message(c, ev)}],
+        messages=[{"role": "user", "content": user_message(c, ev, added_this_run)}],
     )
     u = resp.usage
     usage = {"input": u.input_tokens or 0, "output": u.output_tokens or 0,
@@ -474,24 +492,76 @@ def slug(s):
     return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", str(s or "").lower())).strip("-")
 
 
-def clean_entry(e):
-    """Model output -> catalog-style entry: core keys in catalog order (nulls allowed, as in
-    the catalog), empty optional keys and null/empty `details` keys dropped."""
+def clean_entry(e, ids=None, today=None):
+    """Model output -> schema v2 catalog entry ('' / 0 / 'unknown' -> null or dropped, unknown
+    related ids blanked, review = llm-proposed), finalised by migrate_v2.finalize."""
     e = {k: (None if v == "" else v) for k, v in dict(e).items()}
     e["id"] = slug(e.get("id") or e.get("name"))
     if not e.get("year"):
         e["year"] = None
     details = {k: v for k, v in (e.get("details") or {}).items() if v not in (None, "", [], "unknown")}
+    rel = []
+    for r in details.get("related") or []:
+        r = {k: v for k, v in r.items() if v}
+        if ids is not None and r.get("id") not in ids:
+            r.pop("id", None)
+        if r.get("relation") == "derived-from" and not r.get("note"):
+            r["note"] = ", ".join(r.get("process") or []) or "source dataset (processing not stated)"
+        if r.get("id") or r.get("name"):
+            rel.append(r)
+    if rel:
+        details["related"] = rel
+    else:
+        details.pop("related", None)
+    if details:
+        e["details"] = details
+    else:
+        e.pop("details", None)
+    ph = e.get("phantom") or {}
+    if ph.get("type") in cs.V["phantom_type"]:
+        e["phantom"] = {k: v for k, v in ph.items() if v not in ("", None)}
+        e["phantom"]["anthropomorphic"] = bool(ph.get("anthropomorphic"))
+        e["subjects"] = mig.dedup(list(e.get("subjects") or []) + ["phantom"])
+    else:
+        e.pop("phantom", None)
+    subjects = [x for x in e.get("subjects") or [] if x != "animal"]
+    if len(subjects) < len(e.get("subjects") or []):
+        e["tags"] = list(e.get("tags") or []) + ["includes-animal"]
+    e["subjects"] = subjects
+    for k in ("protocol_note", "full_name", "size", "paired_text_detail", "segmentation_detail", "license"):
+        if not e.get(k):
+            e.pop(k, None) if k == "protocol_note" else e.__setitem__(k, None)
+    for k in cs.ENUM_LISTS:
+        e[k] = mig.dedup(e.get(k) or [])
+    e["label_format"] = mig.dedup(e.get("label_format") or [])
+    e["images_included"] = bool(e.get("images_included"))
+    e["host"] = cs.map_host(e.get("host"))
+    lid, com = cs.map_license(e.get("license"))
+    if lid not in ("unknown", "other"):
+        e["license_id"] = lid
+    if com != "unclear":
+        e["commercial_use"] = com
+    e["review"] = "llm-proposed"
+    e["enriched"] = today or datetime.date.today().isoformat()
+    for k in ("aliases", "links"):
+        if not e.get(k):
+            e.pop(k, None)
+    return mig.finalize(e)
+
+
+def url_key(u):
+    """Comparable form of a dataset URL: no scheme/www/trailing slash/query, no figshare-style
+    .vN version suffix (…/27894084 and …/27894084.v1 are the same record)."""
+    u = re.sub(r"^https?://(www\.)?", "", str(u or "").strip().lower()).split("#")[0].split("?")[0]
+    return re.sub(r"(\.v\d+|/v\d+)$", "", u.rstrip("/")).rstrip("/")
+
+
+def catalog_urls(cat):
     out = {}
-    for k in CORE_ORDER:
-        if k == "details":
-            if details:
-                out["details"] = details
-        else:
-            out[k] = e.get(k)
-    for k in OPTIONAL_TOP:
-        if e.get(k) not in (None, "", []):
-            out[k] = e[k]
+    for e in cat:
+        for u in [e.get("url")] + [x.get("url") for x in e.get("links") or []]:
+            if u:
+                out.setdefault(url_key(u), e["id"])
     return out
 
 
@@ -514,11 +584,16 @@ def apply_decision(c, out, cat, today):
     if dec == "add":
         if out.get("confidence") == "low" or not out.get("entry"):
             return "deferred", None, record(c, "deferred", f"low-confidence add: {reason}", today, plus(DEFER_DAYS))
-        entry = clean_entry(out["entry"])
+        entry = clean_entry(out["entry"], ids, today)
+        if not entry.get("subjects"):
+            return "rejected", None, record(c, "rejected", f"animal/preclinical subjects — out of scope: {reason}", today)
+        same = catalog_urls(cat).get(url_key(entry.get("url")))
+        if same:
+            return "duplicate", None, record(c, "added", f"same as catalog id {same} (same URL): {reason}", today)
         if entry["id"] in ids:
             return ("needs-human", None, record(c, "deferred", f"proposed id {entry['id']} already exists — "
                                                 f"check for a duplicate: {reason}", today, plus(FAILED_DEFER_DAYS)))
-        errs = val.validate([entry])
+        errs = val.entry_errors(entry, ids | {entry["id"]})
         if errs:
             return ("needs-human", None, record(c, "deferred", "auto-entry failed validation: "
                                                 + "; ".join(errs)[:200], today, plus(FAILED_DEFER_DAYS)))
@@ -548,14 +623,14 @@ def run(candidates, cat, triage, max_n, budget, client_factory=make_client, get=
     Mutates cat (appends entries) and triage (appends decisions). Returns result rows."""
     today = today or datetime.date.today().isoformat()
     system = system_prompt(cat)
-    spent, results = 0.0, []
+    spent, results, added = 0.0, [], []
     for i, c in enumerate(order(candidates)[:max_n], 1):
         if spent >= budget:
             log(f"budget ${budget:.2f} reached after {i - 1} candidates")
             break
         ev = evidence(c, get)
         try:
-            out, err, usage = call_claude(client_factory(), system, c, ev)
+            out, err, usage = call_claude(client_factory(), system, c, ev, added)
         except Exception as e:   # one failed call must not lose the month's work
             out, err, usage = None, f"API error: {type(e).__name__}: {e}"[:300], {}
         spent += cost(usage)
@@ -566,6 +641,8 @@ def run(candidates, cat, triage, max_n, budget, client_factory=make_client, get=
             status, entry, rec = apply_decision(c, out, cat, today)
             if entry:
                 cat.append(entry)
+                added.append(" | ".join(x for x in (entry["id"], entry.get("name") or "",
+                                                     entry.get("full_name") or "", entry.get("url") or "") if x))
             triage.setdefault("decisions", []).append(rec)
             row.update(status=status, reason=rec["reason"], entry=entry, confidence=out.get("confidence"),
                        duplicate_of=out.get("duplicate_of") or None)

@@ -1,0 +1,151 @@
+name: Catalog enrichment
+
+# Manual: schema v2 enrichment (CONTRIBUTING.md 'Schema v2'). Seeds the rule-based v2
+# fields (scripts/migrate_v2.py --seed), re-checks entries against their official pages with
+# Claude (scripts/enrich_entries.py: subjects — animal-only entries removed —, phantom,
+# protocols, clinical context, organs, label types, formats, counts, licence class, sources of
+# derived sets), finalises them (--finalize) and opens a DRAFT pull request.
+#
+# Auth: Claude API via Workload Identity Federation (same rule as the monthly triage:
+# this repository's main branch, workflow_dispatch). The IDs below are not secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Comma-separated catalog ids (empty = use scope)"
+        default: ""
+      scope:
+        description: "Without ids: pending = entries not yet v2, all = every non-repository entry"
+        type: choice
+        options: [pending, all]
+        default: pending
+      max_entries:
+        description: "At most this many entries"
+        default: "1000"
+      budget_usd:
+        description: "Stop when the estimated spend reaches this many USD"
+        default: "80"
+      base_branch:
+        description: "Work on this branch's data instead of main's (e.g. an unmerged bot/triage-… branch)"
+        default: "main"
+      open_pr:
+        description: "Push a branch and open a draft PR (off = pilot: results only in the artifact)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: dataset-triage   # never at the same time as the monthly triage
+  cancel-in-progress: false
+
+env:
+  ANTHROPIC_FEDERATION_RULE_ID: fdrl_012TzziEez5GLaDHsbS2SCYN
+  ANTHROPIC_ORGANIZATION_ID: 07642c2d-a4e4-461e-beb1-cdf562b57be9
+  ANTHROPIC_SERVICE_ACCOUNT_ID: svac_01PirTqXPPqmXka9RgmMKbf7
+  ANTHROPIC_WORKSPACE_ID: wrkspc_015LQR9owMoAujRytSdkzVup
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Check inputs
+        env:
+          BASE: ${{ inputs.base_branch || 'main' }}
+          IDS: ${{ inputs.ids }}
+          MAX_ENTRIES: ${{ inputs.max_entries || '1000' }}
+          BUDGET_USD: ${{ inputs.budget_usd || '80' }}
+          SCOPE: ${{ inputs.scope || 'pending' }}
+        shell: bash
+        run: |
+          [[ "$BASE" == "main" || "$BASE" =~ ^bot/(triage|enrich)-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]+$ ]] \
+            || { echo "base_branch must be main or a bot/triage-|bot/enrich-YYYY-MM-DD-<run> branch"; exit 1; }
+          [[ -z "$IDS" || "$IDS" =~ ^[a-z0-9,-]+$ ]] || { echo "ids: lowercase ids separated by commas"; exit 1; }
+          [[ "$MAX_ENTRIES" =~ ^[0-9]{1,4}$ ]] || { echo "max_entries must be a number"; exit 1; }
+          [[ "$BUDGET_USD" =~ ^[0-9]{1,3}(\.[0-9]+)?$ ]] || { echo "budget_usd must be a number"; exit 1; }
+          [[ "$SCOPE" == "pending" || "$SCOPE" == "all" ]] || { echo "scope: pending or all"; exit 1; }
+          { echo "BASE=$BASE"; echo "IDS=$IDS"; echo "MAX_ENTRIES=$MAX_ENTRIES"; echo "BUDGET_USD=$BUDGET_USD"; echo "SCOPE=$SCOPE"; } >> "$GITHUB_ENV"
+
+      # The code that runs is always main's; only the two data files come from the base branch.
+      - uses: actions/checkout@v4
+
+      - name: Remember main's catalog (its entries count as curated)
+        run: cp data/datasets.json "$RUNNER_TEMP/main_datasets.json"
+
+      - name: Take the catalog data from the base branch
+        if: ${{ env.BASE != 'main' }}
+        shell: bash
+        run: |
+          git fetch -q origin "+refs/heads/$BASE:refs/remotes/origin/$BASE"
+          git checkout "origin/$BASE" -- data/datasets.json data/triage.json
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet anthropic
+
+      - name: Seed rule-based v2 fields
+        run: python3 scripts/migrate_v2.py --seed --curated-ids-from "$RUNNER_TEMP/main_datasets.json"
+
+      - name: Enrich with Claude
+        env:
+          ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/anthropic-oidc.jwt
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          if [[ -n "$IDS" ]]; then SEL=(--ids "$IDS"); else SEL=("--$SCOPE"); fi
+          python3 scripts/enrich_entries.py "${SEL[@]}" \
+            --max "$MAX_ENTRIES" --budget-usd "$BUDGET_USD" \
+            --summary "$RUNNER_TEMP/pr_body.md" --results "$RUNNER_TEMP/enrich_results.json"
+
+      - name: Finalise v2 entries, regenerate README, run the catalog checks
+        run: |
+          python3 scripts/migrate_v2.py --finalize
+          python3 scripts/generate_readme.py
+          python3 scripts/validate.py
+          python3 -m unittest discover -s scripts -p 'test_*.py'
+
+      - name: Open a draft pull request
+        if: ${{ inputs.open_pr }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat "$RUNNER_TEMP/pr_body.md" >> "$GITHUB_STEP_SUMMARY"
+          OUT="$RUNNER_TEMP/out"; mkdir -p "$OUT"
+          cp data/datasets.json data/triage.json README.md "$OUT/"
+          git fetch -q origin "+refs/heads/$BASE:refs/remotes/origin/$BASE"
+          BR="bot/enrich-$(date -u +%Y-%m-%d)-$GITHUB_RUN_ID"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -q -f -c "$BR" "origin/$BASE"
+          cp "$OUT/datasets.json" "$OUT/triage.json" data/
+          cp "$OUT/README.md" README.md
+          if git diff --quiet -- data README.md; then
+            echo "No changes this run."; exit 0
+          fi
+          git add data/datasets.json data/triage.json README.md
+          git commit -q -m "Catalog schema v2 enrichment $(date -u +%F) (Claude-proposed, needs review)"
+          git push -q origin "$BR"
+          if ! gh pr create --draft --base "$BASE" --head "$BR" \
+               --title "Catalog schema v2 enrichment $(date -u +%F)" --body-file "$RUNNER_TEMP/pr_body.md"; then
+            echo "::warning::Could not open the PR (enable 'Allow GitHub Actions to create and approve pull requests'). Open it from: https://github.com/$GITHUB_REPOSITORY/compare/$BASE...$BR"
+          fi
+
+      - name: Keep the per-entry results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrich-results
+          path: |
+            ${{ runner.temp }}/enrich_results.json
+            ${{ runner.temp }}/pr_body.md
+            data/datasets.json
+          if-no-files-found: ignore

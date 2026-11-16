@@ -16,6 +16,22 @@ tables are generated from it.
 
 ## Inclusion criteria
 
+The catalog exists so that someone who needs images for a given modality, MRI sequence / CT
+phase or clinical situation can see which datasets exist and roughly what is inside them before
+downloading anything. Record modality, sequences/phases, anatomy, size, labels and splits as
+precisely as the official source allows.
+
+- **Human imaging only.** Animal, preclinical and veterinary datasets (mouse, rat, canine,
+  patient-derived xenograft models, …) are out of scope.
+- **Phantoms count.** Physical and digital phantoms are useful for QA, harmonisation, dose and
+  reconstruction work. Mark them in `subjects` and describe them in the `phantom` object (type,
+  anthropomorphic, body part, phantom model, purpose); non-anatomical phantoms go in region `Phantom`.
+- **Derived and aggregated sets count** when they are radiology: preprocessed or resized
+  versions, relabels, benchmark mixes, VQA / caption collections built from other datasets.
+  List every source dataset in `details.related` (relation `derived-from`, catalog `id` when it
+  exists, `process` from the controlled list and a `note` on what was done — e.g. "2D slices
+  resized to 28×28 PNG", "questions generated from MIMIC-CXR reports"). "Derived" is computed
+  from these links; VQA sets carry `vqa` in `tasks` and `qa-pairs` in `label_types`.
 - **Label/annotation sets count too.** Expert relabels, adjudicated reference standards and
   analysis results for a public image dataset (Google's adjudicated labels for NIH ChestX-ray14,
   CXR-LT on MIMIC-CXR, TCIA analysis results) are often what decides whether a dataset is usable
@@ -27,8 +43,9 @@ tables are generated from it.
   formats (PNG/JPEG) are accepted but flagged `"raw_image": false`.
 - **Must be open** for research use: direct download, free registration, a data-use agreement,
   or an application process. No fully closed/commercial-only data.
-- Modalities in scope: **CT, MRI, PET, X-ray** (including mammography, DBT, CBCT). Ultrasound and
-  pathology are out of scope for now.
+- Modalities in scope: **CT, MRI, PET, X-ray** (including mammography, DBT, CBCT) and **DXA**.
+  Ultrasound and pathology are out of scope for now — when an in-scope dataset also ships them,
+  list them in `other_modalities`.
 
 ## Schema
 
@@ -84,11 +101,48 @@ an external LLM API?"), these fields answer it. All optional; use `null` rather 
 | `label_unit` | string[] | `patient`, `study`, `series`, `image`, `breast`, `lesion`, `voxel`, `sentence` |
 | `reference_standard` | string | what "positive" means and how it was confirmed, incl. prevalence if enriched |
 | `label_variants` | object[] | `{name, url, note}` — other label sets on the same images |
-| `related` | object[] | `{id, name, relation}`; relation = `derived-from`, `subset-of`, `superset-of`, `overlaps`, `extends`, `label-addon-for`, `mirror-of`, `same-images-as` — flag overlaps before using two datasets as independent test sets |
+| `related` | object[] | `{id, name, relation, process?, note?}` — `derived-from` links need a `note` (what was done) and may list `process` (`reformatted-resized`, `subset`, `merged`, `relabelled`, `masks-added`, `text-generated`, `synthesised`); `id` must be a catalog id when given; relation = `derived-from`, `subset-of`, `superset-of`, `overlaps`, `extends`, `label-addon-for`, `mirror-of`, `same-images-as` — flag overlaps before using two datasets as independent test sets |
 | `version`, `release_date` | string | current version and public release date (matters for pre-training contamination) |
 | `dicom_headers` | enum | `intact`, `partially-anonymized`, `stripped (converted to NIfTI/PNG/JPEG)`, `n/a` |
 | `third_party_processing` | enum | `permitted`, `prohibited`, `unclear` — whether the licence/DUA allows sending images to external online services (e.g. commercial LLM APIs); quote the clause in `third_party_note`. Not legal advice — re-read the licence before use. |
 | `extra` | string | anything else (known label issues, caveats) |
+
+### Schema v2 — searchable fields
+
+Every controlled value lives in [`data/vocab.json`](data/vocab.json) (the validator, the LLM
+pipelines and the site all read it). An entry is v2 when it has `subjects`; new entries are v2,
+older ones are migrated by `scripts/migrate_v2.py` + `scripts/enrich_entries.py`.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `review` | enum | `llm-proposed` (machine-added, not yet checked), `curated`, `human-verified` (+ `verified_date`) |
+| `subjects` | enum[] | `human`, `phantom`, `synthetic`, `ex-vivo`. Animal subjects are out of scope; human data that also has animals gets tag `includes-animal` |
+| `phantom` | object | phantoms: `{type: physical/digital/hybrid, anthropomorphic, body_part (an organs value or none-geometric), model, purpose}` |
+| `organs` | enum[] | organs/body parts imaged (`brain`, `lung`, `colon-rectum`, `knee`, `whole-body`, `none-geometric` …); `anatomy` stays as display text |
+| `protocols` | enum[] | acquisitions, prefixed by modality: `MRI:T1w`, `MRI:T1w-CE`, `MRI:FLAIR`, `MRI:DWI` …, `CT:non-contrast`, `CT:portal-venous`, `CT:CTA`, `CT:low-dose` …, `PET:FDG`, `PET:PSMA` …, `X-ray:mammography`, `X-ray:DBT` … (`CT:contrast-unspecified` rather than guessing a phase); each prefix must also be in `modality` |
+| `protocol_note` | string | the source's own wording — field strength, vendors, b-values (replaces v1 `multi_sequence_detail`) |
+| `field_strength` | enum[] | MRI: `low-field`, `1.5T`, `3T`, `7T` |
+| `multi_sequence` | bool | ≥2 sequences / phases per subject |
+| `other_modalities` | enum[] | out-of-scope data in the same download (`ultrasound`, `pathology-wsi`, `genomics`, `clinical-only` …) |
+| `conditions` | string[] | lowercase common names of the diseases / findings ("glioma", "ischemic stroke", "lung nodule") |
+| `condition_groups` | enum[] | `neoplasm`, `vascular`, `trauma`, `infection-inflammation`, `degenerative`, `neurodegenerative`, `cardiac`, `congenital`, `metabolic-endocrine`, `healthy-normal`, `unselected-mixed`, `not-applicable` |
+| `population` | enum[] | `adult`, `pediatric`, `fetal-neonatal` |
+| `setting` | enum[] | `screening`, `diagnostic`, `emergency`, `pre-treatment`, `post-treatment-follow-up`, `radiotherapy-planning`, `population-cohort`, `healthy-volunteer` |
+| `label_types` | enum[] | `mask`, `bounding-box`, `landmark`, `image-level-class`, `report`, `caption`, `qa-pairs`, `outcome`, `molecular`, `pathology-result`, `measurement`, `none` (finding names go in `details.label_schema`, which absorbed v1 `other_labels`) |
+| `image_format` | enum[] | formats of the **images** (`DICOM`, `NIfTI`, `NRRD`, `MHA`, `PNG`, `JPEG`, `NumPy`, `HDF5`, `raw-data` …; `none` for label-only sets, `unspecified` when the source does not say); replaces v1 `format` |
+| `label_format` | string[] | label / metadata files (`CSV`, `JSON`, `DICOM-SEG`, `RTSTRUCT` …) |
+| `preprocessing` | enum[] | `native`, `registered-resampled`, `skull-stripped-defaced`, `cropped-resized`, `8-bit-windowed`, `2d-from-3d` |
+| `images_included` | bool | false when the download has only labels and the images come from the source dataset |
+| `n_subjects`, `n_studies`, `n_images` | int | counts of the public data as stated (omit when unknown); `size` stays as display text |
+| `tasks` | enum[] | `segmentation`, `classification`, `detection`, `registration`, `reconstruction`, `report-generation`, `captioning`, `vqa`, `grounding`, `retrieval`, `quantification`, `outcome-prediction`, `synthesis`, `denoising`, `pretraining` |
+| `tags` | enum[] | closed list in `data/vocab.json` (`population-cohort`, `longitudinal`, `clinical-linkage`, `genetics`, `body-composition`, `radiotherapy`, `benchmark`, `test-retest` …) |
+| `license_id`, `commercial_use` | enum | licence class (`CC-BY`, `CC-BY-NC-SA`, `PhysioNet-credentialed`, `NIH-controlled`, `custom-DUA` …) and `allowed` / `prohibited` / `unclear`; `license` keeps the verbatim text |
+| `enriched` | date | last LLM enrichment |
+
+Derived — never edit by hand on a v2 entry (recomputed by `migrate_v2.py --finalize`):
+`raw_image` (native image format and `native` preprocessing), `segmentation` (`mask` label),
+`paired_text` (`report` / `caption` / `qa-pairs` label), `longitudinal` and `body_composition`
+(from tags).
 
 ## Accuracy
 

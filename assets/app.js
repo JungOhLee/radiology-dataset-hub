@@ -2,7 +2,7 @@
 
 const REGION_ORDER = [
   "Neuro", "Chest", "Cardiac", "Vascular", "Abdomen", "Pelvis",
-  "MSK", "Breast", "HeadNeck", "Dental", "WholeBody", "Multi",
+  "MSK", "Breast", "HeadNeck", "Dental", "WholeBody", "Multi", "Phantom",
 ];
 const REGION_LABEL = {
   Neuro: "Neuro (Brain & Spine)",
@@ -15,8 +15,9 @@ const REGION_LABEL = {
   Breast: "Breast",
   HeadNeck: "Head & Neck",
   Dental: "Dental & Maxillofacial",
-  WholeBody: "Whole-Body & PET",
-  Multi: "Multiple / Various body parts",
+  WholeBody: "Whole-Body",
+  Multi: "Unspecified / various body parts",
+  Phantom: "Phantoms (non-anatomical)",
   Repository: "Data Repositories & Portals",
 };
 const REGION_DESC = {
@@ -30,20 +31,21 @@ const REGION_DESC = {
   Breast: "Mammography, DBT and breast MRI",
   HeadNeck: "Oncology PET/CT and H&N imaging",
   Dental: "Panoramic X-ray and CBCT",
-  WholeBody: "Whole-body PET/CT and total-body segmentation",
-  Multi: "Datasets spanning many body regions",
+  WholeBody: "Whole-body PET/CT, MRI and total-body segmentation",
+  Multi: "Body region not itemised by the source",
+  Phantom: "Geometric / QA phantoms without anatomy",
   Repository: "Hubs hosting many collections",
 };
 const REGION_ICON = {
   Neuro: "🧠", Chest: "🫁", Cardiac: "🫀", Vascular: "🩸", Abdomen: "🫃",
   Pelvis: "⬇️", MSK: "🦴", Breast: "🎀", HeadNeck: "👤", Dental: "🦷",
-  WholeBody: "🌐", Multi: "🧩", Repository: "🗄️",
+  WholeBody: "🌐", Multi: "🧩", Phantom: "🧪", Repository: "🗄️",
 };
 const REGION_SHORT = {
   Neuro: "Neuro", Chest: "Chest", Cardiac: "Cardiac", Vascular: "Vascular",
   Abdomen: "Abdomen", Pelvis: "Pelvis", MSK: "MSK", Breast: "Breast",
-  HeadNeck: "Head & Neck", Dental: "Dental", WholeBody: "Whole-body/PET",
-  Multi: "Multi-region", Repository: "Repositories",
+  HeadNeck: "Head & Neck", Dental: "Dental", WholeBody: "Whole-body",
+  Multi: "Various", Phantom: "Phantom", Repository: "Repositories",
 };
 const MODALITIES = ["CT", "MRI", "PET", "X-ray", "DXA"];
 
@@ -54,6 +56,25 @@ const isVLM = d => d.paired_text === true &&
   (d.tasks || []).some(t => VLM_TASKS.includes(String(t).toLowerCase()));
 
 const hasTag = (d, t) => (d.tags || []).includes(t);
+
+/* ---------- schema v2 (data/vocab.json) with v1 fallbacks ---------- */
+const fmts = d => d.image_format || d.format || [];
+const protoNote = d => d.protocol_note || d.multi_sequence_detail || "";
+const protoShort = p => String(p).includes(":") ? String(p).split(":").slice(1).join(":") : String(p);
+const relList = d => (d.details && d.details.related) || [];
+const isDerived = d => d.type !== "annotation" && relList(d).some(r => r.relation === "derived-from");
+const phantomOf = d => d.phantom || (d.details && d.details.phantom) || null;
+const isPhantom = d => (d.subjects || []).includes("phantom") || hasTag(d, "phantom") || !!phantomOf(d);
+const labelsOnly = d => d.type === "annotation" || d.images_included === false;
+const GROUP_LABEL = {
+  "neoplasm": "Tumour / cancer", "vascular": "Vascular", "trauma": "Trauma", "infection-inflammation": "Infection / inflammation",
+  "degenerative": "Degenerative", "neurodegenerative": "Neurodegenerative", "cardiac": "Cardiac disease",
+  "congenital": "Congenital", "metabolic-endocrine": "Metabolic / endocrine", "healthy-normal": "Healthy / normal",
+  "unselected-mixed": "Unselected / mixed", "not-applicable": "n/a (phantom, synthetic)",
+};
+const POP_LABEL = { "adult": "Adult", "pediatric": "Pediatric", "fetal-neonatal": "Fetal / neonatal" };
+let VOCAB = null;
+
 const TOGGLES = [
   { key: "raw_image", label: "Raw (DICOM/NIfTI)", test: d => d.raw_image === true },
   { key: "paired_text", label: "Paired text / VLM", test: d => d.paired_text === true },
@@ -61,10 +82,14 @@ const TOGGLES = [
   { key: "multi_sequence", label: "Multi-seq/phase", test: d => d.multi_sequence === true },
   { key: "multi_region", label: "Multi-region", test: d => (d.regions || []).length > 1 },
   { key: "cohort", label: "Population cohort", test: d => hasTag(d, "population-cohort") },
-  { key: "body_comp", label: "Body composition", test: d => d.body_composition === true },
+  { key: "body_comp", label: "Body composition", test: d => d.body_composition === true || hasTag(d, "body-composition") },
   { key: "clinical", label: "Linkable clinical data", test: d => !!d.clinical_variables || hasTag(d, "clinical-linkage") },
-  { key: "longitudinal", label: "Longitudinal", test: d => d.longitudinal === true },
+  { key: "longitudinal", label: "Longitudinal", test: d => d.longitudinal === true || hasTag(d, "longitudinal") },
   { key: "open", label: "Open access", test: d => d.access === "open" },
+  { key: "phantom", label: "Phantom", test: isPhantom },
+  { key: "derived", label: "Derived / aggregated", test: isDerived },
+  { key: "labels_only", label: "Labels only", test: labelsOnly },
+  { key: "verified", label: "Human-verified", test: d => d.review === "human-verified" },
 ];
 
 const state = {
@@ -72,6 +97,9 @@ const state = {
   modalities: new Set(),
   regions: new Set(),   // region keys, plus the literal "Repository"
   toggles: new Set(),
+  protocols: new Set(),   // "MRI:FLAIR" … — chips appear once a modality is chosen
+  groups: new Set(),      // condition groups
+  population: new Set(),
   sort: "region",
 };
 
@@ -83,6 +111,7 @@ async function boot() {
   try {
     const res = await fetch("data/datasets.json", { cache: "no-cache" });
     DATA = await res.json();
+    try { VOCAB = await (await fetch("data/vocab.json", { cache: "no-cache" })).json(); } catch (e) { VOCAB = null; }
   } catch (e) {
     $("#results").innerHTML = `<div class="empty"><h2>Could not load data</h2>
       <p>Open this page via a local server or GitHub Pages (fetch is blocked on file://).</p></div>`;
@@ -142,6 +171,21 @@ function buildControls() {
     b.addEventListener("click", () => toggleSet(state.regions, r, b));
     regionWrap.appendChild(b);
   });
+  renderProtocolChips();
+  // clinical context: condition groups + population (only values that occur)
+  const cWrap = $("#context-filters");
+  if (cWrap) {
+    const addCtx = (set, key, label, field) => {
+      const n = DATA.filter(d => (d[field] || []).includes(key)).length;
+      if (!n) return;
+      const b = chip(label, () => toggleSet(set, key, b));
+      b.innerHTML = `${esc(label)} <span class="chip-n">${n}</span>`;
+      cWrap.appendChild(b);
+    };
+    Object.keys(GROUP_LABEL).forEach(g => addCtx(state.groups, g, GROUP_LABEL[g], "condition_groups"));
+    Object.keys(POP_LABEL).forEach(g => addCtx(state.population, g, POP_LABEL[g], "population"));
+    if (!cWrap.querySelector(".chip")) cWrap.closest(".filters").hidden = true;
+  }
   // characteristic toggle chips
   const tWrap = $("#toggle-filters");
   TOGGLES.forEach(t => {
@@ -159,10 +203,32 @@ function buildControls() {
   $("#sort-select").addEventListener("change", e => { state.sort = e.target.value; render(); });
   $("#reset").addEventListener("click", () => {
     state.q = ""; state.modalities.clear(); state.regions.clear(); state.toggles.clear();
+    state.protocols.clear(); state.groups.clear(); state.population.clear();
     $("#search").value = "";
     document.querySelectorAll(".chip[aria-pressed='true']").forEach(c => c.setAttribute("aria-pressed", "false"));
+    renderProtocolChips();
     render();
   });
+}
+
+// MRI sequences / CT phases / PET tracers of the chosen modalities (schema v2 `protocols`)
+function renderProtocolChips() {
+  const wrap = $("#protocol-filters");
+  if (!wrap) return;
+  const row = wrap.closest(".filters");
+  for (const p of [...state.protocols]) if (!state.modalities.has(p.split(":")[0])) state.protocols.delete(p);
+  wrap.innerHTML = "";
+  const counts = {};
+  DATA.forEach(d => (d.protocols || []).forEach(p => { counts[p] = (counts[p] || 0) + 1; }));
+  const order = VOCAB ? Object.entries(VOCAB.protocols).flatMap(([m, ps]) => ps.map(x => `${m}:${x}`)) : Object.keys(counts).sort();
+  const shown = order.filter(p => state.modalities.has(p.split(":")[0]) && counts[p]);
+  shown.forEach(p => {
+    const b = chip(protoShort(p), () => toggleSet(state.protocols, p, b));
+    b.innerHTML = `${esc(state.modalities.size > 1 ? p.replace(":", " ") : protoShort(p))} <span class="chip-n">${counts[p]}</span>`;
+    if (state.protocols.has(p)) b.setAttribute("aria-pressed", "true");
+    wrap.appendChild(b);
+  });
+  if (row) row.hidden = !shown.length;
 }
 
 function chip(label, onClick) {
@@ -174,6 +240,7 @@ function chip(label, onClick) {
 function toggleSet(set, key, el) {
   if (set.has(key)) { set.delete(key); el.setAttribute("aria-pressed", "false"); }
   else { set.add(key); el.setAttribute("aria-pressed", "true"); }
+  if (set === state.modalities) renderProtocolChips();
   render();
 }
 
@@ -187,6 +254,9 @@ function matchesRegion(d) {
 function facetMatches(d) {
   if (state.modalities.size && !(d.modality || []).some(m => state.modalities.has(m))) return false;
   if (!matchesRegion(d)) return false;
+  if (state.protocols.size && !(d.protocols || []).some(p => state.protocols.has(p))) return false;
+  if (state.groups.size && !(d.condition_groups || []).some(g => state.groups.has(g))) return false;
+  if (state.population.size && !(d.population || []).some(g => state.population.has(g))) return false;
   for (const key of state.toggles) {
     const t = TOGGLES.find(x => x.key === key);
     if (t && !t.test(d)) return false;
@@ -222,8 +292,26 @@ const FACET_VOCAB = (() => {
   // modality techniques: require the technique word itself in the record (term), not just
   // the modality — otherwise "cta"/"fmri" would flood the tier with every CT/MRI dataset
   const tech = (mod, ...keys) => keys.forEach(k => add({ mod, term: k }, k));
-  tech("CT", "cta", "cect", "ncct", "ldct", "hrct", "cbct");
-  tech("MRI", "mra", "fmri", "dmri");
+  tech("CT", "cect", "hrct");
+  tech("MRI", "dmri");
+  // schema v2 protocols: match d.protocols; entries without protocols fall back to the word
+  const proto = (p, ...keys) => keys.forEach(k => add({ proto: p, term: k }, squash(k)));
+  proto("MRI:FLAIR", "flair"); proto("MRI:T1w-CE", "t1ce", "t1c", "t1gd", "contrast enhanced t1", "postcontrast t1");
+  proto("MRI:T1w", "t1w", "t1 weighted"); proto("MRI:T2w", "t2w", "t2 weighted"); proto("MRI:PD", "proton density");
+  proto("MRI:DWI", "dwi", "diffusion weighted", "diffusion"); proto("MRI:DTI", "dti", "tractography");
+  proto("MRI:SWI", "swi"); proto("MRI:DCE", "dce"); proto("MRI:perfusion", "dsc", "asl", "mr perfusion");
+  proto("MRI:MRA", "mra"); proto("MRI:cine", "cine"); proto("MRI:LGE", "lge", "late gadolinium");
+  proto("MRI:fMRI", "fmri", "functional mri", "bold"); proto("MRI:MRS", "spectroscopy");
+  proto("MRI:kspace-raw", "kspace", "k space");
+  proto("CT:non-contrast", "ncct", "non contrast", "noncontrast", "unenhanced");
+  proto("CT:arterial", "arterial phase"); proto("CT:portal-venous", "portal venous", "venous phase");
+  proto("CT:delayed", "delayed phase"); proto("CT:CTA", "cta", "ct angiography"); proto("CT:CTPA", "ctpa");
+  proto("CT:perfusion", "ct perfusion", "ctp"); proto("CT:low-dose", "ldct", "low dose");
+  proto("CT:CBCT", "cbct", "cone beam"); proto("CT:spectral", "dect", "dual energy", "spectral ct");
+  proto("CT:photon-counting", "pcct", "photon counting"); proto("CT:4D", "4dct", "4d ct");
+  proto("PET:FDG", "fdg"); proto("PET:PSMA", "psma"); proto("PET:amyloid", "amyloid"); proto("PET:tau", "tau pet");
+  proto("X-ray:DBT", "dbt", "tomosynthesis"); proto("X-ray:fluoroscopy-DSA", "dsa", "fluoroscopy");
+  proto("X-ray:panoramic", "panoramic", "opg");
   // body regions
   add({ region: "Neuro" }, "brain", "neuro", "neuroimaging", "cerebral", "intracranial", "head");
   add({ region: "Chest" }, "chest", "thorax", "thoracic", "lung", "lungs", "pulmonary");
@@ -287,11 +375,15 @@ function parseFacets(tokens) {
 }
 
 function facetMatch(d, x, f) {
+  if (f.proto) {
+    if ((d.protocols || []).length) { if (!d.protocols.includes(f.proto)) return false; }
+    else if (!x.sq.includes(squash(f.term))) return false;
+  }
   if (f.mod && !(d.modality || []).includes(f.mod)) return false;
   if (f.region && !(d.regions || []).includes(f.region)) return false;
   if (f.term && !x.wraw.includes(" " + f.term)) return false;
   // "*" = prefix stem; otherwise whole word (wanat is padded with spaces at both ends)
-  if (f.anat && !f.terms.some(t => t.endsWith("*")
+  if (f.anat && !(d.organs || []).some(o => o.includes(f.anat)) && !f.terms.some(t => t.endsWith("*")
       ? x.wanat.includes(" " + t.slice(0, -1))
       : x.wanat.includes(" " + t + " "))) return false;
   return true;
@@ -301,12 +393,13 @@ function facetTierLabel(facets, n) {
   const chips = facets.map(f => {
     let h = "";
     if (f.mod) h += `<span class="mod">${esc(f.mod)}</span>`;
-    if (f.term) h += `<span class="rtag">${esc(f.term)}</span>`;
+    if (f.proto) h += `<span class="rtag">${esc(f.proto.replace(":", " "))}</span>`;
+    else if (f.term) h += `<span class="rtag">${esc(f.term)}</span>`;
     if (f.region) h += `<span class="rtag">${REGION_ICON[f.region] || ""} ${esc(REGION_SHORT[f.region] || f.region)}</span>`;
     if (f.anat) h += `<span class="rtag">${esc(f.anat)}</span>`;
     return h;
   }).join("");
-  const hasMod = facets.some(f => f.mod), hasBody = facets.some(f => f.region || f.anat);
+  const hasMod = facets.some(f => f.mod || f.proto), hasBody = facets.some(f => f.region || f.anat);
   const by = hasMod && hasBody ? "modality & body part" : hasMod ? "modality" : "body part";
   return `${chips}<span>matched by ${by} (${n})</span>`;
 }
@@ -385,13 +478,19 @@ function searchIndex(d) {
     (d.modality || []).join(" "),
     (d.regions || []).map(r => REGION_LABEL[r] || r).join(" "), (d.regions || []).join(" "),
     (d.tags || []).join(" "), (d.tasks || []).join(" "), (d.other_labels || []).join(" "),
-    d.host, (d.format || []).join(" "), d.license, d.size, d.year,
-    d.clinical_variables, d.segmentation_detail, d.multi_sequence_detail, d.paired_text_detail,
+    d.host, fmts(d).join(" "), d.license, d.license_id, d.size, d.year,
+    d.clinical_variables, d.segmentation_detail, protoNote(d), d.paired_text_detail,
+    (d.subjects || []).join(" "), (d.organs || []).join(" "), (d.other_modalities || []).join(" "),
+    (d.protocols || []).map(p => p + " " + protoShort(p)).join(" "), (d.field_strength || []).join(" "),
+    (d.conditions || []).join(" "), (d.condition_groups || []).join(" "), (d.population || []).join(" "),
+    (d.setting || []).join(" "), (d.label_types || []).join(" "), (d.label_format || []).join(" "),
+    (d.preprocessing || []).join(" "),
+    phantomOf(d) ? ["phantom", phantomOf(d).type, phantomOf(d).body_part, phantomOf(d).model, phantomOf(d).purpose].join(" ") : "",
     d.details ? (d.details.label_schema || []).join(" ") : "",
     d.details ? [(d.details.label_source || []).join(" "), (d.details.label_unit || []).join(" "),
                  d.details.reference_standard, d.details.label_readers,
                  (d.details.label_variants || []).map(v => v.name).join(" "),
-                 (d.details.related || []).map(r => r.name || r.id).join(" ")].join(" ") : "",
+                 (d.details.related || []).map(r => [r.name || r.id, r.note, (r.process || []).join(" ")].join(" ")).join(" ")].join(" ") : "",
     (d.aliases || []).join(" "), d.type === "annotation" ? "annotation label set relabel expert labels" : "",
   ];
   const raw = parts.filter(Boolean).join(" ").toLowerCase();
@@ -403,7 +502,7 @@ function searchIndex(d) {
     wraw: wordify(raw),                                          // word-boundary blob (for prefix tokens)
     wtitle: wordify([d.id, d.name, d.full_name].filter(Boolean).join(" ")),
     // anatomy scope for facet matching: where an anatomy term like "liver" must appear
-    wanat: wordify([d.anatomy, d.name, d.full_name, d.segmentation_detail].filter(Boolean).join(" ")),
+    wanat: wordify([d.anatomy, d.name, d.full_name, d.segmentation_detail, (d.organs || []).join(" ")].filter(Boolean).join(" ")),
   };
   return d._sidx;
 }
@@ -489,11 +588,17 @@ function card(d) {
   if (d.raw_image) badges.push(`<span class="badge raw" title="Native DICOM/NIfTI raw images">◆ Raw</span>`);
   if (d.paired_text) badges.push(`<span class="badge text" title="${esc(d.paired_text_detail || "Paired reports/captions/QA — image–text / multimodal")}">◨ ${isVLM(d) ? "Image–text" : "Text"}</span>`);
   if (d.segmentation) badges.push(`<span class="badge seg" title="${esc(d.segmentation_detail || "Segmentation masks")}">▧ Seg</span>`);
-  if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(d.multi_sequence_detail || "Multi-sequence / multi-phase")}">≋ Multi-seq</span>`);
+  if ((d.protocols || []).length) {
+    const ps = d.protocols.slice(0, 4).map(protoShort);
+    badges.push(`<span class="badge seq" title="${esc(protoNote(d) || d.protocols.join(", "))}">≋ ${esc(ps.join(" · "))}${d.protocols.length > 4 ? " …" : ""}</span>`);
+  } else if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(protoNote(d) || "Multi-sequence / multi-phase")}">≋ Multi-seq</span>`);
+  if (isPhantom(d)) badges.push(`<span class="badge phantom" title="${esc(phantomOf(d) ? [phantomOf(d).type, phantomOf(d).body_part, phantomOf(d).model].filter(Boolean).join(" · ") : "Phantom")}">🧪 Phantom</span>`);
+  if (isDerived(d)) badges.push(`<span class="badge derived" title="Built from: ${esc(relList(d).filter(r => r.relation === "derived-from").map(r => r.name || r.id).join(", "))}">⤳ Derived</span>`);
+  if (d.review === "llm-proposed") badges.push(`<span class="badge unreviewed" title="Machine-proposed entry — not yet reviewed by a person">◌ Unreviewed</span>`);
   if (hasTag(d, "population-cohort")) badges.push(`<span class="badge cohort" title="Population / epidemiological cohort${d.clinical_variables ? " — " + esc(d.clinical_variables) : ""}">◉ Cohort</span>`);
   if (d.body_composition) badges.push(`<span class="badge bodycomp" title="Body-composition phenotypes available (VAT/ASAT/muscle/DXA)">⚖ Body comp</span>`);
   if (d.type === "annotation") badges.push(`<span class="badge seq" title="Label/annotation set for another dataset's images — images come from the base dataset">🏷 Label set</span>`);
-  const fmt = (d.format || []).slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
+  const fmt = fmts(d).filter(f => f !== "unspecified").slice(0, 3).map(f => `<span class="badge fmt">${esc(f)}</span>`).join("");
 
   const access = (d.access || "").toLowerCase();
   const accessCls = access === "open" ? "access-open"
@@ -575,10 +680,12 @@ function openDetail(id) {
         ? dt.third_party_processing + (dt.third_party_note ? " — " + dt.third_party_note : "") : ""),
     ].join("");
     if (prov) parts += `<h4>Label provenance & use</h4><table class="detail-table">${prov}</table>`;
+
     const rel = (dt.related || []).map(r => {
       const tgt = r.id && DATA.find(x => x.id === r.id);
       const nm = esc(r.name || (tgt && tgt.name) || r.id);
-      return `<li>${esc(r.relation)}: ${tgt ? `<a href="#" data-goto="${esc(r.id)}">${nm}</a>` : nm}</li>`;
+      const how = [(r.process || []).join(", "), r.note].filter(Boolean).join(" — ");
+      return `<li>${esc(r.relation)}: ${tgt ? `<a href="#" data-goto="${esc(r.id)}">${nm}</a>` : nm}${how ? " — " + esc(how) : ""}</li>`;
     });
     const vars = (dt.label_variants || []).map(v =>
       `<li>${safeUrl(v.url) ? `<a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">${esc(v.name)}</a>` : esc(v.name)}${v.note ? " — " + esc(v.note) : ""}</li>`);
@@ -597,6 +704,12 @@ function openDetail(id) {
     </section>`;
   }
 
+  const ph = phantomOf(d);
+  if (ph) structure = `<section class="detail-structure"><h4>Phantom</h4><table class="detail-table">${[
+    row("Type", ph.type), row("Anthropomorphic", ph.anthropomorphic === true ? "yes" : ph.anthropomorphic === false ? "no" : ""),
+    row("Body part", ph.body_part), row("Model", ph.model), row("Purpose", ph.purpose),
+  ].join("")}</table></section>` + structure;
+
   const regionsTxt = d.type === "repository" ? "Data repository / portal"
     : (d.regions || []).map(r => REGION_LABEL[r] || r).join(", ");
   const modsBig = (d.modality || []).map(m => `<span class="mod">${esc(m)}</span>`).join("");
@@ -614,11 +727,26 @@ function openDetail(id) {
         ${row("Anatomy", d.anatomy)}
         ${row("Modality", d.modality)}
         ${row("Year", d.year)}
-        ${row("Format", d.format)}
+        ${row("Subjects", d.subjects)}
+        ${row("Organs", d.organs)}
+        ${row("Format", fmts(d))}
+        ${row("Label / metadata files", d.label_format)}
+        ${row("Preprocessing", d.preprocessing)}
+        ${d.images_included === false ? row("Images included", "No — labels only; images come from the source dataset") : ""}
         ${boolRow("Raw image (DICOM/NIfTI)", d.raw_image)}
         ${row("Size", d.size)}
+        ${row("Counts", [d.n_subjects && d.n_subjects.toLocaleString() + " subjects", d.n_studies && d.n_studies.toLocaleString() + " studies",
+                         d.n_images && d.n_images.toLocaleString() + " images"].filter(Boolean).join(" · "))}
         ${boolRow("Paired text / image–text", d.paired_text, d.paired_text_detail)}
-        ${boolRow("Multi-sequence / phase", d.multi_sequence, d.multi_sequence_detail)}
+        ${boolRow("Multi-sequence / phase", d.multi_sequence, protoNote(d))}
+        ${row("Protocols", (d.protocols || []).map(p => p.replace(":", " ")))}
+        ${row("Field strength", d.field_strength)}
+        ${row("Other modalities in the download", d.other_modalities)}
+        ${row("Conditions", d.conditions)}
+        ${row("Condition groups", (d.condition_groups || []).map(g => GROUP_LABEL[g] || g))}
+        ${row("Population", (d.population || []).map(g => POP_LABEL[g] || g))}
+        ${row("Clinical setting", d.setting)}
+        ${row("Label types", d.label_types)}
         ${boolRow("Segmentation labels", d.segmentation, d.segmentation_detail)}
         ${d.clinical_variables ? row("Linkable clinical data", d.clinical_variables) : ""}
         ${d.body_composition ? boolRow("Body composition", d.body_composition) : ""}
@@ -627,7 +755,8 @@ function openDetail(id) {
         ${(d.tags && d.tags.length) ? row("Tags", d.tags) : ""}
         ${row("Tasks", d.tasks)}
         ${row("Access", accessMap[d.access] || d.access)}
-        ${row("License", d.license)}
+        ${row("License", [d.license, d.license_id && `(${d.license_id}${d.commercial_use ? " · commercial use: " + d.commercial_use : ""})`].filter(Boolean).join(" "))}
+        ${row("Review", d.review ? d.review + (d.verified_date ? " · " + d.verified_date : "") + (d.enriched ? " · enriched " + d.enriched : "") : "")}
         ${row("Host", d.host)}
       </table>
       ${structure}

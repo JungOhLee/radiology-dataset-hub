@@ -118,6 +118,10 @@ good ones to `data/datasets.json` (see [CONTRIBUTING.md](CONTRIBUTING.md)).
   Federation (no stored API key); a per-run budget cap and the workspace spend limit bound
   the cost. Run it by hand (Actions → Monthly dataset triage → Run workflow) with a larger
   `max_candidates` to drain a backlog.
+- **Enrichment pass.** `scripts/enrich_entries.py` (Actions → Catalog enrichment, manual) re-checks
+  entries against their official pages: removes animal-only datasets (catalog scope: human imaging),
+  fills `details.phantom`, the source datasets of derived/VQA sets (`details.related` derived-from
+  with a note on what was done) and empty anatomy/sequence fields. Additive; opens a draft PR.
 - **Portal checklist.** Hosts without an API are listed in every report; check them monthly.
 - **Your notes.** Research projects find datasets before the tracker does. Run
   `python3 scripts/scan_mentions.py <notes folders>` — it lists dataset links in your Markdown

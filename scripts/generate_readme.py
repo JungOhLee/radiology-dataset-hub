@@ -18,7 +18,7 @@ START = "<!-- AUTOGEN:START -->"
 END = "<!-- AUTOGEN:END -->"
 
 REGION_ORDER = ["Neuro", "Chest", "Cardiac", "Vascular", "Abdomen", "Pelvis",
-                "MSK", "Breast", "HeadNeck", "Dental", "WholeBody", "Multi"]
+                "MSK", "Breast", "HeadNeck", "Dental", "WholeBody", "Multi", "Phantom"]
 REGION_LABEL = {
     "Neuro": "🧠 Neuro (Brain & Spine)",
     "Chest": "🫁 Chest & Thorax",
@@ -30,8 +30,9 @@ REGION_LABEL = {
     "Breast": "🎀 Breast",
     "HeadNeck": "👤 Head & Neck",
     "Dental": "🦷 Dental & Maxillofacial",
-    "WholeBody": "🌐 Whole-Body & PET",
-    "Multi": "🧩 Multiple / Various body parts",
+    "WholeBody": "🌐 Whole-Body",
+    "Multi": "🧩 Unspecified / various body parts",
+    "Phantom": "🧪 Phantoms (non-anatomical)",
 }
 REPO_LABEL = "🗄️ Data Repositories & Portals"
 
@@ -53,11 +54,13 @@ def dataset_row(d):
     if d.get("type") == "annotation":   # label set for another dataset's images
         name_md += " 🏷"
     mods = ", ".join(d.get("modality") or []) or "—"
-    fmt = ", ".join(d.get("format") or []) or "—"
+    fmt = ", ".join(d.get("image_format") or d.get("format") or []) or "—"   # v2 / v1
     raw = "🟢" if d.get("raw_image") else "🟡"
     text = yn(d.get("paired_text"))
     seg = yn(d.get("segmentation"))
     seq = yn(d.get("multi_sequence"))
+    if d.get("protocols"):   # v2: show the acquisitions, not just yes/no
+        seq = cell(", ".join(p.split(":", 1)[1] for p in d["protocols"][:4]) + (" …" if len(d["protocols"]) > 4 else ""))
     access = cell(d.get("access")).upper() if d.get("access") else "—"
     size = cell(d.get("size"))
     return (
@@ -67,7 +70,7 @@ def dataset_row(d):
 
 
 HEADER = (
-    "| Dataset | Modality | Year | Format | Text | Seg | Multi | Access | Size |\n"
+    "| Dataset | Modality | Year | Format | Text | Seg | Protocols | Access | Size |\n"
     "| --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |"
 )
 
@@ -103,7 +106,7 @@ def build():
     out.append("")
     out.append("**Legend** — Format: 🟢 native raw (DICOM/NIfTI/NRRD) · 🟡 derived (PNG/JPEG). "
                "Text = paired reports/captions/QA (i.e. image–text / multimodal) · Seg = segmentation masks · "
-               "Multi = multi-sequence MRI or multi-phase CT. 🏷 = label/annotation set for another dataset's images. "
+               "Protocols = MRI sequences / CT phases / PET tracers (✅ multi-sequence when not itemised). 🏷 = label/annotation set for another dataset's images. "
                "Access: OPEN = direct download · REGISTRATION = free account · DUA = data-use agreement · "
                "REQUEST = apply for access. "
                f"**Datasets covering several body regions ({n_multi_region}) appear under each region.**")

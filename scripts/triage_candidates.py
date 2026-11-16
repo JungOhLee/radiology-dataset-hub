@@ -44,7 +44,9 @@ import urllib.parse
 import urllib.request
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import catalog_schema as cs  # noqa: E402
 import find_new_datasets as fnd  # noqa: E402
+import migrate_v2 as mig  # noqa: E402
 import validate as val  # noqa: E402
 
 ROOT = fnd.ROOT
@@ -64,11 +66,6 @@ BY = f"{MODEL} (monthly auto-triage)"
 SOURCE_RANK = {"TCIA": 0, "PhysioNet": 1, "Dataset papers": 2, "Zenodo": 3, "figshare": 4,
                "AWS Open Data": 5, "Dataverse": 6, "VinDr": 7, "OpenNeuro": 8, "Grand Challenge": 9,
                "Hugging Face": 10, "GitHub": 11, "Kaggle": 12}
-CORE_ORDER = ["id", "name", "full_name", "type", "regions", "anatomy", "modality", "year", "format",
-              "raw_image", "size", "paired_text", "paired_text_detail", "multi_sequence",
-              "multi_sequence_detail", "segmentation", "segmentation_detail", "other_labels", "tasks",
-              "license", "access", "host", "url", "description", "details"]
-OPTIONAL_TOP = ["tags", "longitudinal", "aliases", "links"]
 
 # ---------------------------------------------------------------- output schema
 
@@ -92,12 +89,11 @@ def _obj(props):
     return {"type": "object", "properties": props, "required": list(props), "additionalProperties": False}
 
 
-def phantom_schema():
-    return _obj({"type": {"type": "string", "enum": sorted(val.PHANTOM_TYPES) + ["not-a-phantom"]},
-                 "body_part": _s(), "model": _s(), "purpose": _s()})
+phantom_schema = cs.phantom_schema
 
 
 def output_schema():
+    """Decision + a schema v2 catalog entry (CONTRIBUTING.md); unknown = "" / 0 / []."""
     details = _obj({
         "label_schema": _arr(_s()),
         "file_structure": _ns(),
@@ -108,8 +104,8 @@ def output_schema():
         "reference_standard": _ns(),
         "related": _arr(_obj({"id": _s(), "name": _s(),
                               "relation": {"type": "string", "enum": sorted(val.RELATIONS)},
+                              "process": _arr({"type": "string", "enum": cs.V["related_process"]}),
                               "note": _s()})),
-        "phantom": phantom_schema(),
         "version": _ns(),
         "release_date": _ns(),
         "dicom_headers": {"type": "string", "enum": sorted(val.DICOM_HEADERS) + ["unknown"]},
@@ -117,35 +113,31 @@ def output_schema():
         "third_party_note": _ns(),
         "extra": _ns(),
     })
-    entry = _obj({
+    entry = {
         "id": _s(), "name": _s(), "full_name": _ns(),
         "type": {"type": "string", "enum": ["dataset", "annotation"]},
         "regions": _arr({"type": "string", "enum": sorted(val.REGIONS)}),
         "anatomy": _s(),
-        "modality": _arr({"type": "string", "enum": ["CT", "MRI", "PET", "X-ray", "DXA"]}),
+        "modality": _arr({"type": "string", "enum": cs.V["modality"]}),
+        "multi_sequence": {"type": "boolean"},
         "year": {"type": "integer"},
-        "format": _arr(_s()),
-        "raw_image": {"type": "boolean"},
         "size": _ns(),
-        "paired_text": {"type": "boolean"}, "paired_text_detail": _ns(),
-        "multi_sequence": {"type": "boolean"}, "multi_sequence_detail": _ns(),
-        "segmentation": {"type": "boolean"}, "segmentation_detail": _ns(),
-        "other_labels": _arr(_s()),
-        "tasks": _arr(_s()),
+        "paired_text_detail": _ns(),
+        "segmentation_detail": _ns(),
         "license": _ns(),
         "access": {"type": "string", "enum": sorted(val.ACCESS)},
         "host": _s(), "url": _s(), "description": _s(),
         "details": details,
-        "tags": _arr(_s()),
         "aliases": _arr(_s()),
         "links": _arr(_obj({"label": _s(), "url": _s()})),
-    })
+    }
+    entry.update(cs.llm_v2_properties())
     return _obj({
         "decision": {"type": "string", "enum": ["add", "duplicate", "reject", "defer"]},
         "reason": _s(),
         "duplicate_of": _s(),
         "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
-        "entry": {"anyOf": [entry, {"type": "null"}]},
+        "entry": {"anyOf": [_obj(entry), {"type": "null"}]},
     })
 
 
@@ -186,20 +178,23 @@ official source, not mirrors. `url` is the official landing page.
 - `id`: a new kebab-case id that is not in the catalog index. `description`: one factual \
 sentence. Put label provenance in `details` (label_source, label_readers, label_unit, \
 reference_standard, third_party_processing with the licence clause in third_party_note).
-- Phantoms are in scope: fill `details.phantom` (type physical / digital / hybrid, body \
-part, phantom model or product, purpose), put the body part in `anatomy`, add tag "phantom". \
-For anything that is not a phantom set `details.phantom.type` to "not-a-phantom".
+- Phantoms are in scope: subjects "phantom" and the `phantom` object (type, anthropomorphic, \
+body part, model/product, purpose); for anything else phantom.type = "not-a-phantom".
 - Derived or aggregated sets (preprocessed/resized versions, relabels, benchmark mixes, VQA / \
 caption collections) are in scope when radiology: list EVERY source dataset in \
 `details.related` with relation "derived-from", the catalog id when the source is in the index \
-(else ""), its name, and a `note` saying what was done to it; add tag "derived" (and "vqa" for \
-question-answer sets, with "vqa" in tasks).
+(else ""), its name, `process` (controlled list) and a `note` saying what was done to it. \
+Annotation (label-only) entries link their base dataset with relation "label-addon-for".
+- Animal-only data is out of scope (reject); human data that also includes animals: tag \
+"includes-animal".
+
 - `confidence`: high = official page with explicit facts; medium = some fields inferred \
 from a reliable secondary page; low = mostly guesswork (low "add" decisions are deferred).
 - `reason`: one short English sentence naming the deciding evidence.
 - When the decision is not "add", set `entry` to null. Set `duplicate_of` to "" unless the \
 decision is "duplicate".
-"""
+
+""" + cs.GUIDE
 
 
 def contributing_rules():
@@ -497,32 +492,61 @@ def slug(s):
     return re.sub(r"-{2,}", "-", re.sub(r"[^a-z0-9]+", "-", str(s or "").lower())).strip("-")
 
 
-def clean_entry(e):
-    """Model output -> catalog-style entry: core keys in catalog order (nulls allowed, as in
-    the catalog), empty optional keys and null/empty `details` keys dropped."""
+def clean_entry(e, ids=None, today=None):
+    """Model output -> schema v2 catalog entry ('' / 0 / 'unknown' -> null or dropped, unknown
+    related ids blanked, review = llm-proposed), finalised by migrate_v2.finalize."""
     e = {k: (None if v == "" else v) for k, v in dict(e).items()}
     e["id"] = slug(e.get("id") or e.get("name"))
     if not e.get("year"):
         e["year"] = None
     details = {k: v for k, v in (e.get("details") or {}).items() if v not in (None, "", [], "unknown")}
-    ph = details.get("phantom")
-    if not isinstance(ph, dict) or ph.get("type") not in val.PHANTOM_TYPES:
-        details.pop("phantom", None)
+    rel = []
+    for r in details.get("related") or []:
+        r = {k: v for k, v in r.items() if v}
+        if ids is not None and r.get("id") not in ids:
+            r.pop("id", None)
+        if r.get("relation") == "derived-from" and not r.get("note"):
+            r["note"] = ", ".join(r.get("process") or []) or "source dataset (processing not stated)"
+        if r.get("id") or r.get("name"):
+            rel.append(r)
+    if rel:
+        details["related"] = rel
     else:
-        details["phantom"] = {k: v for k, v in ph.items() if v}
-    if details.get("related"):
-        details["related"] = [{k: v for k, v in r.items() if v} for r in details["related"]]
-    out = {}
-    for k in CORE_ORDER:
-        if k == "details":
-            if details:
-                out["details"] = details
-        else:
-            out[k] = e.get(k)
-    for k in OPTIONAL_TOP:
-        if e.get(k) not in (None, "", []):
-            out[k] = e[k]
-    return out
+        details.pop("related", None)
+    if details:
+        e["details"] = details
+    else:
+        e.pop("details", None)
+    ph = e.get("phantom") or {}
+    if ph.get("type") in cs.V["phantom_type"]:
+        e["phantom"] = {k: v for k, v in ph.items() if v not in ("", None)}
+        e["phantom"]["anthropomorphic"] = bool(ph.get("anthropomorphic"))
+        e["subjects"] = mig.dedup(list(e.get("subjects") or []) + ["phantom"])
+    else:
+        e.pop("phantom", None)
+    subjects = [x for x in e.get("subjects") or [] if x != "animal"]
+    if len(subjects) < len(e.get("subjects") or []):
+        e["tags"] = list(e.get("tags") or []) + ["includes-animal"]
+    e["subjects"] = subjects
+    for k in ("protocol_note", "full_name", "size", "paired_text_detail", "segmentation_detail", "license"):
+        if not e.get(k):
+            e.pop(k, None) if k == "protocol_note" else e.__setitem__(k, None)
+    for k in cs.ENUM_LISTS:
+        e[k] = mig.dedup(e.get(k) or [])
+    e["label_format"] = mig.dedup(e.get("label_format") or [])
+    e["images_included"] = bool(e.get("images_included"))
+    e["host"] = cs.map_host(e.get("host"))
+    lid, com = cs.map_license(e.get("license"))
+    if lid not in ("unknown", "other"):
+        e["license_id"] = lid
+    if com != "unclear":
+        e["commercial_use"] = com
+    e["review"] = "llm-proposed"
+    e["enriched"] = today or datetime.date.today().isoformat()
+    for k in ("aliases", "links"):
+        if not e.get(k):
+            e.pop(k, None)
+    return mig.finalize(e)
 
 
 def url_key(u):
@@ -560,14 +584,16 @@ def apply_decision(c, out, cat, today):
     if dec == "add":
         if out.get("confidence") == "low" or not out.get("entry"):
             return "deferred", None, record(c, "deferred", f"low-confidence add: {reason}", today, plus(DEFER_DAYS))
-        entry = clean_entry(out["entry"])
+        entry = clean_entry(out["entry"], ids, today)
+        if not entry.get("subjects"):
+            return "rejected", None, record(c, "rejected", f"animal/preclinical subjects — out of scope: {reason}", today)
         same = catalog_urls(cat).get(url_key(entry.get("url")))
         if same:
             return "duplicate", None, record(c, "added", f"same as catalog id {same} (same URL): {reason}", today)
         if entry["id"] in ids:
             return ("needs-human", None, record(c, "deferred", f"proposed id {entry['id']} already exists — "
                                                 f"check for a duplicate: {reason}", today, plus(FAILED_DEFER_DAYS)))
-        errs = val.validate([entry])
+        errs = val.entry_errors(entry, ids | {entry["id"]})
         if errs:
             return ("needs-human", None, record(c, "deferred", "auto-entry failed validation: "
                                                 + "; ".join(errs)[:200], today, plus(FAILED_DEFER_DAYS)))

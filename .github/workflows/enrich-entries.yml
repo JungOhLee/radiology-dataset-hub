@@ -1,9 +1,10 @@
 name: Catalog enrichment
 
-# Manual: re-check catalog entries against their official pages with Claude
-# (scripts/enrich_entries.py) — removes animal-only entries, fills phantom details, the
-# source datasets of derived sets, VQA tags and empty anatomy/sequence fields — and open a
-# DRAFT pull request. Additive; a person reviews and merges.
+# Manual: schema v2 enrichment (CONTRIBUTING.md 'Schema v2'). Seeds the rule-based v2
+# fields (scripts/migrate_v2.py --seed), re-checks entries against their official pages with
+# Claude (scripts/enrich_entries.py: subjects — animal-only entries removed —, phantom,
+# protocols, clinical context, organs, label types, formats, counts, licence class, sources of
+# derived sets), finalises them (--finalize) and opens a DRAFT pull request.
 #
 # Auth: Claude API via Workload Identity Federation (same rule as the monthly triage:
 # this repository's main branch, workflow_dispatch). The IDs below are not secrets.
@@ -12,17 +13,26 @@ on:
   workflow_dispatch:
     inputs:
       ids:
-        description: "Comma-separated catalog ids (empty = every non-repository entry)"
+        description: "Comma-separated catalog ids (empty = use scope)"
         default: ""
+      scope:
+        description: "Without ids: pending = entries not yet v2, all = every non-repository entry"
+        type: choice
+        options: [pending, all]
+        default: pending
       max_entries:
         description: "At most this many entries"
         default: "1000"
       budget_usd:
         description: "Stop when the estimated spend reaches this many USD"
-        default: "40"
+        default: "80"
       base_branch:
         description: "Work on this branch's data instead of main's (e.g. an unmerged bot/triage-… branch)"
         default: "main"
+      open_pr:
+        description: "Push a branch and open a draft PR (off = pilot: results only in the artifact)"
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -49,7 +59,8 @@ jobs:
           BASE: ${{ inputs.base_branch || 'main' }}
           IDS: ${{ inputs.ids }}
           MAX_ENTRIES: ${{ inputs.max_entries || '1000' }}
-          BUDGET_USD: ${{ inputs.budget_usd || '40' }}
+          BUDGET_USD: ${{ inputs.budget_usd || '80' }}
+          SCOPE: ${{ inputs.scope || 'pending' }}
         shell: bash
         run: |
           [[ "$BASE" == "main" || "$BASE" =~ ^bot/(triage|enrich)-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]+$ ]] \
@@ -57,10 +68,14 @@ jobs:
           [[ -z "$IDS" || "$IDS" =~ ^[a-z0-9,-]+$ ]] || { echo "ids: lowercase ids separated by commas"; exit 1; }
           [[ "$MAX_ENTRIES" =~ ^[0-9]{1,4}$ ]] || { echo "max_entries must be a number"; exit 1; }
           [[ "$BUDGET_USD" =~ ^[0-9]{1,3}(\.[0-9]+)?$ ]] || { echo "budget_usd must be a number"; exit 1; }
-          { echo "BASE=$BASE"; echo "IDS=$IDS"; echo "MAX_ENTRIES=$MAX_ENTRIES"; echo "BUDGET_USD=$BUDGET_USD"; } >> "$GITHUB_ENV"
+          [[ "$SCOPE" == "pending" || "$SCOPE" == "all" ]] || { echo "scope: pending or all"; exit 1; }
+          { echo "BASE=$BASE"; echo "IDS=$IDS"; echo "MAX_ENTRIES=$MAX_ENTRIES"; echo "BUDGET_USD=$BUDGET_USD"; echo "SCOPE=$SCOPE"; } >> "$GITHUB_ENV"
 
       # The code that runs is always main's; only the two data files come from the base branch.
       - uses: actions/checkout@v4
+
+      - name: Remember main's catalog (its entries count as curated)
+        run: cp data/datasets.json "$RUNNER_TEMP/main_datasets.json"
 
       - name: Take the catalog data from the base branch
         if: ${{ env.BASE != 'main' }}
@@ -75,24 +90,29 @@ jobs:
 
       - run: pip install --quiet anthropic
 
+      - name: Seed rule-based v2 fields
+        run: python3 scripts/migrate_v2.py --seed --curated-ids-from "$RUNNER_TEMP/main_datasets.json"
+
       - name: Enrich with Claude
         env:
           ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/anthropic-oidc.jwt
           GITHUB_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          if [[ -n "$IDS" ]]; then SEL=(--ids "$IDS"); else SEL=(--all); fi
+          if [[ -n "$IDS" ]]; then SEL=(--ids "$IDS"); else SEL=("--$SCOPE"); fi
           python3 scripts/enrich_entries.py "${SEL[@]}" \
             --max "$MAX_ENTRIES" --budget-usd "$BUDGET_USD" \
             --summary "$RUNNER_TEMP/pr_body.md" --results "$RUNNER_TEMP/enrich_results.json"
 
-      - name: Regenerate README and run the catalog checks
+      - name: Finalise v2 entries, regenerate README, run the catalog checks
         run: |
+          python3 scripts/migrate_v2.py --finalize
           python3 scripts/generate_readme.py
           python3 scripts/validate.py
           python3 -m unittest discover -s scripts -p 'test_*.py'
 
       - name: Open a draft pull request
+        if: ${{ inputs.open_pr }}
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -112,10 +132,10 @@ jobs:
             echo "No changes this run."; exit 0
           fi
           git add data/datasets.json data/triage.json README.md
-          git commit -q -m "Catalog enrichment $(date -u +%F) (Claude-proposed, needs review)"
+          git commit -q -m "Catalog schema v2 enrichment $(date -u +%F) (Claude-proposed, needs review)"
           git push -q origin "$BR"
           if ! gh pr create --draft --base "$BASE" --head "$BR" \
-               --title "Catalog enrichment $(date -u +%F)" --body-file "$RUNNER_TEMP/pr_body.md"; then
+               --title "Catalog schema v2 enrichment $(date -u +%F)" --body-file "$RUNNER_TEMP/pr_body.md"; then
             echo "::warning::Could not open the PR (enable 'Allow GitHub Actions to create and approve pull requests'). Open it from: https://github.com/$GITHUB_REPOSITORY/compare/$BASE...$BR"
           fi
 
@@ -127,4 +147,5 @@ jobs:
           path: |
             ${{ runner.temp }}/enrich_results.json
             ${{ runner.temp }}/pr_body.md
+            data/datasets.json
           if-no-files-found: ignore

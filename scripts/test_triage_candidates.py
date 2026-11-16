@@ -13,21 +13,26 @@ CAT = json.loads(t.DATA.read_text())
 
 
 def entry(**over):
+    """A schema v2 entry as the model returns it (unknown = "" / 0 / [])."""
     e = {
-        "id": "new-ct-set", "name": "New CT Set", "full_name": None, "type": "dataset",
-        "regions": ["Chest"], "anatomy": "lung", "modality": ["CT"], "year": 2026, "format": ["DICOM"],
-        "raw_image": True, "size": "100 CT scans", "paired_text": False, "paired_text_detail": None,
-        "multi_sequence": False, "multi_sequence_detail": None, "segmentation": True,
-        "segmentation_detail": "lung nodules", "other_labels": [], "tasks": ["segmentation"],
+        "id": "new-ct-set", "name": "New CT Set", "full_name": "", "type": "dataset",
+        "regions": ["Chest"], "anatomy": "lung", "modality": ["CT"], "multi_sequence": False, "year": 2026,
+        "size": "100 CT scans", "paired_text_detail": "", "segmentation_detail": "lung nodules",
         "license": "CC BY 4.0", "access": "open", "host": "Zenodo",
         "url": "https://zenodo.org/records/1234567", "description": "100 chest CT scans with nodule masks.",
-        "details": {"label_schema": ["nodule mask"], "file_structure": None, "splits": None,
-                    "label_source": ["radiologist-single"], "label_readers": None, "label_unit": ["lesion"],
-                    "reference_standard": None, "related": [], "version": None, "release_date": None,
-                    "phantom": {"type": "not-a-phantom", "body_part": "", "model": "", "purpose": ""},
-                    "dicom_headers": None, "third_party_processing": "permitted",
-                    "third_party_note": "CC BY 4.0", "extra": None},
-        "tags": [], "aliases": [], "links": [],
+        "details": {"label_schema": ["nodule mask"], "file_structure": "", "splits": "",
+                    "label_source": ["radiologist-single"], "label_readers": "", "label_unit": ["lesion"],
+                    "reference_standard": "", "related": [], "version": "", "release_date": "",
+                    "dicom_headers": "unknown", "third_party_processing": "permitted",
+                    "third_party_note": "CC BY 4.0", "extra": ""},
+        "aliases": [], "links": [],
+        "subjects": ["human"], "other_modalities": [], "protocols": ["CT:non-contrast"], "protocol_note": "",
+        "field_strength": [], "conditions": ["Lung Nodule"], "condition_groups": ["neoplasm"],
+        "population": ["adult"], "setting": ["screening"], "organs": ["lung"], "label_types": ["mask"],
+        "image_format": ["DICOM"], "label_format": ["CSV"], "preprocessing": ["native"],
+        "images_included": True, "n_subjects": 100, "n_studies": 0, "n_images": 0,
+        "tasks": ["segmentation"], "tags": [], "license_id": "CC-BY", "commercial_use": "allowed",
+        "phantom": {"type": "not-a-phantom", "anthropomorphic": False, "body_part": "", "model": "", "purpose": ""},
     }
     e.update(over)
     return e
@@ -65,17 +70,22 @@ class Schema(unittest.TestCase):
         self.assertNotIn('"type": [', json.dumps(t.output_schema()))
 
     def test_phantom_and_derived_fields(self):
-        e = t.clean_entry(entry())
-        self.assertNotIn("phantom", e["details"])          # not-a-phantom is dropped
-        ph = {"type": "physical", "body_part": "chest", "model": "Lungman", "purpose": ""}
-        rel = [{"id": "", "name": "LIDC-IDRI", "relation": "derived-from", "note": "nodule crops resized"}]
-        e = t.clean_entry(entry(details=dict(entry()["details"], phantom=ph, related=rel)))
-        self.assertEqual(e["details"]["phantom"], {"type": "physical", "body_part": "chest", "model": "Lungman"})
+        ids = {x["id"] for x in CAT}
+        e = t.clean_entry(entry(), ids)
+        self.assertNotIn("phantom", e)                     # not-a-phantom is dropped
+        ph = {"type": "physical", "anthropomorphic": True, "body_part": "lung", "model": "Lungman", "purpose": ""}
+        rel = [{"id": "no-such-id", "name": "LIDC-IDRI", "relation": "derived-from",
+                "process": ["reformatted-resized"], "note": "nodule crops resized"}]
+        e = t.clean_entry(entry(phantom=ph, details=dict(entry()["details"], related=rel)), ids)
+        self.assertEqual(e["phantom"], {"type": "physical", "anthropomorphic": True, "body_part": "lung",
+                                        "model": "Lungman"})
+        self.assertIn("phantom", e["subjects"])
         self.assertEqual(e["details"]["related"], [{"name": "LIDC-IDRI", "relation": "derived-from",
-                                                    "note": "nodule crops resized"}])
-        self.assertEqual(t.val.validate([e]), [])
-        bad = dict(e, details=dict(e["details"], phantom={"type": "toy"}))
-        self.assertTrue(t.val.validate([bad]))
+                                                    "process": ["reformatted-resized"],
+                                                    "note": "nodule crops resized"}])   # unknown id blanked
+        self.assertEqual(t.val.entry_errors(e, ids | {e["id"]}), [])
+        bad = dict(e, subjects=["human"])                 # phantom details need subjects phantom
+        self.assertTrue(t.val.entry_errors(bad, ids | {e["id"]}))
 
     def test_placeholders_become_null(self):
         e = t.clean_entry(entry(full_name="", year=0, size="", license="",
@@ -83,7 +93,8 @@ class Schema(unittest.TestCase):
         self.assertEqual((e["full_name"], e["year"], e["size"], e["license"]), (None, None, None, None))
         self.assertNotIn("dicom_headers", e["details"])
         self.assertNotIn("splits", e["details"])
-        self.assertEqual(t.val.validate([e]), [])
+        self.assertEqual(e["license_id"], "CC-BY")          # model's licence class kept when text is empty
+        self.assertEqual(t.val.entry_errors(e, {e["id"]}), [])
 
     def test_enums_follow_validator(self):
         e = t.output_schema()["properties"]["entry"]["anyOf"][0]["properties"]
@@ -191,11 +202,19 @@ class Apply(unittest.TestCase):
     def test_add_valid(self):
         status, e, rec = t.apply_decision(CAND, out(), CAT, TODAY)
         self.assertEqual(status, "added")
-        self.assertEqual(list(e)[:3], ["id", "name", "full_name"])
+        self.assertEqual(list(e)[:4], ["id", "name", "full_name", "type"])
         self.assertNotIn("tags", e)                     # empty optional keys dropped
+        self.assertNotIn("n_studies", e)                # 0 = unknown -> dropped
         self.assertNotIn("splits", e["details"])        # null details keys dropped
+        self.assertNotIn("format", e)                   # v1 field never written
+        self.assertEqual((e["raw_image"], e["segmentation"], e["paired_text"]), (True, True, False))  # derived
+        self.assertEqual((e["conditions"], e["review"]), (["lung nodule"], "llm-proposed"))
         self.assertEqual(rec["decision"], "added")      # tracker stops listing the candidate name
-        self.assertEqual(t.val.validate([e]), [])
+        self.assertEqual(t.val.entry_errors(e, {x["id"] for x in CAT} | {e["id"]}), [])
+
+    def test_animal_only_is_rejected(self):
+        status, e, rec = t.apply_decision(CAND, out(entry=entry(subjects=["animal"])), CAT, TODAY)
+        self.assertEqual((status, e, rec["decision"]), ("rejected", None, "rejected"))
 
     def test_low_confidence_add_is_deferred(self):
         status, e, rec = t.apply_decision(CAND, out(confidence="low"), CAT, TODAY)

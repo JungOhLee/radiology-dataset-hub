@@ -4,7 +4,7 @@
     "name": "BraTS 2021",
     "full_name": "RSNA-ASNR-MICCAI Brain Tumor Segmentation Challenge 2021",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -98,7 +98,7 @@
     "name": "BraTS-Africa",
     "full_name": "BraTS 2023: Glioma Segmentation in Sub-Saharan Africa",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -202,7 +202,7 @@
     "name": "BraTS-Mets",
     "full_name": "Brain Tumor Segmentation \u2014 Metastases 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -291,7 +291,7 @@
     "name": "BraTS-PEDs",
     "full_name": "Pediatric Brain Tumor Segmentation 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -382,7 +382,7 @@
     "name": "BraTS-MEN",
     "full_name": "BraTS 2023 Intracranial Meningioma Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -471,7 +471,7 @@
     "name": "UPenn-GBM",
     "full_name": "University of Pennsylvania Glioblastoma Cohort",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -595,7 +595,7 @@
     "name": "ISLES 2022",
     "full_name": "Ischemic Stroke Lesion Segmentation Challenge 2022",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -684,7 +684,7 @@
     "name": "ATLAS R2.0",
     "full_name": "Anatomical Tracings of Lesions After Stroke, Release 2.0",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -769,7 +769,7 @@
     "name": "WMH Segmentation Challenge",
     "full_name": "MICCAI 2017 White Matter Hyperintensity Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -857,7 +857,7 @@
     "name": "MSSEG-2",
     "full_name": "MICCAI 2021 MS New Lesions Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -952,7 +952,7 @@
     "name": "Shifts MS",
     "full_name": "Shifts Multiple Sclerosis Lesion Segmentation (Shifts 2.0)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1061,7 +1061,7 @@
     "name": "EPISURG",
     "full_name": "EPISURG: Postoperative MRI for Resection Neurosurgery in Epilepsy",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1146,7 +1146,7 @@
     "name": "ADNI",
     "full_name": "Alzheimer's Disease Neuroimaging Initiative",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1253,7 +1253,7 @@
     "name": "OASIS-1",
     "full_name": "Open Access Series of Imaging Studies, Cross-sectional",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1350,7 +1350,7 @@
     "name": "OASIS-3",
     "full_name": "Open Access Series of Imaging Studies, Longitudinal Multimodal",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1466,7 +1466,7 @@
     "name": "IXI",
     "full_name": "Information eXtraction from Images",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1570,7 +1570,7 @@
     "name": "ABIDE",
     "full_name": "Autism Brain Imaging Data Exchange",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1663,7 +1663,7 @@
     "name": "HCP Young Adult",
     "full_name": "Human Connectome Project \u2014 WU-Minn Young Adult (1200 Subjects)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1766,7 +1766,7 @@
     "name": "RSNA 2019 ICH Detection",
     "full_name": "RSNA 2019 Intracranial Hemorrhage Detection Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -1878,7 +1878,7 @@
     "name": "RSNA 2025 Aneurysm Detection",
     "full_name": "RSNA Intracranial Aneurysm Detection AI Challenge 2025",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2009,7 +2009,7 @@
     "name": "CQ500",
     "full_name": "CQ500 Head CT Dataset (qure.ai)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2118,7 +2118,7 @@
     "name": "ADAM",
     "full_name": "Aneurysm Detection And segMentation Challenge 2020",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2212,7 +2212,7 @@
     "name": "CADA",
     "full_name": "Cerebral Aneurysm Detection and Analysis Challenge 2020",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2305,7 +2305,7 @@
     "name": "INSTANCE 2022",
     "full_name": "2022 Intracranial Hemorrhage Segmentation on Non-Contrast head CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2388,7 +2388,7 @@
     "name": "VerSe",
     "full_name": "Large Scale Vertebrae Segmentation Challenge (2019 & 2020)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2481,7 +2481,7 @@
     "name": "RSNA 2022 Cervical Spine Fracture",
     "full_name": "RSNA 2022 Cervical Spine Fracture Detection Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2574,7 +2574,7 @@
     "name": "Calgary-Campinas CC-359",
     "full_name": "Calgary-Campinas-359 Public Brain MR Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2667,7 +2667,7 @@
     "name": "Mindboggle-101",
     "full_name": "Mindboggle-101 Manually Labeled Individual Brains",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2791,7 +2791,7 @@
     "name": "fastMRI Brain",
     "full_name": "NYU Langone & FAIR fastMRI Brain Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2879,7 +2879,7 @@
     "name": "MRBrainS",
     "full_name": "MRBrainS MICCAI Brain Tissue Segmentation (2013 & 2018)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -2978,7 +2978,7 @@
     "name": "iSeg",
     "full_name": "6-month Infant Brain MRI Segmentation Challenge (2017 & 2019)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3064,7 +3064,7 @@
     "name": "FeTA",
     "full_name": "Fetal Tissue Annotation and Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3157,7 +3157,7 @@
     "name": "NIH ChestX-ray14",
     "full_name": "ChestX-ray14 (ChestX-ray8) \u2014 NIH Clinical Center",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3295,7 +3295,7 @@
     "name": "CheXpert",
     "full_name": "CheXpert: Large Chest Radiograph Dataset with Uncertainty Labels",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3410,7 +3410,7 @@
     "name": "MIMIC-CXR",
     "full_name": "MIMIC Chest X-ray Database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3498,7 +3498,7 @@
     "name": "MIMIC-CXR-JPG",
     "full_name": "MIMIC-CXR-JPG \u2014 chest radiographs with structured labels",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3623,7 +3623,7 @@
     "name": "PadChest",
     "full_name": "PadChest: chest X-ray dataset with multi-label annotated reports",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3720,7 +3720,7 @@
     "name": "VinDr-CXR",
     "full_name": "VinDr-CXR: chest X-rays with radiologist annotations",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3838,7 +3838,7 @@
     "name": "VinDr-PCXR",
     "full_name": "VinDr-PCXR: pediatric chest X-ray dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -3947,7 +3947,7 @@
     "name": "RSNA Pneumonia Detection",
     "full_name": "RSNA Pneumonia Detection Challenge (2018)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4049,7 +4049,7 @@
     "name": "SIIM-ACR Pneumothorax",
     "full_name": "SIIM-ACR Pneumothorax Segmentation (2019)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4135,7 +4135,7 @@
     "name": "Open-i / Indiana University CXR",
     "full_name": "Indiana University Chest X-ray Collection (NLM Open-i)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4221,7 +4221,7 @@
     "name": "Shenzhen Hospital CXR Set",
     "full_name": "Shenzhen No.3 People's Hospital Chest X-ray Set (NLM TB)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4300,7 +4300,7 @@
     "name": "Montgomery County CXR Set",
     "full_name": "Montgomery County Chest X-ray Set (NLM TB)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4381,7 +4381,7 @@
     "name": "Object-CXR",
     "full_name": "object-CXR: Foreign Objects on Chest X-rays",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4469,7 +4469,7 @@
     "name": "CANDID-PTX",
     "full_name": "CANDID-PTX chest radiographs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4561,7 +4561,7 @@
     "name": "BRAX",
     "full_name": "BRAX, a Brazilian labeled chest X-ray dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4659,7 +4659,7 @@
     "name": "BIMCV-COVID19",
     "full_name": "BIMCV COVID-19 Dataset (Valencia Region)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4760,7 +4760,7 @@
     "name": "COVID-19 Radiography Database",
     "full_name": "COVID-19 Radiography Database (Chowdhury et al.)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -4895,7 +4895,7 @@
     "name": "COVIDx CXR",
     "full_name": "COVIDx CXR (COVID-Net Open Source Initiative)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5031,7 +5031,7 @@
     "name": "LIDC-IDRI",
     "full_name": "Lung Image Database Consortium and Image Database Resource Initiative",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5168,7 +5168,7 @@
     "name": "LUNA16",
     "full_name": "LUng Nodule Analysis 2016 Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5275,7 +5275,7 @@
     "name": "NSCLC-Radiomics",
     "full_name": "NSCLC-Radiomics (Lung1; Aerts et al.)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5376,7 +5376,7 @@
     "name": "NSCLC-Radiogenomics",
     "full_name": "NSCLC Radiogenomics (Stanford/VA Palo Alto)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5480,7 +5480,7 @@
     "name": "RSNA-STR Pulmonary Embolism CT",
     "full_name": "RSNA-STR Pulmonary Embolism CT (RSPECT)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5592,7 +5592,7 @@
     "name": "LNDb",
     "full_name": "Lung Nodule Database (LNDb)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5688,7 +5688,7 @@
     "name": "MosMedData",
     "full_name": "MosMedData: Chest CT with COVID-19 Related Findings",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5778,7 +5778,7 @@
     "name": "COVID-19-CT-Seg",
     "full_name": "COVID-19 CT Lung and Infection Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -5883,7 +5883,7 @@
     "name": "NLST",
     "full_name": "National Lung Screening Trial",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6017,7 +6017,7 @@
     "name": "Lung-PET-CT-Dx",
     "full_name": "Large-Scale CT and PET/CT Dataset for Lung Cancer Diagnosis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6119,7 +6119,7 @@
     "name": "EMPIRE10",
     "full_name": "Evaluation of Methods for Pulmonary Image Registration 2010",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6201,7 +6201,7 @@
     "name": "ACDC",
     "full_name": "Automated Cardiac Diagnosis Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6290,7 +6290,7 @@
     "name": "M&Ms",
     "full_name": "Multi-Centre, Multi-Vendor & Multi-Disease Cardiac Image Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6387,7 +6387,7 @@
     "name": "M&Ms-2",
     "full_name": "Multi-Disease, Multi-View & Multi-Center Right Ventricular Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6483,7 +6483,7 @@
     "name": "EMIDEC",
     "full_name": "Evaluation of Myocardial Infarction from Delayed-Enhancement Cardiac MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6583,7 +6583,7 @@
     "name": "MyoPS 2020",
     "full_name": "Myocardial Pathology Segmentation Combining Multi-Sequence CMR",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6675,7 +6675,7 @@
     "name": "Sunnybrook Cardiac Data",
     "full_name": "Sunnybrook Cardiac Data (2009 LV Segmentation Challenge)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6768,7 +6768,7 @@
     "name": "MM-WHS",
     "full_name": "Multi-Modality Whole Heart Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6861,7 +6861,7 @@
     "name": "LAScarQS 2022",
     "full_name": "Left Atrial and Scar Quantification & Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -6948,7 +6948,7 @@
     "name": "Atria Seg 2018",
     "full_name": "2018 Left Atrium Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7032,7 +7032,7 @@
     "name": "MSD Heart (Task02)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task02 Heart",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7121,7 +7121,7 @@
     "name": "RVSC",
     "full_name": "Right Ventricle Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7215,7 +7215,7 @@
     "name": "CMRxRecon",
     "full_name": "Cardiac MRI Reconstruction Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7306,7 +7306,7 @@
     "name": "ASOCA",
     "full_name": "Automated Segmentation of Coronary Arteries",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7396,7 +7396,7 @@
     "name": "ImageCAS",
     "full_name": "ImageCAS: Large-Scale Coronary Artery Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7490,7 +7490,7 @@
     "name": "orCaScore",
     "full_name": "Coronary Calcium Scoring Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7595,7 +7595,7 @@
     "name": "COCA (Stanford)",
     "full_name": "COCA \u2014 Coronary Calcium and Chest CTs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7692,7 +7692,7 @@
     "name": "AVT",
     "full_name": "Aortic Vessel Tree CTA Dataset Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7799,7 +7799,7 @@
     "name": "MSD Liver (Task03)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task03 Liver",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7893,7 +7893,7 @@
     "name": "MSD Pancreas (Task07)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task07 Pancreas",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -7981,7 +7981,7 @@
     "name": "MSD Spleen (Task09)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task09 Spleen",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8067,7 +8067,7 @@
     "name": "MSD Colon (Task10)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task10 Colon",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8152,7 +8152,7 @@
     "name": "MSD Hepatic Vessel (Task08)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task08 Hepatic Vessel",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8239,7 +8239,7 @@
     "name": "MSD Prostate (Task05)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task05 Prostate",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8323,7 +8323,7 @@
     "name": "BTCV / Synapse Multi-organ",
     "full_name": "Beyond the Cranial Vault Abdomen Multi-Organ Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8411,7 +8411,7 @@
     "name": "AMOS22",
     "full_name": "AMOS 2022 Multi-Modality Abdominal Multi-Organ Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8519,7 +8519,7 @@
     "name": "AMOS-MM",
     "full_name": "AMOS-MM Abdominal Multimodal Analysis Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8624,7 +8624,7 @@
     "name": "TotalSegmentator",
     "full_name": "TotalSegmentator CT Dataset (v2)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8721,7 +8721,7 @@
     "name": "KiTS19",
     "full_name": "2019 Kidney Tumor Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8831,7 +8831,7 @@
     "name": "KiTS21",
     "full_name": "2021 Kidney and Kidney Tumor Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -8921,7 +8921,7 @@
     "name": "KiTS23",
     "full_name": "2023 Kidney and Kidney Tumor Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9008,7 +9008,7 @@
     "name": "LiTS",
     "full_name": "Liver Tumor Segmentation Benchmark (LiTS17)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9093,7 +9093,7 @@
     "name": "CHAOS",
     "full_name": "Combined (CT-MR) Healthy Abdominal Organ Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9190,7 +9190,7 @@
     "name": "WORD",
     "full_name": "Whole abdominal ORgan Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9296,7 +9296,7 @@
     "name": "FLARE21",
     "full_name": "MICCAI 2021 Fast and Low-resource Abdominal Organ Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9416,7 +9416,7 @@
     "name": "FLARE22",
     "full_name": "MICCAI FLARE 2022 Abdominal Organ Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9525,7 +9525,7 @@
     "name": "FLARE23",
     "full_name": "MICCAI FLARE 2023 Organ + Pan-cancer Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9630,7 +9630,7 @@
     "name": "Pancreas-CT (NIH)",
     "full_name": "NIH Pancreas-CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9710,7 +9710,7 @@
     "name": "CT-ORG",
     "full_name": "CT volumes with multiple organ segmentations",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9821,7 +9821,7 @@
     "name": "AbdomenCT-1K",
     "full_name": "AbdomenCT-1K",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -9969,7 +9969,7 @@
     "name": "PI-CAI",
     "full_name": "PI-CAI: Prostate Imaging \u2014 Cancer AI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10071,7 +10071,7 @@
     "name": "Prostate158",
     "full_name": "Prostate158: expert-annotated 3T bpMRI dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10158,7 +10158,7 @@
     "name": "PROMISE12",
     "full_name": "MICCAI Prostate MR Image Segmentation 2012",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10248,7 +10248,7 @@
     "name": "ProstateX",
     "full_name": "SPIE-AAPM-NCI PROSTATEx Challenges",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10385,7 +10385,7 @@
     "name": "LLD-MMRI",
     "full_name": "Liver Lesion Diagnosis on Multi-phase MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10495,7 +10495,7 @@
     "name": "CT Colonography",
     "full_name": "CT COLONOGRAPHY (ACRIN 6664)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10593,7 +10593,7 @@
     "name": "MRNet",
     "full_name": "MRNet Knee MRI Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10681,7 +10681,7 @@
     "name": "fastMRI knee",
     "full_name": "fastMRI Knee Raw k-Space and DICOM Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10761,7 +10761,7 @@
     "name": "OAI",
     "full_name": "Osteoarthritis Initiative",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10864,7 +10864,7 @@
     "name": "MURA",
     "full_name": "MURA: Musculoskeletal Radiographs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -10955,7 +10955,7 @@
     "name": "RSNA Bone Age",
     "full_name": "RSNA Pediatric Bone Age Challenge (2017)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11039,7 +11039,7 @@
     "name": "SKM-TEA",
     "full_name": "Stanford Knee MRI Multi-Task Evaluation (SKM-TEA)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11141,7 +11141,7 @@
     "name": "KneeMRI",
     "full_name": "KneeMRI Dataset (Clinical Hospital Centre Rijeka)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11225,7 +11225,7 @@
     "name": "Digital Hand Atlas",
     "full_name": "Digital Hand Atlas for Skeletal Development",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11303,7 +11303,7 @@
     "name": "LERA",
     "full_name": "LERA \u2014 Lower Extremity Radiographs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11390,7 +11390,7 @@
     "name": "RSNA Screening Mammography",
     "full_name": "RSNA Screening Mammography Breast Cancer Detection (2023)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11521,7 +11521,7 @@
     "name": "CBIS-DDSM",
     "full_name": "Curated Breast Imaging Subset of DDSM",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11639,7 +11639,7 @@
     "name": "VinDr-Mammo",
     "full_name": "VinDr-Mammo: full-field digital mammography benchmark",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11749,7 +11749,7 @@
     "name": "CMMD",
     "full_name": "The Chinese Mammography Database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11858,7 +11858,7 @@
     "name": "INbreast",
     "full_name": "INbreast: full-field digital mammographic database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -11968,7 +11968,7 @@
     "name": "Duke Breast Cancer MRI",
     "full_name": "Dynamic Contrast-Enhanced MRI of Breast Cancer Patients (Duke)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12081,7 +12081,7 @@
     "name": "Breast-Diagnosis",
     "full_name": "BREAST-DIAGNOSIS",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12189,7 +12189,7 @@
     "name": "BCS-DBT",
     "full_name": "Breast Cancer Screening \u2014 Digital Breast Tomosynthesis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12281,7 +12281,7 @@
     "name": "ISPY1 (ACRIN 6657)",
     "full_name": "Breast DCE-MRI from the I-SPY 1 / ACRIN 6657 trial",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12390,7 +12390,7 @@
     "name": "ISPY2",
     "full_name": "I-SPY 2 TRIAL Breast DCE-MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12521,7 +12521,7 @@
     "name": "BreastDM",
     "full_name": "BreastDM: DCE-MRI dataset for breast tumor segmentation and classification",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12608,7 +12608,7 @@
     "name": "EMBED",
     "full_name": "EMory BrEast imaging Dataset (EMBED)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12719,7 +12719,7 @@
     "name": "HECKTOR",
     "full_name": "HEad and neCK TumOR segmentation and outcome prediction challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12816,7 +12816,7 @@
     "name": "HNSCC",
     "full_name": "Head and Neck Squamous Cell Carcinoma (MD Anderson)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -12931,7 +12931,7 @@
     "name": "HN1",
     "full_name": "HEAD-NECK-RADIOMICS-HN1",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13030,7 +13030,7 @@
     "name": "TCGA-HNSC",
     "full_name": "TCGA Head-Neck Squamous Cell Carcinoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13137,7 +13137,7 @@
     "name": "Head-Neck-PET-CT",
     "full_name": "Head-Neck-PET-CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13240,7 +13240,7 @@
     "name": "RADCURE",
     "full_name": "CT Images from a Large Head and Neck Cohort (RADCURE)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13345,7 +13345,7 @@
     "name": "QIN-HeadNeck",
     "full_name": "QIN-HEADNECK",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13449,7 +13449,7 @@
     "name": "DENTEX",
     "full_name": "Dental Enumeration and Diagnosis on Panoramic X-rays (MICCAI 2023)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13540,7 +13540,7 @@
     "name": "Tufts Dental Database",
     "full_name": "Tufts Dental Database (TDD): multimodal panoramic X-ray dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13623,7 +13623,7 @@
     "name": "ToothFairy2",
     "full_name": "ToothFairy2: Multi-Structure Segmentation in CBCT (MICCAI 2024)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13719,7 +13719,7 @@
     "name": "CTooth",
     "full_name": "CTooth: 3D Tooth Volume Segmentation on CBCT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13797,7 +13797,7 @@
     "name": "autoPET I",
     "full_name": "Automated Lesion Segmentation in Whole-Body FDG-PET/CT (autoPET 2022)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -13903,7 +13903,7 @@
     "name": "autoPET III",
     "full_name": "Automated Lesion Segmentation in Multitracer PET/CT (autoPET III 2024)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14021,7 +14021,7 @@
     "name": "FDG-PET-CT-Lesions",
     "full_name": "Whole-body FDG-PET/CT dataset with manually annotated tumor lesions",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14122,7 +14122,7 @@
     "name": "PSMA-PET-CT-Lesions",
     "full_name": "Whole-body PSMA-PET/CT dataset with manually annotated tumor lesions",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14216,7 +14216,7 @@
     "name": "ROCO",
     "full_name": "Radiology Objects in COntext",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14307,7 +14307,7 @@
     "name": "ROCOv2",
     "full_name": "Radiology Objects in COntext Version 2",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14424,7 +14424,7 @@
     "name": "MedICaT",
     "full_name": "Medical Images, Captions, and Textual References",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14520,7 +14520,7 @@
     "name": "PMC-OA",
     "full_name": "PMC-OA (PMC-CLIP corpus)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14616,7 +14616,7 @@
     "name": "VQA-RAD",
     "full_name": "Visual Question Answering in Radiology",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14719,7 +14719,7 @@
     "name": "SLAKE",
     "full_name": "Semantically-Labeled Knowledge-Enhanced Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14824,7 +14824,7 @@
     "name": "MS-CXR",
     "full_name": "MS-CXR: Making the Most of Text Semantics",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -14958,7 +14958,7 @@
     "name": "Chest ImaGenome",
     "full_name": "Chest ImaGenome",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -15073,7 +15073,7 @@
     "name": "REFLACX",
     "full_name": "Reports and Eye-Tracking Data for Localization of Abnormalities in Chest X-rays",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -15195,7 +15195,7 @@
     "name": "Medical-Diff-VQA",
     "full_name": "Medical-Diff-VQA",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -15320,7 +15320,7 @@
     "name": "RadGenome-ChestCT",
     "full_name": "RadGenome-Chest CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -15422,7 +15422,7 @@
     "name": "INSPECT",
     "full_name": "Integrating Numerous Sources for Prognostic Evaluation of Clinical Timelines",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -15538,7 +15538,7 @@
     "name": "MAIDA",
     "full_name": "Medical AI Data for All",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -15935,7 +15935,7 @@
     "name": "UK Biobank Imaging",
     "full_name": "UK Biobank Imaging Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16181,7 +16181,7 @@
     "name": "CT-RATE",
     "full_name": "Chest CT with Radiology Text and Extended labels",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16326,7 +16326,7 @@
     "name": "MR-RATE",
     "full_name": "MRI with Radiology Text and Extended labels",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16441,7 +16441,7 @@
     "name": "Merlin",
     "full_name": "Merlin: A Computed Tomography Vision-Language Foundation Model and Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16572,7 +16572,7 @@
     "name": "Merlin Plus",
     "full_name": "Merlin Plus: A Large-Scale, Multi-cancer, Image-Mask-Report Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16713,7 +16713,7 @@
     "name": "CancerVerse",
     "full_name": "CancerVerse: A Fully Open Longitudinal and Multimodal Dataset for Multicancer Screening",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16853,7 +16853,7 @@
     "name": "ReXGradient-160K",
     "full_name": "ReXGradient-160K: A Large-Scale Publicly Available Dataset of Chest Radiographs with Free-text Reports",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -16942,7 +16942,7 @@
     "name": "PadChest-GR",
     "full_name": "PadChest-GR: A Bilingual Chest X-ray Dataset for Grounded Radiology Report Generation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -17075,7 +17075,7 @@
     "name": "MedTrinity-25M",
     "full_name": "MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -17214,7 +17214,7 @@
     "name": "CheXpert Plus",
     "full_name": "CheXpert Plus: Augmenting a Large Chest X-ray Dataset with Text Radiology Reports, Patient Demographics and Additional Image Formats",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -17330,7 +17330,7 @@
     "name": "DRR-RATE",
     "full_name": "DRR-RATE: Digitally Reconstructed Radiographs from CT-RATE",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "synthetic"
@@ -17500,7 +17500,7 @@
     "name": "AbdomenAtlas 1.1",
     "full_name": "AbdomenAtlas 1.1",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -17642,7 +17642,7 @@
     "name": "AbdomenAtlas 2.0",
     "full_name": "AbdomenAtlas 2.0: The Multi-Tumor Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -17769,7 +17769,7 @@
     "name": "AbdomenAtlas 3.0",
     "full_name": "AbdomenAtlas 3.0 (RadGPT)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -17896,7 +17896,7 @@
     "name": "TotalSegmentator-MRI",
     "full_name": "TotalSegmentator MRI Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18049,7 +18049,7 @@
     "name": "ULS23",
     "full_name": "Universal Lesion Segmentation Challenge 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18220,7 +18220,7 @@
     "name": "ATLAS",
     "full_name": "A Tumour and Liver Automatic Segmentation (ATLAS) MICCAI 2023 Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18310,7 +18310,7 @@
     "name": "SegRap2023",
     "full_name": "Segmentation of Organs-at-Risk and Gross Tumor Volume of NPC (SegRap 2023)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18409,7 +18409,7 @@
     "name": "PANORAMA",
     "full_name": "Pancreatic Cancer Diagnosis - Radiologists Meet AI (PANORAMA)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18533,7 +18533,7 @@
     "name": "TopCoW 2024",
     "full_name": "Topology-Aware Anatomical Segmentation of the Circle of Willis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18641,7 +18641,7 @@
     "name": "CURVAS",
     "full_name": "Calibration and Uncertainty for multiRater Volume Assessment in multiorgan Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18734,7 +18734,7 @@
     "name": "MAMA-MIA",
     "full_name": "MAMA-MIA: A Large-Scale Multi-Center Breast Cancer DCE-MRI Benchmark Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18879,7 +18879,7 @@
     "name": "HNTS-MRG 2024",
     "full_name": "Head and Neck Tumor Segmentation for MR-Guided Radiotherapy 2024",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -18972,7 +18972,7 @@
     "name": "AortaSeg24",
     "full_name": "Multi-Class Segmentation of Aortic Branches and Zones in CTA",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19058,7 +19058,7 @@
     "name": "LNQ2023",
     "full_name": "Mediastinal Lymph Node Quantification Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19153,7 +19153,7 @@
     "name": "ISLES 2024",
     "full_name": "Ischemic Stroke Lesion Segmentation Challenge 2024",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19279,7 +19279,7 @@
     "name": "PENGWIN",
     "full_name": "Pelvic Bone Fragments with Injuries Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human",
@@ -19375,7 +19375,7 @@
     "name": "CMRxRecon2024",
     "full_name": "Cardiac MRI Reconstruction Challenge 2024",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19469,7 +19469,7 @@
     "name": "CMRxMotion",
     "full_name": "Extreme Cardiac MRI Analysis Challenge under Respiratory Motion",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19559,7 +19559,7 @@
     "name": "LUMIERE",
     "full_name": "Longitudinal Glioblastoma MRI Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19669,7 +19669,7 @@
     "name": "BraTS 2024 Post-Treatment Glioma (BraTS-GLI)",
     "full_name": "2024 Brain Tumor Segmentation Challenge: Adult Glioma Post-Treatment",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19762,7 +19762,7 @@
     "name": "BraTS-MEN-RT 2024",
     "full_name": "2024 Brain Tumor Segmentation Challenge: Meningioma Radiotherapy",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19847,7 +19847,7 @@
     "name": "BraTS-GoAT 2024",
     "full_name": "2024 BraTS Generalizability Across Tumors (GoAT) Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -19990,7 +19990,7 @@
     "name": "UCSF-PDGM",
     "full_name": "University of California San Francisco Preoperative Diffuse Glioma MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20103,7 +20103,7 @@
     "name": "UCSF-ALPTDG",
     "full_name": "University of California San Francisco Adult Longitudinal Post-Treatment Diffuse Glioma MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20212,7 +20212,7 @@
     "name": "SPIDER",
     "full_name": "Lumbar Spine Segmentation in MR Images: A Dataset and Public Benchmark",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20311,7 +20311,7 @@
     "name": "RSNA 2024 Lumbar Spine Degenerative Classification",
     "full_name": "RSNA 2024 Lumbar Spine Degenerative Classification",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20413,7 +20413,7 @@
     "name": "MRSpineSeg",
     "full_name": "MRSpineSeg Challenge (MICCAI CSI 2019): Lumbar Spine MRI Vertebrae and Intervertebral Disc Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20507,7 +20507,7 @@
     "name": "Gold Atlas",
     "full_name": "Gold Atlas Male Pelvis MR-CT Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20605,7 +20605,7 @@
     "name": "MSLesSeg 2024",
     "full_name": "Multiple Sclerosis Lesion Segmentation Challenge 2024",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20701,7 +20701,7 @@
     "name": "Lausanne TOF-MRA Aneurysm Cohort",
     "full_name": "Lausanne Brain Aneurysm TOF-MRA Cohort (OpenNeuro ds003949)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20788,7 +20788,7 @@
     "name": "ChestX-Det",
     "full_name": "ChestX-Det instance-segmentation chest X-ray dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20904,7 +20904,7 @@
     "name": "TBX11K",
     "full_name": "Tuberculosis X-ray 11K dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -20995,7 +20995,7 @@
     "name": "NODE21",
     "full_name": "NODE21 Nodule Detection and Generation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21159,7 +21159,7 @@
     "name": "JSRT",
     "full_name": "Japanese Society of Radiological Technology Standard Digital Image Database (chest radiographs)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21270,7 +21270,7 @@
     "name": "SIIM-FISABIO-RSNA COVID-19",
     "full_name": "SIIM-FISABIO-RSNA COVID-19 Detection Challenge dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21400,7 +21400,7 @@
     "name": "Parse2022",
     "full_name": "Pulmonary Artery Segmentation Challenge 2022",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21480,7 +21480,7 @@
     "name": "VESSEL12",
     "full_name": "VESsel SEgmentation in the Lung 2012",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21566,7 +21566,7 @@
     "name": "CAS2023",
     "full_name": "Cerebral Artery Segmentation Challenge 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21645,7 +21645,7 @@
     "name": "ReMIND",
     "full_name": "The Brain Resection Multimodal Imaging Database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21753,7 +21753,7 @@
     "name": "Burdenko-GBM-Progression",
     "full_name": "Burdenko's Glioblastoma Progression Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21876,7 +21876,7 @@
     "name": "RHUH-GBM",
     "full_name": "Rio Hortega University Hospital Glioblastoma Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -21979,7 +21979,7 @@
     "name": "Colorectal-Liver-Metastases",
     "full_name": "Preoperative CT and Survival Data for Patients Undergoing Resection of Colorectal Liver Metastases",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22090,7 +22090,7 @@
     "name": "HCC-TACE-Seg",
     "full_name": "Multimodality Annotated HCC Cases with and without Advanced Imaging Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22207,7 +22207,7 @@
     "name": "Adrenal-ACC-Ki67-Seg",
     "full_name": "Voxel-level Segmentation of Pathologically-proven Adrenocortical Carcinoma with Ki-67 Expression",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22305,7 +22305,7 @@
     "name": "Pediatric-CT-SEG",
     "full_name": "Pediatric Chest/Abdomen/Pelvic CT Exams with Expert Organ Contours",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22418,7 +22418,7 @@
     "name": "Meningioma-SEG-CLASS",
     "full_name": "Segmentation and Classification of Grade I and II Meningiomas from MRI: An Open Annotated Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22510,7 +22510,7 @@
     "name": "Pancreatic-CT-CBCT-SEG",
     "full_name": "Pancreatic CT and Cone-Beam CT with Organ-at-Risk Segmentations",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22604,7 +22604,7 @@
     "name": "GLIS-RT",
     "full_name": "Glioma Image Segmentation for Radiotherapy: RT Targets, Barriers to Cancer Spread, and Organs at Risk",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22703,7 +22703,7 @@
     "name": "Prostate-MRI-US-Biopsy",
     "full_name": "Prostate MRI and Ultrasound With Pathology and Coordinates of Tracked Biopsy",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22827,7 +22827,7 @@
     "name": "LUNA25",
     "full_name": "LUng Nodule Analysis 2025",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -22935,7 +22935,7 @@
     "name": "AbdomenAtlas 1.0",
     "full_name": "AbdomenAtlas 1.0 Mini",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23025,7 +23025,7 @@
     "name": "FLARE 2024",
     "full_name": "MICCAI FLARE 2024 Abdominal CT Organ Segmentation (Task 2: Laptop)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23138,7 +23138,7 @@
     "name": "M3D-Seg",
     "full_name": "M3D: Multi-Modal 3D Medical Data (Segmentation subset)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23469,7 +23469,7 @@
     "name": "OpenMind",
     "full_name": "OpenMind: Large-Scale Brain MRI Pretraining Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23564,7 +23564,7 @@
     "name": "fastMRI Prostate",
     "full_name": "fastMRI Prostate: A Public, Biparametric MRI Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23648,7 +23648,7 @@
     "name": "fastMRI Breast",
     "full_name": "fastMRI Breast DCE-MRI k-space Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23749,7 +23749,7 @@
     "name": "K2S",
     "full_name": "K2S: From Undersampled K-space To Automatic Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23838,7 +23838,7 @@
     "name": "M4Raw",
     "full_name": "M4Raw: A Multi-contrast, Multi-repetition, Multi-channel MRI k-space Dataset for Low-field MRI Research",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -23928,7 +23928,7 @@
     "name": "ACRIN-NSCLC-FDG-PET",
     "full_name": "Data from the ACRIN 6668 Trial NSCLC-FDG-PET",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24036,7 +24036,7 @@
     "name": "ACRIN-HNSCC-FDG-PET-CT",
     "full_name": "ACRIN 6685: A Multicenter Trial of FDG-PET/CT Staging of Head and Neck Cancer",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24144,7 +24144,7 @@
     "name": "ACRIN-FMISO-Brain",
     "full_name": "ACRIN 6684: Assessment of Tumor Hypoxia in Newly Diagnosed Glioblastoma Using 18F-FMISO PET and MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24267,7 +24267,7 @@
     "name": "ACRIN-FLT-Breast",
     "full_name": "ACRIN 6688: 18F-FLT PET/CT in Breast Cancer",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24374,7 +24374,7 @@
     "name": "Anti-PD-1_Melanoma",
     "full_name": "Anti-PD-1 Immunotherapy Melanoma",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24464,7 +24464,7 @@
     "name": "Anti-PD-1_Lung",
     "full_name": "Anti-PD-1 Immunotherapy Lung",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24552,7 +24552,7 @@
     "name": "Soft-tissue-Sarcoma",
     "full_name": "Soft-tissue-Sarcoma",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24655,7 +24655,7 @@
     "name": "DeepLesion",
     "full_name": "NIH DeepLesion",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24780,7 +24780,7 @@
     "name": "RadImageNet",
     "full_name": "RadImageNet",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -24886,7 +24886,7 @@
     "name": "PanTS",
     "full_name": "PanTS: The Pancreatic Tumor Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25017,7 +25017,7 @@
     "name": "CirrMRI600+",
     "full_name": "Large Scale MRI Collection and Segmentation of Cirrhotic Liver",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25099,7 +25099,7 @@
     "name": "Healthy-Total-Body-CTs",
     "full_name": "Healthy Total-Body CTs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25205,7 +25205,7 @@
     "name": "CARE 2024 LiQA",
     "full_name": "CARE 2024 Track 3: Liver Fibrosis Quantification and Analysis (LiQA)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25304,7 +25304,7 @@
     "name": "VoComni",
     "full_name": "VoComni (from Large-Scale 3D Medical Image Pre-training with Geometric Context Priors)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25426,7 +25426,7 @@
     "name": "PreCT-160K",
     "full_name": "PreCT-160K (Large-Scale 3D Medical Image Pre-training with Geometric Context Priors)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25492,7 +25492,7 @@
     "name": "RSNA 2023 Abdominal Trauma Detection",
     "full_name": "RSNA 2023 Abdominal Trauma Detection Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25628,7 +25628,7 @@
     "name": "Advanced-MRI-Breast-Lesions",
     "full_name": "Standard and Delayed Contrast-Enhanced MRI of Malignant and Benign Breast Lesions with Histological and Clinical Supporting Data",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25728,7 +25728,7 @@
     "name": "Brain-Mets-Lung-MRI-Path-Segs",
     "full_name": "MR Imaging and Segmentations with Matched Brain Biopsy Pathology Slides from Patients with Brain Metastases from Primary Lung Cancer",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25837,7 +25837,7 @@
     "name": "Spine-Mets-CT-SEG",
     "full_name": "Spine metastatic bone cancer: pre and post radiotherapy CT (Spine-Mets-CT-SEG)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -25938,7 +25938,7 @@
     "name": "CFB-GBM",
     "full_name": "Centre Francois Baclesse Glioblastoma (CFB-GBM)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26050,7 +26050,7 @@
     "name": "MU-Glioma-Post",
     "full_name": "University of Missouri Post-operative Glioma Dataset (MU-Glioma-Post)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26161,7 +26161,7 @@
     "name": "CMB-CRC",
     "full_name": "Cancer Moonshot Biobank - Colorectal Cancer Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26264,7 +26264,7 @@
     "name": "CMB-LCA",
     "full_name": "Cancer Moonshot Biobank - Lung Cancer Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26366,7 +26366,7 @@
     "name": "CMB-PCA",
     "full_name": "Cancer Moonshot Biobank - Prostate Cancer Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26468,7 +26468,7 @@
     "name": "CMB-BRCA",
     "full_name": "Cancer Moonshot Biobank - Invasive Breast Carcinoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26566,7 +26566,7 @@
     "name": "CMB-OV",
     "full_name": "Cancer Moonshot Biobank - Ovarian Carcinoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26660,7 +26660,7 @@
     "name": "CMB-GEC",
     "full_name": "Cancer Moonshot Biobank - Gastroesophageal Cancer Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26756,7 +26756,7 @@
     "name": "CMB-MEL",
     "full_name": "Cancer Moonshot Biobank - Melanoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26854,7 +26854,7 @@
     "name": "CMB-AML",
     "full_name": "Cancer Moonshot Biobank - Acute Myeloid Leukemia Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -26959,7 +26959,7 @@
     "name": "CMB-MML",
     "full_name": "Cancer Moonshot Biobank - Multiple Myeloma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27058,7 +27058,7 @@
     "name": "SynthRAD2025",
     "full_name": "Synthetic CT Generation for Radiotherapy 2025 Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27151,7 +27151,7 @@
     "name": "TrackRAD2025",
     "full_name": "Real-time Tumor Tracking for MRI-guided Radiotherapy 2025",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27252,7 +27252,7 @@
     "name": "HECKTOR 2025",
     "full_name": "HEad and neCK TumOR segmentation, diagnosis and prognosis 2025",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27358,7 +27358,7 @@
     "name": "autoPET IV",
     "full_name": "autoPET/CT IV - Automated Lesion Segmentation in Whole-Body PET/CT and Longitudinal CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27479,7 +27479,7 @@
     "name": "Learn2Reg",
     "full_name": "Learn2Reg: Medical Image Registration Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27670,7 +27670,7 @@
     "name": "ODELIA Breast MRI 2025",
     "full_name": "ODELIA Breast MRI Classification Challenge 2025",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27762,7 +27762,7 @@
     "name": "Deep-PSMA",
     "full_name": "DEEP-PSMA: Deep-learning Evaluation for Enhanced Prognostics - PSMA and FDG PET/CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27858,7 +27858,7 @@
     "name": "BONBID-HIE 2024",
     "full_name": "2nd BOston Neonatal Brain Injury Dataset for Hypoxic Ischemic Encephalopathy - Outcome Prediction and Lesion Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -27960,7 +27960,7 @@
     "name": "ToothFairy3",
     "full_name": "ToothFairy3: Multi-Class Segmentation in CBCT Volumes",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -28060,7 +28060,7 @@
     "name": "TopBrain 2025",
     "full_name": "TopBrain: Whole Brain Vessel Anatomy Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -28182,7 +28182,7 @@
     "name": "CURVAS-PDAC",
     "full_name": "Calibration and Uncertainty for multiRater Volume Assessment - Pancreatic Adenocarcinoma Vascular Invasion",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -28295,7 +28295,7 @@
     "name": "FLARE-Task4-CT-FM",
     "full_name": "MICCAI FLARE 2025 Task 4: Foundation Models for 3D CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -28377,7 +28377,7 @@
     "name": "FLARE-Task4-MRI-FM",
     "full_name": "MICCAI FLARE 2025 Task 4: Foundation Models for 3D MRI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -28550,7 +28550,7 @@
     "name": "PancancerCTSeg",
     "full_name": "MICCAI FLARE 2025 Task 1 Pan-cancer Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -28952,7 +28952,7 @@
     "name": "FLARE26-MLLM-3D",
     "full_name": "MICCAI FLARE 2026: Multimodal LLM for 3D Medical Image Parsing",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -29062,7 +29062,7 @@
     "name": "CADS-dataset",
     "full_name": "CADS: Comprehensive Anatomical Dataset for Whole-body CT Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -29512,7 +29512,7 @@
     "name": "IMed-361M",
     "full_name": "IMed-361M: Interactive Medical Image Segmentation Benchmark Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -29720,7 +29720,7 @@
     "name": "MedVision",
     "full_name": "MedVision: Unified Medical Image Understanding Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30148,7 +30148,7 @@
     "name": "ViMed-PET-CT",
     "full_name": "ViMed-PET-CT: Vietnamese PET/CT Report Generation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30244,7 +30244,7 @@
     "name": "TAIX-Ray",
     "full_name": "TAIX-Ray: Bedside ICU Chest Radiograph Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30357,7 +30357,7 @@
     "name": "Gastric-X",
     "full_name": "Gastric-X: Multi-phase Abdominal CT for Gastric Cancer",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30487,7 +30487,7 @@
     "name": "GMAI-MMBench",
     "full_name": "GMAI-MMBench: A Comprehensive Multimodal Evaluation Benchmark Towards General Medical AI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30594,7 +30594,7 @@
     "name": "OmniMedVQA",
     "full_name": "OmniMedVQA: A New Large-Scale Comprehensive Evaluation Benchmark for Medical LVLM",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30705,7 +30705,7 @@
     "name": "RadImageNet-VQA",
     "full_name": "RadImageNet-VQA",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30821,7 +30821,7 @@
     "name": "MedPix-2.0",
     "full_name": "MedPix 2.0 Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -30933,7 +30933,7 @@
     "name": "Panoramic_Radiographs_for_Dental_Condition",
     "full_name": "Panoramic Radiographs for Dental Condition Detection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31048,7 +31048,7 @@
     "name": "3D-MammographyDataset",
     "full_name": "iMerit 3D Mammography (DBT) Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31134,7 +31134,7 @@
     "name": "Bone_metastases_pet_ct_for_BlueprINT",
     "full_name": "Bone Metastases PET/CT for BlueprINT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31210,7 +31210,7 @@
     "name": "RibFrac",
     "full_name": "Rib Fracture Detection and Classification Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31307,7 +31307,7 @@
     "name": "RibSeg",
     "full_name": "RibSeg v2: Rib Labeling and Anatomical Centerline Benchmark",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31406,7 +31406,7 @@
     "name": "CTSpine1K",
     "full_name": "CTSpine1K: Large-Scale Vertebrae Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31542,7 +31542,7 @@
     "name": "CTPelvic1K",
     "full_name": "CTPelvic1K: Pelvic Bone Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31676,7 +31676,7 @@
     "name": "HaN-Seg",
     "full_name": "HaN-Seg: The Head and Neck Organ-at-Risk CT and MR Segmentation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31799,7 +31799,7 @@
     "name": "MELA",
     "full_name": "MELA: Mediastinal Lesion Analysis Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31883,7 +31883,7 @@
     "name": "STOIC2021",
     "full_name": "STOIC2021 COVID-19 CT Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -31973,7 +31973,7 @@
     "name": "COVID-CTset",
     "full_name": "COVID-CTset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32051,7 +32051,7 @@
     "name": "COVID-CT-MD",
     "full_name": "COVID-CT-MD",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32140,7 +32140,7 @@
     "name": "ImageCHD",
     "full_name": "ImageCHD: A 3D Computed Tomography Image Dataset for Classification of Congenital Heart Disease",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32228,7 +32228,7 @@
     "name": "ATM'22",
     "full_name": "ATM'22: Airway Tree Modeling Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32306,7 +32306,7 @@
     "name": "KiPA22",
     "full_name": "KiPA22: Kidney PArsing Challenge 2022",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32394,7 +32394,7 @@
     "name": "SegTHOR",
     "full_name": "SegTHOR: Segmentation of Thoracic Organs at Risk in CT",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32486,7 +32486,7 @@
     "name": "FUMPE",
     "full_name": "Ferdowsi University of Mashhad's Pulmonary Embolism dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32581,7 +32581,7 @@
     "name": "Brain Tumor Dataset (figshare)",
     "full_name": "Brain Tumor Dataset (Cheng et al., Nanfang Hospital & Tianjin Medical University)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32666,7 +32666,7 @@
     "name": "MS-CMRSeg 2019",
     "full_name": "MS-CMRSeg 2019: Multi-sequence Cardiac MRI Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32754,7 +32754,7 @@
     "name": "TB Portals",
     "full_name": "NIAID TB Portals Program",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32857,7 +32857,7 @@
     "name": "MedSeg COVID-19 CT Segmentation",
     "full_name": "COVID-19 CT Segmentation Dataset (MedSeg)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -32961,7 +32961,7 @@
     "name": "CT Kidney Dataset: Normal-Cyst-Tumor-Stone",
     "full_name": null,
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33045,7 +33045,7 @@
     "name": "CT-ICH (PhysioNet)",
     "full_name": "Computed Tomography Images for Intracranial Hemorrhage Detection and Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33142,7 +33142,7 @@
     "name": "StructSeg 2019",
     "full_name": "StructSeg 2019: Automatic Structure Segmentation for Radiotherapy Planning",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33268,7 +33268,7 @@
     "name": "GRAZPEDWRI-DX",
     "full_name": "Graz Pediatric Wrist Digital X-ray",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33366,7 +33366,7 @@
     "name": "Chest X-Ray Images (Pneumonia)",
     "full_name": "Labeled Optical Coherence Tomography and Chest X-Ray Images (pediatric chest X-ray subset)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33450,7 +33450,7 @@
     "name": "HVSMR 2016",
     "full_name": "Whole-Heart and Great Vessel Segmentation from 3D Cardiovascular MRI in Congenital Heart Disease",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33539,7 +33539,7 @@
     "name": "HVSMR-2.0",
     "full_name": "HVSMR-2.0: A 3D Cardiovascular MR Dataset for Whole-Heart Segmentation in Congenital Heart Disease",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33646,7 +33646,7 @@
     "name": "BONBID-HIE",
     "full_name": "Boston Neonatal Brain Injury Dataset for Hypoxic Ischemic Encephalopathy",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33729,7 +33729,7 @@
     "name": "Developing Human Connectome Project (dHCP)",
     "full_name": "Developing Human Connectome Project",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33837,7 +33837,7 @@
     "name": "Healthy Brain Network (HBN)",
     "full_name": "Child Mind Institute Healthy Brain Network",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -33937,7 +33937,7 @@
     "name": "ADHD-200",
     "full_name": "ADHD-200 Sample",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34034,7 +34034,7 @@
     "name": "M-CRIB",
     "full_name": "Melbourne Children's Regional Infant Brain atlas",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34118,7 +34118,7 @@
     "name": "Neonatal Brain Atlases (ALBERTs / Gousias)",
     "full_name": "ALBERTs: Neonatal Brain Atlases (Gousias et al.)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34248,7 +34248,7 @@
     "name": "CRL Fetal Brain Atlas",
     "full_name": "A Normative Spatiotemporal MRI Atlas of the Fetal Brain (Gholipour et al. 2017)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34396,7 +34396,7 @@
     "name": "MRI of 3-12 year old children (Pixar)",
     "full_name": "MRI data of 3-12 year old children and adults during viewing of a short animated film",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34483,7 +34483,7 @@
     "name": "Queensland Twin Adolescent Brain (QTAB)",
     "full_name": "Queensland Twin Adolescent Brain",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34578,7 +34578,7 @@
     "name": "ABCD Study",
     "full_name": "Adolescent Brain Cognitive Development Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34684,7 +34684,7 @@
     "name": "COBRA2026",
     "full_name": "A Large-Scale Multicenter Pelvic Cone-Beam Computed Tomography Projection Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34777,7 +34777,7 @@
     "name": "SegRap2025",
     "full_name": "Gross Tumor Volume and Lymph Node Segmentation Challenge for Nasopharyngeal Carcinoma",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34874,7 +34874,7 @@
     "name": "Cyst-X",
     "full_name": "Cyst-X: A Multi-Center MRI Benchmark and Federated Learning Framework for Malignancy-Risk Stratification of Pancreatic Cystic Neoplasm",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -34969,7 +34969,7 @@
     "name": "RAM-W600",
     "full_name": "RAM-W600: A Multi-Task Wrist Dataset and Benchmark for Rheumatoid Arthritis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -35071,7 +35071,7 @@
     "name": "LUND-PROBE",
     "full_name": "Lund Prostate Radiotherapy Open Benchmarking and Evaluation Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -35175,7 +35175,7 @@
     "name": "ReXGroundingCT",
     "full_name": "A 3D Chest CT Dataset for Segmentation of Findings from Free-Text Reports",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -35296,7 +35296,7 @@
     "name": "CADS",
     "full_name": "Comprehensive Anatomical Dataset and Segmentation for Whole-Body Anatomy in Computed Tomography",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -35751,7 +35751,7 @@
     "name": "STS 2024",
     "full_name": "MICCAI STS 2024: Semi-Supervised Instance-Level Tooth Segmentation in Panoramic X-ray and CBCT Images",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -35837,7 +35837,7 @@
     "name": "BRISC2025",
     "full_name": "BRISC: Annotated Dataset for Brain Tumor Segmentation and Classification (2025)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -35920,7 +35920,7 @@
     "name": "crossMoDA 2023",
     "full_name": "Cross-Modality Domain Adaptation for Medical Image Segmentation 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36040,7 +36040,7 @@
     "name": "Pretreat-MetsToBrain-Masks",
     "full_name": "Pre-treatment MRI with Brain Metastases Masks (Yale)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36144,7 +36144,7 @@
     "name": "APIS",
     "full_name": "A Paired CT-MRI Dataset for Ischemic Stroke Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36231,7 +36231,7 @@
     "name": "SynthRAD2023",
     "full_name": "Synthesizing Computed Tomography for Radiotherapy 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36324,7 +36324,7 @@
     "name": "FracAtlas",
     "full_name": "FracAtlas: A Dataset for Fracture Classification, Localization and Segmentation of Musculoskeletal Radiographs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36419,7 +36419,7 @@
     "name": "Spine Generic (Multi-Subject)",
     "full_name": "Spine Generic Public Database - Multi-Subject",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36517,7 +36517,7 @@
     "name": "ARCADE",
     "full_name": "Automatic Region-based Coronary Artery Disease diagnostics using x-ray angiography imagEs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36609,7 +36609,7 @@
     "name": "CADICA",
     "full_name": "CADICA: a new dataset for coronary artery disease interpretation using invasive coronary angiography",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36708,7 +36708,7 @@
     "name": "HiPaS",
     "full_name": "High-abundant Pulmonary Artery-vein Segmentation dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36787,7 +36787,7 @@
     "name": "COSTA",
     "full_name": "COSTA: Multi-center and multi-vendor TOF-MRA CerebrOvascular SegmenTAtion database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -36919,7 +36919,7 @@
     "name": "MBAS 2024",
     "full_name": "Multi-class Bi-Atrial Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37005,7 +37005,7 @@
     "name": "MultiD4CAD",
     "full_name": "MultiD4CAD: Multimodal Dataset composed of CT and Clinical Features for Coronary Artery Disease Analysis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37097,7 +37097,7 @@
     "name": "TN-Mammo",
     "full_name": "TN-Mammo: A Multi-view Mammography Dataset for Breast Density Classification (Thong Nhat Hospital)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37180,7 +37180,7 @@
     "name": "NL-Breast-Screening",
     "full_name": "Newfoundland and Labrador Breast Screening (NLBS) Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37294,7 +37294,7 @@
     "name": "SMILE-UHURA",
     "full_name": "Small Vessel Segmentation at Mesoscopic Scale from Ultra-High Resolution 7T Magnetic Resonance Angiograms",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37391,7 +37391,7 @@
     "name": "SAROS",
     "full_name": "Sparsely Annotated Region and Organ Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37565,7 +37565,7 @@
     "name": "DAP Atlas",
     "full_name": "Deep Anatomical Atlas (Towards Unifying Anatomy Segmentation)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37746,7 +37746,7 @@
     "name": "SA-Med2D-20M",
     "full_name": "SA-Med2D-20M",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37899,7 +37899,7 @@
     "name": "PMC-VQA",
     "full_name": "PMC-VQA: Medical Visual Question Answering",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -37998,7 +37998,7 @@
     "name": "TCGA-GBM",
     "full_name": "The Cancer Genome Atlas Glioblastoma Multiforme Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38109,7 +38109,7 @@
     "name": "TCGA-LGG",
     "full_name": "The Cancer Genome Atlas Low Grade Glioma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38219,7 +38219,7 @@
     "name": "IvyGAP",
     "full_name": "Ivy Glioblastoma Atlas Project",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38316,7 +38316,7 @@
     "name": "REMBRANDT",
     "full_name": "Repository for Molecular Brain Neoplasia Data",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38422,7 +38422,7 @@
     "name": "LGG-1p19qDeletion",
     "full_name": "Low Grade Glioma 1p/19q Deletion Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38514,7 +38514,7 @@
     "name": "Brain-Tumor-Progression",
     "full_name": "Brain-Tumor-Progression",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38607,7 +38607,7 @@
     "name": "CPTAC-GBM",
     "full_name": "Clinical Proteomic Tumor Analysis Consortium - Glioblastoma Multiforme",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38711,7 +38711,7 @@
     "name": "Vestibular-Schwannoma-SEG",
     "full_name": "Segmentation of Vestibular Schwannoma from MRI - An Open Annotated Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38808,7 +38808,7 @@
     "name": "PPMI",
     "full_name": "Parkinson's Progression Markers Initiative",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -38924,7 +38924,7 @@
     "name": "AIBL",
     "full_name": "Australian Imaging, Biomarkers and Lifestyle Study of Ageing",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39023,7 +39023,7 @@
     "name": "Cam-CAN",
     "full_name": "Cambridge Centre for Ageing and Neuroscience",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39121,7 +39121,7 @@
     "name": "FeTS 2021/2022",
     "full_name": "Federated Tumor Segmentation Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39224,7 +39224,7 @@
     "name": "OCMR",
     "full_name": "Open-access multi-coil k-space dataset for Cardiovascular Magnetic Resonance imaging",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39321,7 +39321,7 @@
     "name": "Second Annual Data Science Bowl",
     "full_name": "Second Annual Data Science Bowl (Cardiac MRI Ejection Fraction)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39403,7 +39403,7 @@
     "name": "SPIE-AAPM Lung CT Challenge (LUNGx)",
     "full_name": "SPIE-AAPM-NCI Lung Nodule Classification Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39492,7 +39492,7 @@
     "name": "VinDr-SpineXR",
     "full_name": "VinDr-SpineXR: A large annotated dataset for spinal lesions detection and classification from radiographs",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39603,7 +39603,7 @@
     "name": "CheXlocalize",
     "full_name": "CheXlocalize: Radiologist-annotated segmentations for chest X-ray pathology localization",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39728,7 +39728,7 @@
     "name": "OPTIMAM (OMI-DB)",
     "full_name": "OPTIMAM Mammography Image Database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39821,7 +39821,7 @@
     "name": "mini-MIAS",
     "full_name": "Mammographic Image Analysis Society Digital Mammogram Database",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -39920,7 +39920,7 @@
     "name": "MOOD",
     "full_name": "Medical Out-of-Distribution Analysis Challenge",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40027,7 +40027,7 @@
     "name": "QUBIQ",
     "full_name": "Quantification of Uncertainty in Biomedical Image Segmentation",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40121,7 +40121,7 @@
     "name": "Prostate-3T",
     "full_name": "Prostate-3T",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40209,7 +40209,7 @@
     "name": "AeroPath",
     "full_name": "AeroPath Airway Segmentation Benchmark Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40294,7 +40294,7 @@
     "name": "AIIB23",
     "full_name": "Airway-Informed Quantitative CT Imaging Biomarker for Fibrotic Lung Disease Challenge 2023",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40392,7 +40392,7 @@
     "name": "TCGA-KIRC",
     "full_name": "The Cancer Genome Atlas Kidney Renal Clear Cell Carcinoma",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40532,7 +40532,7 @@
     "name": "OASIS-2",
     "full_name": "Open Access Series of Imaging Studies 2 (Longitudinal MRI in Nondemented and Demented Older Adults)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40640,7 +40640,7 @@
     "name": "NAKO",
     "full_name": "NAKO Gesundheitsstudie (German National Cohort)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40754,7 +40754,7 @@
     "name": "SHIP",
     "full_name": "Study of Health in Pomerania",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40869,7 +40869,7 @@
     "name": "Rhineland Study",
     "full_name": "Rhineland Study (DZNE Bonn)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -40967,7 +40967,7 @@
     "name": "Hamburg City Health Study",
     "full_name": "Hamburg City Health Study (HCHS)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41070,7 +41070,7 @@
     "name": "Rotterdam Study",
     "full_name": "Rotterdam Study (Erasmus Rotterdam Gezondheid Onderzoek, ERGO)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41177,7 +41177,7 @@
     "name": "Generation R",
     "full_name": "Generation R Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41283,7 +41283,7 @@
     "name": "The Maastricht Study",
     "full_name": "The Maastricht Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41376,7 +41376,7 @@
     "name": "ALSPAC",
     "full_name": "Avon Longitudinal Study of Parents and Children (Children of the 90s)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41477,7 +41477,7 @@
     "name": "Troms\u00f8 Study",
     "full_name": "The Troms\u00f8 Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41574,7 +41574,7 @@
     "name": "KORA-MRI",
     "full_name": "Cooperative Health Research in the Region of Augsburg \u2013 Whole-Body MRI sub-study (KORA-FF4)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41678,7 +41678,7 @@
     "name": "SCAPIS",
     "full_name": "Swedish CArdioPulmonary bioImage Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41781,7 +41781,7 @@
     "name": "AGES-Reykjavik",
     "full_name": "Age, Gene/Environment Susceptibility \u2013 Reykjavik Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41905,7 +41905,7 @@
     "name": "LIFE-Adult",
     "full_name": "Leipzig Research Centre for Civilization Diseases \u2013 LIFE-Adult Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -41995,7 +41995,7 @@
     "name": "Fenland Study",
     "full_name": "Fenland Study (MRC Epidemiology Unit, University of Cambridge)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42090,7 +42090,7 @@
     "name": "Whitehall II Imaging Sub-study",
     "full_name": "Whitehall II Imaging Sub-study (Oxford / UCL)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42183,7 +42183,7 @@
     "name": "Heinz Nixdorf Recall / 1000BRAINS",
     "full_name": "Heinz Nixdorf Recall Study and 1000BRAINS MRI cohort",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42288,7 +42288,7 @@
     "name": "MESA",
     "full_name": "Multi-Ethnic Study of Atherosclerosis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42396,7 +42396,7 @@
     "name": "COPDGene",
     "full_name": "Genetic Epidemiology of COPD Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42502,7 +42502,7 @@
     "name": "SPIROMICS",
     "full_name": "SubPopulations and InteRmediate Outcome Measures In COPD Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42606,7 +42606,7 @@
     "name": "Qatar Biobank",
     "full_name": "Qatar Biobank (Qatar Precision Health Institute)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42699,7 +42699,7 @@
     "name": "NEO Study",
     "full_name": "Netherlands Epidemiology of Obesity Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42796,7 +42796,7 @@
     "name": "Lifelines (ImaLife)",
     "full_name": "Lifelines Cohort Study (including ImaLife low-dose chest CT sub-study)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -42904,7 +42904,7 @@
     "name": "BLSA",
     "full_name": "Baltimore Longitudinal Study of Aging",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43003,7 +43003,7 @@
     "name": "Framingham Heart Study MDCT",
     "full_name": "Framingham Heart Study Multidetector CT Body Composition Substudy (Offspring and Third Generation cohorts)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43108,7 +43108,7 @@
     "name": "Health ABC",
     "full_name": "Health, Aging and Body Composition Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43207,7 +43207,7 @@
     "name": "MrOS",
     "full_name": "Osteoporotic Fractures in Men Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43318,7 +43318,7 @@
     "name": "SOF",
     "full_name": "Study of Osteoporotic Fractures",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43427,7 +43427,7 @@
     "name": "NHANES DXA",
     "full_name": "National Health and Nutrition Examination Survey - Dual-Energy X-ray Absorptiometry",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43520,7 +43520,7 @@
     "name": "CARDIA",
     "full_name": "Coronary Artery Risk Development in Young Adults Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43622,7 +43622,7 @@
     "name": "ARIC",
     "full_name": "Atherosclerosis Risk in Communities Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43727,7 +43727,7 @@
     "name": "CHS",
     "full_name": "Cardiovascular Health Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43827,7 +43827,7 @@
     "name": "Jackson Heart Study (JHS)",
     "full_name": "Jackson Heart Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -43932,7 +43932,7 @@
     "name": "MASALA",
     "full_name": "Mediators of Atherosclerosis in South Asians Living in America",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44037,7 +44037,7 @@
     "name": "HCHS/SOL",
     "full_name": "Hispanic Community Health Study / Study of Latinos",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44129,7 +44129,7 @@
     "name": "ELSA-Brasil",
     "full_name": "Brazilian Longitudinal Study of Adult Health (Estudo Longitudinal de Saude do Adulto)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44231,7 +44231,7 @@
     "name": "HUNT Study",
     "full_name": "Trondelag Health Study (Helseundersokelsen i Nord-Trondelag)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44326,7 +44326,7 @@
     "name": "CONSTANCES",
     "full_name": "Cohorte des consultants des Centres d'examens de sante (French population-based cohort)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44411,7 +44411,7 @@
     "name": "Three-City Study (3C)",
     "full_name": "Three-City Study (Etude des Trois Cit\u00e9s)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44517,7 +44517,7 @@
     "name": "Raine Study",
     "full_name": "The Raine Study (Western Australian Pregnancy Cohort Study)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44612,7 +44612,7 @@
     "name": "Dunedin Study",
     "full_name": "Dunedin Multidisciplinary Health and Development Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44706,7 +44706,7 @@
     "name": "IMAGEN",
     "full_name": "IMAGEN: Reinforcement-related behaviour in normal brain function and psychopathology",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44804,7 +44804,7 @@
     "name": "HCP Lifespan (HCP-Aging & HCP-Development)",
     "full_name": "Human Connectome Project Lifespan: HCP-Aging (Aging Human Connectome) and HCP-Development",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -44910,7 +44910,7 @@
     "name": "Lothian Birth Cohorts (1936/1921)",
     "full_name": "Lothian Birth Cohorts 1936 and 1921",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45006,7 +45006,7 @@
     "name": "Insight 46 (MRC NSHD 1946 birth cohort)",
     "full_name": "Insight 46 neuroimaging sub-study of the MRC National Survey of Health and Development (1946 British Birth Cohort)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45107,7 +45107,7 @@
     "name": "DIAN (Dominantly Inherited Alzheimer Network)",
     "full_name": "Dominantly Inherited Alzheimer Network Observational Study (DIAN-OBS)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45208,7 +45208,7 @@
     "name": "ROSMAP",
     "full_name": "Religious Orders Study and Rush Memory and Aging Project",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "ex-vivo"
@@ -45304,7 +45304,7 @@
     "name": "Tohoku Medical Megabank (TMM)",
     "full_name": "Tohoku Medical Megabank Organization Cohort Studies (TMM CommCohort and TMM BirThree Cohort)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45392,7 +45392,7 @@
     "name": "CoLaus | PsyCoLaus",
     "full_name": "CoLaus | PsyCoLaus Study (Cohorte Lausannoise), including BrainLaus and OsteoLaus sub-studies",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45503,7 +45503,7 @@
     "name": "GUSTO",
     "full_name": "Growing Up in Singapore Towards healthy Outcomes",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45605,7 +45605,7 @@
     "name": "Duke Liver Dataset",
     "full_name": "Duke Liver Dataset (DLDS) \u2014 Liver MRI with Series-Type Labels and Segmentation Masks",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45710,7 +45710,7 @@
     "name": "RSNA 2026 Knee Abnormality Detection",
     "full_name": "RSNA Knee Abnormality Detection AI Challenge (Knee MRI, 2026)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45811,7 +45811,7 @@
     "name": "UW-Madison GI Tract",
     "full_name": "UW-Madison GI Tract Image Segmentation (Kaggle 2022)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45906,7 +45906,7 @@
     "name": "PanSegData",
     "full_name": "PanSegData \u2014 Large-Scale Multi-Center Pancreas MRI Segmentation Dataset (PanSegNet)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -45992,7 +45992,7 @@
     "name": "OAI-ZIB",
     "full_name": "OAI-ZIB Knee MRI Manual Segmentations (Zuse Institute Berlin)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46085,7 +46085,7 @@
     "name": "fastMRI+",
     "full_name": "fastMRI+: Clinical Pathology Annotations for the fastMRI Knee and Brain Datasets",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46218,7 +46218,7 @@
     "name": "MOST",
     "full_name": "Multicenter Osteoarthritis Study",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46328,7 +46328,7 @@
     "name": "SPR Head CT Age Prediction",
     "full_name": "SPR Head CT Age Prediction Challenge (Sociedade Paulista de Radiologia, Kaggle 2024)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46410,7 +46410,7 @@
     "name": "SPR X-Ray Age Prediction",
     "full_name": "SPR X-Ray Age Prediction Challenge (2023)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46493,7 +46493,7 @@
     "name": "TCGA-LIHC",
     "full_name": "The Cancer Genome Atlas Liver Hepatocellular Carcinoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46636,7 +46636,7 @@
     "name": "Duke Spleen Data Set",
     "full_name": "Duke Spleen Data Set (DSDS) \u2014 Spleen MRI and CT with Segmentation Masks",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46729,7 +46729,7 @@
     "name": "CDD-CESM",
     "full_name": "Categorized Digital Database for Low energy and Subtracted Contrast Enhanced Spectral Mammography images",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46839,7 +46839,7 @@
     "name": "DMID",
     "full_name": "Digital mammography Dataset for Breast Cancer Diagnosis Research (DMID)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -46951,7 +46951,7 @@
     "name": "REVEAL-CXR",
     "full_name": "RSNA Large Language Model Benchmark Dataset for Chest Radiographs of Cardiothoracic Disease: Radiologist Evaluation and Validation Enhanced by AI Labels",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47075,7 +47075,7 @@
     "name": "CXR-LT",
     "full_name": "CXR-LT: Multi-Label Long-Tailed Classification on Chest X-Rays",
     "type": "annotation",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47222,7 +47222,7 @@
     "name": "NIH CXR14 Google Expert Labels",
     "full_name": "Google radiologist-adjudicated expert labels for NIH ChestX-ray14 (four findings; all findings)",
     "type": "annotation",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47351,7 +47351,7 @@
     "name": "BreastDCEDL",
     "full_name": "BreastDCEDL: A standardized deep learning-ready breast DCE-MRI dataset of 2,070 patients",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47501,7 +47501,7 @@
     "name": "CPTAC-CCRCC",
     "full_name": "The Clinical Proteomic Tumor Analysis Consortium Clear Cell Renal Cell Carcinoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47633,7 +47633,7 @@
     "name": "CPTAC-PDA",
     "full_name": "The Clinical Proteomic Tumor Analysis Consortium Pancreatic Ductal Adenocarcinoma Collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47772,7 +47772,7 @@
     "name": "4D-Lung",
     "full_name": "Data from 4D Lung Imaging of NSCLC Patients",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -47870,7 +47870,7 @@
     "name": "LDCT-and-Projection-data",
     "full_name": "Low Dose CT Image and Projection Data (Mayo Clinic)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human",
@@ -47998,7 +47998,7 @@
     "name": "Pelvic-Reference-Data",
     "full_name": "Pelvic Reference Data",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48097,7 +48097,7 @@
     "name": "UCSF-RMaC",
     "full_name": "UCSF Renal Mass CT Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48218,7 +48218,7 @@
     "name": "UniToBrain",
     "full_name": "UniToBrain Dataset (DeepHealth Use Case 3, University of Turin)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48324,7 +48324,7 @@
     "name": "WAW-TACE",
     "full_name": "WAW-TACE: A Hepatocellular Carcinoma Multiphase CT Dataset with Segmentations, Radiomics Features, and Clinical Data",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48455,7 +48455,7 @@
     "name": "MR-ART",
     "full_name": "Movement-Related Artefacts (MR-ART) dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48566,7 +48566,7 @@
     "name": "VinDr-Multiphase",
     "full_name": "VinDr-Multiphase: A Benchmark Dataset for Phase Recognition in Abdominal Contrast-Enhanced CT Scans",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48663,7 +48663,7 @@
     "name": "PLC-CECT",
     "full_name": "Primary Liver Cancer CECT Imaging Dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48780,7 +48780,7 @@
     "name": "BrainMetShare",
     "full_name": "Stanford BrainMetShare brain metastases MRI dataset",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -48884,7 +48884,7 @@
     "name": "LiverHccSeg",
     "full_name": "LiverHccSeg: A Publicly Available Multiphasic MRI Dataset with Liver and HCC Tumor Segmentations and Inter-Rater Agreement Analysis",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49012,7 +49012,7 @@
     "name": "MRE-IBD",
     "full_name": "A comprehensive dataset of magnetic resonance enterography images with intestinal segment annotations",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49120,7 +49120,7 @@
     "name": "MRISegmentator-Abdomen",
     "full_name": "MRISegmenter (MRISegmentator-Abdomen) T1-weighted abdominal MRI dataset, NIH Clinical Center",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49248,7 +49248,7 @@
     "name": "ACRIN-6698",
     "full_name": "ACRIN 6698/I-SPY2 Breast DWI",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49384,7 +49384,7 @@
     "name": "C4KC-KiTS",
     "full_name": "Data from C4KC-KiTS (KiTS19 training cases in DICOM)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49497,7 +49497,7 @@
     "name": "ISLES 2015-2018",
     "full_name": "ISLES (Ischemic Stroke Lesion Segmentation/Prediction) Challenge Datasets (2015, 2016, 2017, 2018)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49648,7 +49648,7 @@
     "name": "BraTS-Lighthouse 2025",
     "full_name": "BraTS 2025 Lighthouse Challenge (MICCAI 2025)",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49861,7 +49861,7 @@
     "name": "EPVS 2024",
     "full_name": "Enlarged Perivascular Spaces (EPVS) Segmentation Challenge - MICCAI 2024",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "human"
@@ -49981,7 +49981,7 @@
     "name": "PCCT/DECT Phantom Dose Levels",
     "full_name": "Dual-energy and photon-counting CTs from a tissue-equivalent phantom by scanning in different imaging dose levels",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "phantom"
@@ -50087,7 +50087,7 @@
     "name": "VSD Lower Extremities Seg",
     "full_name": "vsd-lower-extremities-seg: 63-bone lower-body CT segmentation from the VSDFullBody collection",
     "type": "dataset",
-    "review": "curated",
+    "review": "llm-proposed",
     "enriched": "2026-11-16",
     "subjects": [
       "ex-vivo"

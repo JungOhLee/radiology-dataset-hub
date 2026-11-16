@@ -115,7 +115,7 @@ older ones are migrated by `scripts/migrate_v2.py` + `scripts/enrich_entries.py`
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `review` | enum | `llm-proposed` (machine-added, not yet checked), `curated`, `human-verified` (+ `verified_date`) |
+| `review` | enum | `llm-proposed` (default — compiled from the official pages) or `human-verified` (+ `verified_date`) once someone has checked the entry against its source |
 | `subjects` | enum[] | `human`, `phantom`, `synthetic`, `ex-vivo`. Animal subjects are out of scope; human data that also has animals gets tag `includes-animal` |
 | `phantom` | object | phantoms: `{type: physical/digital/hybrid, anthropomorphic, body_part (an organs value or none-geometric), model, purpose}` |
 | `organs` | enum[] | organs/body parts imaged (`brain`, `lung`, `colon-rectum`, `knee`, `whole-body`, `none-geometric` …); `anatomy` stays as display text |

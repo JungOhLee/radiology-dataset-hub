@@ -89,7 +89,6 @@ const TOGGLES = [
   { key: "phantom", label: "Phantom", test: isPhantom },
   { key: "derived", label: "Derived / aggregated", test: isDerived },
   { key: "labels_only", label: "Labels only", test: labelsOnly },
-  { key: "verified", label: "Human-verified", test: d => d.review === "human-verified" },
 ];
 
 const state = {
@@ -594,7 +593,6 @@ function card(d) {
   } else if (d.multi_sequence) badges.push(`<span class="badge seq" title="${esc(protoNote(d) || "Multi-sequence / multi-phase")}">≋ Multi-seq</span>`);
   if (isPhantom(d)) badges.push(`<span class="badge phantom" title="${esc(phantomOf(d) ? [phantomOf(d).type, phantomOf(d).body_part, phantomOf(d).model].filter(Boolean).join(" · ") : "Phantom")}">🧪 Phantom</span>`);
   if (isDerived(d)) badges.push(`<span class="badge derived" title="Built from: ${esc(relList(d).filter(r => r.relation === "derived-from").map(r => r.name || r.id).join(", "))}">⤳ Derived</span>`);
-  if (d.review === "llm-proposed") badges.push(`<span class="badge unreviewed" title="Machine-proposed entry — not yet reviewed by a person">◌ Unreviewed</span>`);
   if (hasTag(d, "population-cohort")) badges.push(`<span class="badge cohort" title="Population / epidemiological cohort${d.clinical_variables ? " — " + esc(d.clinical_variables) : ""}">◉ Cohort</span>`);
   if (d.body_composition) badges.push(`<span class="badge bodycomp" title="Body-composition phenotypes available (VAT/ASAT/muscle/DXA)">⚖ Body comp</span>`);
   if (d.type === "annotation") badges.push(`<span class="badge seq" title="Label/annotation set for another dataset's images — images come from the base dataset">🏷 Label set</span>`);
@@ -756,7 +754,7 @@ function openDetail(id) {
         ${row("Tasks", d.tasks)}
         ${row("Access", accessMap[d.access] || d.access)}
         ${row("License", [d.license, d.license_id && `(${d.license_id}${d.commercial_use ? " · commercial use: " + d.commercial_use : ""})`].filter(Boolean).join(" "))}
-        ${row("Review", d.review ? d.review + (d.verified_date ? " · " + d.verified_date : "") + (d.enriched ? " · enriched " + d.enriched : "") : "")}
+        ${row("Checked against the source", d.review === "human-verified" ? (d.verified_date || "yes") : "")}
         ${row("Host", d.host)}
       </table>
       ${structure}

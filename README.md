@@ -35,11 +35,14 @@ This hub is built around **dataset selection**:
 - **Tables below:** browse by region right here on GitHub.
 - **Programmatic:** fetch [`data/datasets.json`](data/datasets.json) directly.
 
+> **Spotted an error?** Entries are compiled from each dataset's official page and can be wrong or out of date.
+> Please open a pull request with the fix (edit [`data/datasets.json`](data/datasets.json)), or an [issue](../../issues) if that's easier.
+
 ---
 
 <!-- AUTOGEN:START -->
 
-**766 curated datasets** · 372 CT · 379 MRI · 88 PET · 179 X-ray · 467 native DICOM/NIfTI · 92 with reports/text · 409 with segmentation labels
+**766 datasets** · 372 CT · 379 MRI · 88 PET · 179 X-ray · 467 native DICOM/NIfTI · 92 with reports/text · 409 with segmentation labels
 
 Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-thorax) · [Cardiac](#cardiac) · [Vascular](#vascular) · [Abdominal](#abdominal) · [Pelvic & Prostate](#pelvic-prostate) · [Musculoskeletal](#musculoskeletal) · [Breast](#breast) · [Head & Neck](#head-neck) · [Dental & Maxillofacial](#dental-maxillofacial) · [Whole-Body](#whole-body) · [Unspecified / various body parts](#unspecified-various-body-parts) · [Phantoms (non-anatomical)](#phantoms-non-anatomical) · [Data Repositories & Portals](#data-repositories-portals)
 
@@ -1213,6 +1216,6 @@ Edit [`data/datasets.json`](data/datasets.json), run `python3 scripts/validate.p
 
 This catalog links to third-party datasets and summarizes their metadata for convenience.
 **Always review each dataset's own license and data-use agreement before downloading or using it.**
-Metadata is provided as-is and may contain errors — please [report corrections](../../issues).
+Metadata is provided as-is and may contain errors — please send corrections as a pull request or an [issue](../../issues).
 
 Catalog content is licensed [CC BY 4.0](LICENSE). Individual datasets retain their own licenses.

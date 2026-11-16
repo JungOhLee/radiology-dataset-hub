@@ -47,7 +47,7 @@
            "treatment-response", "eye-tracking", "harmonization", "image-quality", "motion-artifact",
            "de-identification", "instruction-tuning", "model-evaluation", "quantitative-imaging",
            "rare-disease", "multilingual", "atlas-template", "3d-models", "includes-animal"],
-  "review": ["llm-proposed", "curated", "human-verified"],
+  "review": ["llm-proposed", "human-verified"],
   "license_id": ["CC0", "CC-BY", "CC-BY-SA", "CC-BY-ND", "CC-BY-NC", "CC-BY-NC-SA", "CC-BY-NC-ND",
                  "ODC", "PhysioNet-credentialed", "PhysioNet-restricted", "NIH-controlled",
                  "custom-DUA", "software-license", "other", "unknown"],

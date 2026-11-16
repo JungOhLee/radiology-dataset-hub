@@ -76,7 +76,7 @@ class Migration(unittest.TestCase):
 
 class Validator(unittest.TestCase):
     def good(self, **over):
-        e = {"id": "a", "name": "A", "type": "dataset", "review": "curated", "subjects": ["human"],
+        e = {"id": "a", "name": "A", "type": "dataset", "review": "llm-proposed", "subjects": ["human"],
              "regions": ["Chest"], "organs": ["lung"], "modality": ["CT"], "protocols": ["CT:low-dose"],
              "image_format": ["DICOM"], "preprocessing": ["native"], "label_types": ["image-level-class"],
              "condition_groups": ["neoplasm"], "conditions": ["lung cancer"], "tasks": ["classification"],

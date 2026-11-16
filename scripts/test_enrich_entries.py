@@ -23,7 +23,7 @@ def v1(**over):
          "access": "open", "host": "Zenodo", "url": "https://zenodo.org/records/1", "description": "Ten scans.",
          "tags": ["longitudinal", "pediatric"]}
     e.update(over)
-    return mig.seed(e, {"x-set"})
+    return mig.seed(e)
 
 
 def res(**over):
@@ -53,7 +53,7 @@ class Apply(unittest.TestCase):
         self.assertEqual(e["tags"], ["longitudinal", "radiogenomics"])  # pediatric -> population, dropped as tag
         self.assertEqual((e["raw_image"], e["paired_text"], e["segmentation"], e["longitudinal"]),
                          (False, False, True, True))                    # derived: skull-stripped is not raw
-        self.assertEqual((e["review"], e["enriched"]), ("curated", TODAY))
+        self.assertEqual((e["review"], e["enriched"]), ("llm-proposed", TODAY))
         self.assertEqual(en.val.entry_errors(e, self.ids), [])
 
     def test_animal_only_removed_mixed_tagged(self):

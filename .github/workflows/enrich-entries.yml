@@ -74,9 +74,6 @@ jobs:
       # The code that runs is always main's; only the two data files come from the base branch.
       - uses: actions/checkout@v4
 
-      - name: Remember main's catalog (its entries count as curated)
-        run: cp data/datasets.json "$RUNNER_TEMP/main_datasets.json"
-
       - name: Take the catalog data from the base branch
         if: ${{ env.BASE != 'main' }}
         shell: bash
@@ -91,7 +88,7 @@ jobs:
       - run: pip install --quiet anthropic
 
       - name: Seed rule-based v2 fields
-        run: python3 scripts/migrate_v2.py --seed --curated-ids-from "$RUNNER_TEMP/main_datasets.json"
+        run: python3 scripts/migrate_v2.py --seed
 
       - name: Enrich with Claude
         env:

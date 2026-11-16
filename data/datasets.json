@@ -5044,7 +5044,8 @@
       "lung"
     ],
     "modality": [
-      "CT"
+      "CT",
+      "X-ray"
     ],
     "other_modalities": [
       "clinical-only"
@@ -7031,30 +7032,65 @@
     "name": "MSD Heart (Task02)",
     "full_name": "Medical Segmentation Decathlon \u2014 Task02 Heart",
     "type": "dataset",
+    "review": "curated",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Cardiac"
     ],
     "anatomy": "left atrium",
+    "organs": [
+      "heart"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [],
+    "protocol_note": "mono-sequence MRI",
+    "multi_sequence": false,
     "year": 2018,
-    "format": [
+    "image_format": [
       "NIfTI"
     ],
+    "label_format": [
+      "NIfTI",
+      "JSON"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": true,
     "size": "30 cases (20 train + 10 test)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": "mono-sequence MRI",
+    "n_subjects": 30,
+    "n_images": 30,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "left atrium",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [],
     "tasks": [
       "segmentation"
     ],
+    "tags": [
+      "benchmark",
+      "challenge"
+    ],
     "license": "CC BY-SA 4.0",
+    "license_id": "CC-BY-SA",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Medical Segmentation Decathlon",
     "url": "http://medicaldecathlon.com/",
@@ -7067,15 +7103,18 @@
       ],
       "file_structure": "Each case is a mono-modal cardiac MRI volume stored as compressed NIfTI (.nii.gz); images in imagesTr/imagesTs folders and matching integer segmentation masks in labelsTr/, with a dataset.json describing modality, labels ({\"0\":\"background\",\"1\":\"left atrium\"}), numTraining and numTest.",
       "splits": "20 training cases (with labels) and 10 test cases (images only, labels withheld)",
-      "extra": "Data originates from the Left Atrial Segmentation Challenge (King's College London); only the left atrium appendage/body is annotated, and test labels were held out for the challenge leaderboard."
-    },
-    "image_format": [
-      "NIfTI"
-    ],
-    "protocol_note": "mono-sequence MRI",
-    "license_id": "CC-BY-SA",
-    "commercial_use": "allowed",
-    "review": "curated"
+      "extra": "Data originates from the Left Atrial Segmentation Challenge (King's College London); only the left atrium appendage/body is annotated, and test labels were held out for the challenge leaderboard.",
+      "related": [
+        {
+          "name": "Left Atrial Segmentation Challenge (King's College London)",
+          "relation": "derived-from",
+          "process": [
+            "reformatted-resized"
+          ],
+          "note": "Cardiac MRI volumes from King's College London repackaged as NIfTI with left-atrium masks for MSD Task02"
+        }
+      ]
+    }
   },
   {
     "id": "rvsc",
@@ -9151,32 +9190,77 @@
     "name": "WORD",
     "full_name": "Whole abdominal ORgan Dataset",
     "type": "dataset",
+    "review": "curated",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Abdomen"
     ],
     "anatomy": "multi-organ",
+    "organs": [
+      "liver",
+      "spleen",
+      "kidney",
+      "stomach",
+      "biliary-gallbladder",
+      "esophagus",
+      "pancreas",
+      "small-bowel",
+      "colon-rectum",
+      "adrenal",
+      "bladder",
+      "hip",
+      "multi-organ"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [],
+    "multi_sequence": false,
     "year": 2022,
-    "format": [
+    "image_format": [
       "NIfTI"
     ],
+    "label_format": [
+      "NIfTI"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": true,
     "size": "150 CT (100 train / 20 val / 30 test)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 150,
+    "n_images": 150,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "16 organs incl. liver, spleen, kidneys, stomach, pancreas, duodenum, colon, bladder",
-    "other_labels": [
-      "scribble annotations"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "radiotherapy-planning"
     ],
     "tasks": [
       "segmentation"
     ],
+    "tags": [
+      "benchmark",
+      "radiotherapy"
+    ],
     "license": "GPL-3.0",
+    "license_id": "software-license",
+    "commercial_use": "allowed",
     "access": "request",
     "host": "GitHub (HiLab-git)",
     "url": "https://github.com/HiLab-git/WORD",
@@ -9199,18 +9283,13 @@
         "Label 13 - rectum",
         "Label 14 - bladder",
         "Label 15 - left head of femur",
-        "Label 16 - right head of femur"
+        "Label 16 - right head of femur",
+        "scribble annotations"
       ],
       "file_structure": "3D abdominal CT volumes and their dense label masks are stored as NIfTI (.nii.gz) in nnU-Net-style split folders (imagesTr/labelsTr, imagesVal/labelsVal, imagesTs/labelsTs), each label file a single integer-valued volume matching its image.",
       "splits": "150 CT volumes total: 100 training / 20 validation / 30 testing (30,495 slices: 20,115 / 4,103 / 6,277).",
       "extra": "In addition to the dense pixel-level masks, the authors release scribble-based sparse annotations for weakly-supervised segmentation (each organ scribbled at least once per volume), reducing labeling cost by >96%; distributed zip password is word@uestc."
-    },
-    "image_format": [
-      "NIfTI"
-    ],
-    "license_id": "software-license",
-    "commercial_use": "allowed",
-    "review": "curated"
+    }
   },
   {
     "id": "flare21",
@@ -12867,7 +12946,8 @@
       "larynx-pharynx"
     ],
     "modality": [
-      "CT"
+      "CT",
+      "PET"
     ],
     "other_modalities": [
       "clinical-only"
@@ -20333,30 +20413,63 @@
     "name": "MRSpineSeg",
     "full_name": "MRSpineSeg Challenge (MICCAI CSI 2019): Lumbar Spine MRI Vertebrae and Intervertebral Disc Segmentation",
     "type": "dataset",
+    "review": "curated",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "MSK"
     ],
     "anatomy": "Lumbar spine",
+    "organs": [
+      "spine"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T2w"
+    ],
+    "protocol_note": "Sagittal T2-weighted lumbar MRI only",
+    "multi_sequence": false,
     "year": 2019,
-    "format": [
+    "image_format": [
       "NIfTI"
     ],
+    "label_format": [
+      "NIfTI"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": true,
     "size": "172 training + 20 (round-1) + 23 (round-2) sagittal T2-weighted lumbar MRI volumes (test labels withheld)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": "Sagittal T2-weighted lumbar MRI only",
+    "n_images": 215,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Multi-class voxel masks of individual vertebrae (e.g. L1-L5, T9-T12, S1) and intervertebral discs, up to ~20 label classes",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [],
+    "setting": [],
     "tasks": [
-      "multi-class segmentation"
+      "segmentation"
+    ],
+    "tags": [
+      "challenge",
+      "benchmark"
     ],
     "license": "Challenge Terms of Use (non-commercial research)",
+    "license_id": "custom-DUA",
+    "commercial_use": "prohibited",
     "access": "request",
     "host": "MICCAI CSI 2019 MRSpineSeg Challenge (authors' repo; public mirror on Baidu AI Studio / PaddleSeg MedicalSeg)",
     "url": "https://github.com/pangshumao/SpineParseNet",
@@ -20387,14 +20500,7 @@
       ],
       "file_structure": "Sagittal MR volumes and their integer-label segmentation masks are stored as NIfTI (.nii.gz) files, organized into two-stage folders (data/coarse and data/fine) each with in/nii/original_mr (images) and in/nii/mask (masks), plus HDF5 (h5py) caches generated for training; cases are named Case1 through Case215.",
       "extra": "The repository references 215 cases (Case1-Case215); it uses a two-stage coarse-then-fine framework where the coarse and fine stages share the same raw MR volumes but differ in mask resolution. The exact vertebra-vs-disc integer ordering (vertebrae 1-10, discs 11-19) is confirmed from the code, and individual level names follow the official MRSpineSeg Challenge convention."
-    },
-    "image_format": [
-      "NIfTI"
-    ],
-    "protocol_note": "Sagittal T2-weighted lumbar MRI only",
-    "license_id": "custom-DUA",
-    "commercial_use": "prohibited",
-    "review": "curated"
+    }
   },
   {
     "id": "gold-atlas",
@@ -23838,7 +23944,8 @@
     ],
     "modality": [
       "PET",
-      "CT"
+      "CT",
+      "X-ray"
     ],
     "other_modalities": [
       "clinical-only"
@@ -35644,34 +35751,65 @@
     "name": "STS 2024",
     "full_name": "MICCAI STS 2024: Semi-Supervised Instance-Level Tooth Segmentation in Panoramic X-ray and CBCT Images",
     "type": "dataset",
+    "review": "curated",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Dental"
     ],
     "anatomy": "Teeth (dentition), jaws",
+    "organs": [
+      "teeth-jaw"
+    ],
     "modality": [
       "X-ray",
       "CT"
     ],
-    "year": 2024,
-    "format": [
-      "PNG",
-      "NIfTI"
+    "protocols": [
+      "X-ray:panoramic"
     ],
-    "raw_image": true,
-    "size": "~2,380 panoramic X-ray (OPG) images + ~330 CBCT scans; ~968 MB total on Zenodo",
-    "paired_text": false,
-    "paired_text_detail": null,
+    "protocol_note": "Two imaging tracks: 2D panoramic X-ray (OPG) and 3D cone-beam CT (CBCT)",
     "multi_sequence": false,
-    "multi_sequence_detail": "Two imaging tracks: 2D panoramic X-ray (OPG) and 3D cone-beam CT (CBCT)",
+    "year": 2024,
+    "image_format": [
+      "JPEG"
+    ],
+    "label_format": [
+      "JSON (LabelMe polygons)"
+    ],
+    "preprocessing": [],
+    "images_included": true,
+    "raw_image": false,
+    "size": "~2,380 panoramic X-ray (OPG) images + ~330 CBCT scans; ~968 MB total on Zenodo",
+    "n_images": 30,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Instance-level tooth segmentation masks with FDI tooth numbering; semi-supervised setup with labeled and unlabeled subsets",
-    "other_labels": [
-      "FDI tooth numbering"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
     ],
+    "population": [
+      "adult",
+      "pediatric"
+    ],
+    "setting": [],
     "tasks": [
-      "semi-supervised tooth instance segmentation"
+      "segmentation"
+    ],
+    "tags": [
+      "challenge",
+      "benchmark"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/17712688",
@@ -35686,20 +35824,13 @@
         "Primary (deciduous) dentition, upper-right quadrant 5: 51,52,53,54,55",
         "Primary dentition, upper-left quadrant 6: 61,62,63,64,65",
         "Primary dentition, lower-left quadrant 7: 71,72,73,74,75",
-        "Primary dentition, lower-right quadrant 8: 81,82,83,84,85"
+        "Primary dentition, lower-right quadrant 8: 81,82,83,84,85",
+        "FDI tooth numbering"
       ],
       "file_structure": "A single Train-Labeled.zip expands to Train-Labeled/Images/*.jpg (panoramic dental X-rays, e.g. STS24_Train_Labeled_0001.jpg) and Train-Labeled/Masks/*_Mask.json, where each mask is a LabelMe v1.0.0 JSON storing per-tooth polygon shapes (fields: label=FDI code, points, shape_type='polygon', group_id) with imageWidth/imageHeight; one JSON per image, matched by filename.",
       "splits": "This Zenodo record hosts only the labeled training subset: 30 labeled panoramic X-ray images with 30 matching mask JSONs; no official train/val/test partition is provided within the record.",
       "extra": "Annotations are LabelMe polygon vertices (not raster masks), so instance masks must be rasterized from the polygons. The Zenodo record is titled for the MICCAI STS 2024 semi-supervised challenge covering both panoramic X-ray and CBCT, but only the panoramic X-ray labeled-training subset is included here (the unlabeled subset and any CBCT/test data are not in this file)."
-    },
-    "image_format": [
-      "PNG",
-      "NIfTI"
-    ],
-    "protocol_note": "Two imaging tracks: 2D panoramic X-ray (OPG) and 3D cone-beam CT (CBCT)",
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "curated"
+    }
   },
   {
     "id": "brisc2025",
@@ -37783,7 +37914,8 @@
     "modality": [
       "CT",
       "MRI",
-      "X-ray"
+      "X-ray",
+      "PET"
     ],
     "other_modalities": [
       "pathology-wsi",
@@ -40648,7 +40780,8 @@
       "breast"
     ],
     "modality": [
-      "MRI"
+      "MRI",
+      "X-ray"
     ],
     "other_modalities": [
       "ultrasound",
@@ -42473,44 +42606,68 @@
     "name": "Qatar Biobank",
     "full_name": "Qatar Biobank (Qatar Precision Health Institute)",
     "type": "dataset",
+    "review": "curated",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "WholeBody",
       "Vascular",
       "Abdomen"
     ],
     "anatomy": "Whole-body composition (DXA), carotid arteries (ultrasound IMT), and liver (FibroScan)",
+    "organs": [
+      "whole-body",
+      "bone",
+      "fat",
+      "muscle",
+      "peripheral-vessels",
+      "liver"
+    ],
     "modality": [
-      "DXA",
-      "Ultrasound"
+      "DXA"
     ],
+    "other_modalities": [
+      "ultrasound",
+      "genomics",
+      "clinical-only"
+    ],
+    "protocols": [
+      "DXA:whole-body"
+    ],
+    "protocol_note": "Whole-body DXA body composition and bone density; carotid ultrasound IMT and FibroScan liver stiffness also collected.",
+    "multi_sequence": false,
     "year": 2012,
-    "format": [
-      "derived"
+    "image_format": [
+      "unspecified"
     ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "~60,000 participants target (DXA and carotid ultrasound on examination subsets)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "label_types": [
+      "measurement",
+      "outcome"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "DXA fat and lean mass",
-      "DXA bone mineral density",
-      "carotid intima-media thickness",
-      "liver stiffness (FibroScan)"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "population-cohort"
     ],
     "tasks": [
-      "body-composition quantification",
-      "cardiometabolic risk association",
-      "bone density assessment"
+      "quantification",
+      "outcome-prediction"
     ],
-    "license": null,
-    "access": "request",
-    "host": "Qatar Precision Health Institute (Qatar Foundation)",
-    "url": "https://www.qphi.org.qa/research/how-to-apply",
-    "description": "Qatari population cohort with whole-body DXA body composition, carotid ultrasound and FibroScan measures linked to extensive labs, whole-genome sequencing/omics and lifestyle data, accessed by application through the QPHI research portal.",
     "tags": [
       "population-cohort",
       "body-composition",
@@ -42518,12 +42675,24 @@
       "clinical-linkage",
       "genetics"
     ],
-    "clinical_variables": "Cardiometabolic disease outcomes, comprehensive clinical labs, anthropometry, whole-genome sequencing and multi-omics (Qatar Genome Program), medications, and lifestyle/dietary questionnaires with follow-up recall.",
-    "body_composition": true,
     "longitudinal": true,
-    "license_id": "unknown",
+    "body_composition": true,
+    "clinical_variables": "Cardiometabolic disease outcomes, comprehensive clinical labs, anthropometry, whole-genome sequencing and multi-omics (Qatar Genome Program), medications, and lifestyle/dietary questionnaires with follow-up recall.",
+    "license": null,
+    "license_id": "custom-DUA",
     "commercial_use": "unclear",
-    "review": "curated"
+    "access": "request",
+    "host": "Qatar Precision Health Institute (Qatar Foundation)",
+    "url": "https://www.qphi.org.qa/research/how-to-apply",
+    "description": "Qatari population cohort with whole-body DXA body composition, carotid ultrasound and FibroScan measures linked to extensive labs, whole-genome sequencing/omics and lifestyle data, accessed by application through the QPHI research portal.",
+    "details": {
+      "label_schema": [
+        "DXA fat and lean mass",
+        "DXA bone mineral density",
+        "carotid intima-media thickness",
+        "liver stiffness (FibroScan)"
+      ]
+    }
   },
   {
     "id": "neo-study",
@@ -46063,7 +46232,8 @@
     ],
     "modality": [
       "X-ray",
-      "MRI"
+      "MRI",
+      "DXA"
     ],
     "other_modalities": [
       "clinical-only"
@@ -50519,30 +50689,67 @@
     "name": "SwissPancreas",
     "full_name": "SwissPancreas (Swiss-Test): University Hospital Basel CT-Report Pairs for Pancreatic Tumor Evaluation",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Abdomen"
     ],
     "anatomy": "pancreas",
+    "organs": [
+      "pancreas"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [
+      "CT:contrast-unspecified"
+    ],
+    "multi_sequence": false,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "CSV"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "684 CT-report pairs (445 with pancreatic tumors)",
-    "paired_text": true,
-    "paired_text_detail": "Radiology reports plus metadata (anonymized patient IDs, exam dates) in SwissPancreas_metadata.csv",
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_studies": 684,
+    "label_types": [
+      "report"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "pancreatic tumor presence (from reports)"
+    "paired_text": true,
+    "paired_text_detail": "Radiology reports plus metadata (anonymized patient IDs, exam dates) in SwissPancreas_metadata.csv",
+    "conditions": [
+      "pancreatic tumor"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
-      "classification"
+      "classification",
+      "segmentation",
+      "detection"
+    ],
+    "tags": [
+      "benchmark"
     ],
     "license": "CC BY-NC-ND 4.0",
+    "license_id": "CC-BY-NC-ND",
+    "commercial_use": "prohibited",
     "access": "open",
     "host": "Hugging Face",
     "url": "https://huggingface.co/datasets/AbdomenAtlas/SwissPancreas",
@@ -50550,7 +50757,8 @@
     "details": {
       "label_schema": [
         "Free-text radiology report per CT",
-        "Metadata: anonymized patient ID, exam date"
+        "Metadata: anonymized patient ID, exam date",
+        "pancreatic tumor presence (from reports)"
       ],
       "file_structure": "Hugging Face repo AbdomenAtlas/SwissPancreas; reports and metadata in SwissPancreas_metadata.csv; the image file format is not stated in the README.",
       "splits": "Test only (used as an external test set in Report Supervision, Medical Image Analysis 2026)",
@@ -50590,10 +50798,7 @@
         "label": "Report Supervision paper",
         "url": "https://www.sciencedirect.com/science/article/pii/S1361841526003269"
       }
-    ],
-    "license_id": "CC-BY-NC-ND",
-    "commercial_use": "prohibited",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "visible-human-3d-models",
@@ -55303,36 +55508,77 @@
     "name": "MIDI-B",
     "full_name": "Data in Support of the MIDI-B Challenge (MIDI-B-Synthetic-Validation, MIDI-B-Curated-Validation, MIDI-B-Synthetic-Test, MIDI-B-Curated-Test)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
-      "Multi"
+      "Breast"
     ],
     "anatomy": "various body regions",
+    "organs": [
+      "multi-organ"
+    ],
     "modality": [
       "CT",
       "MRI",
       "PET",
       "X-ray"
     ],
+    "other_modalities": [
+      "ultrasound",
+      "other"
+    ],
+    "protocols": [
+      "X-ray:radiograph",
+      "X-ray:mammography"
+    ],
+    "protocol_note": "Modalities CR, CT, DX, MG, MR, PT, SR, US; manufacturers incl. GE, Siemens, Varian, Confirma, Agfa, Eigen, Elekta, Hologic, KONICA MINOLTA; varied scan parameters and body regions. CT/MR sequences and PET tracers not specified.",
+    "multi_sequence": false,
     "year": 2025,
-    "format": [
+    "image_format": [
       "DICOM"
     ],
+    "label_format": [
+      "SQLite",
+      "CSV"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": true,
     "size": "538 subjects, 71.07 GB; synthetic validation 216 subjects / 280 series / 23,921 images; synthetic test 322 subjects / 428 series / 29,660 images; plus TCIA-curated versions of both",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 538,
+    "n_studies": 605,
+    "n_images": 53581,
+    "label_types": [
+      "none"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "de-identification ground-truth answer keys (SQLite)",
-      "patient and UID mapping files (CSV)"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "cancer"
     ],
-    "tasks": [
-      "de-identification"
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [],
+    "setting": [],
+    "tasks": [],
+    "tags": [
+      "de-identification",
+      "benchmark",
+      "challenge",
+      "multi-center",
+      "multi-vendor"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "TCIA",
     "url": "https://www.cancerimagingarchive.net/collection/midi-b-test-midi-b-validation/",
@@ -55340,7 +55586,9 @@
     "details": {
       "label_schema": [
         "Answer key (sqlite.db) per Validation/Test set listing the appropriate de-identification action and value for each injected PHI/PII element",
-        "Patient ID mapping CSV and UID mapping CSV linking the TCIA-curated set to the synthetic set"
+        "Patient ID mapping CSV and UID mapping CSV linking the TCIA-curated set to the synthetic set",
+        "de-identification ground-truth answer keys (SQLite)",
+        "patient and UID mapping files (CSV)"
       ],
       "file_structure": "Synthetic Validation Images (DICOM, 7.63 GB), Synthetic Test Images (DICOM, 11.09 GB), Curated Validation Images (DICOM, 18.45 GB) and Curated Test Images (DICOM, 27.91 GB) via TCIA Data Retriever; Validation and Test Answer Keys (SQLite + ZIP, 2.6 GB / 3.38 GB) via IBM Aspera; Validation/Test Patient and UID Mapping CSVs.",
       "splits": "Validation (216 subjects) and Test (322 subjects), each provided in synthetic (PHI-infused) and TCIA-curated (de-identified) versions",
@@ -55356,13 +55604,19 @@
       "dicom_headers": "intact",
       "third_party_processing": "permitted",
       "third_party_note": "All components are licensed CC BY 4.0; users must also abide by the TCIA Data Usage Policy and cite DOI 10.7937/cf2p-aw56.",
-      "extra": "The headers contain synthetic, not real, PHI. Source images were selected from de-identified TCIA collections, and images containing faces were excluded. The collection also includes US and SR objects. It succeeds Pseudo-PHI-DICOM-Data (TCIA, 21 subjects). Validation script: https://github.com/CBIIT/MIDI_validation_script. Paper: Rutherford et al. 2025, arXiv:2508.01889."
+      "extra": "The headers contain synthetic, not real, PHI. Source images were selected from de-identified TCIA collections, and images containing faces were excluded. The collection also includes US and SR objects. It succeeds Pseudo-PHI-DICOM-Data (TCIA, 21 subjects). Validation script: https://github.com/CBIIT/MIDI_validation_script. Paper: Rutherford et al. 2025, arXiv:2508.01889.",
+      "related": [
+        {
+          "id": "tcia",
+          "name": "TCIA curated collections (multiple)",
+          "relation": "derived-from",
+          "process": [
+            "subset"
+          ],
+          "note": "Image series selected from de-identified TCIA collections (faces excluded) and infused with Faker-generated synthetic PHI in DICOM headers and burned-in pixel text; also a TCIA-curated de-identified version."
+        }
+      ]
     },
-    "tags": [
-      "de-identification",
-      "synthetic-phi",
-      "benchmark"
-    ],
     "aliases": [
       "MIDI-B-Test-MIDI-B-Validation",
       "MIDI-B Challenge",
@@ -55382,13 +55636,7 @@
         "label": "DOI",
         "url": "https://doi.org/10.7937/cf2p-aw56"
       }
-    ],
-    "image_format": [
-      "DICOM"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "midrc-ricord-1b",
@@ -64174,33 +64422,75 @@
     "name": "MIMIC-Eye",
     "full_name": "MIMIC-Eye: Integrating MIMIC Datasets with REFLACX and Eye Gaze for Multimodal Deep Learning Applications",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Chest"
     ],
     "anatomy": "chest",
+    "organs": [
+      "lung",
+      "heart"
+    ],
     "modality": [
       "X-ray"
     ],
+    "other_modalities": [
+      "clinical-only",
+      "other"
+    ],
+    "protocols": [
+      "X-ray:radiograph"
+    ],
+    "protocol_note": "Chest X-ray images from MIMIC-CXR / MIMIC-CXR-JPG linked to REFLACX and EyeGaze eye-tracking data",
+    "multi_sequence": false,
     "year": 2023,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "CSV"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "3,689 chest X-ray images / 3,192 patients / 1,644 ED stays",
-    "paired_text": true,
-    "paired_text_detail": "MIMIC-CXR radiology reports, time-stamped radiologist dictation transcripts (REFLACX/EyeGaze), MIMIC-IV/MIMIC-IV-ED clinical data",
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 3192,
+    "n_images": 3689,
+    "label_types": [
+      "bounding-box",
+      "report",
+      "image-level-class"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "REFLACX radiologist lesion bounding ellipses (21 merged classes)",
-      "eye-tracking gaze, fixations and pupil dilation",
-      "ED triage clinical features (temperature, heart rate, resp rate, O2 sat, BP, pain, acuity, age, gender)"
+    "paired_text": true,
+    "paired_text_detail": "MIMIC-CXR radiology reports, time-stamped radiologist dictation transcripts (REFLACX/EyeGaze), MIMIC-IV/MIMIC-IV-ED clinical data",
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "emergency",
+      "diagnostic"
     ],
     "tasks": [
       "classification",
       "detection"
     ],
+    "tags": [
+      "clinical-linkage",
+      "eye-tracking"
+    ],
     "license": null,
+    "license_id": "PhysioNet-restricted",
+    "commercial_use": "unclear",
     "access": "dua",
     "host": "PhysioNet",
     "url": "https://physionet.org/content/mimic-eye-multimodal-datasets/1.0.0/",
@@ -64209,7 +64499,10 @@
       "label_schema": [
         "REFLACX lesion ellipses with v1/v2 labels merged into 21 classes after radiologist consultation",
         "Eye-tracking raw gaze, fixations and pupil dilation (REFLACX, EyeGaze)",
-        "10 clinical features: age and gender (MIMIC-IV patients) plus temperature, heartrate, resprate, o2sat, sbp, dbp, pain and acuity (MIMIC-IV-ED triage)"
+        "10 clinical features: age and gender (MIMIC-IV patients) plus temperature, heartrate, resprate, o2sat, sbp, dbp, pain and acuity (MIMIC-IV-ED triage)",
+        "REFLACX radiologist lesion bounding ellipses (21 merged classes)",
+        "eye-tracking gaze, fixations and pupil dilation",
+        "ED triage clinical features (temperature, heart rate, resp rate, O2 sat, BP, pain, acuity, age, gender)"
       ],
       "file_structure": "One folder per patient named by subject_id containing that patient's modalities, plus a 'spreadsheets' folder for tables not tied to a patient (e.g. code definitions).",
       "label_source": [
@@ -64225,17 +64518,49 @@
         {
           "id": "mimic-cxr",
           "name": "MIMIC-CXR",
-          "relation": "derived-from"
+          "relation": "derived-from",
+          "note": "Chest X-ray images and radiology reports for patients in REFLACX/EyeGaze",
+          "process": [
+            "subset",
+            "merged"
+          ]
         },
         {
           "id": "mimic-cxr-jpg",
           "name": "MIMIC-CXR-JPG",
-          "relation": "derived-from"
+          "relation": "derived-from",
+          "note": "JPG images and metadata used to link CXRs to ED stays",
+          "process": [
+            "subset",
+            "merged"
+          ]
         },
         {
           "id": "reflacx",
           "name": "REFLACX",
-          "relation": "derived-from"
+          "relation": "derived-from",
+          "note": "Eye-tracking, transcripts and lesion ellipses; v1/v2 labels merged into 21 classes",
+          "process": [
+            "merged",
+            "relabelled"
+          ]
+        },
+        {
+          "id": "egd-cxr",
+          "name": "Eye Gaze Data for Chest X-rays",
+          "relation": "derived-from",
+          "process": [
+            "merged"
+          ],
+          "note": "Eye gaze data with truncated DICOM IDs fixed and stay_ids updated"
+        },
+        {
+          "name": "MIMIC-IV / MIMIC-IV-ED",
+          "relation": "derived-from",
+          "process": [
+            "merged"
+          ],
+          "note": "Clinical and ED triage data linked at patient/stay level"
         }
       ],
       "version": "1.0.0",
@@ -64244,10 +64569,6 @@
       "third_party_note": "PhysioNet lists the project as Restricted Access; the licence text was not in the fetched evidence.",
       "extra": "DOI 10.13026/pc72-as03. The authors fixed truncated DICOM_IDs in EyeGaze and updated stay_ids to MIMIC-IV-ED v2.0. Only 1,683 images link to ED clinical data; 10 patients appear in both REFLACX and EyeGaze. The image format (DICOM vs JPG) was not confirmed from the evidence."
     },
-    "tags": [
-      "clinical-linkage",
-      "eye-tracking"
-    ],
     "aliases": [
       "MIMIC-EYE"
     ],
@@ -64256,10 +64577,7 @@
         "label": "DOI",
         "url": "https://doi.org/10.13026/pc72-as03"
       }
-    ],
-    "license_id": "unknown",
-    "commercial_use": "unclear",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "ms-cxr-t",
@@ -65383,32 +65701,74 @@
     "name": "4D CBCT Phantom Data Set",
     "full_name": "4D cone beam computed tomography phantom data set",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "phantom"
+    ],
     "regions": [
       "Chest"
     ],
     "anatomy": "thorax phantom (dynamic thorax phantom with moving insert)",
+    "organs": [
+      "chest-wall",
+      "lung"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [
+      "CT:CBCT",
+      "CT:4D"
+    ],
+    "protocol_note": "Time-resolved (4D) cone-beam CT on Varian TrueBeam; scan geometry in Scan.xml per scan; insert SI amplitude \u00b110 mm, sin or cos**4 motion, periods 2.5/5.0/7.5 s",
+    "multi_sequence": false,
     "year": 2020,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "XML"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "6 time-resolved (4D) CBCT scans; 4d_cbct_boosting.zip (5.9 GB)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_images": 6,
+    "label_types": [
+      "none"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "not-applicable"
+    ],
+    "population": [],
+    "setting": [],
     "tasks": [
       "reconstruction"
     ],
+    "tags": [
+      "motion-artifact",
+      "radiotherapy"
+    ],
     "license": "CC BY-NC-SA 4.0",
+    "license_id": "CC-BY-NC-SA",
+    "commercial_use": "prohibited",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/10303690",
     "description": "Six 4D cone-beam CT scans of a dynamic thorax phantom (Model 008A) acquired on a Varian TrueBeam with sinusoidal and cos^4 motion patterns at 2.5, 5.0 and 7.5 s periods, released with a study on deep learning-based boosting of 4D CBCT reconstruction.",
+    "phantom": {
+      "type": "physical",
+      "anthropomorphic": true,
+      "body_part": "chest-wall",
+      "model": "CIRS Dynamic Thorax Phantom Model 008A",
+      "purpose": "4D CBCT reconstruction with known programmed respiratory-like insert motion"
+    },
     "details": {
       "label_schema": [
         "Motion pattern per scan: SI amplitude of insert \u00b110 mm; pattern sin or cos**4; period 2.5, 5.0 or 7.5 s"
@@ -65426,18 +65786,9 @@
       "third_party_note": "Licence is CC BY-NC-SA 4.0 (non-commercial, share-alike). The record has no explicit clause on external processing. The data are phantom scans with no patient data.",
       "extra": "Phantom data only, no patients. The image or projection file format is not stated on the Zenodo record. Accompanies Madesta F, Sentker T, Gauer T, Werner R. Self-contained deep learning-based boosting of 4D cone-beam CT reconstruction. Med Phys 2020;47(11):5619-5631."
     },
-    "tags": [
-      "phantom",
-      "4D",
-      "CBCT",
-      "motion"
-    ],
     "aliases": [
       "4d_cbct_boosting"
-    ],
-    "license_id": "CC-BY-NC-SA",
-    "commercial_use": "prohibited",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "medmnist",
@@ -65645,31 +65996,71 @@
     "name": "NPC MRI Multi-modality Segmentation",
     "full_name": "A dataset of primary nasopharyngeal carcinoma MRI with multi-modalities segmentation",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "HeadNeck"
     ],
     "anatomy": "nasopharynx",
+    "organs": [
+      "larynx-pharynx",
+      "head"
+    ],
     "modality": [
       "MRI"
     ],
+    "other_modalities": [
+      "clinical-only"
+    ],
+    "protocols": [
+      "MRI:T1w",
+      "MRI:T2w",
+      "MRI:T1w-CE"
+    ],
+    "protocol_note": "T1-weighted, T2-weighted, contrast-enhanced T1-weighted (axial)",
+    "multi_sequence": true,
     "year": 2024,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "277 patients; ~5.3 GB (primary_data.zip 4.6 GB, images.zip 718 MB)",
-    "paired_text": true,
-    "paired_text_detail": "Clinical and laboratory diagnoses with follow-up survival data",
-    "multi_sequence": true,
-    "multi_sequence_detail": "T1-weighted, T2-weighted, contrast-enhanced T1-weighted (axial)",
+    "n_subjects": 277,
+    "n_images": 831,
+    "label_types": [
+      "mask",
+      "outcome"
+    ],
     "segmentation": true,
     "segmentation_detail": "Radiologist-annotated gross tumor volume (GTV) of primary nasopharyngeal carcinoma",
-    "other_labels": [
-      "clinical/laboratory diagnoses",
-      "follow-up survival"
+    "paired_text": false,
+    "paired_text_detail": "Clinical and laboratory diagnoses with follow-up survival data",
+    "conditions": [
+      "nasopharyngeal carcinoma"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [],
+    "setting": [
+      "pre-treatment"
     ],
     "tasks": [
-      "segmentation"
+      "segmentation",
+      "outcome-prediction"
+    ],
+    "tags": [
+      "clinical-linkage",
+      "mortality-outcome"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/13131827",
@@ -65678,7 +66069,8 @@
       "label_schema": [
         "Gross tumor volume segmentation masks",
         "Clinical and laboratory diagnoses",
-        "Follow-up survival"
+        "Follow-up survival",
+        "clinical/laboratory diagnoses"
       ],
       "file_structure": "Zenodo record 13131827: primary_data.zip (4.6 GB), images.zip (718.2 MB), inner_reliability.zip (1.2 MB). The image file format is not stated on the record.",
       "label_readers": "Annotated by radiologists (number and experience not stated on the record); inner_reliability.zip suggests a reliability analysis of the annotations",
@@ -65691,10 +66083,6 @@
       "third_party_note": "The Zenodo licence is CC BY 4.0 (attribution required). The record states the data are anonymized.",
       "extra": "Paper: Li et al., arXiv:2404.03253. The format is not stated on the Zenodo page, so raw_image is unverified. Contact: Yin Li."
     },
-    "tags": [
-      "clinical-linkage",
-      "survival"
-    ],
     "aliases": [
       "A dataset of primary nasopharyngeal carcinoma MRI with multi-modalities segmentation"
     ],
@@ -65703,11 +66091,7 @@
         "label": "arXiv paper",
         "url": "https://arxiv.org/abs/2404.03253"
       }
-    ],
-    "protocol_note": "T1-weighted, T2-weighted, contrast-enhanced T1-weighted (axial)",
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "lionheart-normal-male-head-mri",
@@ -65897,30 +66281,63 @@
     "name": "Lower Spine T2 MRI VB Segmentation",
     "full_name": "Annotated T2-weighted MR images of the Lower Spine",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "MSK"
     ],
     "anatomy": "lower spine vertebral bodies (T11-L5)",
+    "organs": [
+      "spine"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T2w"
+    ],
+    "protocol_note": "T2-weighted turbo spin echo MR spine images, each with at least 7 vertebral bodies (T11-L5)",
+    "multi_sequence": false,
     "year": 2015,
-    "format": [
+    "image_format": [
       "NIfTI"
     ],
+    "label_format": [
+      "NIfTI"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": true,
     "size": "23 patients (23 T2-weighted MR volumes + binary masks)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 23,
+    "n_images": 23,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Manual binary masks of at least 7 vertebral bodies (T11-L5) per patient",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [],
     "tasks": [
-      "segmentation"
+      "segmentation",
+      "detection"
     ],
     "license": "CC0 1.0",
+    "license_id": "CC0",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/22304",
@@ -65946,13 +66363,7 @@
         "label": "Paper (PLoS One 2015)",
         "url": "https://doi.org/10.1371/journal.pone.0143327"
       }
-    ],
-    "image_format": [
-      "NIfTI"
-    ],
-    "license_id": "CC0",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "bigbrain-mr",
@@ -66081,32 +66492,72 @@
     "name": "Breast Masses Sequential Mammograms",
     "full_name": "Breast Masses Dataset with Precisely Annotated Sequential Mammograms",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Breast"
     ],
     "anatomy": "mammography",
+    "organs": [
+      "breast"
+    ],
     "modality": [
       "X-ray"
     ],
+    "protocols": [
+      "X-ray:mammography"
+    ],
+    "protocol_note": "Prior and recent digital mammograms from two temporally sequential screening rounds, two mammographic views per patient.",
+    "multi_sequence": false,
     "year": 2024,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "XLSX"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "100 pairs of mammograms (prior and recent rounds, two views per patient); ~3.0 GB",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "label_types": [
+      "mask",
+      "image-level-class",
+      "pathology-result"
+    ],
     "segmentation": true,
     "segmentation_detail": "Per-mammogram image with precise annotation of each individual breast mass by two expert radiologists",
-    "other_labels": [
-      "normal (BI-RADS 1) / benign (BI-RADS 2) / biopsy-confirmed malignant (BI-RADS 6)"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "breast mass",
+      "breast cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "screening",
+      "diagnostic"
     ],
     "tasks": [
       "detection",
       "classification",
       "segmentation"
     ],
+    "tags": [
+      "longitudinal"
+    ],
+    "longitudinal": true,
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/11446259",
@@ -66114,7 +66565,8 @@
     "details": {
       "label_schema": [
         "Case class: normal (BI-RADS 1), benign (BI-RADS 2), biopsy-confirmed malignant (BI-RADS 6)",
-        "Annotation image per mammogram outlining each individual mass"
+        "Annotation image per mammogram outlining each individual mass",
+        "normal (BI-RADS 1) / benign (BI-RADS 2) / biopsy-confirmed malignant (BI-RADS 6)"
       ],
       "file_structure": "Zenodo record 11446259: README.txt (7.3 KB), Description.xlsx (32.2 KB), Dataset.zip (3.0 GB)",
       "label_source": [
@@ -66132,15 +66584,9 @@
       "third_party_note": "Zenodo licence is CC BY 4.0; the record says citation is mandatory for any use.",
       "extra": "Image file format is not stated in the evidence, so raw_image was left false pending verification of the README. Associated paper: Loizidou et al., 'Subtraction of Temporally Sequential Digital Mammograms: Enhancing the Detection and Classification of Malignant Masses in Breast Imaging', IEEE Open J Eng Med Biol (2025); the DOI quoted on the record (10.1186/s41747-021-00238-w) appears inconsistent with that journal. The work was supported by KIOS CoE, University of Cyprus."
     },
-    "tags": [
-      "longitudinal"
-    ],
     "aliases": [
       "Precisely Annotated Sequential Mammograms"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "cyprus-sequential-mammo-microcalcifications",
@@ -66630,31 +67076,77 @@
     "name": "Cross-institution Male Pelvic Structures",
     "full_name": "Cross-institution Male Pelvic Structures",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Pelvis"
     ],
     "anatomy": "prostate / male pelvis",
+    "organs": [
+      "prostate",
+      "bladder",
+      "colon-rectum",
+      "bone",
+      "muscle",
+      "pelvis"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T2w"
+    ],
+    "protocol_note": "589 T2-weighted images; two manufacturers with mixed 1.5 and 3T field strengths; in-plane voxel 0.3-1.0 mm, out-of-plane spacing 1.8-5.4 mm",
+    "field_strength": [
+      "1.5T",
+      "3T"
+    ],
+    "multi_sequence": false,
     "year": 2022,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "TXT"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "589 T2-weighted MR images / 589 patients; 7 institution subsets; data.zip 3.1 GB",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 589,
+    "n_images": 589,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Manual labels for 8 pelvic structures: bladder, bone, obturator internus, transition zone, central gland, rectum, seminal vesicle, neurovascular bundle (classes 1-8)",
-    "other_labels": [
-      "institution index",
-      "source trial index"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "prostate cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
       "segmentation"
     ],
+    "tags": [
+      "multi-center",
+      "multi-vendor"
+    ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/7013610",
@@ -66668,7 +67160,9 @@
         "Class 5: central gland",
         "Class 6: rectum",
         "Class 7: seminal vesicle",
-        "Class 8: neurovascular bundle"
+        "Class 8: neurovascular bundle",
+        "institution index",
+        "source trial index"
       ],
       "file_structure": "data.zip (3.1 GB) with all images and labels; trial.txt maps each image to its source trial; institution.txt maps each image to its acquiring institution.",
       "splits": "Seven subsets defined by acquiring institution; no official train/test split stated",
@@ -66684,12 +67178,39 @@
         {
           "id": "prostate-3t",
           "name": "Prostate-3T",
-          "relation": "overlaps"
+          "relation": "overlaps",
+          "process": [
+            "merged",
+            "relabelled"
+          ]
         },
         {
           "id": "promise12",
           "name": "PROMISE12",
-          "relation": "overlaps"
+          "relation": "overlaps",
+          "process": [
+            "merged",
+            "relabelled"
+          ]
+        },
+        {
+          "id": "prostate-diagnosis",
+          "name": "PROSTATE-DIAGNOSIS",
+          "relation": "derived-from",
+          "process": [
+            "merged",
+            "relabelled"
+          ],
+          "note": "TCIA ProstateDx T2w images included with new manual labels"
+        },
+        {
+          "name": "INDEX / SmartTarget Biopsy Trial / PICTURE / Prostate MR Image Database",
+          "relation": "derived-from",
+          "process": [
+            "merged",
+            "relabelled"
+          ],
+          "note": "T2w images from these clinical studies included with new manual labels"
         }
       ],
       "release_date": "2022-09-04",
@@ -66697,9 +67218,6 @@
       "third_party_note": "Zenodo record licence is CC BY 4.0 (attribution required).",
       "extra": "Images come from INDEX, SmartTarget Biopsy Trial, PICTURE, TCIA Prostate3T, PROMISE12, TCIA ProstateDx (Diagnosis) and the Prostate MR Image Database. Acquisition used two manufacturers at 1.5T and 3T, with in-plane spacing of 0.3-1.0 mm and slice spacing of 1.8-5.4 mm. The image file format is not stated on the record. Citation: Li Y. et al., arXiv:2209.05160 (2022). The labelers are described as biomedical imaging researchers, not radiologists."
     },
-    "tags": [
-      "multi-center"
-    ],
     "aliases": [
       "Prototypical few-shot segmentation for cross-institution male pelvic structures"
     ],
@@ -66708,38 +67226,66 @@
         "label": "arXiv paper",
         "url": "https://arxiv.org/abs/2209.05160"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "csaw-s",
     "name": "CSAW-S",
     "full_name": "CSAW-S: curated mammography segmentation subset (Cohort of Screen-Aged Women)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Breast"
     ],
     "anatomy": "mammography",
+    "organs": [
+      "breast"
+    ],
     "modality": [
       "X-ray"
     ],
+    "protocols": [
+      "X-ray:mammography"
+    ],
+    "multi_sequence": false,
     "year": 2020,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "Mammography screenings from 172 patients",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 172,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Semantic segmentation annotations of breast cancer and breast anatomy, drawn by experts and non-experts",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "breast cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "screening"
+    ],
     "tasks": [
       "segmentation"
     ],
     "license": null,
+    "license_id": "unknown",
+    "commercial_use": "unclear",
     "access": "request",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/4030660",
@@ -66760,43 +67306,77 @@
     },
     "aliases": [
       "Adding seemingly uninformative labels helps in low data regimes"
-    ],
-    "license_id": "unknown",
-    "commercial_use": "unclear",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "proteas-brain-mets-zenodo",
     "name": "PROTEAS Brain Metastases",
     "full_name": "Diagnostic and follow-up MRIs, CTs, Radiotherapy and Radiomics data of Brain Metastases",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Neuro"
     ],
     "anatomy": "brain",
+    "organs": [
+      "brain"
+    ],
     "modality": [
       "MRI",
       "CT"
     ],
+    "protocols": [],
+    "protocol_note": "MRI and CT diagnostic and follow-up studies; sequences, phases and field strength not stated in the record. Pre-treatment radiotherapy dose distribution maps (RT plan) included.",
+    "multi_sequence": false,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "185 imaging studies (MRI and CT) / 40 patients; 65 segmented brain metastases",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 40,
+    "n_studies": 185,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Manual segmentations of 65 brain metastases into enhancing tumor, edema and necrotic core",
-    "other_labels": [
-      "radiotherapy dose distribution maps (RT plan)",
-      "radiomics data"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "brain metastases"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic",
+      "post-treatment-follow-up",
+      "radiotherapy-planning"
     ],
     "tasks": [
       "segmentation",
-      "detection"
+      "detection",
+      "outcome-prediction"
     ],
+    "tags": [
+      "longitudinal",
+      "radiotherapy",
+      "radiomics"
+    ],
+    "longitudinal": true,
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/23171182",
@@ -66806,7 +67386,9 @@
         "Enhancing tumor region",
         "Edema",
         "Necrotic core",
-        "Pre-treatment radiotherapy dose distribution map (RT plan)"
+        "Pre-treatment radiotherapy dose distribution map (RT plan)",
+        "radiotherapy dose distribution maps (RT plan)",
+        "radiomics data"
       ],
       "file_structure": "One zip per patient (e.g. P02.zip, P07b.zip, P20a.zip/P20b.zip), roughly 130-650 MB each; internal file formats not stated in the record.",
       "label_unit": [
@@ -66818,16 +67400,9 @@
       "third_party_note": "Zenodo record licence is CC BY 4.0 (attribution required).",
       "extra": "Funded by the Cyprus Cancer Research Institute PROTEAS project (CCRI_2021_FA_LE_105); approved by the Cyprus National Bioethics Committee (EEBK/\u0395\u03a0/2021/72). Image file format and MRI sequences are not stated in the record description; the fetched file list showed 30 patient zips although 40 patients are described."
     },
-    "tags": [
-      "longitudinal",
-      "radiotherapy"
-    ],
     "aliases": [
       "PROTEAS brain metastases dataset"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "nlm-visible-human-project",
@@ -67021,33 +67596,69 @@
     "name": "DLCSD24",
     "full_name": "Duke Lung Cancer Screening Dataset 2024",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Chest"
     ],
     "anatomy": "lung",
+    "organs": [
+      "lung"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [
+      "CT:low-dose"
+    ],
+    "protocol_note": "Screening chest CT scans (low-dose thoracic CT screening) performed Jan 2015 - Jun 2021 at Duke University Health System",
+    "multi_sequence": false,
     "year": 2024,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "XLSX",
+      "CSV"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "1,613 CT volumes with 2,487 annotated nodules (selected from 2,061 patients)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_images": 1613,
+    "label_types": [
+      "bounding-box"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "3D bounding boxes of lung nodules",
-      "metadata (DLCSD24_metadata_v1.1.xlsx)",
-      "CT image info metadata"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "lung nodule",
+      "lung cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "screening"
     ],
     "tasks": [
       "detection",
       "classification"
     ],
+    "tags": [
+      "benchmark"
+    ],
     "license": "CC BY-NC-ND 4.0",
+    "license_id": "CC-BY-NC-ND",
+    "commercial_use": "prohibited",
     "access": "request",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/13799069",
@@ -67056,7 +67667,9 @@
       "label_schema": [
         "3D bounding box annotations of lung nodules",
         "Metadata file DLCSD24_metadata_v1.1.xlsx",
-        "CT image info metadata DLCSD24_CT_ImageInfo_v1.csv"
+        "CT image info metadata DLCSD24_CT_ImageInfo_v1.csv",
+        "3D bounding boxes of lung nodules",
+        "metadata (DLCSD24_metadata_v1.1.xlsx)"
       ],
       "file_structure": "Part 1 (zenodo 13799069): DLCS subsets 1-7, metadata and annotations. Part 2 (zenodo 12784601): subsets 8-9 and CT image info metadata. Part 3 (zenodo 14659131): subset 10.",
       "splits": "Released 1,613 volumes; the remaining data from the 2,061 patients is reserved for future testing.",
@@ -67076,9 +67689,6 @@
       "third_party_note": "Licence is CC BY-NC-ND 4.0 and Zenodo access is restricted (request-based); terms of the access request were not shown in the evidence.",
       "extra": "The file format is not stated in the evidence (file lists were not shown), so the raw_image value is unverified. Baseline models are available at github.com/fitushar/AI-in-Lung-Health-Benchmarking-Detection-and-Diagnostic-Models-Across-Multiple-CT-Scan-Datasets. Funding: NIH/NIBIB P41-EB028744 and NIH/NCI R01-CA261457."
     },
-    "tags": [
-      "lung-cancer-screening"
-    ],
     "aliases": [
       "DLCSD24",
       "Duke Lung Cancer Screening Dataset 2024"
@@ -67096,10 +67706,7 @@
         "label": "Benchmark code (GitHub)",
         "url": "https://github.com/fitushar/AI-in-Lung-Health-Benchmarking-Detection-and-Diagnostic-Models-Across-Multiple-CT-Scan-Datasets"
       }
-    ],
-    "license_id": "CC-BY-NC-ND",
-    "commercial_use": "prohibited",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "eden2020-healthy-brain-mri",
@@ -67212,28 +67819,66 @@
     "name": "psCBCT AAPM Thoracic",
     "full_name": "Generalizable cone beam CT esophagus segmentation using physics-based data augmentation (pseudo-CBCT AAPM thoracic dataset)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human",
+      "synthetic"
+    ],
     "regions": [
       "Chest"
     ],
     "anatomy": "thorax (esophagus, heart, lungs, spinal cord)",
+    "organs": [
+      "esophagus",
+      "heart",
+      "lung",
+      "spinal-cord"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [
+      "CT:CBCT",
+      "CT:contrast-unspecified"
+    ],
+    "protocol_note": "Thoracic planning CT from the AAPM thoracic auto-segmentation challenge converted to pseudo-CBCT (psCBCT) via a physics-based augmentation pipeline; further geometric augmentation yields 23 paired CT/psCBCT/OAR sets per case.",
+    "multi_sequence": false,
     "year": 2021,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "Train archive 16.1 GB + test archive 4.3 GB; each planning CT/OAR case augmented into 23 paired CT/psCBCT/OAR sets",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Organ-at-risk masks for esophagus, heart, lungs and spinal cord, paired with planning CT and simulated pseudo-CBCT images",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "radiotherapy-planning"
+    ],
     "tasks": [
-      "segmentation"
+      "segmentation",
+      "synthesis"
+    ],
+    "tags": [
+      "radiotherapy"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/5035494",
@@ -67254,13 +67899,19 @@
       "release_date": "2021-06-27",
       "third_party_processing": "permitted",
       "third_party_note": "Zenodo record licence is CC BY 4.0 (attribution required); underlying AAPM challenge data terms not restated on the record.",
-      "extra": "Derived from the AAPM 2017 thoracic auto-segmentation challenge data (http://aapmchallenges.cloudapp.net/competitions/3). Paper: Alam et al., Phys Med Biol 2021 (doi:10.1088/1361-6560/abe2eb). Images are synthetic pseudo-CBCT generated by a physics-based augmentation pipeline, not real CBCT acquisitions. Used for psCBCT OAR segmentation and joint CBCT-to-CT translation and segmentation."
+      "extra": "Derived from the AAPM 2017 thoracic auto-segmentation challenge data (http://aapmchallenges.cloudapp.net/competitions/3). Paper: Alam et al., Phys Med Biol 2021 (doi:10.1088/1361-6560/abe2eb). Images are synthetic pseudo-CBCT generated by a physics-based augmentation pipeline, not real CBCT acquisitions. Used for psCBCT OAR segmentation and joint CBCT-to-CT translation and segmentation.",
+      "related": [
+        {
+          "id": "lctsc",
+          "name": "LCTSC (AAPM 2017 Thoracic Auto-segmentation Challenge)",
+          "relation": "derived-from",
+          "process": [
+            "synthesised"
+          ],
+          "note": "Planning CTs converted to physics-based pseudo-CBCT and geometrically augmented into 23 paired CT/psCBCT/OAR sets per case; OAR masks inherited from the challenge."
+        }
+      ]
     },
-    "tags": [
-      "synthetic",
-      "radiotherapy",
-      "cbct"
-    ],
     "aliases": [
       "Generalizable cone beam CT esophagus segmentation using physics-based data augmentation",
       "psCBCT AAPM"
@@ -67270,38 +67921,74 @@
         "label": "Paper (Phys Med Biol 2021)",
         "url": "https://iopscience.iop.org/article/10.1088/1361-6560/abe2eb"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "head-neck-cbct-ct-hust",
     "name": "Head Neck CBCT CT",
     "full_name": "Head Neck CBCT CT datasets (Huazhong University of Science and Technology)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "HeadNeck"
     ],
     "anatomy": "head and neck",
+    "organs": [
+      "head",
+      "neck"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [
+      "CT:contrast-unspecified",
+      "CT:CBCT"
+    ],
+    "protocol_note": "Planning CT on Philips Brilliance CT Big Bore (90-176 slices, 3 mm, 512x512 at 1.1719 mm); CBCT from Varian OBI on Varian Edge linac in full-fan mode (88 slices, 3 mm, 270x270 at 1 mm), first treatment day only; all resampled to 1x1x3 mm and cropped to 240x240x64.",
+    "multi_sequence": false,
     "year": 2024,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [
+      "registered-resampled",
+      "cropped-resized"
+    ],
+    "images_included": true,
     "raw_image": false,
     "size": "Paired planning CT and first-treatment-day CBCT scans; one 387.2 MB RAR archive (patient count not stated)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Ground-truth segmentations of 5 anatomical structures for all CT and CBCT scans (structures not named on the record)",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "head and neck cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [],
+    "setting": [
+      "radiotherapy-planning"
+    ],
     "tasks": [
-      "segmentation"
+      "segmentation",
+      "registration",
+      "synthesis"
+    ],
+    "tags": [
+      "radiotherapy"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/13231287",
@@ -67319,16 +68006,9 @@
       "third_party_note": "The Zenodo record is licensed CC BY 4.0, which permits reuse with attribution.",
       "extra": "The planning CT was acquired on a Philips Brilliance CT Big Bore scanner with 90-176 slices, 3 mm thickness and 512x512 matrix at 1.1719 mm. The CBCT was acquired with a Varian OBI on a Varian Edge linac in full-fan mode, with 88 slices, 3 mm thickness and 270x270 matrix at 1 mm; only the first-treatment-day CBCT is included. All images were resampled to 1x1x3 mm and cropped to 240x240x64 voxels to remove the background, shoulders and couch. The patient count, the file format inside the RAR archive and the annotator details are not stated on the record."
     },
-    "tags": [
-      "radiotherapy",
-      "cbct"
-    ],
     "aliases": [
       "Head-Neck-CBCT-CT"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "tractseg-hcp105-reference-tracts",
@@ -67793,33 +68473,71 @@
     "name": "Infant Brain MRI Myelin Maturation",
     "full_name": "Large dataset of infancy and early childhood brain MRIs (T1w and T2w)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Neuro"
     ],
     "anatomy": "brain (infants and young children, 0-36 months)",
+    "organs": [
+      "brain"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T1w",
+      "MRI:T2w"
+    ],
+    "protocol_note": "T1w (resampled to T2w shape) and T2w, both skull-stripped",
+    "multi_sequence": true,
     "year": 2023,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "CSV"
+    ],
+    "preprocessing": [
+      "registered-resampled",
+      "skull-stripped-defaced"
+    ],
+    "images_included": true,
     "raw_image": false,
     "size": "833 brain MRI cases (T1w and T2w); 11.3 GB zip",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": true,
-    "multi_sequence_detail": "T1w (resampled to T2w shape) and T2w, both skull-stripped",
+    "n_studies": 833,
+    "label_types": [
+      "image-level-class",
+      "measurement"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "myelin maturation status (delayed / normal / accelerated)",
-      "radiologist-predicted myelination age (months)",
-      "chronological and corrected age",
-      "diagnosis list"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "delayed myelination"
+    ],
+    "condition_groups": [
+      "unselected-mixed",
+      "healthy-normal"
+    ],
+    "population": [
+      "pediatric",
+      "fetal-neonatal"
+    ],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
-      "classification"
+      "classification",
+      "quantification"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/8055666",
@@ -67830,7 +68548,11 @@
         "age: chronological age in months",
         "age_corrected: age corrected for prematurity (born before 37 weeks); preterm newborns can have negative age",
         "doctor_predicted_age: radiologist-estimated age (months) of myelin maturation",
-        "diagnosis: list of pathologies from expert radiology reports"
+        "diagnosis: list of pathologies from expert radiology reports",
+        "myelin maturation status (delayed / normal / accelerated)",
+        "radiologist-predicted myelination age (months)",
+        "chronological and corrected age",
+        "diagnosis list"
       ],
       "file_structure": "Single archive zenodo_upload_v2.zip (11.3 GB) with images and metadata table meta.csv; image file format not stated on the record.",
       "label_source": [
@@ -67847,9 +68569,6 @@
       "third_party_note": "Zenodo record licence is CC BY 4.0 (attribution required; cite Radiology: AI paper doi:10.1148/ryai.220292).",
       "extra": "Same scanner, varying protocols, acquired over several years in clinical routine. T1w resampled to T2w shape, both skull-stripped (preprocessed, not original DICOM). Paper: 'Development and Evaluation of Deep Learning Models for Automated Estimation of Myelin Maturation Using Pediatric Brain MRI Scans', Radiology: Artificial Intelligence (doi:10.1148/ryai.220292). Image file format not stated in the evidence."
     },
-    "tags": [
-      "pediatric"
-    ],
     "aliases": [
       "Development and Evaluation of Deep Learning Models for Automated Estimation of Myelin Maturation Using Pediatric Brain MRI Scans"
     ],
@@ -67858,11 +68577,7 @@
         "label": "Paper (Radiology: AI)",
         "url": "https://pubs.rsna.org/doi/10.1148/ryai.220292"
       }
-    ],
-    "protocol_note": "T1w (resampled to T2w shape) and T2w, both skull-stripped",
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "lodopab-ct",
@@ -68090,37 +68805,72 @@
     "name": "\u03bc-RegPro",
     "full_name": "MR to Ultrasound Registration for Prostate Challenge (\u03bc-RegPro) - Dataset",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Pelvis"
     ],
     "anatomy": "prostate",
+    "organs": [
+      "prostate"
+    ],
     "modality": [
       "MRI"
     ],
+    "other_modalities": [
+      "ultrasound"
+    ],
+    "protocols": [],
+    "protocol_note": "Paired prostate MR and transrectal ultrasound (TRUS) images; MRI sequence not stated on the record.",
+    "multi_sequence": false,
     "year": 2023,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "More than a hundred paired prostate MR and TRUS images (train.zip 104.4 MB, val.zip 12.1 MB)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "label_types": [
+      "landmark"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "anatomical and pathological landmark annotations on MR and TRUS images"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "prostate cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
       "registration"
     ],
+    "tags": [
+      "challenge",
+      "benchmark"
+    ],
     "license": "CC BY-NC-SA 4.0",
+    "license_id": "CC-BY-NC-SA",
+    "commercial_use": "prohibited",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/8004388",
     "description": "Challenge dataset of more than a hundred paired prostate MRI and transrectal ultrasound images with expert anatomical and pathological landmark annotations for multimodal registration.",
     "details": {
       "label_schema": [
-        "Expert anatomical and pathological landmarks on paired MR and TRUS images, used to validate registration"
+        "Expert anatomical and pathological landmarks on paired MR and TRUS images, used to validate registration",
+        "anatomical and pathological landmark annotations on MR and TRUS images"
       ],
       "file_structure": "Zenodo record 8004388: train.zip (104.4 MB), val.zip (12.1 MB)",
       "splits": "Training and validation sets released; the test set is not in this record",
@@ -68133,9 +68883,6 @@
       "third_party_note": "CC BY-NC-SA 4.0, but the record adds: 'The training and validation data may be used within the research remit of this challenge and in further research-related publications. The training and validation data are not to be used commercially. However, if the desired use is unclear, the organizers ask that those accessing the data refrain from further use or distribution outside of this challenge.'",
       "extra": "Paired MRI-TRUS data; the ultrasound half is outside the catalog's modality scope. The file format and exact case counts are not stated on the Zenodo record. Challenge site: https://muregpro.github.io/. Creators: Baum, Saeed, Min, Hu, Barratt (UCL)."
     },
-    "tags": [
-      "multimodal-registration"
-    ],
     "aliases": [
       "mu-RegPro",
       "\u03bc-RegPro",
@@ -68146,10 +68893,7 @@
         "label": "Challenge website",
         "url": "https://muregpro.github.io/"
       }
-    ],
-    "license_id": "CC-BY-NC-SA",
-    "commercial_use": "prohibited",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "densevnet-multiorgan-abdominal-ct-labels",
@@ -68293,28 +69037,54 @@
     "name": "NasalSeg",
     "full_name": "NasalSeg Dataset for Nasal Cavity and Paranasal Sinuses Segmentation from CT Images",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "HeadNeck"
     ],
     "anatomy": "nasal cavity and paranasal sinuses",
+    "organs": [
+      "sinus-nasal",
+      "larynx-pharynx"
+    ],
     "modality": [
       "CT"
     ],
-    "year": 2024,
-    "format": [],
-    "raw_image": true,
-    "size": "130 CT scans; NasalSeg.zip 213.6 MB",
-    "paired_text": false,
-    "paired_text_detail": null,
+    "protocols": [
+      "CT:contrast-unspecified"
+    ],
     "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "year": 2024,
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
+    "raw_image": false,
+    "size": "130 CT scans; NasalSeg.zip 213.6 MB",
+    "n_images": 130,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Pixel-wise annotation of 5 structures: left nasal cavity, right nasal cavity, nasal pharynx, left maxillary sinus, right maxillary sinus",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [],
+    "setting": [],
     "tasks": [
       "segmentation"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/13893419",
@@ -68338,10 +69108,7 @@
     },
     "aliases": [
       "NasalSeg Dataset for Nasal Cavity and Paranasal Sinuses Segmentation from CT Images"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "nsd-hypothalamic-region-atlas",
@@ -68457,28 +69224,67 @@
     "name": "PANTHER",
     "full_name": "PANTHER Challenge: Public Training Dataset (Cross-Domain Pancreatic Tumor Segmentation in MRI)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Abdomen"
     ],
     "anatomy": "pancreas",
+    "organs": [
+      "pancreas"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T1w-CE"
+    ],
+    "protocol_note": "Task 1: 92 annotated T1-weighted contrast-enhanced arterial-phase scans plus 367 scans acquired with multiple MRI sequences; Task 2: MR-Linac scans",
+    "multi_sequence": true,
     "year": 2025,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "509 MR scans (Task 1: 459 diagnostic scans from Radboudumc, 92 annotated; Task 2: 50 MR-Linac scans from Odense University Hospital)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": true,
-    "multi_sequence_detail": "Task 1: 92 annotated T1-weighted contrast-enhanced arterial-phase scans plus 367 scans acquired with multiple MRI sequences; Task 2: MR-Linac scans",
+    "n_images": 509,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Pancreatic tumor annotations (92 annotated T1 CE arterial-phase diagnostic scans in Task 1; Task 2 MR-Linac scans are for tumor segmentation in radiotherapy planning)",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "pancreatic cancer",
+      "pancreatic tumor"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic",
+      "radiotherapy-planning"
+    ],
     "tasks": [
       "segmentation"
     ],
+    "tags": [
+      "challenge",
+      "multi-center",
+      "radiotherapy"
+    ],
     "license": "CC BY-NC 4.0",
+    "license_id": "CC-BY-NC",
+    "commercial_use": "prohibited",
     "access": "request",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/15192302",
@@ -68506,11 +69312,7 @@
         "label": "Challenge report (Medical Image Analysis 2026)",
         "url": "https://doi.org/10.1016/j.media.2026.104186"
       }
-    ],
-    "protocol_note": "Task 1: 92 annotated T1-weighted contrast-enhanced arterial-phase scans plus 367 scans acquired with multiple MRI sequences; Task 2: MR-Linac scans",
-    "license_id": "CC-BY-NC",
-    "commercial_use": "prohibited",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "compressed-breast-ct-phantoms-radboud",
@@ -68720,38 +69522,85 @@
     "name": "RadRepro CBCT",
     "full_name": "RadRepro CBCT: An Open-Access CBCT Phantom Dataset for Improved Standardization and Reproducibility of Radiomics Research",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "phantom"
+    ],
     "regions": [
-      "Multi"
+      "Phantom"
     ],
     "anatomy": "Catphan phantom (no patient anatomy)",
+    "organs": [
+      "none-geometric"
+    ],
     "modality": [
       "CT"
     ],
+    "protocols": [
+      "CT:CBCT"
+    ],
+    "protocol_note": "Linac on-board kV CBCT: 3x Elekta XVI (v5.04/5.07) and Varian TrueBeam 4.1; varied mAs, slice thickness, reconstruction pre-filters, test-retest and positional shifts of a Catphan phantom.",
+    "multi_sequence": false,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": false,
     "size": "120 CBCT image volumes of a Catphan phantom (CBCT_Data.zip, 2.3 GB)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_images": 120,
+    "label_types": [
+      "mask",
+      "measurement"
+    ],
     "segmentation": true,
     "segmentation_detail": "Standardized region-of-interest (ROI) segmentations on the phantom for radiomics feature extraction",
-    "other_labels": [
-      "radiomics features",
-      "acquisition parameters (mAs, slice thickness, reconstruction pre-filter, scanner/vendor, test-retest, positional shifts)"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "not-applicable"
     ],
-    "tasks": [],
+    "population": [],
+    "setting": [
+      "radiotherapy-planning"
+    ],
+    "tasks": [
+      "quantification"
+    ],
+    "tags": [
+      "radiomics",
+      "multi-vendor",
+      "test-retest",
+      "radiotherapy",
+      "harmonization",
+      "quantitative-imaging",
+      "benchmark"
+    ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/18401318",
     "description": "Open-access dataset of 120 cone-beam CT volumes of a Catphan phantom acquired on three Elekta XVI and one Varian TrueBeam on-board imager, with systematically varied mAs, slice thickness, reconstruction filters, test-retest scans and positional shifts, plus ROI segmentations and radiomics features for reproducibility research.",
+    "phantom": {
+      "type": "physical",
+      "anthropomorphic": false,
+      "body_part": "none-geometric",
+      "model": "Catphan",
+      "purpose": "Radiomics feature reproducibility and harmonization across CBCT scanners, vendors and acquisition settings"
+    },
     "details": {
       "label_schema": [
         "ROI segmentations of phantom regions",
         "Extracted radiomics features per volume/ROI",
-        "Acquisition settings: scanner (3x Elekta XVI v5.04/5.07, Varian TrueBeam 4.1), exposure (mAs), slice thickness, reconstruction pre-filter, test-retest repeat, phantom shift direction"
+        "Acquisition settings: scanner (3x Elekta XVI v5.04/5.07, Varian TrueBeam 4.1), exposure (mAs), slice thickness, reconstruction pre-filter, test-retest repeat, phantom shift direction",
+        "acquisition parameters (mAs, slice thickness, reconstruction pre-filter, scanner/vendor, test-retest, positional shifts)"
       ],
       "file_structure": "Zenodo record 18401318: single archive CBCT_Data.zip (2.3 GB); internal layout and image file format not described on the record page.",
       "label_source": [
@@ -68766,13 +69615,6 @@
       "third_party_note": "The Zenodo record licence is CC BY 4.0; citation of the paper and the repository is requested.",
       "extra": "Paper: Hatamikia S et al., Sci Data 2026;13(1):454, doi:10.1038/s41597-026-06781-8. Intended for intra- and inter-vendor radiomics feature stability and harmonization benchmarking on C-arm linac CBCT. The image file format is not stated on the record, so raw_image is unverified."
     },
-    "tags": [
-      "phantom",
-      "radiomics-reproducibility",
-      "multi-vendor",
-      "test-retest",
-      "radiotherapy"
-    ],
     "aliases": [
       "RadRepro CBCT: An Open-Access CBCT Phantom Dataset for Improved Standardization and Reproducibility of Radiomics Research"
     ],
@@ -68781,10 +69623,7 @@
         "label": "Paper (Scientific Data 2026)",
         "url": "https://doi.org/10.1038/s41597-026-06781-8"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "seg-cq500",
@@ -68897,31 +69736,68 @@
     "name": "NiftyPET Amyloid PET mMR Scan",
     "full_name": "Single amyloid PET scan on the Siemens Biograph mMR",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Neuro"
     ],
     "anatomy": "brain",
+    "organs": [
+      "brain"
+    ],
     "modality": [
       "PET",
       "MRI"
     ],
-    "year": 2018,
-    "format": [
-      "PET list-mode (raw)"
+    "protocols": [
+      "PET:amyloid",
+      "MRI:T1w"
     ],
+    "protocol_note": "60-min dynamic list-mode 18F-florbetapir PET on Siemens Biograph mMR (PET/MR); normalisation files, UTE mu-map, T1w and N4 bias-corrected T1w MRI, pseudo-CT from T1w for attenuation correction",
+    "field_strength": [
+      "3T"
+    ],
+    "multi_sequence": false,
+    "year": 2018,
+    "image_format": [
+      "raw-data",
+      "unspecified"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": true,
     "size": "1 scan: 60-min dynamic list-mode florbetapir PET with normalisation files, UTE mu-map, T1w MRI, parcellation and pseudo-CT; 9.3 GB zip",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 1,
+    "n_studies": 1,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "T1w MRI parcellated into 140+ brain regions (v2.0)",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "not-applicable"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [],
     "tasks": [
       "reconstruction"
     ],
+    "tags": [
+      "quantitative-imaging"
+    ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/3877529",
@@ -68940,10 +69816,6 @@
       "third_party_note": "Zenodo record licence is CC BY 4.0 (attribution required).",
       "extra": "Single subject only, intended for testing and benchmarking PET reconstruction with NiftyPET (https://github.com/pjmark/NiftyPET; Markiewicz et al., Neuroinformatics 2018, doi:10.1007/s12021-017-9352-y). The florbetapir tracer was provided by Eli Lilly. Creators: Pawel J Markiewicz, David Cash and Jonathan M Schott."
     },
-    "tags": [
-      "raw-data",
-      "phantom-free-single-subject"
-    ],
     "aliases": [
       "NiftyPET amyloid PET test data",
       "amyloidPET_FBP_TP0"
@@ -68957,44 +69829,77 @@
         "label": "NiftyPET paper",
         "url": "https://link.springer.com/article/10.1007/s12021-017-9352-y"
       }
-    ],
-    "image_format": [
-      "raw-data"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "t2w-kidney-mri-segmentation",
     "name": "T2-weighted Kidney MRI Segmentation",
     "full_name": "T2-weighted Kidney MRI Segmentation",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Abdomen"
     ],
     "anatomy": "kidney",
+    "organs": [
+      "kidney"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T2w"
+    ],
+    "protocol_note": "T2-weighted abdominal MRI sequence designed to optimise contrast between the kidneys and surrounding tissue",
+    "multi_sequence": false,
     "year": 2021,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "CSV"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "100 T2-weighted abdominal MRI scans (50 healthy controls, 50 CKD patients; 10 subjects scanned 5 times in one session); ~153 MB",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_images": 100,
+    "label_types": [
+      "mask",
+      "image-level-class"
+    ],
     "segmentation": true,
     "segmentation_detail": "Manually defined kidney masks",
-    "other_labels": [
-      "healthy control vs chronic kidney disease",
-      "subject information (CSV)"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "chronic kidney disease"
+    ],
+    "condition_groups": [
+      "healthy-normal",
+      "degenerative"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic",
+      "healthy-volunteer"
     ],
     "tasks": [
-      "segmentation"
+      "segmentation",
+      "quantification"
+    ],
+    "tags": [
+      "test-retest"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/5153568",
@@ -69003,7 +69908,9 @@
       "label_schema": [
         "Manual kidney mask per scan",
         "Subject group: healthy control or CKD",
-        "Per-subject information in subject_information.csv"
+        "Per-subject information in subject_information.csv",
+        "healthy control vs chronic kidney disease",
+        "subject information (CSV)"
       ],
       "file_structure": "Zenodo record 5153568: Healthy_Control.zip (73.4 MB), CKD.zip (79.5 MB), subject_information.csv (1.2 KB)",
       "label_unit": [
@@ -69014,13 +69921,7 @@
       "third_party_processing": "permitted",
       "third_party_note": "The Zenodo record licence is CC BY 4.0 (attribution required).",
       "extra": "The image file format inside the zip archives is not stated on the record, so raw_image is unconfirmed. The MRI sequence is optimised for kidney-to-tissue contrast. Ten subjects were scanned five times in the same session to assess TKV precision. The data were used to train a CNN for automated kidney segmentation; the record links an associated article and software. Creators: Daniel AJ, Buchanan CE, Allcock T, Scerri D, Cox EF, Prestwich BL."
-    },
-    "tags": [
-      "test-retest"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    }
   },
   {
     "id": "openear-temporal-bone",
@@ -69224,32 +70125,72 @@
     "name": "VICTRE Simulated Tomosynthesis Projections",
     "full_name": "VICTRE Simulated Tomosynthesis Projections",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "synthetic",
+      "phantom"
+    ],
     "regions": [
       "Breast"
     ],
     "anatomy": "breast (digital breast tomosynthesis, simulated)",
+    "organs": [
+      "breast"
+    ],
     "modality": [
       "X-ray"
     ],
+    "protocols": [
+      "X-ray:DBT"
+    ],
+    "protocol_note": "Two sets of 259 raw DBT projections simulated with the VICTRE pipeline from two different breast phantoms; set 1 equal dose for all projections, set 2 dose distribution following the Malm\u00f6 Breast Tomosynthesis Trial.",
+    "multi_sequence": false,
     "year": 2023,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
     "raw_image": false,
     "size": "2 sets of 259 raw DBT projections, each from a different phantom (~5.5 GB zipped)",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_studies": 2,
+    "n_images": 518,
+    "label_types": [
+      "none"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "not-applicable"
+    ],
+    "population": [],
+    "setting": [],
     "tasks": [
       "reconstruction"
     ],
+    "tags": [
+      "image-quality"
+    ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "Zenodo",
     "url": "https://zenodo.org/records/8108701",
     "description": "In-silico digital breast tomosynthesis dataset of two sets of 259 raw projections simulated from two different breast phantoms with the VICTRE pipeline, one with equal dose per projection and one with dose following the Malm\u00f6 Breast Tomosynthesis Trial.",
+    "phantom": {
+      "type": "digital",
+      "anthropomorphic": true,
+      "body_part": "breast",
+      "model": "VICTRE digital breast phantoms",
+      "purpose": "Simulated raw DBT projections for tomosynthesis reconstruction research"
+    },
     "details": {
       "file_structure": "Zenodo record 8108701: equal_density_distribution.zip (3.6 GB; equal dose for all projections) and mbtst_density_distributed.zip (1.9 GB; dose distribution following Malm\u00f6 Breast Tomosynthesis Trial data). Projection file format not stated.",
       "label_source": [
@@ -69260,47 +70201,80 @@
       "third_party_processing": "permitted",
       "third_party_note": "Zenodo licence is CC BY 4.0 (attribution required); data are fully synthetic.",
       "extra": "Created by Dominik Eckert. Generated with the VICTRE in-silico imaging pipeline (Badano et al., JAMA Netw Open 2018, doi:10.1001/jamanetworkopen.2018.5474) but is new simulated data, not a copy of the TCIA VICTRE collection; dose profile follows MBTST (doi:10.23698/aida/mbtst-dm). Projection file format and phantom parameters are not described on the record."
-    },
-    "tags": [
-      "synthetic",
-      "in-silico",
-      "phantom"
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    }
   },
   {
     "id": "clinical-brain-mri-motion-artifact-paired",
     "name": "Clinical Brain MRI Motion Artifact Paired Dataset",
     "full_name": "A clinical brain MRI dataset of naturally occurring motion artifacts with paired artifact-free images",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Neuro"
     ],
     "anatomy": "brain",
+    "organs": [
+      "brain"
+    ],
     "modality": [
       "MRI"
     ],
+    "protocols": [
+      "MRI:T1w",
+      "MRI:T1w-CE",
+      "MRI:T2w",
+      "MRI:FLAIR"
+    ],
+    "protocol_note": "T1w, T1ce, T2w, FLAIR",
+    "multi_sequence": true,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "TSV",
+      "JSON"
+    ],
+    "preprocessing": [
+      "2d-from-3d"
+    ],
+    "images_included": true,
     "raw_image": false,
     "size": "5,143 paired 2D slices from 731 patients and 147 paired 3D volumes from 146 patients; ~16 GB",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": true,
-    "multi_sequence_detail": "T1w, T1ce, T2w, FLAIR",
+    "label_types": [
+      "image-level-class",
+      "measurement"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "subjective motion severity (none/minimal, mild, severe)",
-      "objective image quality metrics"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "motion artifact"
+    ],
+    "condition_groups": [
+      "unselected-mixed"
+    ],
+    "population": [],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
       "classification",
-      "reconstruction"
+      "reconstruction",
+      "denoising"
+    ],
+    "tags": [
+      "motion-artifact",
+      "image-quality"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "figshare",
     "url": "https://figshare.com/articles/dataset/A_clinical_brain_MRI_dataset_of_naturally_occurring_motion_artifacts_with_paired_artifact-free_images/30978316",
@@ -69308,7 +70282,8 @@
     "details": {
       "label_schema": [
         "Motion severity per motion-affected scan: none/minimal, mild, severe (subjective rating, TSV files)",
-        "Objective image quality metrics (separate archive)"
+        "Objective image quality metrics (separate archive)",
+        "subjective motion severity (none/minimal, mild, severe)"
       ],
       "file_structure": "figshare record 30978316 (v2) has two archives. clinical_brain_MRI_motion_artifact_paired_dataset.zip (16.0 GB) holds the imaging data, JSON sidecars and TSV severity ratings, named following a BIDS-inspired convention. objective_image_quality_metrics.zip (234.1 KB) holds the objective metrics.",
       "label_unit": [
@@ -69322,10 +70297,6 @@
       "third_party_note": "The figshare licence is CC BY 4.0 (attribution required).",
       "extra": "The image file format is not stated on the record. A BIDS-inspired layout with JSON sidecars suggests NIfTI, but this is unverified, so raw_image is set to false pending verification. The data is described as fully anonymized. It differs from MR-ART, which contains deliberately induced motion in healthy volunteers."
     },
-    "tags": [
-      "motion-artifact",
-      "image-quality"
-    ],
     "aliases": [
       "A clinical brain MRI dataset of naturally occurring motion artifacts with paired artifact-free images"
     ],
@@ -69334,11 +70305,7 @@
         "label": "DOI",
         "url": "https://doi.org/10.6084/m9.figshare.30978316.v2"
       }
-    ],
-    "protocol_note": "T1w, T1ce, T2w, FLAIR",
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "bdcxr-3257",
@@ -69444,37 +70411,70 @@
     "name": "CSAW-M",
     "full_name": "CSAW-M: An Ordinal Classification Dataset for Benchmarking Mammographic Masking of Cancer",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Breast"
     ],
     "anatomy": "mammography",
+    "organs": [
+      "breast"
+    ],
     "modality": [
       "X-ray"
     ],
+    "protocols": [
+      "X-ray:mammography"
+    ],
+    "multi_sequence": false,
     "year": 2021,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "Mammograms from over 10,000 individuals",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "label_types": [
+      "image-level-class"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "ordinal masking potential level"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "breast cancer",
+      "cancer masking"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "screening"
     ],
     "tasks": [
       "classification"
     ],
+    "tags": [
+      "benchmark"
+    ],
     "license": "CSAW-M Research Use License (restricted access)",
+    "license_id": "custom-DUA",
+    "commercial_use": "unclear",
     "access": "request",
     "host": "SciLifeLab Figshare",
     "url": "https://figshare.scilifelab.se/articles/dataset/CSAW-M_An_Ordinal_Classification_Dataset_for_Benchmarking_Mammographic_Masking_of_Cancer/14687271",
     "description": "Curated Swedish screening mammography dataset from over 10,000 individuals, annotated by five specialists with ordinal assessments of how much the breast tissue could mask cancer.",
     "details": {
       "label_schema": [
-        "Ordinal masking potential assessment from five specialists (direct masking annotation rather than breast density)"
+        "Ordinal masking potential assessment from five specialists (direct masking annotation rather than breast density)",
+        "ordinal masking potential level"
       ],
       "label_source": [
         "radiologist-multi"
@@ -69503,41 +70503,81 @@
         "label": "GitHub",
         "url": "https://github.com/yueliukth/CSAW-M"
       }
-    ],
-    "license_id": "custom-DUA",
-    "commercial_use": "unclear",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "dolchid",
     "name": "DOLCHID",
     "full_name": "Dental Odontogenic Lesion CBCT and Histopathology Integrated Dataset for Benchmarking Deep Learning Algorithms (DOLCHID)",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Dental"
     ],
     "anatomy": "jaw / odontogenic lesions",
+    "organs": [
+      "teeth-jaw"
+    ],
     "modality": [
       "CT"
     ],
+    "other_modalities": [
+      "pathology-wsi"
+    ],
+    "protocols": [
+      "CT:CBCT"
+    ],
+    "protocol_note": "Pre-operative cone-beam CT (CBCT) scans; acquisition parameters not stated on the record.",
+    "multi_sequence": false,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "262 patients (262 pre-operative CBCT scans + 262 paired H&E histopathology slides); DOLCHID.zip 39.7 GB",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 262,
+    "n_studies": 262,
+    "label_types": [
+      "mask",
+      "image-level-class",
+      "pathology-result"
+    ],
     "segmentation": true,
     "segmentation_detail": "Expert-verified segmentation masks of odontogenic lesions on CBCT; annotated regions of interest on paired H&E slides",
-    "other_labels": [
-      "lesion subtype: dentigerous cyst / radicular cyst / odontogenic keratocyst / ameloblastoma"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "dentigerous cyst",
+      "radicular cyst",
+      "odontogenic keratocyst",
+      "ameloblastoma"
+    ],
+    "condition_groups": [
+      "neoplasm",
+      "infection-inflammation",
+      "congenital"
+    ],
+    "population": [],
+    "setting": [
+      "pre-treatment",
+      "diagnostic"
     ],
     "tasks": [
       "segmentation",
       "classification"
     ],
+    "tags": [
+      "benchmark"
+    ],
     "license": "CC BY",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "figshare",
     "url": "https://springernature.figshare.com/articles/dataset/Dental_Odontogenic_Lesion_CBCT_and_Histopathology_Integrated_Dataset_for_Benchmarking_Deep_Learning_Algorithms/30156622",
@@ -69546,7 +70586,8 @@
       "label_schema": [
         "Lesion subtype per case: dentigerous cyst (44), radicular cyst (54), odontogenic keratocyst (92), ameloblastoma (72)",
         "CBCT lesion segmentation masks (expert-verified)",
-        "Annotated regions of interest on H&E histopathology slides"
+        "Annotated regions of interest on H&E histopathology slides",
+        "lesion subtype: dentigerous cyst / radicular cyst / odontogenic keratocyst / ameloblastoma"
       ],
       "file_structure": "Single archive DOLCHID.zip (39.7 GB) on figshare; internal structure and image file format not stated on the record.",
       "label_source": [
@@ -69564,9 +70605,6 @@
       "third_party_note": "figshare record licence is CC BY, which permits redistribution and processing with attribution.",
       "extra": "Histopathology slides are out of the catalog's imaging scope but are paired with the in-scope CBCT. Image file format (DICOM/NIfTI) not stated on the figshare record, so raw_image is unconfirmed. Hosted on Springer Nature figshare, suggesting an accompanying data descriptor paper (not verified)."
     },
-    "tags": [
-      "multimodal-pathology"
-    ],
     "aliases": [
       "Dental Odontogenic Lesion CBCT and Histopathology Integrated Dataset"
     ],
@@ -69575,10 +70613,7 @@
         "label": "DOI",
         "url": "https://doi.org/10.6084/m9.figshare.30156622.v1"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "dentiro",
@@ -69693,35 +70728,78 @@
     "name": "KUB-StoneX",
     "full_name": "KUB-StoneX: Annotated Kidney-Ureter-Bladder X-ray Dataset with Expert Stone Segmentations and Radiomic Features",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Abdomen",
       "Pelvis"
     ],
     "anatomy": "kidney, ureter, bladder (urinary stones)",
+    "organs": [
+      "kidney",
+      "ureter",
+      "bladder"
+    ],
     "modality": [
       "X-ray"
     ],
+    "protocols": [
+      "X-ray:radiograph"
+    ],
+    "protocol_note": "Anteroposterior (AP) KUB radiographs acquired during routine clinical care",
+    "multi_sequence": false,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "JSON",
+      "CSV"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "2,570 AP KUB radiographs / 1,703 patients; 19.3 GB zip",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 1703,
+    "n_images": 2570,
+    "label_types": [
+      "mask",
+      "image-level-class",
+      "bounding-box",
+      "measurement"
+    ],
     "segmentation": true,
     "segmentation_detail": "Stone-only binary segmentation masks from consensus polygon annotations, plus original polygon annotations (JSON); surrounding anatomy not segmented",
-    "other_labels": [
-      "stone location class (kidney / ureteric / bladder / normal)",
-      "stone ROI bounding boxes",
-      "pre-extracted radiomic features"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "kidney stone",
+      "ureteric stone",
+      "bladder stone",
+      "urolithiasis"
+    ],
+    "condition_groups": [
+      "metabolic-endocrine"
+    ],
+    "population": [],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
       "segmentation",
       "classification",
       "detection"
     ],
+    "tags": [
+      "radiomics",
+      "multi-center"
+    ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "figshare",
     "url": "https://figshare.com/articles/dataset/_b_KUB-StoneX_b_Annotated_Kidney-Ureter-Bladder_X-ray_Dataset_with_Expert_Stone_Segmentations_and_Radiomic_Features/32049369",
@@ -69733,7 +70811,10 @@
         "Stone-instance ROI patches and masks (bounding box from polygon expanded by 15 px)",
         "ROI_Metadata.csv: image ID, ROI reference, bounding box MinX/MinY/MaxX/MaxY, ROI dimensions, margin size",
         "Radiomic features CSV: shape, first-order, texture and multi-level wavelet features per ROI",
-        "annotations.json: original polygon annotations"
+        "annotations.json: original polygon annotations",
+        "stone location class (kidney / ureteric / bladder / normal)",
+        "stone ROI bounding boxes",
+        "pre-extracted radiomic features"
       ],
       "file_structure": "KUB-StoneX.zip (19.3 GB) with folders Bladder_Stone/, Kidney_Stone/, Ureteric_Stone/ (each: Images/, Masks/, ROI/, ROI_Metadata/, Radiomic_Features/, annotations.json, *_patient/) and Normal_No_Stone/ (Images/, normal_case_patient/).",
       "label_source": [
@@ -69761,46 +70842,77 @@
         "label": "DOI",
         "url": "https://doi.org/10.6084/m9.figshare.32049369.v1"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "orthofrac-xr",
     "name": "OrthoFrac-XR",
     "full_name": "OrthoFrac-XR: A Clinically Validated Multimodal High-Resolution X-ray Imaging Dataset for Bone Fracture Detection and Localization",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "MSK"
     ],
     "anatomy": "limb bones (femur, radius, humerus, ulna, elbow)",
+    "organs": [
+      "bone",
+      "elbow",
+      "hand-wrist"
+    ],
     "modality": [
       "X-ray"
     ],
+    "protocols": [
+      "X-ray:radiograph"
+    ],
+    "protocol_note": "Routine clinical orthopedic radiographs from four Bangladeshi hospitals with natural variability in imaging equipment, exposure parameters, resolution and positioning; measurements made with MicroDicom DICOM Viewer / DRGEM software.",
+    "multi_sequence": false,
     "year": 2026,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "label_format": [
+      "CSV"
+    ],
+    "preprocessing": [],
+    "images_included": true,
     "raw_image": false,
     "size": "1,493 orthopedic radiographs / ~1,300 patients (497.1 MB zip)",
-    "paired_text": true,
-    "paired_text_detail": "Structured metadata per image (bone_metadata.csv) with a primary clinical observation field, plus age, gender, bone type, side, fracture classification, fracture visibility and bone width / fracture gap measurements",
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_subjects": 1300,
+    "n_images": 1493,
+    "label_types": [
+      "image-level-class",
+      "measurement"
+    ],
     "segmentation": false,
     "segmentation_detail": null,
-    "other_labels": [
-      "4-class fracture category (distal / proximal / post-fracture / non-fracture)",
-      "bone type",
-      "laterality",
-      "fracture visibility",
-      "bone width (mm)",
-      "fracture gap (mm)",
-      "patient age and gender"
+    "paired_text": false,
+    "paired_text_detail": "Structured metadata per image (bone_metadata.csv) with a primary clinical observation field, plus age, gender, bone type, side, fracture classification, fracture visibility and bone width / fracture gap measurements",
+    "conditions": [
+      "bone fracture"
+    ],
+    "condition_groups": [
+      "trauma"
+    ],
+    "population": [],
+    "setting": [
+      "diagnostic"
     ],
     "tasks": [
-      "classification"
+      "classification",
+      "quantification"
+    ],
+    "tags": [
+      "multi-center",
+      "clinical-linkage"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "open",
     "host": "figshare",
     "url": "https://figshare.com/articles/dataset/_b_OrthoFrac-XR_b_A_Clinically_Validated_Multimodal_High-Resolution_X-ray_Imaging_Dataset_for_Bone_Fracture_Detection_and_Localization/32021085",
@@ -69808,7 +70920,10 @@
     "details": {
       "label_schema": [
         "Image class: Distal Fracture (314), Proximal Fracture (254), Post Fracture (349), Non-Fracture (576)",
-        "bone_metadata.csv: X-ray image ID (matches filename), patient age, gender, bone type (e.g. femur, radius, humerus, ulna, elbow), anatomical side, fracture classification, fracture visibility assessment, bone width (mm), fracture gap (mm), primary clinical observation"
+        "bone_metadata.csv: X-ray image ID (matches filename), patient age, gender, bone type (e.g. femur, radius, humerus, ulna, elbow), anatomical side, fracture classification, fracture visibility assessment, bone width (mm), fracture gap (mm), primary clinical observation",
+        "4-class fracture category (distal / proximal / post-fracture / non-fracture)",
+        "laterality",
+        "patient age and gender"
       ],
       "file_structure": "Single OrthoFrac-XR.zip (497.1 MB) containing the X-ray images and bone_metadata.csv; image file format is not stated.",
       "label_source": [
@@ -69825,9 +70940,6 @@
       "third_party_note": "figshare licence is CC BY 4.0 (attribution required).",
       "extra": "Curated from ~8,000 reviewed X-rays at four Bangladeshi sites; ethics approval REC-FSIT-2025/12639 (Daffodil International University). Measurements were made with MicroDicom/DRGEM software. Despite the 'Localization' in the title, the stated annotation type is image-level classification only; no bounding boxes or masks are described."
     },
-    "tags": [
-      "fracture"
-    ],
     "aliases": [
       "OrthoFrac-XR: A Clinically Validated Multimodal High-Resolution X-ray Imaging Dataset for Bone Fracture Detection and Localization"
     ],
@@ -69836,10 +70948,7 @@
         "label": "DOI",
         "url": "https://doi.org/10.6084/m9.figshare.32021085.v2"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "infant-3t-7t-precision-mri",
@@ -70353,28 +71462,76 @@
     "name": "UCSF-ProstateMR",
     "full_name": "UCSF Prostate MRI Dataset",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Pelvis"
     ],
     "anatomy": "prostate",
+    "organs": [
+      "prostate"
+    ],
     "modality": [
       "MRI"
     ],
+    "other_modalities": [
+      "clinical-only"
+    ],
+    "protocols": [
+      "MRI:T2w",
+      "MRI:DWI"
+    ],
+    "protocol_note": "Each exam includes registered T2, ADC and high b-value DWI; presence of endorectal coil recorded.",
+    "multi_sequence": false,
     "year": null,
-    "format": [],
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [
+      "registered-resampled"
+    ],
+    "images_included": true,
     "raw_image": false,
     "size": "973 prostate MRI exams",
-    "paired_text": false,
-    "paired_text_detail": null,
-    "multi_sequence": false,
-    "multi_sequence_detail": null,
+    "n_studies": 973,
+    "label_types": [
+      "mask",
+      "bounding-box",
+      "pathology-result",
+      "image-level-class",
+      "measurement"
+    ],
     "segmentation": true,
     "segmentation_detail": "Segmentation is indicated only by an AWS registry tag; the segmented structures are not described on the page",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "prostate cancer"
+    ],
+    "condition_groups": [
+      "neoplasm"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "diagnostic",
+      "pre-treatment"
+    ],
     "tasks": [
-      "segmentation"
+      "segmentation",
+      "detection",
+      "classification"
+    ],
+    "tags": [
+      "clinical-linkage"
     ],
     "license": "CC BY 4.0",
+    "license_id": "CC-BY",
+    "commercial_use": "allowed",
     "access": "request",
     "host": "AWS Open Data",
     "url": "https://registry.opendata.aws/ucsf-prostatemr/",
@@ -70394,10 +71551,7 @@
         "label": "GitHub documentation",
         "url": "https://github.com/LarsonLab/UCSF-ProstateMR"
       }
-    ],
-    "license_id": "CC-BY",
-    "commercial_use": "allowed",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "vindr-bodypartxr",
@@ -70729,32 +71883,71 @@
     "name": "Ex-vivo Brain 7T Multimodal MRI",
     "full_name": "7 Tesla multimodal MRI dataset of ex-vivo human brain",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "ex-vivo"
+    ],
     "regions": [
       "Neuro"
     ],
     "anatomy": "brain (ex-vivo right hemispheres)",
+    "organs": [
+      "brain"
+    ],
     "modality": [
       "MRI"
     ],
-    "year": 2025,
-    "format": [],
-    "raw_image": true,
-    "size": "6 ex-vivo right-hemisphere specimens (Chinese adult donors) plus population-average templates",
-    "paired_text": false,
-    "paired_text_detail": null,
+    "protocols": [
+      "MRI:T2w",
+      "MRI:DWI",
+      "MRI:DTI",
+      "MRI:SWI",
+      "MRI:relaxometry-map"
+    ],
+    "protocol_note": "3D T2w TSE (0.5x0.5x0.6 mm), 3D DW-SSFP HARDI (0.8 mm iso, 60 directions, b=6000, 20 b0), multi-echo GRE for QSM/T2* (12 echoes), T1 map (IR-SE, 4 TIs), T2 map (SE, 5 TEs); derived DTI, DBSI, FOD and susceptibility maps",
+    "field_strength": [
+      "7T"
+    ],
     "multi_sequence": true,
-    "multi_sequence_detail": "3D T2w TSE (0.5x0.5x0.6 mm), 3D DW-SSFP HARDI (0.8 mm iso, 60 directions, b=6000, 20 b0), multi-echo GRE for QSM/T2* (12 echoes), T1 map (IR-SE, 4 TIs), T2 map (SE, 5 TEs); derived DTI, DBSI, FOD and susceptibility maps",
+    "year": 2025,
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [
+      "native"
+    ],
+    "images_included": true,
+    "raw_image": false,
+    "size": "6 ex-vivo right-hemisphere specimens (Chinese adult donors) plus population-average templates",
+    "n_subjects": 6,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "nnU-Net gray/white matter segmentation; manual labels of corpus callosum, thalamus, caudate, putamen, hippocampus and hippocampal subfields (presubiculum, subiculum, CA1, CA2_3, CA4, GC_DG, molecular layer, caudal hippocampus)",
-    "other_labels": [
-      "quantitative parametric maps (T1, T2, T2*, QSM, DTI, DBSI)",
-      "multimodal population templates"
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [],
+    "condition_groups": [
+      "healthy-normal"
     ],
+    "population": [
+      "adult"
+    ],
+    "setting": [],
     "tasks": [
       "segmentation",
-      "registration"
+      "registration",
+      "quantification"
+    ],
+    "tags": [
+      "quantitative-imaging",
+      "atlas-template"
     ],
     "license": null,
+    "license_id": "unknown",
+    "commercial_use": "unclear",
     "access": "open",
     "host": "figshare",
     "url": "https://doi.org/10.1038/s41597-025-04932-x",
@@ -70763,7 +71956,9 @@
       "label_schema": [
         "GM/WM segmentation from nnU-Net trained on a previously collected ex-vivo brain",
         "Manual ROIs: corpus callosum, thalamus, caudate, putamen, hippocampus",
-        "Manual hippocampal subfields: presubiculum, subiculum, CA1, CA2_3, CA4, GC_DG, molecular layer, caudal hippocampus"
+        "Manual hippocampal subfields: presubiculum, subiculum, CA1, CA2_3, CA4, GC_DG, molecular layer, caudal hippocampus",
+        "quantitative parametric maps (T1, T2, T2*, QSM, DTI, DBSI)",
+        "multimodal population templates"
       ],
       "file_structure": "Raw multimodal MRI, quantitative parametric maps, segmentation labels, multimodal templates and alignment pipelines deposited on figshare (record link not captured in evidence).",
       "label_source": [
@@ -70779,20 +71974,9 @@
       "third_party_note": "Licence of the figshare record was not shown in the evidence.",
       "extra": "Acquired on Siemens MAGNETOM 7T with 32-channel head coil; specimens from the National Health and Disease Human Brain Tissue Repository, fixed in 6% PFA. Paper: Zhu, Li et al., Sci Data 12:845 (2025). File format and figshare licence need verification."
     },
-    "tags": [
-      "ex-vivo",
-      "7T",
-      "quantitative-mri",
-      "diffusion",
-      "template"
-    ],
     "aliases": [
       "7 Tesla multimodal MRI dataset of ex-vivo human brain"
-    ],
-    "protocol_note": "3D T2w TSE (0.5x0.5x0.6 mm), 3D DW-SSFP HARDI (0.8 mm iso, 60 directions, b=6000, 20 b0), multi-echo GRE for QSM/T2* (12 echoes), T1 map (IR-SE, 4 TIs), T2 map (SE, 5 TEs); derived DTI, DBSI, FOD and susceptibility maps",
-    "license_id": "unknown",
-    "commercial_use": "unclear",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "germinoma-mri-ct-guangxi",
@@ -74321,28 +75505,69 @@
     "name": "BrainPTM 2021",
     "full_name": "Brain Pre-surgical white matter Tractography Mapping challenge (BrainPTM) 2021",
     "type": "dataset",
+    "review": "llm-proposed",
+    "enriched": "2026-11-16",
+    "subjects": [
+      "human"
+    ],
     "regions": [
       "Neuro"
     ],
     "anatomy": "brain white matter tracts",
+    "organs": [
+      "brain"
+    ],
     "modality": [
       "MRI"
     ],
-    "year": 2021,
-    "format": [],
-    "raw_image": true,
-    "size": "75 cases (60 training with annotations, 15 test without)",
-    "paired_text": false,
-    "paired_text_detail": null,
+    "protocols": [
+      "MRI:T1w",
+      "MRI:DWI"
+    ],
+    "protocol_note": "T1 structural and diffusion-weighted MRI",
     "multi_sequence": true,
-    "multi_sequence_detail": "T1 structural and diffusion-weighted MRI",
+    "year": 2021,
+    "image_format": [
+      "unspecified"
+    ],
+    "preprocessing": [],
+    "images_included": true,
+    "raw_image": false,
+    "size": "75 cases (60 training with annotations, 15 test without)",
+    "n_subjects": 75,
+    "label_types": [
+      "mask"
+    ],
     "segmentation": true,
     "segmentation_detail": "Semi-manual white matter tract mapping provided as binary segmentation maps (training cases only)",
-    "other_labels": [],
+    "paired_text": false,
+    "paired_text_detail": null,
+    "conditions": [
+      "glioma",
+      "oligodendroglioma",
+      "astrocytoma",
+      "glioblastoma",
+      "cavernoma"
+    ],
+    "condition_groups": [
+      "neoplasm",
+      "vascular"
+    ],
+    "population": [
+      "adult"
+    ],
+    "setting": [
+      "pre-treatment"
+    ],
     "tasks": [
       "segmentation"
     ],
+    "tags": [
+      "challenge"
+    ],
     "license": null,
+    "license_id": "custom-DUA",
+    "commercial_use": "prohibited",
     "access": "dua",
     "host": "Grand Challenge",
     "url": "https://brainptm-2021.grand-challenge.org/",
@@ -74364,11 +75589,7 @@
     "aliases": [
       "BrainPTM",
       "Brain Pre-surgical white matter Tractography Mapping challenge"
-    ],
-    "protocol_note": "T1 structural and diffusion-weighted MRI",
-    "license_id": "unknown",
-    "commercial_use": "unclear",
-    "review": "llm-proposed"
+    ]
   },
   {
     "id": "braintrace",
@@ -83452,7 +84673,9 @@
       "head"
     ],
     "modality": [
-      "MRI"
+      "MRI",
+      "PET",
+      "CT"
     ],
     "protocols": [
       "MRI:T1w",

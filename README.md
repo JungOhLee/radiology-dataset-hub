@@ -39,7 +39,7 @@ This hub is built around **dataset selection**:
 
 <!-- AUTOGEN:START -->
 
-**766 curated datasets** · 371 CT · 379 MRI · 85 PET · 176 X-ray · 471 native DICOM/NIfTI · 94 with reports/text · 409 with segmentation labels
+**766 curated datasets** · 372 CT · 379 MRI · 88 PET · 179 X-ray · 467 native DICOM/NIfTI · 92 with reports/text · 409 with segmentation labels
 
 Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-thorax) · [Cardiac](#cardiac) · [Vascular](#vascular) · [Abdominal](#abdominal) · [Pelvic & Prostate](#pelvic-prostate) · [Musculoskeletal](#musculoskeletal) · [Breast](#breast) · [Head & Neck](#head-neck) · [Dental & Maxillofacial](#dental-maxillofacial) · [Whole-Body](#whole-body) · [Unspecified / various body parts](#unspecified-various-body-parts) · [Phantoms (non-anatomical)](#phantoms-non-anatomical) · [Data Repositories & Portals](#data-repositories-portals)
 
@@ -53,7 +53,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Brain MRI Clinical Protocol Motion Dataset](https://doi.org/10.1038/s41597-026-07144-z) | MRI | 2026 | 🟢 NIfTI, raw-data | — | ✅ | T1w, FLAIR, T2w, DWI … | OPEN | 22 healthy adults; 6 sequences (T1 MPR n=22, T2 FLAIR n=10, T1 STIR n=22, T2 TSE n=22, T2* GRE n=19, DWI n=10), each still/nodding (plus shaking for T1 MPR) with and without prospective motion correction |
 | [BrainTRACE](https://huggingface.co/datasets/lanqz7766/BrainTRACE) 🏷 | MRI | 2026 | 🟡 none | ✅ | — | — | OPEN | 6,923 source rows / 7,273 scored VQA instances; source cohort of 1,778 patients and 7,299 MR-RATE studies |
 | [CFB-GBM](https://www.cancerimagingarchive.net/collection/cfb-gbm/) | MRI, CT | 2026 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | 208.01 GB; 264 patients |
-| [Clinical Brain MRI Motion Artifact Paired Dataset](https://figshare.com/articles/dataset/A_clinical_brain_MRI_dataset_of_naturally_occurring_motion_artifacts_with_paired_artifact-free_images/30978316) | MRI | 2026 | 🟡 — | — | — | ✅ | OPEN | 5,143 paired 2D slices from 731 patients and 147 paired 3D volumes from 146 patients; ~16 GB |
+| [Clinical Brain MRI Motion Artifact Paired Dataset](https://figshare.com/articles/dataset/A_clinical_brain_MRI_dataset_of_naturally_occurring_motion_artifacts_with_paired_artifact-free_images/30978316) | MRI | 2026 | 🟡 unspecified | — | — | T1w, T1w-CE, T2w, FLAIR | OPEN | 5,143 paired 2D slices from 731 patients and 147 paired 3D volumes from 146 patients; ~16 GB |
 | [FOMO260K](https://doi.org/10.57967/hf/8670) | MRI | 2026 | 🟢 NIfTI | — | — | T1w, T1w-CE, T2w, FLAIR … | OPEN | 260,927 MRI scans / 77,589 sessions / 55,378 subjects from 910 public sources |
 | [MRI-PairedField](https://doi.org/10.5281/zenodo.22816860) | MRI | 2026 | 🟡 NIfTI | — | — | T1w, T2w, FLAIR | OPEN | 518 volume records / 161 paired cases / 259 same-contrast image pairs; 424 public NIfTI volumes (~20.36 GB), 94 ADNI volumes not redistributed |
 | [MRIxFields2026](https://huggingface.co/datasets/MRIxFields-Consortium/MRIxFields2026) | MRI | 2026 | 🟢 NIfTI | — | — | T1w, T2w, FLAIR | DUA | 2,539 MRI acquisitions / 1,095 participants (paired cohort: 40 healthy volunteers x 5 field strengths, 600 acquisitions; unpaired cohort: 1,055 participants, 1,939 acquisitions) |
@@ -63,7 +63,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Multi-b-value Test-Retest dMRI (OpenNeuro ds008695)](https://openneuro.org/datasets/ds008695) | MRI | 2026 | 🟢 NIfTI | — | — | T1w, DWI, DTI | OPEN | 11 healthy volunteers x 4 sessions; raw data 8.3 GB, preprocessed 39.5 GB |
 | [NeuroBench](https://huggingface.co/datasets/mlinslab/neurobench) | MRI, CT | 2026 | 🟢 NIfTI, other | ✅ | — | — | REGISTRATION | 2.74 TB total repository |
 | [OpenBrain](https://huggingface.co/datasets/lanqz7766/OpenBrain) | MRI | 2026 | 🟡 NIfTI | — | ✅ | T1w | OPEN | 35,838 skull-stripped T1w MRI scans from 607 OpenNeuro datasets; 226 GB |
-| [PROTEAS Brain Metastases](https://zenodo.org/records/23171182) | MRI, CT | 2026 | 🟡 — | — | ✅ | — | OPEN | 185 imaging studies (MRI and CT) / 40 patients; 65 segmented brain metastases |
+| [PROTEAS Brain Metastases](https://zenodo.org/records/23171182) | MRI, CT | 2026 | 🟡 unspecified | — | ✅ | — | OPEN | 185 imaging studies (MRI and CT) / 40 patients; 65 segmented brain metastases |
 | [Pedi-Cranial-CT-Healthy](https://www.cancerimagingarchive.net/collection/pedi-cranial-ct-healthy/) | CT | 2026 | 🟢 MHA | — | — | non-contrast | OPEN | 100 non-contrast cranial CT volumes / 100 healthy subjects (aged 1 month to 10 years); 3.2 GB |
 | [Pediatric Brain MRI Motion Correction (Rigshospitalet)](https://doi.org/10.70883/vmif5895) | MRI | 2026 | 🟡 NIfTI | — | — | T1w, T2w, FLAIR, PD … | DUA | 47 children aged 4-11 years, one session each (variable number of structural sequences per child) |
 | [Penn Epilepsy 3T-7T MRI + iEEG](https://doi.org/10.26275/aosz-hj9u) | MRI, CT | 2026 | 🟢 NIfTI | — | ✅ | T1w, T2w, FLAIR, fMRI … | OPEN | 30 drug-resistant focal epilepsy patients with paired 3T and 7T MRI; iEEG epochs and post-implant CT for 15 of them |
@@ -78,7 +78,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Brain-Mets-Lung-MRI-Path-Segs](https://www.cancerimagingarchive.net/collection/brain-mets-lung-mri-path-segs/) | MRI | 2025 | 🟡 NIfTI, TIFF | — | ✅ | T1w-CE, FLAIR | OPEN | 19.21 GB; 103 patients (111 imaging-pathology pairs) |
 | [Circadian Rhythmicity MID fMRI (ds005479)](https://openneuro.org/datasets/ds005479) | MRI | 2025 | 🟡 NIfTI | — | — | T1w, fMRI | OPEN | 37 participants (healthy men aged 20-30); one T1w, one task-fMRI run (397 volumes) and AP/PA fieldmaps each |
 | [Diff5T](https://doi.org/10.57760/sciencedb.25122) | MRI | 2025 | 🟢 NIfTI, MAT | — | — | DWI, T1w, T2w, kspace-raw | OPEN | 50 healthy adult subjects (aged 18-38); 291 dMRI volumes per subject plus T1w and T2w |
-| [Ex-vivo Brain 7T Multimodal MRI](https://doi.org/10.1038/s41597-025-04932-x) | MRI | 2025 | 🟢 — | — | ✅ | ✅ | OPEN | 6 ex-vivo right-hemisphere specimens (Chinese adult donors) plus population-average templates |
+| [Ex-vivo Brain 7T Multimodal MRI](https://doi.org/10.1038/s41597-025-04932-x) | MRI | 2025 | 🟡 unspecified | — | ✅ | T2w, DWI, DTI, SWI … | OPEN | 6 ex-vivo right-hemisphere specimens (Chinese adult donors) plus population-average templates |
 | [FLARE-Task4-MRI-FM](https://huggingface.co/datasets/FLARE-MedFM/FLARE-Task4-MRI-FM) | MRI | 2025 | 🟢 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | REGISTRATION | 10,000+ unlabeled 3D MRI volumes for pretraining, plus smaller labeled downstream sets |
 | [Germinoma MRI/CT Dataset](https://doi.org/10.1038/s41597-025-04596-7) | MRI, CT | 2025 | 🟢 DICOM, NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | 65 patients; 63 CT and 50 MRI studies |
 | [Low-Field Infant Brain MRI (0.35 T)](https://doi.org/10.57760/sciencedb.10690) | MRI | 2025 | 🟢 NIfTI | — | ✅ | T2w | DUA | 100 infants (54 female, 46 male), one axial T2w scan each (14-16 slices) |
@@ -132,7 +132,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Brain-TR-GammaKnife](https://www.cancerimagingarchive.net/collection/brain-tr-gammaknife/) | MRI | 2023 | 🟢 DICOM, NRRD | — | ✅ | T1w-CE | DUA | 47 patients, 76 studies, 228 series, 16,792 images (DICOM, 9.59 GB); 244 annotated lesions |
 | [Burdenko-GBM-Progression](https://www.cancerimagingarchive.net/collection/burdenko-gbm-progression/) | CT, MRI | 2023 | 🟢 DICOM | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | DUA | 180 patients; 645 studies; 4,956 series; 344,003 images; 131.23 GB |
 | [DAP Atlas](https://github.com/alexanderjaus/AtlasDataset) | CT | 2023 | 🟡 none | — | ✅ | contrast-unspecified | OPEN | 533 whole-body CT scans (from AutoPET), 142 anatomical structures |
-| [Infant Brain MRI Myelin Maturation](https://zenodo.org/records/8055666) | MRI | 2023 | 🟡 — | — | — | ✅ | OPEN | 833 brain MRI cases (T1w and T2w); 11.3 GB zip |
+| [Infant Brain MRI Myelin Maturation](https://zenodo.org/records/8055666) | MRI | 2023 | 🟡 unspecified | — | — | T1w, T2w | OPEN | 833 brain MRI cases (T1w and T2w); 11.3 GB zip |
 | [M4Raw](https://github.com/mylyu/M4Raw) | MRI | 2023 | 🟡 HDF5 | — | — | T1w, T2w, FLAIR, kspace-raw | OPEN | — |
 | [Meningioma-SEG-CLASS](https://www.cancerimagingarchive.net/collection/meningioma-seg-class/) | MRI | 2023 | 🟢 DICOM | — | ✅ | T1w, T1w-CE, FLAIR | DUA | 96 patients (180 studies, 674 series, 47,520 images, 9.39 GB) |
 | [Pretreat-MetsToBrain-Masks](https://www.cancerimagingarchive.net/collection/pretreat-metstobrain-masks/) | MRI | 2023 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR | OPEN | 200 subjects (1000 studies), 1.7 GB |
@@ -159,12 +159,12 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [RSNA 2022 Cervical Spine Fracture](https://www.kaggle.com/competitions/rsna-2022-cervical-spine-fracture-detection) | CT | 2022 | 🟢 DICOM | — | ✅ | non-contrast | REGISTRATION | ~3,000 CT studies |
 | [RadImageNet](https://www.radimagenet.com/) | CT, MRI | 2022 | 🟡 PNG, JPEG | — | — | contrast-unspecified, T1w, T2w | REQUEST | ~1.35 million annotated images from 131,000+ patients (CT, MRI, ultrasound) |
 | [Shifts MS](https://zenodo.org/records/7051658) | MRI | 2022 | 🟡 NIfTI | — | ✅ | FLAIR, T1w | REGISTRATION | — |
-| [SynthStrip](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/) | MRI | 2022 | 🟢 NIfTI | — | ✅ | T1w, T2w, PD, FLAIR … | OPEN | 622 scans in v1.5 (582 redistributable MRI image+mask pairs; 40 CIM PET/CT cases shipped as masks only) |
+| [SynthStrip](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/) | MRI, PET, CT | 2022 | 🟢 NIfTI | — | ✅ | T1w, T2w, PD, FLAIR … | OPEN | 622 scans in v1.5 (582 redistributable MRI image+mask pairs; 40 CIM PET/CT cases shipped as masks only) |
 | [UCSF-PDGM](https://www.cancerimagingarchive.net/collection/ucsf-pdgm/) | MRI | 2022 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | 495 patients |
 | [UPenn-GBM](https://www.cancerimagingarchive.net/collection/upenn-gbm/) | MRI | 2022 | 🟢 DICOM, NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | 630 glioblastoma patients |
 | [fastMRI+](https://github.com/microsoft/fastmri-plus) | MRI | 2022 | 🟡 none | — | — | PD, T1w, T1w-CE, T2w … | OPEN | 24,380 annotations, no images: knee 16,154 bounding boxes + 13 study-level labels (22 classes, all 1,172 knee volumes) and brain 7,570 bounding boxes + 643 study-level labels (30 classes, 1,001 of 5,847 brain studies) |
 | [BraTS 2021](https://www.synapse.org/Synapse:syn25829067) | MRI | 2021 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR | REGISTRATION | ~2,040 patients (1,251 public training) |
-| [BrainPTM 2021](https://brainptm-2021.grand-challenge.org/) | MRI | 2021 | 🟢 — | — | ✅ | ✅ | DUA | 75 cases (60 training with annotations, 15 test without) |
+| [BrainPTM 2021](https://brainptm-2021.grand-challenge.org/) | MRI | 2021 | 🟡 unspecified | — | ✅ | T1w, DWI | DUA | 75 cases (60 training with annotations, 15 test without) |
 | [FeTA](https://www.synapse.org/Synapse:syn25649159) | MRI | 2021 | 🟡 NIfTI | — | ✅ | T2w | DUA | ~80 subjects (FeTA 2021) |
 | [FeTS 2021/2022](https://fets-ai.github.io/Challenge/) | MRI | 2021 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR | REGISTRATION | — |
 | [GLIS-RT](https://www.cancerimagingarchive.net/collection/glis-rt/) | CT, MRI | 2021 | 🟢 DICOM | — | ✅ | T1w-CE, FLAIR, contrast-unspecified | OPEN | 230 patients (28.26 GB) |
@@ -205,7 +205,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [HCP Lifespan (HCP-Aging & HCP-Development)](https://www.humanconnectome.org/study/hcp-lifespan-aging) | MRI | 2018 | 🟢 NIfTI, other | — | ✅ | T1w, T2w, DWI, DTI … | REGISTRATION | ~1,500 aging adults (ages 36-100+) plus ~1,300-1,400 youth (ages 5-21) |
 | [MRBrainS](https://mrbrains18.isi.uu.nl) | MRI | 2018 | 🟡 NIfTI | — | ✅ | T1w, FLAIR | REGISTRATION | MRBrainS18: 30 subjects (7 fully annotated) |
 | [MRI of 3-12 year old children (Pixar)](https://openneuro.org/datasets/ds000228) | MRI | 2018 | 🟢 NIfTI | — | — | T1w, fMRI | OPEN | 155 subjects (122 children, 33 adults) |
-| [NiftyPET Amyloid PET mMR Scan](https://zenodo.org/records/3877529) | PET, MRI | 2018 | 🟢 raw-data | — | ✅ | — | OPEN | 1 scan: 60-min dynamic list-mode florbetapir PET with normalisation files, UTE mu-map, T1w MRI, parcellation and pseudo-CT; 9.3 GB zip |
+| [NiftyPET Amyloid PET mMR Scan](https://zenodo.org/records/3877529) | PET, MRI | 2018 | 🟢 raw-data, unspecified | — | ✅ | amyloid, T1w | OPEN | 1 scan: 60-min dynamic list-mode florbetapir PET with normalisation files, UTE mu-map, T1w MRI, parcellation and pseudo-CT; 9.3 GB zip |
 | [TractSeg HCP105 Reference Tracts](https://zenodo.org/records/1477956) 🏷 | MRI | 2018 | 🟡 none | — | ✅ | DTI | OPEN | 72 white matter tracts x 105 HCP subjects; 41.0 GB zip |
 | [VQA-RAD](https://huggingface.co/datasets/flaviagiammarino/vqa-rad) | X-ray, CT, MRI | 2018 | 🟡 JPEG | ✅ | — | radiograph, contrast-unspecified, T1w, T2w | OPEN | 315 images with 3,515 QA pairs |
 | [BraTS-TCGA-GBM](https://www.cancerimagingarchive.net/analysis-result/brats-tcga-gbm/) 🏷 | MRI | 2017 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR | OPEN | 102 subjects available (processed NIfTI with segmentations, 767 MB); 33-subject BraTS test set no longer available; derived from 135 TCGA-GBM subjects |
@@ -244,7 +244,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [ABIDE](https://fcon_1000.projects.nitrc.org/indi/abide/) | MRI | 2012 | 🟢 NIfTI | — | — | fMRI, T1w | REGISTRATION | 1112 subjects (ABIDE I) |
 | [Mindboggle-101](https://mindboggle.info/data.html) | MRI | 2012 | 🟢 NIfTI | — | ✅ | T1w | OPEN | 101 subjects |
 | [Neonatal Brain Atlases (ALBERTs / Gousias)](https://brain-development.org/brain-atlases/neonatal-brain-atlases/) | MRI | 2012 | 🟢 NIfTI | — | ✅ | T1w, T2w | REGISTRATION | 20 neonates, 50 labeled regions each (with corresponding T1/T2 MRI scans) |
-| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
+| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI, X-ray | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
 | [ADHD-200](https://fcon_1000.projects.nitrc.org/indi/adhd200/) | MRI | 2011 | 🟢 NIfTI | — | — | T1w, fMRI | OPEN | 973 subjects (8 sites) |
 | [AGES-Reykjavik](https://hjarta.is/en/research/ages/) | MRI, CT | 2011 | 🟢 DICOM | — | — | T1w, PD, T2w, FLAIR … | REQUEST | ~5,764 participants (baseline); brain MRI in most, thigh/abdomen QCT in sub-samples |
 | [AIBL](https://aibl.org.au/) | MRI, PET | 2011 | 🟢 DICOM, NIfTI | — | — | T1w, amyloid | DUA | — |
@@ -347,7 +347,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [CT-RATE](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE) | CT | 2024 | 🟡 NIfTI | ✅ | — | non-contrast | REGISTRATION | 25,692 CT volumes (50,188 with reconstructions) from 21,304 patients; ~21.3 TB |
 | [CheXchoNet](https://physionet.org/content/chexchonet/1.0.0/) | X-ray | 2024 | 🟡 JPEG | — | — | radiograph | DUA | 71,589 PA chest X-rays / 24,689 patients |
 | [CheXpert Plus](https://huggingface.co/datasets/StanfordAIMI/CheXpert-Plus) | X-ray | 2024 | 🟢 DICOM, PNG | ✅ | — | radiograph | DUA | 223,228 chest radiographs paired with 187,711 radiology reports from 64,725 patients |
-| [DLCSD24](https://zenodo.org/records/13799069) | CT | 2024 | 🟡 — | — | — | — | REQUEST | 1,613 CT volumes with 2,487 annotated nodules (selected from 2,061 patients) |
+| [DLCSD24](https://zenodo.org/records/13799069) | CT | 2024 | 🟡 unspecified | — | — | low-dose | REQUEST | 1,613 CT volumes with 2,487 annotated nodules (selected from 2,061 patients) |
 | [DRR-RATE](https://huggingface.co/datasets/farrell236/DRR-RATE) | X-ray | 2024 | 🟡 PNG | ✅ | — | radiograph | OPEN | 50,188 digitally reconstructed radiographs (~8 GB) |
 | [EHRXQA](https://physionet.org/content/ehrxqa/1.0.0/) 🏷 | X-ray | 2024 | 🟡 none | ✅ | — | radiograph | DUA | 46,152 QA samples from 417 templates (16,366 image-related, 16,529 table-related, 13,257 image+table); silver database 800 patients, gold database 400 patients |
 | [GMAI-MMBench](https://huggingface.co/datasets/OpenGVLab/GMAI-MMBench) | CT, MRI, X-ray, PET | 2024 | 🟡 other | ✅ | — | — | REGISTRATION | ~26K cases (25,726 QA) from 284 datasets across 38 modalities |
@@ -373,7 +373,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [INSPECT](https://inspect.stanford.edu/) | CT | 2023 | 🟢 DICOM | ✅ | — | CTPA | DUA | 23,248 CTPA studies / 19,402 patients with reports and EHR |
 | [LNQ2023](https://lnq2023.grand-challenge.org/) | CT | 2023 | 🟢 DICOM, NRRD, NIfTI | — | ✅ | contrast-unspecified | REGISTRATION | 513 subjects (~35 GB) on TCIA |
 | [MAIDA](https://maida.stanford.edu/) | X-ray | 2023 | 🟢 DICOM, PNG | ✅ | — | radiograph | REGISTRATION | multi-institution chest X-rays across 22+ hospitals in 12 countries |
-| [MIMIC-Eye](https://physionet.org/content/mimic-eye-multimodal-datasets/1.0.0/) | X-ray | 2023 | 🟡 — | ✅ | — | — | DUA | 3,689 chest X-ray images / 3,192 patients / 1,644 ED stays |
+| [MIMIC-Eye](https://physionet.org/content/mimic-eye-multimodal-datasets/1.0.0/) | X-ray | 2023 | 🟡 unspecified | ✅ | — | radiograph | DUA | 3,689 chest X-ray images / 3,192 patients / 1,644 ED stays |
 | [MS-CXR-T](https://physionet.org/content/ms-cxr-t/1.0.0/) 🏷 | X-ray | 2023 | 🟡 none | — | — | radiograph | DUA | 1,326 frontal chest X-ray image pairs (800 subjects) with progression labels; 361 sentence pairs |
 | [Medical-Diff-VQA](https://physionet.org/content/medical-diff-vqa/) | X-ray | 2023 | 🟡 none | ✅ | — | radiograph | DUA | 700,703 QA pairs over 164,324 image pairs |
 | [RIDER Pilot](https://www.cancerimagingarchive.net/collection/rider-pilot/) | CT, X-ray | 2023 | 🟢 DICOM | — | — | contrast-unspecified, radiograph | OPEN | 8 subjects / 54 studies / 194 series / 20,531 images (11.22 GB) |
@@ -409,9 +409,9 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [STOIC2021](https://stoic2021.grand-challenge.org/) | CT | 2021 | 🟢 MHA | — | — | contrast-unspecified | REGISTRATION | 2,000 public training CT scans (from a 10,735-patient cohort) |
 | [VinDr-BodyPartXR](https://vindr.ai/datasets/bodypartxr) | X-ray | 2021 | 🟢 DICOM | — | — | radiograph | DUA | 16,093 X-ray images |
 | [VinDr-CXR](https://physionet.org/content/vindr-cxr/) | X-ray | 2021 | 🟢 DICOM | — | — | radiograph | DUA | 18,000 images (15,000 train / 3,000 test) |
-| [psCBCT AAPM Thoracic](https://zenodo.org/records/5035494) | CT | 2021 | 🟡 — | — | ✅ | — | OPEN | Train archive 16.1 GB + test archive 4.3 GB; each planning CT/OAR case augmented into 23 paired CT/psCBCT/OAR sets |
-| [4D CBCT Phantom Data Set](https://zenodo.org/records/10303690) | CT | 2020 | 🟡 — | — | — | — | OPEN | 6 time-resolved (4D) CBCT scans; 4d_cbct_boosting.zip (5.9 GB) |
-| [ACRIN-NSCLC-FDG-PET](https://www.cancerimagingarchive.net/collection/acrin-nsclc-fdg-pet/) | PET, CT | 2020 | 🟢 DICOM | — | — | FDG, contrast-unspecified, radiograph | OPEN | 145.5 GB |
+| [psCBCT AAPM Thoracic](https://zenodo.org/records/5035494) | CT | 2021 | 🟡 unspecified | — | ✅ | CBCT, contrast-unspecified | OPEN | Train archive 16.1 GB + test archive 4.3 GB; each planning CT/OAR case augmented into 23 paired CT/psCBCT/OAR sets |
+| [4D CBCT Phantom Data Set](https://zenodo.org/records/10303690) | CT | 2020 | 🟡 unspecified | — | — | CBCT, 4D | OPEN | 6 time-resolved (4D) CBCT scans; 4d_cbct_boosting.zip (5.9 GB) |
+| [ACRIN-NSCLC-FDG-PET](https://www.cancerimagingarchive.net/collection/acrin-nsclc-fdg-pet/) | PET, CT, X-ray | 2020 | 🟢 DICOM | — | — | FDG, contrast-unspecified, radiograph | OPEN | 145.5 GB |
 | [BIMCV-COVID19](https://bimcv.cipf.es/bimcv-projects/bimcv-covid19/) | X-ray, CT | 2020 | 🟢 PNG, NIfTI | ✅ | ✅ | radiograph, contrast-unspecified | REGISTRATION | 21,342 CR + 34,829 DX studies + 7,918 CT (positive partition) |
 | [COVID-19 Radiography Database](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database) | X-ray | 2020 | 🟡 PNG | — | ✅ | radiograph | REGISTRATION | 21,165 images (4 classes) |
 | [COVID-19-AR](https://www.cancerimagingarchive.net/collection/covid-19-ar/) | CT, X-ray | 2020 | 🟢 DICOM | — | — | contrast-unspecified, radiograph | OPEN | 105 patients, 256 studies, 461 series, 31,935 images (19.93 GB) |
@@ -482,7 +482,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [NLST](https://www.cancerimagingarchive.net/collection/nlst/) | CT | 2013 | 🟢 DICOM | — | — | low-dose, non-contrast | OPEN | 26,254 subjects / 73,116 CT studies |
 | [Open-i / Indiana University CXR](https://openi.nlm.nih.gov/) | X-ray | 2013 | 🟢 DICOM, PNG | ✅ | — | radiograph | OPEN | 7,470 images / 3,955 reports |
 | [RIDER Lung CT](https://www.cancerimagingarchive.net/collection/rider-lung-ct/) | CT | 2012 | 🟢 DICOM | — | ✅ | contrast-unspecified | OPEN | 32 patients / 100 studies / 936 series / 81,548 images (43.01 GB, v3) |
-| [LIDC-IDRI](https://www.cancerimagingarchive.net/collection/lidc-idri/) | CT | 2011 | 🟢 DICOM | — | ✅ | contrast-unspecified, radiograph | OPEN | 1,018 CT scans / 1,010 patients |
+| [LIDC-IDRI](https://www.cancerimagingarchive.net/collection/lidc-idri/) | CT, X-ray | 2011 | 🟢 DICOM | — | ✅ | contrast-unspecified, radiograph | OPEN | 1,018 CT scans / 1,010 patients |
 | [RIDER Lung PET-CT](https://www.cancerimagingarchive.net/collection/rider-lung-pet-ct/) | PET, CT | 2011 | 🟢 DICOM | — | — | FDG, contrast-unspecified | OPEN | 243 subjects / 274 studies / 1,328 series / 266,280 images; 83.27 GB |
 | [EMPIRE10](https://empire10.grand-challenge.org/) | CT | 2010 | 🟢 MHA | — | ✅ | contrast-unspecified | REGISTRATION | 30 intra-subject chest CT scan pairs |
 | [SPIROMICS](https://www.spiromics.org/spiromics/) | CT | 2010 | 🟢 DICOM | — | — | non-contrast | REQUEST | 2,982 participants |
@@ -538,7 +538,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI | — | — | T1w, FLAIR, SWI, DWI … | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 | [CONSTANCES](https://www.constances.fr/espace-scientifique/) | MRI | 2012 | 🟢 DICOM | — | — | ✅ | REQUEST | ~220,000 participants |
 | [RVSC](https://rvsc.projets.litislab.fr/) | MRI | 2012 | 🟢 DICOM | — | ✅ | cine | REGISTRATION | 48 patients (16 train + 32 test) |
-| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
+| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI, X-ray | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
 | [AGES-Reykjavik](https://hjarta.is/en/research/ages/) | MRI, CT | 2011 | 🟢 DICOM | — | — | T1w, PD, T2w, FLAIR … | REQUEST | ~5,764 participants (baseline); brain MRI in most, thigh/abdomen QCT in sub-samples |
 | [MASALA](https://www.masalastudy.org/for-researchers) | CT | 2010 | 🟢 DICOM | — | — | non-contrast | DUA | ~1,164 participants at baseline (expanded in later exams) |
 | [Sunnybrook Cardiac Data](https://www.cardiacatlas.org/sunnybrook-cardiac-data/) | MRI | 2009 | 🟢 DICOM | — | ✅ | cine | OPEN | 45 patients |
@@ -586,8 +586,8 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Heinz Nixdorf Recall / 1000BRAINS](https://imibe.uk-essen.de/recall/) | CT, MRI | 2015 | 🟢 DICOM | — | — | non-contrast, T1w, FLAIR, DTI … | REQUEST | ~4,800 base cohort (Recall); ~1,300 in 1000BRAINS MRI sub-study |
 | [LIFE-Adult](https://www.uniklinikum-leipzig.de/einrichtungen/life) | MRI | 2015 | 🟢 DICOM | — | — | T1w, FLAIR, DTI, fMRI … | REQUEST | ~2,600 participants with 3T brain MRI (of ~10,000-participant cohort) |
 | [orCaScore](https://orcascore.grand-challenge.org/) | CT | 2014 | 🟢 MHA | — | ✅ | non-contrast, CTA | REGISTRATION | 72 patients (32 train + 40 test) |
-| [Qatar Biobank](https://www.qphi.org.qa/research/how-to-apply) | DXA, Ultrasound | 2012 | 🟡 derived | — | — | — | REQUEST | ~60,000 participants target (DXA and carotid ultrasound on examination subsets) |
-| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
+| [Qatar Biobank](https://www.qphi.org.qa/research/how-to-apply) | DXA | 2012 | 🟡 unspecified | — | — | whole-body | REQUEST | ~60,000 participants target (DXA and carotid ultrasound on examination subsets) |
+| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI, X-ray | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
 | [VESSEL12](https://vessel12.grand-challenge.org/) | CT | 2012 | 🟢 MHA | — | ✅ | contrast-unspecified | REGISTRATION | 20 chest CT scans |
 | [AGES-Reykjavik](https://hjarta.is/en/research/ages/) | MRI, CT | 2011 | 🟢 DICOM | — | — | T1w, PD, T2w, FLAIR … | REQUEST | ~5,764 participants (baseline); brain MRI in most, thigh/abdomen QCT in sub-samples |
 | [MASALA](https://www.masalastudy.org/for-researchers) | CT | 2010 | 🟢 DICOM | — | — | non-contrast | DUA | ~1,164 participants at baseline (expanded in later exams) |
@@ -612,14 +612,14 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [DeepTumorVQA v2](https://huggingface.co/datasets/tumor-vqa/DeepTumorVQA_2.0) | CT | 2026 | 🟡 NIfTI, PNG | ✅ | — | contrast-unspecified | OPEN | 438K QA pairs: 10,000-question benchmark on 991 CT volumes (NIfTI, ~70 GB) plus 428,050 training QA on 8,334 CTs (CTs linked upstream); 20K+20K agent trajectories |
 | [FLARE26-MLLM-3D](https://huggingface.co/datasets/FLARE-MedFM/FLARE26-MLLM-3D) | CT | 2026 | 🟡 NIfTI | ✅ | ✅ | contrast-unspecified | REGISTRATION | ~374 GB; thousands of 3D CT volumes with paired reports/QA |
 | [Gastric-X](https://huggingface.co/datasets/HaoChen2/Gastric-X) | CT | 2026 | 🟢 NIfTI, PNG | ✅ | ✅ | non-contrast, arterial, portal-venous, delayed | REGISTRATION | 1,403 patients; 4,897 CT phases (~155 GB) |
-| [KUB-StoneX](https://figshare.com/articles/dataset/_b_KUB-StoneX_b_Annotated_Kidney-Ureter-Bladder_X-ray_Dataset_with_Expert_Stone_Segmentations_and_Radiomic_Features/32049369) | X-ray | 2026 | 🟡 — | — | ✅ | — | OPEN | 2,570 AP KUB radiographs / 1,703 patients; 19.3 GB zip |
+| [KUB-StoneX](https://figshare.com/articles/dataset/_b_KUB-StoneX_b_Annotated_Kidney-Ureter-Bladder_X-ray_Dataset_with_Expert_Stone_Segmentations_and_Radiomic_Features/32049369) | X-ray | 2026 | 🟡 unspecified | — | ✅ | radiograph | OPEN | 2,570 AP KUB radiographs / 1,703 patients; 19.3 GB zip |
 | [MedVIGIL](https://huggingface.co/datasets/jhq0709/MedVIGIL) | CT, MRI, X-ray | 2026 | 🟡 JPEG, PNG | ✅ | — | radiograph, contrast-unspecified, T1w, T2w | OPEN | 240 cases (VQA-RAD 120, SLAKE 60, ROCO 60); 2,002 MCQ probes + 2,002 open-ended twins; 180 counterfactual triplets; 240 source images + 540 perturbed images (full benchmark 300 cases incl. 60 credentialed CXR cases not released here) |
 | [Merlin Plus](https://github.com/MrGiovanni/MerlinPlus) | CT | 2026 | 🟡 none | ✅ | ✅ | portal-venous, arterial, non-contrast | OPEN | 1,193 radiologist-created tumor masks (9 organs) + 44-class AI organ masks for the 25,494 Merlin CT scans (18,317 patients); 3,830 patients with 2+ scans; no images included |
 | [PanTrack](https://huggingface.co/datasets/mrokuss/PanTrack) | CT | 2026 | 🟢 NIfTI | — | ✅ | portal-venous | OPEN | 161 portal-venous CT scans / 45 patients (2-11 scans per patient, mean 3.6); 292 annotated lesion instances |
 | [Perle AI Multimodal CT Radiology Reports](https://huggingface.co/datasets/Perle-ai/multimodal-ct-radiology-reports) | CT | 2026 | 🟢 DICOM | ✅ | — | non-contrast, arterial, portal-venous, contrast-unspecified | DUA | 10 subjects, 171 series, 32,225 DICOM instances |
 | [RadGenome-Anatomy](https://huggingface.co/datasets/EvidenceAIResearch/radgenome-anatomy) | X-ray, CT | 2026 | 🟡 JPEG | — | ✅ | radiograph, non-contrast | OPEN | 25,692 CT studies (24,128 train / 1,564 validation) → 25,693 PA + 25,693 lateral 384x384 projections; 10,790,646 anatomy masks + 513,860 region masks |
 | [RadM-Bench](https://huggingface.co/datasets/Elizabeth123/RadM-Bench) | CT, MRI, X-ray | 2026 | 🟡 PNG, JPEG, other | ✅ | — | contrast-unspecified, radiograph | OPEN | 720 cases (360 RadEdu Eurorad teaching cases + 360 RealClin Chinese routine clinical cases; 80 per subspecialty) |
-| [SwissPancreas](https://huggingface.co/datasets/AbdomenAtlas/SwissPancreas) | CT | 2026 | 🟡 — | ✅ | — | — | OPEN | 684 CT-report pairs (445 with pancreatic tumors) |
+| [SwissPancreas](https://huggingface.co/datasets/AbdomenAtlas/SwissPancreas) | CT | 2026 | 🟡 unspecified | ✅ | — | contrast-unspecified | OPEN | 684 CT-report pairs (445 with pancreatic tumors) |
 | [TAM-ARa Phantom CT/CBCT](https://zenodo.org/records/18927128) | CT | 2026 | 🟢 DICOM | — | — | non-contrast, CBCT | OPEN | 3 acquisitions (CT supine, CBCT supine, CBCT upright); ~65 MB |
 | [VietPET-RoI](https://huggingface.co/datasets/b00l26/VietPET-RoI) | PET, CT | 2026 | 🟡 NumPy | ✅ | — | FDG, contrast-unspecified | OPEN | 200 patients / 600 CT-PET region pairs / 1,960 ROIs; ~135 GiB |
 | [AbdomenAtlas 2.0](https://github.com/BodyMaps/AbdomenAtlas2.0) | CT | 2025 | 🟢 NIfTI | — | ✅ | contrast-unspecified | OPEN | 10,135 CT scans from 89 hospitals; 15,130 tumor masks; 5,893 control scans (~400 GB) |
@@ -636,7 +636,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [MRISegmentator-Abdomen](https://github.com/rsummers11/MRISegmenter) | MRI | 2025 | 🟢 NIfTI | — | ✅ | T1w, T1w-CE | OPEN | 195 patients, 780 T1-weighted series (69,248 slices); 4.8 GB zip |
 | [MedVision](https://huggingface.co/datasets/YongchengYAO/MedVision) | CT, MRI, PET, X-ray | 2025 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | 29K 3D images / 11.2M 2D slices (~1TB complete) |
 | [Merlin](https://stanfordaimi.azurewebsites.net/datasets/60b9c7ff-877b-48ce-96c3-0194c8205c40) | CT | 2025 | 🟢 NIfTI | ✅ | ✅ | contrast-unspecified | DUA | 25,494 abdominal/pelvic CT scans from 18,317 patients |
-| [PANTHER](https://zenodo.org/records/15192302) | MRI | 2025 | 🟡 — | — | ✅ | ✅ | REQUEST | 509 MR scans (Task 1: 459 diagnostic scans from Radboudumc, 92 annotated; Task 2: 50 MR-Linac scans from Odense University Hospital) |
+| [PANTHER](https://zenodo.org/records/15192302) | MRI | 2025 | 🟡 unspecified | — | ✅ | T1w-CE | REQUEST | 509 MR scans (Task 1: 459 diagnostic scans from Radboudumc, 92 annotated; Task 2: 50 MR-Linac scans from Odense University Hospital) |
 | [PHLF Gd-EOB-DTPA MRI](https://zenodo.org/records/18622298) | MRI | 2025 | 🟢 NIfTI | — | ✅ | T1w-CE | OPEN | 220 patients from 3 centers; 14,895 images; 22,342 annotations; PHLF.zip 1.3 GB |
 | [PanTS](https://github.com/MrGiovanni/PanTS) | CT | 2025 | 🟢 NIfTI | ✅ | ✅ | contrast-unspecified | OPEN | 36,390 3D CT volumes from 145 centers; ~300GB |
 | [PancancerCTSeg](https://huggingface.co/datasets/FLARE-MedFM/PancancerCTSeg) | CT | 2025 | 🟢 NIfTI | — | ✅ | contrast-unspecified, low-dose | REQUEST | ~1.24 TB; 17,000+ labeled CT scans plus unlabeled and validation subsets |
@@ -706,7 +706,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [QIBA-CT-Liver-Phantom](https://www.cancerimagingarchive.net/collection/qiba-ct-liver-phantom/) | CT | 2021 | 🟢 DICOM | — | — | non-contrast | OPEN | 3 phantom datasets; 5 studies, 684 series, 102,022 images; 53.85 GB |
 | [QUBIQ](https://qubiq.grand-challenge.org/) | MRI, CT | 2021 | 🟢 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | REGISTRATION | Multiple tasks across brain, kidney, prostate and pancreas (dozens of cases per task) |
 | [SLAKE](https://www.med-vqa.com/slake/) | X-ray, CT, MRI | 2021 | 🟡 JPEG | ✅ | ✅ | radiograph, contrast-unspecified, T1w, T2w | OPEN | 642 images with 14,028 QA pairs |
-| [T2-weighted Kidney MRI Segmentation](https://zenodo.org/records/5153568) | MRI | 2021 | 🟡 — | — | ✅ | — | OPEN | 100 T2-weighted abdominal MRI scans (50 healthy controls, 50 CKD patients; 10 subjects scanned 5 times in one session); ~153 MB |
+| [T2-weighted Kidney MRI Segmentation](https://zenodo.org/records/5153568) | MRI | 2021 | 🟡 unspecified | — | ✅ | T2w | OPEN | 100 T2-weighted abdominal MRI scans (50 healthy controls, 50 CKD patients; 10 subjects scanned 5 times in one session); ~153 MB |
 | [VinDr-BodyPartXR](https://vindr.ai/datasets/bodypartxr) | X-ray | 2021 | 🟢 DICOM | — | — | radiograph | DUA | 16,093 X-ray images |
 | [CT-ORG](https://www.cancerimagingarchive.net/collection/ct-org/) | CT | 2020 | 🟢 NIfTI | — | ✅ | non-contrast, contrast-unspecified, low-dose | OPEN | 140 CT (119 train / 21 test) |
 | [LDCT-and-Projection-data](https://www.cancerimagingarchive.net/collection/ldct-and-projection-data/) | CT | 2020 | 🟢 DICOM, raw-data | — | — | non-contrast, low-dose, contrast-unspecified, projection-raw | OPEN | 299 patient exams + 1 phantom: chest 99 (256.81 GB), liver/abdomen 100 (604.12 GB), head 99 (462.77 GB, restricted) |
@@ -746,8 +746,8 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [TCGA-STAD](https://www.cancerimagingarchive.net/collection/tcga-stad/) | CT | 2014 | 🟢 DICOM | — | — | contrast-unspecified | OPEN | 46 subjects / 46 studies / 308 series / 43,908 images (23.32 GB) |
 | [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI | — | — | T1w, FLAIR, SWI, DWI … | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
 | [CONSTANCES](https://www.constances.fr/espace-scientifique/) | MRI | 2012 | 🟢 DICOM | — | — | ✅ | REQUEST | ~220,000 participants |
-| [Qatar Biobank](https://www.qphi.org.qa/research/how-to-apply) | DXA, Ultrasound | 2012 | 🟡 derived | — | — | — | REQUEST | ~60,000 participants target (DXA and carotid ultrasound on examination subsets) |
-| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
+| [Qatar Biobank](https://www.qphi.org.qa/research/how-to-apply) | DXA | 2012 | 🟡 unspecified | — | — | whole-body | REQUEST | ~60,000 participants target (DXA and carotid ultrasound on examination subsets) |
+| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI, X-ray | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
 | [AGES-Reykjavik](https://hjarta.is/en/research/ages/) | MRI, CT | 2011 | 🟢 DICOM | — | — | T1w, PD, T2w, FLAIR … | REQUEST | ~5,764 participants (baseline); brain MRI in most, thigh/abdomen QCT in sub-samples |
 | [MASALA](https://www.masalastudy.org/for-researchers) | CT | 2010 | 🟢 DICOM | — | — | non-contrast | DUA | ~1,164 participants at baseline (expanded in later exams) |
 | [GUSTO](https://www.gusto.sg/) | MRI, DXA, CT | 2009 | 🟢 DICOM, NIfTI | — | — | T1w, T2w, DWI, fMRI … | REQUEST | ~1,200 mother-offspring pairs |
@@ -774,7 +774,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [CTSpinoPelvic1K](https://huggingface.co/datasets/OpenSpineConsortium/CTSpinoPelvic1K) | CT | 2026 | 🟡 NIfTI | — | ✅ | contrast-unspecified | OPEN | 802 CT/label pairs (abdominopelvic CT colonography volumes); ~195 GB |
 | [CancerVerse](https://huggingface.co/datasets/BodyMaps/CancerVerse) | CT | 2026 | 🟢 NIfTI | ✅ | ✅ | non-contrast, arterial, portal-venous, contrast-unspecified | REGISTRATION | 24,168 CT volumes from 13,863 patients (staged release; stage 1: 22,865 volumes with reports) |
 | [FleXray Data](https://huggingface.co/datasets/VictorButoi/flexray-data) | X-ray | 2026 | 🟡 PNG, NumPy, other | — | ✅ | radiograph | OPEN | 4,232 real image/mask pairs across 7 datasets; 138,063 FluXray synthetic DRRs (~18.8 GB); 100 MURA annotation masks (images not included) |
-| [KUB-StoneX](https://figshare.com/articles/dataset/_b_KUB-StoneX_b_Annotated_Kidney-Ureter-Bladder_X-ray_Dataset_with_Expert_Stone_Segmentations_and_Radiomic_Features/32049369) | X-ray | 2026 | 🟡 — | — | ✅ | — | OPEN | 2,570 AP KUB radiographs / 1,703 patients; 19.3 GB zip |
+| [KUB-StoneX](https://figshare.com/articles/dataset/_b_KUB-StoneX_b_Annotated_Kidney-Ureter-Bladder_X-ray_Dataset_with_Expert_Stone_Segmentations_and_Radiomic_Features/32049369) | X-ray | 2026 | 🟡 unspecified | — | ✅ | radiograph | OPEN | 2,570 AP KUB radiographs / 1,703 patients; 19.3 GB zip |
 | [Merlin Plus](https://github.com/MrGiovanni/MerlinPlus) | CT | 2026 | 🟡 none | ✅ | ✅ | portal-venous, arterial, non-contrast | OPEN | 1,193 radiologist-created tumor masks (9 organs) + 44-class AI organ masks for the 25,494 Merlin CT scans (18,317 patients); 3,830 patients with 2+ scans; no images included |
 | [PASD](https://huggingface.co/datasets/ChipYTY/PASD) | MRI | 2026 | 🟢 NIfTI | — | ✅ | T2w | OPEN | 244 cases (184 train / 60 test); 163 PAS-positive, 81 PAS-negative |
 | [PelviSet](https://doi.org/10.5281/zenodo.20615290) | X-ray | 2026 | 🟡 PNG, JPEG | — | ✅ | radiograph | OPEN | 14,622 pediatric AP pelvic radiograph cases (4,622 images included; 10,000 USTC-DDH cases with masks/keypoints only); ~2.1 GB |
@@ -805,9 +805,9 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [SA-Med2D-20M](https://huggingface.co/datasets/OpenGVLab/SA-Med2D-20M) | CT, MRI, X-ray | 2023 | 🟡 PNG | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | ~16M images / 20M masks (16M version publicly released), 353 GB |
 | [SAROS](https://github.com/UMEssen/SAROS-dataset) | CT | 2023 | 🟡 none | — | ✅ | contrast-unspecified | OPEN | 882 subjects, 900 whole-body CT series, ~13,000 sparsely annotated axial slices |
 | [SynthRAD2023](https://synthrad2023.grand-challenge.org/) | MRI, CT | 2023 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, CBCT … | OPEN | 540 paired MRI-CT and 540 CBCT-CT sets (>500 patients per task) from three centers |
-| [μ-RegPro](https://zenodo.org/records/8004388) | MRI | 2023 | 🟡 — | — | — | — | OPEN | More than a hundred paired prostate MR and TRUS images (train.zip 104.4 MB, val.zip 12.1 MB) |
+| [μ-RegPro](https://zenodo.org/records/8004388) | MRI | 2023 | 🟡 unspecified | — | — | — | OPEN | More than a hundred paired prostate MR and TRUS images (train.zip 104.4 MB, val.zip 12.1 MB) |
 | [AMOS22](https://amos22.grand-challenge.org/) | CT, MRI | 2022 | 🟢 NIfTI | — | ✅ | contrast-unspecified, T1w | OPEN | 500 CT + 100 MRI scans |
-| [Cross-institution Male Pelvic Structures](https://zenodo.org/records/7013610) | MRI | 2022 | 🟡 — | — | ✅ | — | OPEN | 589 T2-weighted MR images / 589 patients; 7 institution subsets; data.zip 3.1 GB |
+| [Cross-institution Male Pelvic Structures](https://zenodo.org/records/7013610) | MRI | 2022 | 🟡 unspecified | — | ✅ | T2w | OPEN | 589 T2-weighted MR images / 589 patients; 7 institution subsets; data.zip 3.1 GB |
 | [PI-CAI](https://pi-cai.grand-challenge.org/) | MRI | 2022 | 🟢 MHA | — | ✅ | T2w, DWI | OPEN | 1500 bpMRI (1476 patients, public set) |
 | [Prostate158](https://github.com/kbressem/prostate158) | MRI | 2022 | 🟡 NIfTI | — | ✅ | T2w, DWI | OPEN | 158 studies (139 train / 19 test) |
 | [RadImageNet](https://www.radimagenet.com/) | CT, MRI | 2022 | 🟡 PNG, JPEG | — | — | contrast-unspecified, T1w, T2w | REQUEST | ~1.35 million annotated images from 131,000+ patients (CT, MRI, ultrasound) |
@@ -845,7 +845,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [PROMISE12](https://promise12.grand-challenge.org/) | MRI | 2012 | 🟢 MHA | — | ✅ | T2w | REGISTRATION | 50 train + 30 test T2W MRI |
 | [MrOS](https://mrosonline.ucsf.edu/) | CT, DXA, X-ray | 2000 | 🟢 DICOM | — | — | whole-body, regional, non-contrast, radiograph | DUA | 5,994 men (aged 65+) |
 | [SOF](https://sofonline.ucsf.edu/) | DXA, CT, X-ray | 1986 | 🟢 DICOM | — | — | whole-body, regional, radiograph, non-contrast | DUA | 9,704 older women (plus ~662 Black women in a later supplement) |
-| [UCSF-ProstateMR](https://registry.opendata.aws/ucsf-prostatemr/) | MRI | — | 🟡 — | — | ✅ | — | REQUEST | 973 prostate MRI exams |
+| [UCSF-ProstateMR](https://registry.opendata.aws/ucsf-prostatemr/) | MRI | — | 🟡 unspecified | — | ✅ | T2w, DWI | REQUEST | 973 prostate MRI exams |
 
 ### 🦴 Musculoskeletal  <sub>(83)</sub>
 
@@ -855,7 +855,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Dynamic Volumetric MRI Validation (Thigh)](https://doi.org/10.5281/zenodo.21194933) | MRI | 2026 | 🟢 raw-data, HDF5, NIfTI | — | ✅ | kspace-raw, T1w | OPEN | 9 healthy volunteers; per subject 1 validation scan (9 pressure levels), 1 hybrid scan and 4 dynamic k-space scans, plus anatomical and Dixon images; ~27 GB |
 | [FleXray Data](https://huggingface.co/datasets/VictorButoi/flexray-data) | X-ray | 2026 | 🟡 PNG, NumPy, other | — | ✅ | radiograph | OPEN | 4,232 real image/mask pairs across 7 datasets; 138,063 FluXray synthetic DRRs (~18.8 GB); 100 MURA annotation masks (images not included) |
 | [LumbarSR](https://zenodo.org/records/19404387) | CT | 2026 | 🟢 DICOM, NIfTI | — | ✅ | non-contrast, photon-counting | OPEN | 30 dry human lumbar vertebral specimens; each with a 105 µm Micro-PCCT reference plus 8 clinical CT configurations (~25 GB) |
-| [OrthoFrac-XR](https://figshare.com/articles/dataset/_b_OrthoFrac-XR_b_A_Clinically_Validated_Multimodal_High-Resolution_X-ray_Imaging_Dataset_for_Bone_Fracture_Detection_and_Localization/32021085) | X-ray | 2026 | 🟡 — | ✅ | — | — | OPEN | 1,493 orthopedic radiographs / ~1,300 patients (497.1 MB zip) |
+| [OrthoFrac-XR](https://figshare.com/articles/dataset/_b_OrthoFrac-XR_b_A_Clinically_Validated_Multimodal_High-Resolution_X-ray_Imaging_Dataset_for_Bone_Fracture_Detection_and_Localization/32021085) | X-ray | 2026 | 🟡 unspecified | — | — | radiograph | OPEN | 1,493 orthopedic radiographs / ~1,300 patients (497.1 MB zip) |
 | [PelviSet](https://doi.org/10.5281/zenodo.20615290) | X-ray | 2026 | 🟡 PNG, JPEG | — | ✅ | radiograph | OPEN | 14,622 pediatric AP pelvic radiograph cases (4,622 images included; 10,000 USTC-DDH cases with masks/keypoints only); ~2.1 GB |
 | [RAM-H1200](https://huggingface.co/datasets/TokyoTechMagicYang/RAM-H1200-v1) | X-ray | 2026 | 🟡 other | — | ✅ | radiograph | REGISTRATION | Full-hand radiographs (left/right) with joint-level ROI crops; 2.75 GB (exact image count not stated on the card) |
 | [RSNA 2026 Knee Abnormality Detection](https://www.kaggle.com/competitions/rsna-knee-abnormality-detection) | MRI | 2026 | 🟢 DICOM | ✅ | — | PD, T2w, T1w | REGISTRATION | >5,000 knee MRI exams (train: 4,407 studies / 24,371 series / 819,078 DICOM files) |
@@ -902,7 +902,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [RibFrac](https://ribfrac.grand-challenge.org/) | CT | 2020 | 🟢 NIfTI | — | ✅ | contrast-unspecified | REGISTRATION | 660 CT scans (~5,000 fractures); 420 train, 80 val, 160 test |
 | [CPTAC-SAR](https://www.cancerimagingarchive.net/collection/cptac-sar/) | CT, MRI, PET | 2019 | 🟢 DICOM | — | — | contrast-unspecified, T1w, other | OPEN | Radiology: 24 subjects, 33 studies, 265 series, 29,595 images (15.2 GB); plus 300 whole-slide pathology images from 88 subjects (72 GB) |
 | [LERA](https://aimi.stanford.edu/datasets/lera-lower-extremity-radiographs) | X-ray | 2019 | 🟢 DICOM | — | — | radiograph | REGISTRATION | 182 patients (foot, knee, ankle, hip) |
-| [MRSpineSeg](https://github.com/pangshumao/SpineParseNet) | MRI | 2019 | 🟢 NIfTI | — | ✅ | — | REQUEST | 172 training + 20 (round-1) + 23 (round-2) sagittal T2-weighted lumbar MRI volumes (test labels withheld) |
+| [MRSpineSeg](https://github.com/pangshumao/SpineParseNet) | MRI | 2019 | 🟢 NIfTI | — | ✅ | T2w | REQUEST | 172 training + 20 (round-1) + 23 (round-2) sagittal T2-weighted lumbar MRI volumes (test labels withheld) |
 | [OAI-ZIB](https://doi.org/10.12752/4.ATEZ.1.0) | MRI | 2019 | 🟡 none | — | ✅ | — | OPEN | 507 manual segmentation masks (384x384x160 voxels) + 116 bone-only masks; ~90 MB zip (matching OAI MRIs obtained separately) |
 | [DeepLesion](https://nihcc.app.box.com/v/DeepLesion) | CT | 2018 | 🟡 PNG | — | — | contrast-unspecified | OPEN | 32,735 lesions on 32,120 CT slices from 4,427 patients (~225 GB) |
 | [Generation R](https://generationr.nl/researchers/) | MRI, DXA | 2018 | 🟢 DICOM | — | — | T1w, DTI, fMRI, whole-body | REQUEST | ~several thousand children with repeated brain MRI and DXA (birth cohort of ~9,700 mothers/children) |
@@ -916,7 +916,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Tromsø Study](https://uit.no/research/tromsostudy) | DXA, MRI | 2016 | 🟢 DICOM | — | — | whole-body, regional, T1w | REQUEST | Tens of thousands of participants across seven survey waves (DXA and brain MRI collected in sub-samples) |
 | [ALSPAC](http://www.bristol.ac.uk/alspac/researchers/access/) | DXA, MRI | 2015 | 🟢 DICOM, NIfTI | — | — | whole-body, T1w, fMRI, DTI | REQUEST | ~14,000 index children (thousands with repeated DXA; ~900 with brain MRI at 18-24y) |
 | [Insight 46 (MRC NSHD 1946 birth cohort)](https://www.nshd.mrc.ac.uk/data/) | MRI, PET, DXA | 2015 | 🟢 DICOM, NIfTI | — | — | T1w, FLAIR, T2w, amyloid … | REQUEST | ~500 imaged participants (Insight 46); ~5,300 in the NSHD birth cohort |
-| [Lower Spine T2 MRI VB Segmentation](https://zenodo.org/records/22304) | MRI | 2015 | 🟢 NIfTI | — | ✅ | — | OPEN | 23 patients (23 T2-weighted MR volumes + binary masks) |
+| [Lower Spine T2 MRI VB Segmentation](https://zenodo.org/records/22304) | MRI | 2015 | 🟢 NIfTI | — | ✅ | T2w | OPEN | 23 patients (23 T2-weighted MR volumes + binary masks) |
 | [Soft-tissue-Sarcoma](https://www.cancerimagingarchive.net/collection/soft-tissue-sarcoma/) | PET, CT, MRI | 2015 | 🟢 DICOM | — | ✅ | FDG, non-contrast, T1w, T2w | OPEN | 9.87 GB |
 | [QIN-SARCOMA](https://www.cancerimagingarchive.net/collection/qin-sarcoma/) | MRI | 2014 | 🟢 DICOM | — | — | DCE | OPEN | 15 subjects / 38 studies / 2,168 series / 46,614 images; 10.29 GB |
 | [TCGA-SARC](https://www.cancerimagingarchive.net/collection/tcga-sarc/) | CT, MRI | 2014 | 🟢 DICOM | — | — | contrast-unspecified, T1w | OPEN | 5 subjects / 6 studies / 33 series / 5,653 images; 2.8 GB |
@@ -926,7 +926,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Digital Hand Atlas](https://ipilab.usc.edu/research/baaweb/) | X-ray | 2007 | 🟡 JPEG | — | — | radiograph | OPEN | ~1,400 normal pediatric hand radiographs |
 | [Rotterdam Study](https://www.ergo-onderzoek.nl) | MRI, DXA | 2005 | 🟢 DICOM | — | — | T1w, PD, FLAIR, DWI … | REQUEST | ~20,000 participants aged 40+ enrolled overall; ~5,000+ with repeated brain MRI |
 | [CoLaus \| PsyCoLaus](https://www.colaus-psycolaus.ch/professionals/) | MRI, DXA | 2003 | 🟢 DICOM, NIfTI | — | — | T1w, DWI, fMRI, whole-body … | REQUEST | ~6,700 baseline participants; imaging sub-studies (BrainLaus, OsteoLaus) on subsets |
-| [MOST](https://agingresearchbiobank.nia.nih.gov/studies/most/) | X-ray, MRI | 2003 | 🟢 DICOM | — | — | radiograph, PD, T2w, whole-body | DUA | 4,551 participants (3,026 original cohort enrolled 2003 + 1,525 new-cohort participants 2016-18); longitudinal knee radiographs, full-limb radiographs and 1.0T knee MRI through the 168-month visit |
+| [MOST](https://agingresearchbiobank.nia.nih.gov/studies/most/) | X-ray, MRI, DXA | 2003 | 🟢 DICOM | — | — | radiograph, PD, T2w, whole-body | DUA | 4,551 participants (3,026 original cohort enrolled 2003 + 1,525 new-cohort participants 2016-18); longitudinal knee radiographs, full-limb radiographs and 1.0T knee MRI through the 168-month visit |
 | [MrOS](https://mrosonline.ucsf.edu/) | CT, DXA, X-ray | 2000 | 🟢 DICOM | — | — | whole-body, regional, non-contrast, radiograph | DUA | 5,994 men (aged 65+) |
 | [NHANES DXA](https://wwwn.cdc.gov/nchs/nhanes/dxa/dxa.aspx) | DXA | 1999 | 🟡 none | — | — | whole-body, regional | OPEN | ~30,000+ participants with whole-body DXA (1999-2006 cycles); additional femur/spine bone-density and visceral-fat DXA in later cycles |
 | [Health ABC](https://agingresearchbiobank.nia.nih.gov/studies/healthabc/) | CT, DXA | 1997 | 🟢 DICOM | — | — | non-contrast, whole-body | DUA | 3,075 older adults (aged 70-79 at baseline) |
@@ -935,7 +935,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [SOF](https://sofonline.ucsf.edu/) | DXA, CT, X-ray | 1986 | 🟢 DICOM | — | — | whole-body, regional, radiograph, non-contrast | DUA | 9,704 older women (plus ~662 Black women in a later supplement) |
 | [OAI](https://nda.nih.gov/oai/) | MRI, X-ray | — | 🟢 DICOM | — | — | T2w, PD, relaxometry-map, radiograph | DUA | 4,796 participants, longitudinal bilateral knee MRI and X-ray |
 
-### 🎀 Breast  <sub>(52)</sub>
+### 🎀 Breast  <sub>(53)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Protocols | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
@@ -947,6 +947,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [Breast Micro-Calcifications Sequential Mammograms](https://zenodo.org/records/14859694) | X-ray | 2025 | 🟢 DICOM | — | ✅ | mammography | OPEN | 100 pairs of temporally sequential mammograms (prior and recent, CC and MLO views); ~2.8 GB |
 | [BreastDCEDL](https://doi.org/10.5281/zenodo.15627232) | MRI | 2025 | 🟡 NIfTI | — | ✅ | DCE, T1w, T1w-CE | OPEN | 2,070 patients (Duke 916, I-SPY1 172, I-SPY2 982); Zenodo latest version ~26.9 GB (tumor-centred MinCrop for all cohorts + full I-SPY1); full I-SPY2 54 GB on TCIA |
 | [MAMA-MIA](https://www.ub.edu/mama-mia/) | MRI | 2025 | 🟡 NIfTI | — | ✅ | DCE, T1w, T1w-CE | DUA | 1,506 annotated training scans plus 574 external validation cases (multi-institutional) |
+| [MIDI-B](https://www.cancerimagingarchive.net/collection/midi-b-test-midi-b-validation/) | CT, MRI, PET, X-ray | 2025 | 🟢 DICOM | — | — | radiograph, mammography | OPEN | 538 subjects, 71.07 GB; synthetic validation 216 subjects / 280 series / 23,921 images; synthetic test 322 subjects / 428 series / 29,660 images; plus TCIA-curated versions of both |
 | [Mammo-MX](https://zenodo.org/records/17740027) | X-ray | 2025 | 🟢 DICOM | — | — | mammography | OPEN | 13,659 mammograms / 3,368 patients; ~77 GB |
 | [NL-Breast-Screening](https://www.frdr-dfdr.ca/repo/dataset/2af839d4-d54f-48d7-9a1a-a00e57fe72ea) | X-ray | 2025 | 🟢 DICOM | — | — | mammography | OPEN | 5,997 four-view exams / 26,988 images / 5,935 patients; 90.8 GB download (3 .7z archives + metadata CSV) |
 | [ODELIA Breast MRI 2025](https://huggingface.co/datasets/ODELIA-AI/ODELIA-Challenge-2025) | MRI | 2025 | 🟢 NIfTI | — | — | T2w, DCE, T1w, T1w-CE | DUA | 500 studies (~135GB) from six European centers, multiple vendors at 1.5T and 3T |
@@ -954,7 +955,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [TOMPEI-CMMD](https://www.cancerimagingarchive.net/analysis-result/tompei-cmmd/) 🏷 | X-ray | 2025 | 🟡 none | — | ✅ | mammography | OPEN | 1,773 segmentation masks on 1,385 breasts (MLO views) from 1,363 patients; clinical spreadsheet covering 2,436 breast images; ~25 MB |
 | [Advanced-MRI-Breast-Lesions](https://www.cancerimagingarchive.net/collection/advanced-mri-breast-lesions/) | MRI | 2024 | 🟢 DICOM | — | ✅ | T1w, T1w-CE, DCE, T2w | OPEN | 645.62 GB; 632 imaging sessions (1,259,688 images, 6,811 series) |
 | [BAMF AIMI Annotations](https://zenodo.org/records/13244892) 🏷 | CT, MRI, PET | 2024 | 🟡 none | — | ✅ | T1w, T2w, contrast-unspecified, FDG | OPEN | 11 task archives (~650 MB total) of AI segmentations for IDC collections; ~10% of predictions reviewed/corrected |
-| [Breast Masses Sequential Mammograms](https://zenodo.org/records/11446259) | X-ray | 2024 | 🟡 — | — | ✅ | — | OPEN | 100 pairs of mammograms (prior and recent rounds, two views per patient); ~3.0 GB |
+| [Breast Masses Sequential Mammograms](https://zenodo.org/records/11446259) | X-ray | 2024 | 🟡 unspecified | — | ✅ | mammography | OPEN | 100 pairs of mammograms (prior and recent rounds, two views per patient); ~3.0 GB |
 | [CMB-BRCA](https://www.cancerimagingarchive.net/collection/cmb-brca/) | CT, MRI, PET, X-ray | 2024 | 🟢 DICOM, other | — | — | T1w, contrast-unspecified, mammography, other | OPEN | 203.94 GB total (78.94 GB radiology, 125 GB pathology); 101 subjects |
 | [IMed-361M](https://huggingface.co/datasets/General-Medical-AI/IMed-361M) | CT, MRI, X-ray, PET | 2024 | 🟡 PNG, NumPy | — | ✅ | contrast-unspecified, CTA, T1w, T1w-CE … | REGISTRATION | 287 GB; ~6.4M image-mask pairs with 361 million masks |
 | [fastMRI Breast](https://fastmri.med.nyu.edu/) | MRI | 2024 | 🟢 HDF5, DICOM | — | — | DCE, kspace-raw | DUA | 300 clinical exams |
@@ -963,7 +964,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [EA1141](https://www.cancerimagingarchive.net/collection/ea1141/) | MRI, X-ray, CT | 2023 | 🟢 DICOM | — | — | T1w, T1w-CE, DBT, mammography … | OPEN | 500 subjects / 1,976 studies / 14,343 series / 855,640 images; 2.82 TB |
 | [EMBED](https://registry.opendata.aws/emory-breast-imaging-dataset-embed/) | X-ray | 2023 | 🟢 DICOM | — | — | mammography, DBT | DUA | 3.4M images from ~110,000 patients; 60,000 annotated lesions |
 | [RSNA Screening Mammography](https://mira.rsna.org/dataset/3) | X-ray | 2023 | 🟢 DICOM | — | — | mammography | REGISTRATION | Just under 20,000 screening exams from 2 sites (Kaggle training split: 54,706 images / 11,913 patients) |
-| [VICTRE Simulated Tomosynthesis Projections](https://zenodo.org/records/8108701) | X-ray | 2023 | 🟡 — | — | — | — | OPEN | 2 sets of 259 raw DBT projections, each from a different phantom (~5.5 GB zipped) |
+| [VICTRE Simulated Tomosynthesis Projections](https://zenodo.org/records/8108701) | X-ray | 2023 | 🟡 unspecified | — | — | DBT | OPEN | 2 sets of 259 raw DBT projections, each from a different phantom (~5.5 GB zipped) |
 | [ISPY1-Tumor-SEG-Radiomics](https://doi.org/10.7937/TCIA.XC7A-QT20) 🏷 | MRI | 2022 | 🟡 NIfTI | — | ✅ | T1w, DCE | OPEN | 163 patients (baseline visit); 3 DCE phases x 2 preprocessed variants (489 volumes each) plus 3 mask tiers; 1,467 NIfTI files |
 | [ISPY2](https://www.cancerimagingarchive.net/collection/ispy2/) | MRI | 2022 | 🟢 DICOM | — | ✅ | T1w, DCE, T2w | OPEN | 719 patients |
 | [VinDr-Mammo](https://physionet.org/content/vindr-mammo/) | X-ray | 2022 | 🟢 DICOM | — | — | mammography | DUA | 5,000 exams / 20,000 images |
@@ -972,9 +973,9 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [BCS-DBT](https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/) | X-ray | 2021 | 🟢 DICOM | — | — | DBT | OPEN | 5,060 patients / 22,032 scans (~1.63 TB) |
 | [CDD-CESM](https://www.cancerimagingarchive.net/collection/cdd-cesm/) | X-ray | 2021 | 🟡 JPEG | ✅ | ✅ | mammography | OPEN | 2,006 images (1,003 low-energy + 1,003 subtracted CESM) / 326 patients; ~1.5 GB |
 | [CMMD](https://www.cancerimagingarchive.net/collection/cmmd/) | X-ray | 2021 | 🟢 DICOM | — | — | mammography | OPEN | 5,202 images / 1,775 patients |
-| [CSAW-M](https://figshare.scilifelab.se/articles/dataset/CSAW-M_An_Ordinal_Classification_Dataset_for_Benchmarking_Mammographic_Masking_of_Cancer/14687271) | X-ray | 2021 | 🟡 — | — | — | — | REQUEST | Mammograms from over 10,000 individuals |
+| [CSAW-M](https://figshare.scilifelab.se/articles/dataset/CSAW-M_An_Ordinal_Classification_Dataset_for_Benchmarking_Mammographic_Masking_of_Cancer/14687271) | X-ray | 2021 | 🟡 unspecified | — | — | mammography | REQUEST | Mammograms from over 10,000 individuals |
 | [ACRIN-FLT-Breast](https://www.cancerimagingarchive.net/collection/acrin-flt-breast/) | PET, CT | 2020 | 🟢 DICOM | — | — | FDG, other, contrast-unspecified | OPEN | 74.24 GB |
-| [CSAW-S](https://zenodo.org/records/4030660) | X-ray | 2020 | 🟡 — | — | ✅ | — | REQUEST | Mammography screenings from 172 patients |
+| [CSAW-S](https://zenodo.org/records/4030660) | X-ray | 2020 | 🟡 unspecified | — | ✅ | mammography | REQUEST | Mammography screenings from 172 patients |
 | [DICOM-SR-Breast-Clinical](https://www.cancerimagingarchive.net/analysis-result/dicom-sr-breast-clinical/) 🏷 | MRI, X-ray, CT, PET | 2019 | 🟡 none | ✅ | — | — | OPEN | 1,292 DICOM SR files (no pixel data) for 474 subjects / 1,286 studies across 4 collections; 19.82 MB |
 | [VICTRE](https://www.cancerimagingarchive.net/collection/victre/) | X-ray | 2019 | 🟢 DICOM | — | — | mammography, DBT | OPEN | 2,994 computational phantom subjects; 8,749 studies/series; 217,913 images; 1.03 TB |
 | [Duke Breast Cancer MRI](https://www.cancerimagingarchive.net/collection/duke-breast-cancer-mri/) | MRI | 2018 | 🟢 DICOM | — | ✅ | T1w, T1w-CE, DCE | OPEN | 922 patients / ~773,000 images |
@@ -985,7 +986,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [TCGA-BRCA](https://www.cancerimagingarchive.net/collection/tcga-brca/) | MRI, X-ray | 2014 | 🟢 DICOM | — | — | mammography | OPEN | 139 subjects / 164 studies / 1,877 series / 230,167 images; 88.13 GB |
 | [TCGA-Breast-Radiogenomics](https://doi.org/10.7937/K9/TCIA.2014.8SIPIY6G) 🏷 | MRI | 2014 | 🟡 none | — | ✅ | DCE, T1w-CE | OPEN | 91 patients (one primary-tumour mask each) from TCGA-BRCA; 105 KB mask archive plus spreadsheets |
 | [INbreast](http://medicalresearch.inescporto.pt/breastresearch/index.php/Get_INbreast_Database) | X-ray | 2012 | 🟢 DICOM | — | ✅ | mammography | REQUEST | 410 images / 115 cases |
-| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
+| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI, X-ray | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
 | [Breast-Diagnosis](https://www.cancerimagingarchive.net/collection/breast-diagnosis/) | MRI, PET, CT, X-ray | 2011 | 🟢 DICOM | — | — | T2w, DCE, T1w-CE, other … | OPEN | 88 subjects / ~105,050 images |
 | [RIDER Breast MRI](https://www.cancerimagingarchive.net/collection/rider-breast-mri/) | MRI | 2011 | 🟢 DICOM | — | — | DWI | OPEN | 5 patients / 10 studies / 40 series / 2,400 images; 401.61 MB |
 | [OPTIMAM (OMI-DB)](https://medphys.royalsurrey.nhs.uk/omidb/) | X-ray | 2008 | 🟢 DICOM | — | — | mammography, DBT | REQUEST | ~750,000 cases (2D full-field digital mammography and 3D tomosynthesis) |
@@ -1014,12 +1015,12 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [GMAI-MMBench](https://huggingface.co/datasets/OpenGVLab/GMAI-MMBench) | CT, MRI, X-ray, PET | 2024 | 🟡 other | ✅ | — | — | REGISTRATION | ~26K cases (25,726 QA) from 284 datasets across 38 modalities |
 | [HNC-IMRT-70-33](https://www.cancerimagingarchive.net/collection/hnc-imrt-70-33/) | CT | 2024 | 🟢 DICOM | — | ✅ | contrast-unspecified | REQUEST | 211 patients / 211 studies / 844 series / 38,032 images; 23.27 GB |
 | [HNTS-MRG 2024](https://hntsmrg24.grand-challenge.org/) | MRI | 2024 | 🟢 NIfTI | — | ✅ | T2w | OPEN | ~150 training patients (pre-RT and mid-RT), ~50 test patients |
-| [Head Neck CBCT CT](https://zenodo.org/records/13231287) | CT | 2024 | 🟡 — | — | ✅ | — | OPEN | Paired planning CT and first-treatment-day CBCT scans; one 387.2 MB RAR archive (patient count not stated) |
+| [Head Neck CBCT CT](https://zenodo.org/records/13231287) | CT | 2024 | 🟡 unspecified | — | ✅ | contrast-unspecified, CBCT | OPEN | Paired planning CT and first-treatment-day CBCT scans; one 387.2 MB RAR archive (patient count not stated) |
 | [IMed-361M](https://huggingface.co/datasets/General-Medical-AI/IMed-361M) | CT, MRI, X-ray, PET | 2024 | 🟡 PNG, NumPy | — | ✅ | contrast-unspecified, CTA, T1w, T1w-CE … | REGISTRATION | 287 GB; ~6.4M image-mask pairs with 361 million masks |
 | [M3D-Seg](https://huggingface.co/datasets/GoodBaiBai88/M3D-Seg) | CT | 2024 | 🟡 NumPy | — | ✅ | contrast-unspecified | OPEN | ~5,772 3D CT images with 149,196 3D mask annotations (~240 GB), aggregated from 25 datasets |
 | [MedPix-2.0](https://huggingface.co/datasets/architojha/medpix-2.0-dataset) | CT, MRI, X-ray | 2024 | 🟡 JPEG | ✅ | — | T1w, T2w, contrast-unspecified, radiograph | OPEN | 2,050 image-text case items |
-| [NPC MRI Multi-modality Segmentation](https://zenodo.org/records/13131827) | MRI | 2024 | 🟡 — | ✅ | ✅ | ✅ | OPEN | 277 patients; ~5.3 GB (primary_data.zip 4.6 GB, images.zip 718 MB) |
-| [NasalSeg](https://zenodo.org/records/13893419) | CT | 2024 | 🟢 — | — | ✅ | — | OPEN | 130 CT scans; NasalSeg.zip 213.6 MB |
+| [NPC MRI Multi-modality Segmentation](https://zenodo.org/records/13131827) | MRI | 2024 | 🟡 unspecified | — | ✅ | T1w, T2w, T1w-CE | OPEN | 277 patients; ~5.3 GB (primary_data.zip 4.6 GB, images.zip 718 MB) |
+| [NasalSeg](https://zenodo.org/records/13893419) | CT | 2024 | 🟡 unspecified | — | ✅ | contrast-unspecified | OPEN | 130 CT scans; NasalSeg.zip 213.6 MB |
 | [RADCURE](https://www.cancerimagingarchive.net/collection/radcure/) | CT | 2024 | 🟢 DICOM | — | ✅ | non-contrast, contrast-unspecified | REQUEST | 3,346 patients |
 | [RPA-Head-and-Neck-Lymph-Nodes](https://www.cancerimagingarchive.net/collection/rpa-head-and-neck-lymph-nodes/) | CT | 2024 | 🟢 DICOM | — | ✅ | non-contrast | DUA | 46 subjects, 46 studies, 92 series, 8,788 images (4.79 GB) |
 | [TOM500](https://doi.org/10.6084/m9.figshare.27133389) | MRI | 2024 | 🟢 NIfTI | — | ✅ | T2w | OPEN | 500 coronal T2-weighted orbital MRI volumes / 500 patients (512 x 512 x 20) |
@@ -1042,7 +1043,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [AAPM-RT-MAC](https://www.cancerimagingarchive.net/collection/aapm-rt-mac/) | MRI | 2019 | 🟢 DICOM | — | ✅ | T2w | DUA | 55 patients / 55 studies / 110 series / 6,655 images (3.52 GB) |
 | [CPTAC-SAR](https://www.cancerimagingarchive.net/collection/cptac-sar/) | CT, MRI, PET | 2019 | 🟢 DICOM | — | — | contrast-unspecified, T1w, other | OPEN | Radiology: 24 subjects, 33 studies, 265 series, 29,595 images (15.2 GB); plus 300 whole-slide pathology images from 88 subjects (72 GB) |
 | [Crowds-Cure-2018](https://www.cancerimagingarchive.net/analysis-result/crowds-cure-2018/) 🏷 | CT | 2019 | 🟡 none | — | — | contrast-unspecified | OPEN | 4,756 bi-directional lesion measurements on CT scans of 324 patients from 13 TCIA collections; label files 5.76 MB |
-| [HN1](https://www.cancerimagingarchive.net/collection/head-neck-radiomics-hn1/) | CT | 2019 | 🟢 DICOM | — | ✅ | contrast-unspecified, other | DUA | 137 patients |
+| [HN1](https://www.cancerimagingarchive.net/collection/head-neck-radiomics-hn1/) | CT, PET | 2019 | 🟢 DICOM | — | ✅ | contrast-unspecified, other | DUA | 137 patients |
 | [OpenEar](https://zenodo.org/records/1473724) | CT | 2019 | 🟡 other | — | ✅ | CBCT | OPEN | 8 human temporal bone datasets (ALPHA–THETA), ~55 GB total |
 | [StructSeg 2019](https://structseg2019.grand-challenge.org/) | CT | 2019 | 🟢 NIfTI | — | ✅ | contrast-unspecified | REGISTRATION | Four tasks; 50 training CT scans (+10 test) each for head-neck and chest cohorts |
 | [CPTAC-HNSCC](https://www.cancerimagingarchive.net/collection/cptac-hnscc/) | CT, MRI, PET | 2018 | 🟢 DICOM | — | — | contrast-unspecified, T1w, other | DUA | Radiology (v19): 156 subjects, 466 studies, 3,127 series, 460,097 images (246.08 GB); collection total 207 subjects incl. 390 pathology slides (97 GB) |
@@ -1059,7 +1060,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 
 | Dataset | Modality | Year | Format | Text | Seg | Protocols | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
-| [DOLCHID](https://springernature.figshare.com/articles/dataset/Dental_Odontogenic_Lesion_CBCT_and_Histopathology_Integrated_Dataset_for_Benchmarking_Deep_Learning_Algorithms/30156622) | CT | 2026 | 🟡 — | — | ✅ | — | OPEN | 262 patients (262 pre-operative CBCT scans + 262 paired H&E histopathology slides); DOLCHID.zip 39.7 GB |
+| [DOLCHID](https://springernature.figshare.com/articles/dataset/Dental_Odontogenic_Lesion_CBCT_and_Histopathology_Integrated_Dataset_for_Benchmarking_Deep_Learning_Algorithms/30156622) | CT | 2026 | 🟡 unspecified | — | ✅ | CBCT | OPEN | 262 patients (262 pre-operative CBCT scans + 262 paired H&E histopathology slides); DOLCHID.zip 39.7 GB |
 | [DentIRO](https://figshare.com/articles/dataset/_b_DentIRO_b_A_High-Quality_Multi-Class_Single-Tooth_Intraoral_Radiograph_Dataset_for_Automated_Dental_Diagnosis/32086377) | X-ray | 2026 | 🟡 PNG | — | — | radiograph | OPEN | 5,300 single-tooth intraoral radiographs / 3,243 patients; ~672 MB |
 | [Dental CBCT Missing Teeth](https://doi.org/10.57760/sciencedb.26465) | CT | 2026 | 🟢 DICOM | — | — | CBCT | OPEN | 158 full-arch CBCT volumes / 158 patients (59,978 slices); 501 missing-tooth sites, 114 sites in 85 volumes annotated (4,994 slices) |
 | [InReDD-PAN924-Ext-BoneLoss-769](https://physionet.org/content/inredd-pan924-ext-boneloss-769/1.0.0/) | X-ray | 2026 | 🟡 JPEG | — | ✅ | panoramic | DUA | 769 panoramic radiographs; 21,047 polygon annotations |
@@ -1070,7 +1071,7 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [MedVision](https://huggingface.co/datasets/YongchengYAO/MedVision) | CT, MRI, PET, X-ray | 2025 | 🟡 NIfTI | — | ✅ | T1w, T1w-CE, T2w, FLAIR … | OPEN | 29K 3D images / 11.2M 2D slices (~1TB complete) |
 | [Panoramic_Radiographs_for_Dental_Condition](https://huggingface.co/datasets/ismaelportog/Panoramic_Radiographs_for_Dental_Condition) | X-ray | 2025 | 🟡 JPEG | — | — | panoramic | OPEN | ~27,884 annotated rows / 1.42 GB (from ~1,808 source panoramic radiographs; 1,628 training + 180 external validation) |
 | [ToothFairy3](https://toothfairy3.grand-challenge.org/) | CT | 2025 | 🟢 NIfTI | — | ✅ | CBCT | REGISTRATION | Publicly annotated CBCT scans with 77 anatomical classes (expanded from ToothFairy2's 42) |
-| [STS 2024](https://zenodo.org/records/17712688) | X-ray, CT | 2024 | 🟢 PNG, NIfTI | — | ✅ | — | OPEN | ~2,380 panoramic X-ray (OPG) images + ~330 CBCT scans; ~968 MB total on Zenodo |
+| [STS 2024](https://zenodo.org/records/17712688) | X-ray, CT | 2024 | 🟡 JPEG | — | ✅ | panoramic | OPEN | ~2,380 panoramic X-ray (OPG) images + ~330 CBCT scans; ~968 MB total on Zenodo |
 | [STS-Tooth](https://zenodo.org/records/10597292) | X-ray, CT | 2024 | 🟢 NIfTI, PNG | — | ✅ | panoramic, CBCT | OPEN | STS-2D-Tooth: 4,000 panoramic X-rays (900 with masks); STS-3D-Tooth: CBCT (Zenodo: 148,400 unlabeled scans and 8,800 masks; HF mirror: 371 volumes, 32 labeled); ~29.6 GB |
 | [ToothFairy2](https://toothfairy2.grand-challenge.org/) | CT | 2024 | 🟡 MHA | — | ✅ | CBCT | REGISTRATION | 480 public training CBCT volumes |
 | [DENTEX](https://dentex.grand-challenge.org/) | X-ray | 2023 | 🟡 PNG | — | — | panoramic | OPEN | 1,005 fully-annotated panoramic X-rays (3,903 total) |
@@ -1124,8 +1125,8 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [ALSPAC](http://www.bristol.ac.uk/alspac/researchers/access/) | DXA, MRI | 2015 | 🟢 DICOM, NIfTI | — | — | whole-body, T1w, fMRI, DTI | REQUEST | ~14,000 index children (thousands with repeated DXA; ~900 with brain MRI at 18-24y) |
 | [Insight 46 (MRC NSHD 1946 birth cohort)](https://www.nshd.mrc.ac.uk/data/) | MRI, PET, DXA | 2015 | 🟢 DICOM, NIfTI | — | — | T1w, FLAIR, T2w, amyloid … | REQUEST | ~500 imaged participants (Insight 46); ~5,300 in the NSHD birth cohort |
 | [UK Biobank Imaging](https://www.ukbiobank.ac.uk/) | MRI, DXA | 2014 | 🟢 DICOM, NIfTI | — | — | T1w, FLAIR, SWI, DWI … | REQUEST | ~100,000 participants imaged; abdominal MRI-derived phenotypes for 40,000+ |
-| [Qatar Biobank](https://www.qphi.org.qa/research/how-to-apply) | DXA, Ultrasound | 2012 | 🟡 derived | — | — | — | REQUEST | ~60,000 participants target (DXA and carotid ultrasound on examination subsets) |
-| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
+| [Qatar Biobank](https://www.qphi.org.qa/research/how-to-apply) | DXA | 2012 | 🟡 unspecified | — | — | whole-body | REQUEST | ~60,000 participants target (DXA and carotid ultrasound on examination subsets) |
+| [SHIP](https://www.fvcm.med.uni-greifswald.de/) | MRI, X-ray | 2012 | 🟢 DICOM | — | — | T1w, T2w, FLAIR, MRA … | REQUEST | ~3,300 whole-body MRI participants (SHIP-2 and SHIP-TREND); ~15,000 total cohort participants |
 | [GUSTO](https://www.gusto.sg/) | MRI, DXA, CT | 2009 | 🟢 DICOM, NIfTI | — | — | T1w, T2w, DWI, fMRI … | REQUEST | ~1,200 mother-offspring pairs |
 | [Rotterdam Study](https://www.ergo-onderzoek.nl) | MRI, DXA | 2005 | 🟢 DICOM | — | — | T1w, PD, FLAIR, DWI … | REQUEST | ~20,000 participants aged 40+ enrolled overall; ~5,000+ with repeated brain MRI |
 | [CoLaus \| PsyCoLaus](https://www.colaus-psycolaus.ch/professionals/) | MRI, DXA | 2003 | 🟢 DICOM, NIfTI | — | — | T1w, DWI, fMRI, whole-body … | REQUEST | ~6,700 baseline participants; imaging sub-studies (BrainLaus, OsteoLaus) on subsets |
@@ -1139,31 +1140,30 @@ Jump to: [Neuro (Brain & Spine)](#neuro-brain-spine) · [Chest & Thorax](#chest-
 | [SOF](https://sofonline.ucsf.edu/) | DXA, CT, X-ray | 1986 | 🟢 DICOM | — | — | whole-body, regional, radiograph, non-contrast | DUA | 9,704 older women (plus ~662 Black women in a later supplement) |
 | [Fenland Study](https://studies.epi.ims.cam.ac.uk/fenland/data-sharing) | DXA | — | 🟡 other | — | — | whole-body | REQUEST | ~12,435 participants |
 
-### 🧩 Unspecified / various body parts  <sub>(16)</sub>
+### 🧩 Unspecified / various body parts  <sub>(14)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Protocols | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
 | [Lingshu Medical Training Data](https://huggingface.co/datasets/lingshu-medical-mllm/lingshu_training_data_medical_domain) | X-ray, CT, MRI | 2026 | 🟡 JPEG | ✅ | — | radiograph | OPEN | ~3.3 TB in three stages: stage 1 ~13 GB, stage 2 ~820 GB (41 chunks), stage 3 ~2.5 TB (124 chunks) |
 | [MedLayBench-V](https://huggingface.co/datasets/hanjang/MedLayBench-V) 🏷 | CT, MRI, X-ray | 2026 | 🟡 PNG, JPEG | ✅ | — | contrast-unspecified, radiograph | OPEN | 79,793 image-caption pairs (train 59,962 / validation 9,904 / test 9,927) |
 | [MedThinkVQA](https://huggingface.co/datasets/bio-nlp-umass/MedThinkVQA) | CT, MRI, X-ray | 2026 | 🟡 JPEG | ✅ | — | T2w, contrast-unspecified, radiograph | OPEN | 8,067 cases (7,347 train / 720 test); 5,845 test images; avg. 6.62 images per case overall, 8.12 per test case |
-| [RadRepro CBCT](https://zenodo.org/records/18401318) | CT | 2026 | 🟡 — | — | ✅ | — | OPEN | 120 CBCT image volumes of a Catphan phantom (CBCT_Data.zip, 2.3 GB) |
 | [CVPR-BiomedSegFM](https://huggingface.co/datasets/junma/CVPR-BiomedSegFM) | CT, MRI, PET | 2025 | 🟡 NumPy | ✅ | ✅ | contrast-unspecified, other | OPEN | 340 GB total (preprocessed npz); 3D_train_npz_all plus a 10% (16 GB) coreset subset, validation set |
 | [GMAI-VL-5.5M](https://huggingface.co/datasets/General-Medical-AI/GMAI-VL-5.5M) | CT, MRI, X-ray | 2025 | 🟡 JPEG, PNG | ✅ | — | radiograph | OPEN | ~5.5M QA pairs: 1.7M captions, 0.9M instruction QA and 1.3M perception labels (multimodal), plus 1.7M text-only QA; only part of the multimodal pairs ship with redistributable images |
-| [MIDI-B](https://www.cancerimagingarchive.net/collection/midi-b-test-midi-b-validation/) | CT, MRI, PET, X-ray | 2025 | 🟢 DICOM | — | — | — | OPEN | 538 subjects, 71.07 GB; synthetic validation 216 subjects / 280 series / 23,921 images; synthetic test 322 subjects / 428 series / 29,660 images; plus TCIA-curated versions of both |
 | [MediConfusion](https://huggingface.co/datasets/shahab7899/MediConfusion) 🏷 | MRI, X-ray | 2024 | 🟡 none | ✅ | — | T1w, radiograph | OPEN | 176 confusing image pairs (352 image-question items) |
 | [ROCOv2](https://doi.org/10.5281/zenodo.10821435) | X-ray, CT, MRI, PET | 2024 | 🟡 JPEG | ✅ | — | radiograph, fluoroscopy-DSA, contrast-unspecified, other | OPEN | 79,789 images with captions and UMLS concepts |
 | [PMC-OA](https://huggingface.co/datasets/axiong/pmc_oa) | X-ray, CT, MRI, PET | 2023 | 🟡 JPEG | ✅ | — | — | OPEN | 1.6 million image-caption pairs |
-| [PMC-VQA](https://huggingface.co/datasets/xmcmic/PMC-VQA) | CT, MRI, X-ray | 2023 | 🟡 JPEG | ✅ | — | contrast-unspecified, radiograph, other | OPEN | ~149K images, ~227K question-answer pairs (21.8 GB) |
+| [PMC-VQA](https://huggingface.co/datasets/xmcmic/PMC-VQA) | CT, MRI, X-ray, PET | 2023 | 🟡 JPEG | ✅ | — | contrast-unspecified, radiograph, other | OPEN | ~149K images, ~227K question-answer pairs (21.8 GB) |
 | [Pseudo-PHI-DICOM-Data](https://www.cancerimagingarchive.net/collection/pseudo-phi-dicom-data/) | CT, MRI, PET, X-ray | 2021 | 🟢 DICOM | — | — | other, contrast-unspecified, mammography, radiograph | OPEN | 21 patients, 22 studies, 26 series, 1,693 images in each of two versions (evaluation and de-identified); 1.24 GB |
 | [MedICaT](https://github.com/allenai/medicat) | X-ray, CT, MRI | 2020 | 🟡 PNG | ✅ | — | — | REQUEST | 217,060 figures from 131,410 papers |
 | [CPTAC-AML](https://www.cancerimagingarchive.net/collection/cptac-aml/) | CT | 2019 | 🟢 DICOM | — | — | contrast-unspecified | OPEN | Radiology (CT, US): 5 subjects, 9 studies, 47 series, 4,108 DICOM images (2.51 GB); pathology: 273 whole-slide images from 180 subjects (1.02 TB) |
 | [CPTAC-CM](https://www.cancerimagingarchive.net/collection/cptac-cm/) | CT, MRI, PET | 2018 | 🟢 DICOM | — | — | — | OPEN | Radiology: 18 subjects, 24 studies, 264 series, 52,368 images (25.82 GB); plus 777 whole-slide pathology images from 182 subjects (335.5 GB) |
 | [ROCO](https://github.com/razorx89/roco-dataset) | X-ray, CT, MRI, PET | 2018 | 🟡 JPEG | ✅ | — | — | OPEN | ~81,000 radiology image-caption pairs |
 
-### 🧪 Phantoms (non-anatomical)  <sub>(7)</sub>
+### 🧪 Phantoms (non-anatomical)  <sub>(8)</sub>
 
 | Dataset | Modality | Year | Format | Text | Seg | Protocols | Access | Size |
 | --- | --- | --- | --- | :-: | :-: | :-: | --- | --- |
+| [RadRepro CBCT](https://zenodo.org/records/18401318) | CT | 2026 | 🟡 unspecified | — | ✅ | CBCT | OPEN | 120 CBCT image volumes of a Catphan phantom (CBCT_Data.zip, 2.3 GB) |
 | [PCCT/DECT Phantom Dose Levels](https://zenodo.org/records/17119205) | CT | 2025 | 🟢 DICOM | — | — | photon-counting, spectral, non-contrast | OPEN | PCCT: 270 series / 42,029 DICOM images (~29.7 GB unzipped); DECT: 267 series / 24,243 DICOM images (~13.0 GB unzipped); ~19.8 GB zipped |
 | [CC-Radiomics-Phantom-2](https://www.cancerimagingarchive.net/collection/cc-radiomics-phantom-2/) | CT | 2019 | 🟢 DICOM | — | — | non-contrast | OPEN | 251 CT scans (251 series, 57,839 images); 30.48 GB |
 | [CC-Radiomics-Phantom-3](https://www.cancerimagingarchive.net/collection/cc-radiomics-phantom-3/) | CT | 2019 | 🟢 DICOM | — | ✅ | non-contrast | OPEN | 95 subjects (phantom scan sets), 113 studies, 550 series, 25,612 images; 13.44 GB |

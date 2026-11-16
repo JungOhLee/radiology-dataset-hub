@@ -95,7 +95,7 @@ def build():
     n_multi_region = sum(1 for d in ds_only if len(d.get("regions") or []) > 1)
 
     out = []
-    out.append(f"**{total} curated datasets** · "
+    out.append(f"**{total} datasets** · "
                f"{n_mod('CT')} CT · {n_mod('MRI')} MRI · {n_mod('PET')} PET · {n_mod('X-ray')} X-ray · "
                f"{n_raw} native DICOM/NIfTI · {n_text} with reports/text · {n_seg} with segmentation labels")
     out.append("")

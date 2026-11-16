@@ -183,7 +183,6 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; }
 .badge.bodycomp { background: var(--violet-soft); color: var(--violet); }
 .badge.phantom { background: var(--surface-2); color: var(--text-soft); border-color: var(--border); }
 .badge.derived { background: var(--violet-soft); color: var(--violet); }
-.badge.unreviewed { background: transparent; color: var(--text-soft); border: 1px dashed var(--border); }
 .filters[hidden] { display: none; }
 .chip .chip-n { font-size: .72rem; opacity: .65; font-variant-numeric: tabular-nums; }
 .badge.fmt { background: var(--surface-2); color: var(--text-soft); border-color: var(--border); }

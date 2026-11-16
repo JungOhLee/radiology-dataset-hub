@@ -3,14 +3,14 @@
 
   --seed       before the LLM enrichment pass: add what rules can fill (image_format /
                label_format from `format`, protocol_note from `multi_sequence_detail`,
-               license_id / commercial_use from `license`, normalised host, review status).
+               license_id / commercial_use from `license`, normalised host, review = llm-proposed).
                v1 fields stay, so an entry the enrichment pass fails on is still a valid v1 entry.
   --finalize   after it, on v2 entries (those with `subjects`): drop the v1 fields
                (format, multi_sequence_detail, other_labels -> details.label_schema,
                details.phantom -> phantom), map tasks/tags onto the controlled lists,
                recompute the derived booleans and order the keys.
 
-Usage: python3 scripts/migrate_v2.py --seed [--curated-ids-from MAIN_datasets.json] | --finalize
+Usage: python3 scripts/migrate_v2.py --seed | --finalize
 """
 import argparse
 import json
@@ -39,7 +39,7 @@ def dedup(xs):
     return out
 
 
-def seed(e, curated_ids=None):
+def seed(e):
     """Rule-based v2 fields added next to the v1 ones (idempotent; skips v2 entries)."""
     if cs.is_v2(e) or e.get("type") == "repository":
         return e
@@ -61,8 +61,7 @@ def seed(e, curated_ids=None):
     e.setdefault("commercial_use", com)
     if e.get("host"):
         e["host"] = cs.map_host(e["host"])
-    if "review" not in e:
-        e["review"] = "curated" if curated_ids is None or e["id"] in curated_ids else "llm-proposed"
+    e.setdefault("review", "llm-proposed")     # human-verified only once someone checks it
     return e
 
 
@@ -136,15 +135,10 @@ def main():
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--seed", action="store_true")
     g.add_argument("--finalize", action="store_true")
-    ap.add_argument("--curated-ids-from", metavar="DATASETS_JSON",
-                    help="entries whose id is in this file are 'curated', others 'llm-proposed'")
     a = ap.parse_args()
     cat = json.loads(DATA.read_text())
     if a.seed:
-        cur = None
-        if a.curated_ids_from:
-            cur = {e["id"] for e in json.loads(pathlib.Path(a.curated_ids_from).read_text())}
-        cat = [seed(e, cur) for e in cat]
+        cat = [seed(e) for e in cat]
     else:
         cat = [finalize(e) for e in cat]
     DATA.write_text(json.dumps(cat, indent=2) + "\n")

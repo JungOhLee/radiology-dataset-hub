@@ -62,6 +62,8 @@ class Migration(unittest.TestCase):
         self.assertEqual((f["tasks"], f["tags"], f["paired_text"], f["raw_image"]),
                          (["segmentation"], ["genetics"], True, False))
         self.assertNotIn("n_images", f)
+        self.assertEqual(mig.finalize(dict(v2, regions=["Multi", "Chest"]))["regions"], ["Chest"])
+        self.assertEqual(mig.finalize(dict(v2, regions=["Multi"]))["regions"], ["Multi"])
 
 
 class Validator(unittest.TestCase):

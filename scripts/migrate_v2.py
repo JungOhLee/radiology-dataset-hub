@@ -97,6 +97,8 @@ def finalize(e):
             e.pop(k)
     if e.get("host"):
         e["host"] = cs.map_host(e["host"])
+    if len(e.get("regions") or []) > 1 and "Multi" in e["regions"]:   # Multi only when nothing is itemised
+        e["regions"] = [r for r in e["regions"] if r != "Multi"]
     cs.derive(e)
     ordered = {k: e[k] for k in ORDER if k in e}
     ordered.update({k: v for k, v in e.items() if k not in ordered})

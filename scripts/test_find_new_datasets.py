@@ -73,7 +73,10 @@ def run_main(catalog, prev_text=None):
             prev.write_text(prev_text)
             argv += ["--prev", str(prev)]
         out = io.StringIO()
+        # get_json gets fixtures; every other request (get_text: TCIA, AWS registry, VinDr pages)
+        # fails fast instead of reaching the network, which hung CI when a site stalled.
         with mock.patch.object(f, "DATA", data), mock.patch.object(f, "get_json", fixture_get_json), \
+                mock.patch("urllib.request.urlopen", side_effect=OSError("offline test")), \
                 mock.patch.object(sys, "argv", argv), mock.patch.dict(os.environ, {}, clear=False), \
                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
             f.main()

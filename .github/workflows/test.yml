@@ -13,9 +13,10 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Validate datasets.json
-        run: python3 scripts/validate.py
+      - name: Validate datasets.json (every entry in schema v2)
+        run: python3 scripts/validate.py --require-v2
       - name: Tracker unit tests
         run: python3 -m unittest discover -s scripts -p 'test_*.py' -v

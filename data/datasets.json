@@ -3250,8 +3250,8 @@
         "classification",
         "detection"
       ],
-      "file_structure": "1024\u00d71024 PNGs + Data_Entry_2017.csv (labels, patient age/sex/view) + train_val/test split lists.",
-      "splits": "~86k train-val / ~25k test (official patient-wise split)",
+      "file_structure": "1024\u00d71024 PNGs (8-bit grayscale; 519 of the 112,120 are RGBA) in 12 tar.gz archives (images_01\u201312) + Data_Entry_2017_v2020.csv (labels, patient age/sex/view) + BBox_List_2017.csv + train_val_list.txt / test_list.txt + README_CHESTXRAY.pdf and LOG_CHESTXRAY.pdf.",
+      "splits": "86,524 train-val / 25,596 test images (official patient-wise split lists)",
       "label_source": [
         "nlp-report"
       ],
@@ -3712,7 +3712,9 @@
         "6 projection/position views recorded per image (e.g. PA, AP, lateral, AP-horizontal, pediatric, costal)"
       ],
       "file_structure": "16-bit grayscale PNG images (converted from DICOM) stored in numbered zip folders, with all annotations, DICOM metadata, UMLS-mapped labels, localizations and reports provided in a single CSV file (PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv).",
-      "extra": "Only ~27% of the studies (about 27,593 images) were manually annotated by trained physicians; the remaining ~73% were labeled automatically by an attention-based RNN text-labeling model (0.93 micro-F1 on a held-out test set), so automatic labels carry some noise. Dataset totals ~160,000 images from 67,000 patients (2009-2017, Hospital San Juan, Spain)."
+      "extra": "Only ~27% of the studies (about 27,593 images) were manually annotated by trained physicians; the remaining ~73% were labeled automatically by an attention-based RNN text-labeling model (0.93 micro-F1 on a held-out test set), so automatic labels carry some noise. Dataset totals ~160,000 images from 67,000 patients (2009-2017, Hospital San Juan, Spain).",
+      "third_party_processing": "unclear",
+      "third_party_note": "PADCHEST Dataset Research Use Agreement clause 5: 'YOU MAY NOT DISTRIBUTE, PUBLISH, OR REPRODUCE A COPY of any portion or all of the PadChest Dataset to others without specific prior written permission from BIMCV-PadChest'; clause 1: research use only (non-academic use needs approval); clause 10: no re-identification. No clause on cloud/API processing."
     }
   },
   {
@@ -3830,7 +3832,10 @@
       "dicom_headers": "partially-anonymized",
       "third_party_processing": "prohibited",
       "third_party_note": "PhysioNet Credentialed Health Data Use Agreement 1.5.0; PhysioNet guidance 'Use of MIMIC Data with Large Language Models and Online Services' (2025-09-24): the DUA 'explicitly prohibits sharing access to the data with third parties', including 'sending it through APIs or using it on online platforms'; only services verified for zero retention, no training use and no human review (or local LLMs) are acceptable.",
-      "related": []
+      "related": [],
+      "file_structure": "DICOM files with a .dicom extension under train/ (15,000) and test/ (3,000); uncompressed and JPEG 2000 lossless transfer syntaxes, 12\u201314 bit, MONOCHROME1 and MONOCHROME2. annotations/: annotations_train.csv / annotations_test.csv (boxes; train rows carry rad_id) and image_labels_train.csv / image_labels_test.csv (22 local + 6 global labels; train has one row per reader). SHA256SUMS.txt is provided.",
+      "splits": "15,000 train (3 independent readers per image) / 3,000 test (consensus labels)",
+      "extra": "Checked against the downloaded files on 2026-11-19: no patient ID is released (one anonymized ID per image). Test positives: No finding 2,051, Cardiomegaly 309, Pneumonia 246, Nodule/Mass 176, Tuberculosis 164, Pleural effusion 111, Pneumothorax 18."
     }
   },
   {
@@ -11478,8 +11483,8 @@
         "BI-RADS"
       ],
       "file_structure": "Zip archive of DICOM files ([train|test]_images/{patient_id}/{image_id}.dcm; many images JPEG 2000-compressed) plus CSV metadata, in the controlled-access S3 bucket arn:aws:s3:::screening-mammography-breast (us-west-2); access requested via MIRA (email registration + acceptance of the research use agreement).",
-      "splits": "Training set: ~54,706 images from ~11,913 patients across 2 sites; official test set is hidden (held-out for Kaggle scoring), so no released validation count.",
-      "extra": "Dataset DOI 10.1148/dataset.smbc.2024 (cite as 'RSNA-SMBC Dataset, November 2022'); data descriptor: Trivedi et al., Radiology: AI 2026 (doi:10.1148/ryai.250375). Enriched to ~4% cancer prevalence (about 5x the screening rate); interval cancers excluded; no lesion-level annotations. Fields biopsy/invasive/BIRADS/density are training-split only. Per the descriptor paper, negatives had 1-year (site 1, US) or 2-year (site 2, Australia) negative follow-up.",
+      "splits": "Training set: ~54,706 images from ~11,913 patients across 2 sites; official test set is hidden (held-out for Kaggle scoring), so no released validation count. The MIRA zip (289,930,749,967 bytes) also contains test.csv with 4 sample test images.",
+      "extra": "Dataset DOI 10.1148/dataset.smbc.2024 (cite as 'RSNA-SMBC Dataset, November 2022'); data descriptor: Trivedi et al., Radiology: AI 2026 (doi:10.1148/ryai.250375). Enriched to ~4% cancer prevalence (about 5x the screening rate); interval cancers excluded; no lesion-level annotations. Fields biopsy/invasive/BIRADS/density are training-split only. Per the descriptor paper, negatives had 1-year (site 1, US) or 2-year (site 2, Australia) negative follow-up. Checked against the downloaded files on 2026-11-19: transfer syntaxes JPEG 2000 lossless and JPEG lossless; MONOCHROME1 on some machines; some images use VOILUTFunction SIGMOID; machines 21 and 48 store 0\u2013255 pixel values in JPEG 2000 while the header windows are 12-bit (applying the header window gives a black image). 38 images have non-CC/MLO views (AT, LM, ML, LMO). BIRADS (0/1/2) and density are missing for about half of the rows.",
       "label_source": [
         "pathology",
         "follow-up",
@@ -11500,7 +11505,7 @@
       ],
       "version": "1.0 (MIRA; dataset created 2022-11-28)",
       "release_date": null,
-      "dicom_headers": null,
+      "dicom_headers": "partially-anonymized",
       "third_party_processing": "unclear",
       "third_party_note": "AWS/MIRA license: 'for non-commercial purposes only, including academic research and education' ... 'You may not share or redistribute a copy of any portion or all of the data in any form.' No explicit API/online-service language.",
       "related": []
@@ -11606,7 +11611,7 @@
         "pathology (benign/malignant)"
       ],
       "file_structure": "DICOM full images + ROI mask + cropped images; CSV descriptors for mass/calc train and test separately.",
-      "splits": "~2,458 train / ~645 test lesions (predefined)",
+      "splits": "3,568 abnormalities: train 2,864 (mass 1,318 + calcification 1,546) / test 704 (mass 378 + calcification 326), on 3,103 unique full-field images (train 2,458 / test 645); predefined in the description CSVs",
       "label_source": [
         "pathology"
       ],
@@ -11631,7 +11636,8 @@
           ],
           "note": "Curated subset of DDSM; LJPEG decompressed losslessly to DICOM, questionable masses removed, mass ROIs refined by level-set segmentation, standardized train/test splits"
         }
-      ]
+      ],
+      "extra": "Checked against the downloaded files on 2026-11-19: via IDC (collection cbis_ddsm) the 10,239 DICOM are 3,103 full mammograms (16-bit) plus ROI masks (8-bit) and cropped patches in the same folder tree; 409 IDC PatientIDs end in '.dcm'. Select full images by the SeriesInstanceUID in the description CSVs' 'image file path'."
     }
   },
   {
@@ -11726,7 +11732,7 @@
       ],
       "file_structure": "Full-field digital mammograms stored as DICOM under images/ (one folder per study, 4 files each: L/R x CC/MLO views); labels in CSV files (breast-level_annotations.csv, finding_annotations.csv, metadata.csv) with bounding boxes as xmin/ymin/xmax/ymax columns.",
       "splits": "5,000 studies (20,000 images) split into 4,000 training and 1,000 test studies, stratified to preserve BI-RADS and finding distributions.",
-      "extra": "Each exam was independently double-read by two radiologists with disagreements resolved by a third arbitrating radiologist; findings graded BI-RADS 1-2 (benign) were not given bounding boxes.",
+      "extra": "Each exam was independently double-read by two radiologists with disagreements resolved by a third arbitrating radiologist; findings graded BI-RADS 1-2 (benign) were not given bounding boxes. Checked against the downloaded files on 2026-11-19: DICOM files use the .dicom extension and are uncompressed; vendors Siemens Mammomat Inspiration (15,244 images, 12-bit), Planmed Nuance (3,796, MONOCHROME1, 16-bit) and IMS Giotto (960); no patient ID beyond study_id; SHA256SUMS.txt is provided.",
       "label_source": [
         "radiologist-multi"
       ],
@@ -11829,14 +11835,14 @@
     "details": {
       "label_schema": [
         "Pathology classification (image/breast-level): Benign or Malignant, biopsy-confirmed",
-        "Abnormality type: calcification or mass",
+        "Abnormality type: calcification, mass, or both (clinical sheet rows: 1,149 mass / 262 calcification / 461 both)",
         "Molecular subtype (subset of 749 patients / 1,498 mammographies): Luminal A, Luminal B, HER2-positive (HER2-enriched), Triple-negative",
         "Breast laterality: L or R (LeftRight column)",
         "Patient age (Age column)",
         "benign/malignant (biopsy)"
       ],
       "file_structure": "Images are DICOM (converted from original TIFF), organized in the standard TCIA per-patient folder hierarchy; labels are in a single Excel clinical-data spreadsheet (e.g., CMMD_clinicaldata_revision.xlsx) keyed by patient ID (ID1/ID2), with columns for LeftRight, Age, number of images, abnormality, classification, and subtype. No segmentation masks or ROI/RTSTRUCT files are provided.",
-      "extra": "This is a classification-only dataset with no pixel-level annotations; molecular subtype labels exist only for a 749-patient subset, while benign/malignant classification and abnormality (calcification/mass) cover the full cohort (1,775 patients, 3,728 studies, 5,202 images).",
+      "extra": "This is a classification-only dataset with no pixel-level annotations; molecular subtype labels exist only for a 749-patient subset, while benign/malignant classification and abnormality (calcification/mass) cover the full cohort (1,775 patients, 3,728 studies, 5,202 images). Checked against the downloaded files on 2026-11-19: via IDC (collection cmmd) 5,202 DICOM, 8-bit FOR PRESENTATION, uncompressed, window 128/256 (2 images 16-bit), 2294\u00d71914; the clinical sheet has 1,872 breast-level rows.",
       "label_source": [
         "pathology"
       ],
@@ -12641,9 +12647,9 @@
     ],
     "images_included": true,
     "raw_image": true,
-    "size": "3.4M images from ~110,000 patients; 60,000 annotated lesions",
-    "n_subjects": 110000,
-    "n_images": 3400000,
+    "size": "EMBED Open Data on AWS: 480,606 DICOM (metadata table: 2D 364,564 + C-view 115,759) / 72,770 exams / 23,253 patients, 2.66 TB; ROIs on ~10,500 images. The paper's full EMBED (~3.4M images, ~110,000 patients) is not in this bucket",
+    "n_subjects": 23253,
+    "n_images": 480606,
     "label_types": [
       "image-level-class",
       "bounding-box",
@@ -12695,7 +12701,7 @@
         "demographics"
       ],
       "file_structure": "Images are DICOM files organized on disk as ./cohort/patientID/studyID/SOPinstanceUID.dcm; labels come as CSV files \u2014 EMBED_OpenData_metadata.csv (one row per image file, with DICOM tags, ROI_coords, and file paths), a reduced metadata variant, and EMBED_OpenData_clinical.csv (one row per finding, with BI-RADS assessment, density, and pathology labels).",
-      "extra": "No official train/test split is provided; clinical and metadata CSVs must be joined on patient ID (empi_anon), exam ID (acc_anon), and laterality (clinical `side` vs metadata `ImageLateralityFinal`) to link labels/ROIs to the correct images. The full release contains ~3.4M+ images with roughly 60,000 annotated lesions across 110,000+ patients.",
+      "extra": "No official train/test split is provided; clinical and metadata CSVs must be joined on patient ID (empi_anon), exam ID (acc_anon), and laterality (clinical `side` vs metadata `ImageLateralityFinal`) to link labels/ROIs to the correct images. The full release contains ~3.4M+ images with roughly 60,000 annotated lesions across 110,000+ patients. Checked against the downloaded files on 2026-11-19: bucket s3://embed-dataset-open (us-west-2) = images/cohort_1 (237,570 files, 1.31 TB), images/cohort_2 (243,036, 1.35 TB) and tables/ (5 CSV incl. AWS_Open_Data_Clinical_Legend.csv). After approval the applicant's AWS account gets list/get access for a limited period (90 days for a 2026-11 approval). Images are JPEG Lossless 12-bit, mostly Hologic; 15,213 images use VOILUTFunction SIGMOID. The path_severity codes are not in the legend file.",
       "label_source": [
         "radiologist-single",
         "pathology"
@@ -12712,7 +12718,8 @@
       "third_party_processing": "unclear",
       "third_party_note": "EMBED Research Use Agreement: 'YOU MAY NOT DISTRIBUTE, PUBLISH, OR REPRODUCE A COPY of any portion or all of EMBED to others without specific prior written permission'; 'You may not otherwise copy, reproduce, retransmit, distribute, publish ... or otherwise transfer any material.' No explicit API language.",
       "related": []
-    }
+    },
+    "n_studies": 72770
   },
   {
     "id": "hecktor",
@@ -16971,11 +16978,10 @@
       "PNG"
     ],
     "label_format": [
-      "JSON"
+      "JSON",
+      "CSV"
     ],
-    "preprocessing": [
-      "8-bit-windowed"
-    ],
+    "preprocessing": [],
     "images_included": true,
     "raw_image": false,
     "size": "4,555 CXR studies (3,099 abnormal, 1,456 normal); 7,037 positive and 3,422 negative finding sentences; ~46 GB",
@@ -17038,7 +17044,7 @@
         "anatomical location labels",
         "progression labels"
       ],
-      "file_structure": "Chest X-ray images are single-view (mostly PA) PNG files inherited from PadChest, paired with grounded-report annotations (per-sentence finding category, locations, progression, EN/ES text, and bounding-box coordinates); distributed as a gated dataset on Hugging Face (microsoft/padchest-gr) and via the BIMCV request form (~46 GB).",
+      "file_structure": "Chest X-ray images are single-view (mostly PA) PNG files inherited from PadChest, paired with grounded-report annotations (per-sentence finding category, locations, progression, EN/ES text, and bounding-box coordinates); distributed as a gated dataset on Hugging Face (microsoft/padchest-gr) and via the BIMCV request form (~46 GB). Checked against the downloaded files on 2026-11-19: the B2DROP public share holds Padchest_GR_files/PadChest_GR.zip.001\u2013.037 (7-Zip split zip, 38.5 GB; 4,555 16-bit PNGs), PadChest_GR_progression_prior_studies/\u2026zip.001\u2013.009 (9.0 GB; 1,446 prior-study PNGs, 84 of which are also grounded images), grounded_reports_20240819.json and master_table.csv.zip (8,787 sentence rows); no checksums are published.",
       "splits": "3,185 training studies / 455 validation studies / 915 test studies (total 4,555), split ~70/10/20 at random, stratified by finding category and keeping all studies of a patient within one partition",
       "extra": "Multi-reader: every positive finding sentence carries up to two independent bounding-box annotation sets from different radiologists (a 14-radiologist team reviewed/annotated); note ~6,217 positive findings have no manual box while 820 do (per Fig.4C), so not all findings are box-grounded, and images are reduced-grayscale PNG rather than DICOM.",
       "label_source": [
@@ -17055,7 +17061,7 @@
       "release_date": null,
       "dicom_headers": "stripped (converted to NIfTI/PNG/JPEG)",
       "third_party_processing": "unclear",
-      "third_party_note": "Governed by the PADCHEST Dataset Research Use Agreement; requesters commit not to share the data and not to attempt re-identification (BIMCV page). No explicit API/online-service clause found.",
+      "third_party_note": "PADCHEST Dataset Research Use Agreement (linked from the PadChest-GR page), clause 5: 'YOU MAY NOT DISTRIBUTE, PUBLISH, OR REPRODUCE A COPY of any portion or all of the PadChest Dataset to others without specific prior written permission from BIMCV-PadChest'; clause 1: research use only; clause 10: no re-identification. No clause on cloud/API processing. The dataset authors processed the report text with GPT-4 through a private Azure OpenAI instance (arXiv 2411.05085).",
       "related": [
         {
           "id": "padchest",
@@ -21077,9 +21083,9 @@
         "nodule bounding boxes (x,y,w,h) in metadata.csv",
         "50x50x50mm CT nodule patches for generation track"
       ],
-      "file_structure": "Images provided as 1024x1024 .mha files (original and OpenCXR-preprocessed versions); nodule bounding-box annotations stored in a metadata.csv (columns x, y, width, height, label), with a separate simulated_metadata.csv used for the generation track; distributed as dataset_node21.zip (~37.2 GB) on Zenodo.",
+      "file_structure": "Images provided as .mha files: proccessed_data/ (OpenCXR-preprocessed, 1024\u00d71024, uint16) and original_data/ (native sizes, e.g. 1860\u00d71744 to 3000\u00d72899, mostly uint16); nodule bounding-box annotations stored in a metadata.csv (columns x, y, width, height, label), with a separate simulated_metadata.csv used for the generation track; distributed as dataset_node21.zip (~37.2 GB) on Zenodo.",
       "splits": "Public training set: 4,882 frontal chest radiographs (1,134 positive with nodules, 3,748 negative). Sequestered experimental test set: 281 CXRs, 166 positive. Generation track evaluated on 1,000 nodule-free CXRs. (Official train/val split not sub-divided.)",
-      "extra": "Positive images sourced from JSRT, PadChest, ChestX-ray14, and Open-I; the generation track additionally provides CT nodule patches from LUNA16 for synthesizing nodules.",
+      "extra": "Positive images sourced from JSRT, PadChest, ChestX-ray14, and Open-I; the generation track additionally provides CT nodule patches from LUNA16 for synthesizing nodules. Checked against the downloaded files on 2026-11-19: original_data/filenames_orig_and_new.csv maps only the 1,134 nodule images to their source (ChestX-ray14 617, PadChest 314, JSRT 149, Open-I 54); nodule-free images have no source mapping, so overlap with ChestX-ray14/PadChest has to be found by image matching. The folder is spelled 'proccessed_data' in the release.",
       "label_source": [
         "radiologist-single"
       ],
@@ -30280,7 +30286,7 @@
     "images_included": true,
     "raw_image": false,
     "size": "~215,000 chest radiographs (138k train / 42.9k test / 34.9k validation) from ICU patients",
-    "n_subjects": 50000,
+    "n_subjects": 47724,
     "n_images": 215381,
     "label_types": [
       "image-level-class"
@@ -30328,14 +30334,14 @@
         "PulmonaryOpacities_Left",
         "Atelectasis_Right",
         "Atelectasis_Left",
-        "Multi-label severity ratings (0-4) for eight clinical conditions incl. heart size, pulmonary congestion, pleural effusion, pulmonary opacities, atelectasis",
+        "Multi-label ordinal severity ratings for eight clinical conditions: HeartSize 0\u20133; pulmonary congestion, pleural effusion, pulmonary opacities and atelectasis (right/left) 0\u20134 (ranges as found in the data; the dataset card does not define the grade values)",
         "Patient demographics (age, sex)",
         "Study dates (2009-2024)",
         "Physician/study/patient IDs"
       ],
       "file_structure": "Hugging Face parquet dataset where each row holds a PNG chest radiograph (default config resized to 512px; an 'original' config keeps variable native dimensions) alongside the 8 integer ordinal-label columns plus metadata columns (UID, Fold, Split, PatientID, PhysicianID, StudyDate, Age, Sex).",
       "splits": "Train: 137,593 / Validation: 34,860 / Test: 42,928 (total ~215,381 images).",
-      "extra": "Approximately 200k bedside/portable ICU chest radiographs from ~50k intensive-care patients; includes a Fold column supporting cross-validation and PhysicianID (~119 distinct physicians).",
+      "extra": "Approximately 200k bedside/portable ICU chest radiographs from ~50k intensive-care patients; includes a Fold column supporting cross-validation and PhysicianID (~119 distinct physicians). Checked against the downloaded files on 2026-11-19: default config 215,381 images from 47,724 unique PatientID; images are 16-bit PNG (512 px long side) stored in the parquet rows. The Age column ranges 0\u201340,414, so it is not in years (possibly days).",
       "label_source": [
         "radiologist-single"
       ],
@@ -37264,7 +37270,7 @@
         "two-year cancer-free verification for negatives"
       ],
       "file_structure": "FRDR v3 (DOI 10.20383/103.01526): abnormal.7z (2.32 GB), False Positive.7z (22.57 GB), normal.7z (65.91 GB) and NLBSD_Metadata.csv (3.9 MB), total 90.8 GB; direct HTTPS links under https://www.frdr-dfdr.ca/repo/files/1/published/publication_1521/submitted_data/ (also Globus). Inside: <class>\\p_<case>\\<left|right>[-c]\\<CC|MLO>\\IM-*.dcm (16-bit DICOM, 2394x3062 or 1915x2295); one CSV row per image keyed by File Path.",
-      "extra": "26,988 images from 5,997 screening exams (5,935 unique patients); positives are biopsy-confirmed cancer and normals are verified cancer-free for >=2 years; the false-positive class (radiologist recalls that were benign) is the dataset's distinguishing feature. Source: FRDR record (DOI 10.20383/103.01526, v3) and paper arXiv:2411.02710 / Nature Sci Data 10.1038/s41597-025-05866-0.",
+      "extra": "26,988 images from 5,997 screening exams (5,935 unique patients); positives are biopsy-confirmed cancer and normals are verified cancer-free for >=2 years; the false-positive class (radiologist recalls that were benign) is the dataset's distinguishing feature. Source: FRDR record (DOI 10.20383/103.01526, v3) and paper arXiv:2411.02710 / Nature Sci Data 10.1038/s41597-025-05866-0. Checked against the downloaded files on 2026-11-19: the p_# folders are exam IDs (5,997, unique across the three groups); the release has no ID linking repeat exams of the same patient. 'File Path' in the CSV uses Windows backslashes (group\\p_#\\side\\view\\file); in abnormal exams the cancer-side folder is suffixed '-c' (e.g. right-c); the CSV column 'Hard to State Negative' is the false-positive flag (README: 'False Positive'); 'Exam Date' is empty. Images are uncompressed 12-bit GE Senographe Essential DICOM. FRDR publishes SHA256 in frdr-dfdr-checksums.txt.",
       "label_source": [
         "pathology",
         "follow-up",
@@ -46811,7 +46817,7 @@
         "BI-RADS 2013 lesion descriptors incl. enhancement patterns"
       ],
       "file_structure": "JPEG images (converted losslessly from DICOM with RadiAnt; ~30% manually cropped; average 2355x1315 px) named {patient}_{side}_{DM|CM}_{view} (e.g. P1_L_CM_MLO), downloaded as one 1.49 GB package (low-energy 0.64 GB + subtracted 0.82 GB) via IBM Aspera Faspex; Radiology-manual-annotations.xlsx (239 KB), Radiology_hand_drawn_segmentations_v2.csv (991 KB) and Medical-reports-for-cases-.zip (3.9 MB) via HTTPS.",
-      "extra": "Acquired Jan 2019-Feb 2021 at the National Cancer Institute, Cairo University (GE Senographe DS and Hologic Selenia Dimensions); CC and MLO views; 46 patients have only 4 images (mastectomy). Helper code: github.com/omar-mohamed/CDD-CESM-Dataset. Sci Data 2022 (doi:10.1038/s41597-022-01238-0); TCIA DOI 10.7937/29kw-ae92.",
+      "extra": "Acquired Jan 2019-Feb 2021 at the National Cancer Institute, Cairo University (GE Senographe DS and Hologic Selenia Dimensions); CC and MLO views; 46 patients have only 4 images (mastectomy). Helper code: github.com/omar-mohamed/CDD-CESM-Dataset. Sci Data 2022 (doi:10.1038/s41597-022-01238-0); TCIA DOI 10.7937/29kw-ae92. Checked against the downloaded files on 2026-11-19: the images are distributed only as an IBM Aspera Faspex 5 public package (browser + Aspera Connect worked; IBM ascli 4.20 with the public link got HTTP 403 'Access using HTTP passcode is forbidden for this endpoint'). The package includes CDD-CESM.sums (md5 for its 2,007 files, incl. a stray desktop.ini); the JPEGs are stored as 3-channel RGB.",
       "label_source": [
         "radiologist-multi",
         "pathology",
@@ -46928,7 +46934,7 @@
         "lesion centre (x, y) and radius"
       ],
       "file_structure": "figshare record 24522883 (v2): DICOM Images.zip (4.9 GB), TIFF Images.zip (4.6 GB), Pixel-level annotation.zip (2.1 GB), ROI Masks.zip (6.5 MB), Reports.zip (163 KB), Metadata.xlsx (41 KB; reference number, view/laterality CCRT/CCLT/MLORT/MLOLT, background tissue, abnormality type, class, centre x/y, radius).",
-      "extra": "Acquired at Samved Hospital, Ahmedabad, India on a Siemens MAMMOMAT Nova unit; DICOM converted to TIFF with Master View; resolutions vary (e.g. 4743x6000, 3520x4784). Paper: Oza et al., Biomed Eng Lett 2024;14:317-330 (doi:10.1007/s13534-023-00339-y). The figshare description states use is for research and education purposes only.",
+      "extra": "Acquired at Samved Hospital, Ahmedabad, India on a Siemens MAMMOMAT Nova unit; DICOM converted to TIFF with Master View; resolutions vary (e.g. 4743x6000, 3520x4784). Paper: Oza et al., Biomed Eng Lett 2024;14:317-330 (doi:10.1007/s13534-023-00339-y). The figshare description states use is for research and education purposes only. Checked against the downloaded files on 2026-11-19: the DICOMs are 8-bit RGB secondary-capture objects (Modality OT, JPEG Lossless) without view/laterality tags, so use Metadata.xlsx (legend rows at the top; 647 rows for 510 images; 3 images coded 'CCLRT'); no patient IDs. 'DICOM Images.zip' matches the figshare md5 but has a Zip64 end record that Info-ZIP unzip 6.0 rejects ('start of central directory not found'); Python zipfile and 7-Zip extract it. Data paper (Data availability): 'available for research purposes only'.",
       "label_source": [
         "radiologist-multi"
       ],
@@ -47313,9 +47319,9 @@
         "All findings (Nabulsi et al., Sci Rep 2021): normal/abnormal, the 14 ChestX-ray14 findings and 'Other' (YES if majority chose an out-of-scope finding or judged abnormal without a majority finding)",
         "14 ChestX-ray14 findings + Other (all-findings set)"
       ],
-      "file_structure": "four_findings_expert_labels/ (individual_readers.csv, validation_labels.csv with 2,412 image IDs, test_labels.csv with 1,962 image IDs); all_findings_expert_labels/ (test_individual_readers.csv: 4,050 rows = 5 readers x 810 images, 19 columns incl. reader ID; test_labels.csv: 810 rows). Distributed via a Google Form (https://forms.gle/bmYPtLy4qsJahVKFA); images come from NIH (Box) or the requester-pays GCS bucket gcs-public-data--healthcare-nih-chest-xray.",
+      "file_structure": "four_findings_expert_labels/ (individual_readers.csv, validation_labels.csv with 2,414 image IDs (the folder README says 2,412), test_labels.csv with 1,962 image IDs); all_findings_expert_labels/ (test_individual_readers.csv: 4,050 rows = 5 readers x 810 images, 19 columns incl. reader ID; test_labels.csv: 810 rows). Distributed via a Google Form (https://forms.gle/bmYPtLy4qsJahVKFA); images come from NIH (Box) or the requester-pays GCS bucket gcs-public-data--healthcare-nih-chest-xray.",
       "splits": "Four findings: validation 2,412 / test 1,962 images; all findings: test only (810 PA images from the four-findings test set)",
-      "extra": "Citation of Majkowska et al. (Radiology 2020, doi:10.1148/radiol.2019191293) required for the four-findings labels and Nabulsi et al. (Sci Rep 2021, doi:10.1038/s41598-021-93967-2) for the all-findings labels. Readers saw only patient age and view (AP/PA).",
+      "extra": "Citation of Majkowska et al. (Radiology 2020, doi:10.1148/radiol.2019191293) required for the four-findings labels and Nabulsi et al. (Sci Rep 2021, doi:10.1038/s41598-021-93967-2) for the all-findings labels. Readers saw only patient age and view (AP/PA). Checked against the downloaded files on 2026-11-19: validation_labels.csv has 2,414 unique image IDs, all with YES/NO for the four findings; individual_readers.csv covers 4,376 images (2,414 + 1,962) from 22 reader IDs.",
       "label_source": [
         "radiologist-multi",
         "radiologist-consensus"
@@ -47329,7 +47335,7 @@
       "release_date": "2019-12",
       "dicom_headers": "stripped (converted to NIfTI/PNG/JPEG)",
       "third_party_processing": "unclear",
-      "third_party_note": "Underlying NIH images: 'no restrictions on the use of the NIH chest x-ray images' (attribution required). No license or terms for the expert label files are published on the Google page; access is via a Google Form, whose terms were not verified.",
+      "third_party_note": "Underlying NIH images: 'no restrictions on the use of the NIH chest x-ray images' (attribution required). No license or terms for the expert label files are published on the Google page; access is via a Google Form, whose terms were not verified. The request form (checked 2026-11-19) asks only for institution type and project purpose and shows no licence or terms; a download link is given after submission.",
       "related": [
         {
           "id": "nih-chestxray14",

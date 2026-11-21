@@ -1017,11 +1017,10 @@
     {
       "name": "QIBA CT-1C",
       "url": "https://www.cancerimagingarchive.net/collection/qiba-ct-1c/",
-      "decision": "deferred",
-      "reason": "auto-entry failed validation: [qiba-ct-1c] dataset needs at least one region",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)",
-      "until": "2026-12-15"
+      "decision": "added",
+      "reason": "catalog id qiba-ct-1c: entry added on 2026-11-21 from the official record",
+      "date": "2026-11-21",
+      "by": "claude-fable-5-2 (manual catalog update)"
     },
     {
       "name": "QIBA-CT-Liver-Phantom",
@@ -7960,11 +7959,10 @@
     {
       "name": "CT-SCOPE: annotated dataset of CT SCans for the automatic semantic segmentation of the Osseous struc",
       "url": "https://doi.org/10.1016/j.dib.2025.111962",
-      "decision": "deferred",
-      "reason": "Data in Brief paper for CT-SCOPE (annotated CT osseous structure segmentation) appears in-scope and is not in the catalog, but the page only showed 'Redirecting' so no dataset details, host or access terms could be verified.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)",
-      "until": "2027-02-13"
+      "decision": "added",
+      "reason": "catalog id ct-scope: entry added on 2026-11-21 from the official record",
+      "date": "2026-11-21",
+      "by": "claude-fable-5-2 (manual catalog update)"
     },
     {
       "name": "CT-SpatialVQA",
@@ -9560,11 +9558,10 @@
     {
       "name": "MIDRC-RICORD-1a",
       "url": "https://huggingface.co/datasets/MedOtter/MIDRC-RICORD-1a",
-      "decision": "deferred",
-      "reason": "This is an unofficial MedOtter re-upload (rasterised NIfTI) of TCIA MIDRC-RICORD-1a (DOI 10.7937/VTW4-X588); the original is in scope but not yet in the catalog, so it should be added from the official TCIA page once that page's details are fetched, not from this mirror.",
-      "date": "2026-11-15",
-      "by": "claude-opus-5-5 (monthly auto-triage)",
-      "until": "2027-02-13"
+      "decision": "added",
+      "reason": "same as catalog id midrc-ricord-1a: entry added on 2026-11-21 from the official record",
+      "date": "2026-11-21",
+      "by": "claude-fable-5-2 (manual catalog update)"
     },
     {
       "name": "mimic-medical-imaging-qa",
